@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.providers;
+package me.jesusmx.hubcore.providers;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
@@ -25,11 +25,7 @@ public class ScoreboardProvider implements AssembleAdapter {
     @Override
     public String getTitle(Player player) {
         boolean enabled = config.getBoolean("scoreboard.title.animation.enabled");
-        if (enabled) {
-            return titles();
-        } else {
-            return CC.translate(config.getString("scoreboard.title.normal"));
-        }
+        return enabled ? titles() : config.getString("scoreboard.title.static");
     }
 
     @Override

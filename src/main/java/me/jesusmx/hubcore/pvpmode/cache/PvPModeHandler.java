@@ -2,7 +2,7 @@ package me.jesusmx.hubcore.pvpmode.cache;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.manager.listeners.items.HidePlayersListener;
+import me.jesusmx.hubcore.listeners.items.HidePlayersListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;

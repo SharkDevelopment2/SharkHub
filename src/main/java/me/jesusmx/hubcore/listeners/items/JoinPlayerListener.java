@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.listeners.items;
+package me.jesusmx.hubcore.listeners.items;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
@@ -24,7 +24,7 @@ public class JoinPlayerListener implements Listener {
     private ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
 
     @EventHandler
-    public void RegisterSelector(PlayerJoinEvent event) {
+    public void registerSelector(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         new BukkitRunnable() {
             @Override
@@ -67,7 +67,7 @@ public class JoinPlayerListener implements Listener {
     }
 
     @EventHandler
-    public void RegisterListeners(PlayerJoinEvent event) {
+    public void registerListeners(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
         player.getInventory().clear();

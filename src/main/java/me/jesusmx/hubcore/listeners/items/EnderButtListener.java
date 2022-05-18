@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.listeners.items;
+package me.jesusmx.hubcore.listeners.items;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;

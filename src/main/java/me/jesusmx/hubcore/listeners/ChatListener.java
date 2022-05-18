@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.listeners;
+package me.jesusmx.hubcore.listeners;
 
 import com.lunarclient.bukkitapi.LunarClientAPI;
 import me.jesusmx.hubcore.SharkHub;

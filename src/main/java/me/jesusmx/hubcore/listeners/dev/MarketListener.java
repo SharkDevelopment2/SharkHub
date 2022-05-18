@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.listeners.dev;
+package me.jesusmx.hubcore.listeners.dev;
 
 import me.jesusmx.hubcore.util.CC;
 import org.bukkit.entity.Player;

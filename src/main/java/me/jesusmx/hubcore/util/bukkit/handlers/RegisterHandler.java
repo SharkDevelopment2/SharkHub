@@ -12,8 +12,8 @@ import io.github.nosequel.tab.versions.v1_9_R1.v1_9_R1TabAdapter;
 import io.github.thatkawaiisam.assemble.Assemble;
 import io.github.thatkawaiisam.assemble.AssembleStyle;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.manager.providers.ScoreboardProvider;
-import me.jesusmx.hubcore.manager.providers.TablistProvider;
+import me.jesusmx.hubcore.providers.ScoreboardProvider;
+import me.jesusmx.hubcore.providers.TablistProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 

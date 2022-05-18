@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.manager.providers;
+package me.jesusmx.hubcore.providers;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
