@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.jesusmx.hubcore</groupId>
+    <artifactId>SharkHub</artifactId>
+    <version>1.7-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
+        </repository>
+
+        <repository>
+            <id>viaversion-repo</id>
+            <url>https://repo.viaversion.com</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--Spigot 1.7-->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.7</artifactId>
+            <version>1.7.10</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot-1.7.jar</systemPath>
+        </dependency>
+
+        <!-- Spigot 1.8 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.8</artifactId>
+            <version>1.8.8</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot-1.8R3.jar</systemPath>
+        </dependency>
+
+        <!-- Spigot 1.9 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.9</artifactId>
+            <version>v1_9_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.9.jar</systemPath>
+        </dependency>
+        <!-- Spigot 1.10 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.10</artifactId>
+            <version>v1_10_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.10.jar</systemPath>
+        </dependency>
+        <!-- Spigot 1.12 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.12</artifactId>
+            <version>v1_12_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.12.jar</systemPath>
+        </dependency>
+        <!-- Spigot 1.14 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.14</artifactId>
+            <version>v1_14_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.14.jar</systemPath>
+        </dependency>
+        <!-- Spigot 1.15 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.15</artifactId>
+            <version>v1_15_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.15.jar</systemPath>
+        </dependency>
+        <!-- Spigot 1.16 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.16</artifactId>
+            <version>v1_16_R3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot1.16.jar</systemPath>
+        </dependency>
+
+        <!-- Spigot 1.17 -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-1.17</artifactId>
+            <version>v1_17_R1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/spigots/Spigot-1.17.jar</systemPath>
+        </dependency>
+
+        <!-- PlaceHolderAPI -->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>3.8.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/PlaceHolderAPI.jar</systemPath>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.8</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- EzQueue -->
+        <dependency>
+            <groupId>me.signatured</groupId>
+            <artifactId>ezqueuespigot</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/queue/EzQueueSpigot.jar</systemPath>
+        </dependency>
+
+        <!-- Portal -->
+        <dependency>
+            <groupId>me.portal</groupId>
+            <artifactId>portalqueue</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/queue/shared-1.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+
+        <!-- AquaCore -->
+        <dependency>
+            <groupId>aqua.core</groupId>
+            <artifactId>AquaCoreAPI</artifactId>
+            <version>2.2.7</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/AquaCoreAPI.jar/</systemPath>
+        </dependency>
+
+        <!-- ProtocolLib -->
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>4.7.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/ProtocolLib1-8.jar</systemPath>
+        </dependency>
+
+        <!-- ProtocolSupport -->
+        <dependency>
+            <groupId>protocolsupport</groupId>
+            <artifactId>protocol</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/ProtocolSupport.jar</systemPath>
+        </dependency>
+
+        <!-- ViaVersion -->
+        <dependency>
+            <groupId>com.viaversion</groupId>
+            <artifactId>viaversion-api</artifactId>
+            <version>LATEST</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Vault -->
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/Vault.jar</systemPath>
+        </dependency>
+
+        <!-- Mizu -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.15</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/MizuAPI.jar/</systemPath>
+        </dependency>
+
+        <!-- HestiaAPI -->
+        <dependency>
+            <groupId>me.quartz.hestia</groupId>
+            <artifactId>HestiaAPI</artifactId>
+            <version>1.0.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/HestiaAPI.jar</systemPath>
+        </dependency>
+
+        <!-- ZoomAPI -->
+        <dependency>
+            <groupId>club.frozed.core</groupId>
+            <artifactId>Zoom-API</artifactId>
+            <version>1.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/Zoom-API.jar</systemPath>
+        </dependency>
+
+        <!-- Zoot -->
+        <dependency>
+            <groupId>com.minexd</groupId>
+            <artifactId>zoot</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/ZootAPI.jar</systemPath>
+        </dependency>
+
+        <!-- LunarClientAPI -->
+        <dependency>
+            <groupId>com.lunarclient</groupId>
+            <artifactId>bukkitapi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/LunarClientAPI.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals> <goal>single</goal> </goals>
+                        <configuration>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals> <goal>compile</goal> </goals>
+                    </execution>
+                    <execution>
+                        <id>testCompile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.16.16</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

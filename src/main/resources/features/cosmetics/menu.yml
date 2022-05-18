@@ -1,0 +1,40 @@
+cosmetics:
+  title: "&7Cosmetics"
+  rows: 1
+
+  refill-glass:
+    enabled: true
+    data: 15
+
+  armor:
+    name: "&bArmors"
+    item: "LEATHER_CHESTPLATE"
+    data: 0
+    slot: 1
+    lore:
+      - "&7Right click to select"
+      - "&7your favorite armor!"
+      - ""
+      - "&aClick to view armors"
+
+  hats:
+    name: "&bHats"
+    item: "DIAMOND_HELMET"
+    data: 0
+    slot: 4
+    lore:
+      - "&7Right click to select"
+      - "&7your favorite hat!"
+      - ""
+      - "&aClick to view hats"
+
+  gadgets:
+    name: "&bGadgets"
+    item: "NETHER_STAR"
+    data: 0
+    slot: 7
+    lore:
+      - "&7Right click to select"
+      - "&7your favorite gadgets!"
+      - ""
+      - "&aClick to view gadgets"

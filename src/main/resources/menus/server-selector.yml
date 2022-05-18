@@ -1,0 +1,72 @@
+server-selector:
+  title: "&9&lSelect a servers to join..."
+  rows: 3
+  refill-glass:
+    enabled: true
+    data: 15
+  items:
+    HCFactions:
+      name: "&b&lHCFactions"
+      item: "FISHING_ROD"
+      data: 0
+      head:
+        enabled: false
+        name: ""
+      slot: 11
+      lore:
+        - "&7&m-------------------------"
+        - "&7The original hardcore factions"
+        - "&7experience with several twists"
+        - ""
+        - "&aClick to open menus"
+        - "&7&m-------------------------"
+      sub-server: true
+      command:
+        enabled: false
+        command: ""
+
+    Kitmap:
+      name: "&b&lKitmap"
+      item: "IRON_SWORD"
+      data: 0
+      head:
+        enabled: false
+        name: "Rousing"
+      slot: 13
+      lore:
+        - "&7&m-------------------------"
+        - "&7A practice version of HCF with"
+        - "&7free kits, claims & no deathbans"
+        - ""
+        - " &b* &fPlayers&7: &b%bungee_Kitmap%"
+        - " &b* &fMap Kit&7: &bProt 1, Sharp 1"
+        - " &b* &fFaction Size&7: &b25"
+        - ""
+        - "&aClick to join the queue!"
+        - "&7&m-------------------------"
+      sub-server: false
+      command:
+        enabled: false
+        command: ""
+
+    Practice:
+      name: "&b&lPractice"
+      item: "BOW"
+      data: 0
+      head:
+        enabled: false
+        name: "Rousing"
+      slot: 15
+      lore:
+        - "&7&m-------------------------"
+        - "&7Our original Practice experience"
+        - "&7featuring several different regions"
+        - ""
+        - "&b* &fPlayers&7: &b%bungee_Practice%"
+        - ""
+        - "&aClick to join the queue!"
+        - "&7&m-------------------------"
+      sub-server: false
+      command:
+        enabled: false
+        command: ""

@@ -1,0 +1,18 @@
+lunar-nametags:
+  staff:
+    permission: "tags.staff"
+    show:
+      - "&9[Staff]"
+      - "%player-name%"
+  test1:
+    permission: "tags.test1"
+    show:
+      - "%player-name%"
+  test2:
+    permission: "tags.test2"
+    show:
+      - "%player-name%"
+  test3:
+    permission: "tags.test3"
+    show:
+      - "%player-name%"

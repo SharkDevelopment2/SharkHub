@@ -1,0 +1,36 @@
+cosmetics:
+  menu:
+    no-permission: "&cYou do not have permissions to use the cosmetics, but you can purchase one at &lstore.server.com"
+  armor:
+    equipped: "&aYou have selected the armor %armor%."
+    un-equipped: "&cYou have removed the armor %armor-remove%."
+    no-permission: "&cYou do not have permission to select this armor"
+  hats:
+    equipped: "&aYou have selected the head %hat%."
+    un-equipped: "&cYou have removed the head %hat-remove%."
+    no-permission: "&cYou do not have permission to select this hat"
+  gadgets:
+    equipped: "&aYou have selected the head %gadget%."
+    no-permission: "&cYou do not have permission to select this gadget"
+
+player-visibility:
+  hide-message: "&cPlayers are hidden for you!"
+  show-message: "&aPlayers are visible for you!"
+
+pvp-mode:
+  activated: "&ePvPMode&7: &aenabled"
+  disabled: "&ePvPMode&7: &cdisabled"
+  not-configured: "&cUsage: /pvpmode setinv"
+  death-message: "&f[&b%kills-victim%&f]&b%victim% &fpaid the price and was killed by &f[&b%kills-killer%&f]&b%killer%"
+
+media:
+  discord:
+    - "&7[&3SharkHub&7] &fDiscord&7: &bdiscord.gg/sharkdev"
+  teamspeak:
+    - "&7[&3SharkHub&7] &fTeamspeak&7: &bts.shark.com"
+  twitter:
+    - "&7[&3SharkHub&7] &fTwitter&7: &btwitter.com/sharkdev"
+  telegram:
+    - "&7[&3SharkHub&7] &fTelegram&7: &bt.me/sharkdev"
+  store:
+    - "&7[&3SharkHub&7] &fStore&7: &bstore.shark.com"

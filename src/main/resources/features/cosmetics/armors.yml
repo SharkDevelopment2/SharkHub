@@ -1,0 +1,77 @@
+menu:
+  title: "&7Armors"
+  rows: 4
+  refill-glass:
+    enabled: true
+    data: 15
+  remove_armor:
+    slot: 35
+    name: "&cClick to remove armor"
+    item: "REDSTONE"
+    data: 0
+    lore:
+      - "&7Right Click to remove armor"
+  armors:
+    Owner:
+      permission: "sharkhub.armor.owner"
+      slot: 1
+      name: "&4Owner Armor"
+      icon:
+        color:
+          r: 170
+          g: 0
+          b: 0
+        name: "&4Owner Armor"
+        lore:
+          with_permissions:
+            - "&aRight click to equip"
+          without_permissions:
+            - "&cYou no have permissions to use this!"
+      color:
+        r: 170
+        g: 0
+        b: 0
+    Co-Owner:
+      permission: "sharkhub.armor.co-owner"
+      slot: 2
+      name: "&4Co-Owner Armor"
+      icon:
+        color:
+          r: 170
+          g: 0
+          b: 0
+        name: "&4Co-Owner Armor"
+        lore:
+          with_permissions:
+            - "&aRight click to equip"
+          without_permissions:
+            - "&cYou no have permissions to use this!"
+      color:
+        r: 170
+        g: 0
+        b: 0
+    Developer:
+      permission: "sharkhub.armor.developer"
+      slot: 2
+      name: "&9Developer Armor"
+      icon:
+        color:
+          r: 0
+          g: 0
+          b: 170
+        name: "&9Developer Armor"
+        lore:
+          with_permissions:
+            - "&aRight click to equip"
+          without_permissions:
+            - "&cYou no have permissions to use this!"
+      color:
+        r: 0
+        g: 0
+        b: 170
+
+
+
+
+
+

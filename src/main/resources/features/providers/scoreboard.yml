@@ -1,0 +1,68 @@
+scoreboard:
+  title:
+    normal: "%title%"
+    animation:
+      enabled: true
+      interval: 1 #in seconds my son.
+      animated:
+        - "&b&lServer Network"
+        - "&b&lServer Network"
+  footer:
+    animation:
+      enabled: true
+      interval: 1 #in second my son.
+      animated:
+        - "&bserver.com"
+        - "&bserver.com"
+  mode:
+    normal:
+      - "&7&m--------------------"
+      - "&b&lInfo"
+      - " &b• &fRank: &r%rank%"
+      - " &b• &fGlobal: &7%players%"
+      - ""
+      - "&b&lServers"
+      - " &b• &fAvailable Servers: &b3"
+      - ""
+      - "%footer%"
+      - "&7&m--------------------"
+    queue:
+      - "&7&m--------------------"
+      - "&b&lInfo"
+      - " &b• &fRank: &r%rank%"
+      - " &b• &fGlobal: &7%players%"
+      - ""
+      - "&b&lServers"
+      - " &b• &fAvailable Servers: &b3"
+      - ""
+      - "&b&lQueue"
+      - " &b• &c%server-queue%"
+      - " &b• &f%position% / %total%"
+      - ""
+      - "%footer%"
+      - "&7&m--------------------"
+    pvp-mode:
+      - "&7&m--------------------"
+      - "&bYour Statistics"
+      - "&fKills&7: &b%kills%"
+      - "&fDuration&7: &b%duration%"
+      - ""
+      - "&cto leave pvp-mode"
+      - "&cuse command /pvpmode"
+      - ""
+      - "%footer%"
+      - ""
+      - "&7&m--------------------"
+    staff:
+      - "&7&m--------------------"
+      - "&b&lInfo"
+      - " &b• &fRank: &r%rank%"
+      - " &b• &fGlobal: &7%players%"
+      - ""
+      - "&b&lServers"
+      - " &b• &fHCF: %pinger_isonline_localhost:25567%"
+      - " &b• &fKitmap: %pinger_isonline_localhost:25568%"
+      - " &b• &fPractice: %pinger_isonline_localhost:25569%"
+      - ""
+      - "%footer%"
+      - "&7&m--------------------"

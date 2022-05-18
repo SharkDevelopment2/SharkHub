@@ -1,0 +1,19 @@
+menu:
+  title: "&7Gadgets"
+  refill-glass:
+    enabled: true
+    data: 15
+
+  bow:
+    enabled: true
+    slot: 11
+    name: "&b&lBow Teleport"
+    lore:
+      - "&7Right click to use"
+
+  snow:
+    enabled: true
+    slot: 15
+    name: "&b&lSnowball Hider"
+    lore:
+      - "&7Right click to use"

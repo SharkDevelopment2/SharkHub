@@ -1,0 +1,48 @@
+join-message:
+  lines:
+    - "&8&m------------------------------"
+    - "&fWelcome to &b&lShark Development"
+    - ""
+    - " &fWebsite&7: &bwww.shark.com"
+    - " &fStore&7: &bstore.shark.com"
+    - " &fTeamspeak&7: &bts.shark.com"
+    - " &fDiscord&7: &bdiscord.gg/sharkdev"
+    - " &fRules&7: &bshark.com/rules"
+    - "&8&m------------------------------"
+
+exit-player:
+  message:
+    - "&7[&c-&7] %prefix%%player% &ehas left to the server."
+
+join-player:
+  message:
+    - "&7[&a+&7] %prefix%%player% &ehas join to the server."
+
+restricted-hub: #permission: hubcore.send-hub
+  bungee-name: "Hub-Restricted"
+
+chat-format:
+  normal:
+    message: "%prefix%%player%&7: &r%message%" #variable %lunar%
+    prefix-lunar: "&9&l[L&b&lC]&r" #Variable %lunar% , this only works if LunarClient-API is on the server
+  muted:
+    message: "&cThe chat is disabled for the moment."
+
+join-sound:
+  sound: "BAT_TAKEOFF"
+
+join-speed:
+  velocity: 0.2
+
+launch-pad:
+  material: "STONE_PLATE"
+  sound: "EXPLODE"
+
+double-jump:
+  velocity: 2.0
+  particle:
+    enabled: true
+    effect: "FLAME"
+  sound:
+    enabled: true
+    effect: "FIREWORK_LARGE_BLAST"

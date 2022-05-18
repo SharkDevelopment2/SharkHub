@@ -1,0 +1,66 @@
+system:
+  license: ""
+  rank: "Vault" # Vault, Aquacore, Mizu, Zoom, Zoot, Hestia
+  hcf-hook: false #is boolean tablist
+
+queue-support:
+  ezqueue: false
+  portal: false
+  custom: false
+
+hubcore:
+  style:
+    messages:
+      - ""
+      - ""
+      - ""
+      - ""
+      - "&b&lServer Network"
+      - " &7• &fVersion: &b1.0"
+      - " &7• &fAuthor: &bYour-Name"
+      - " &7• &fRank-Support: &bVault"
+      - " &cConfigure this in settings.yml"
+      - ""
+      - ""
+      - ""
+      - ""
+
+world:
+  border:
+    max-x: 1000
+    max-z: 1000
+    message: "&cYou can't get past the edge of the map!"
+  minehq-hideplayers:
+    message: "&bPop!"
+    sound: "BLAZE_HIT"
+
+  spawn:
+    world: world
+    x: 0
+    y: 120
+    z: 0
+    yaw: 0.0
+    pitch: 0.0
+
+addons:
+  protection:
+    message: "&cI'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error."
+    blocked-commands:
+      - "about"
+      - "bukkit:about"
+      - "bukkit:help"
+      - "bukkit:?"
+      - "bukkit:me"
+      - "bukkit:pl"
+      - "bukkit:plugins"
+      - "bukkit:ver"
+      - "bukkit:version"
+      - "icanhasbukkit"
+      - "info"
+      - "?"
+      - "pl"
+      - "plugins"
+      - "ver"
+      - "version"
+      - "me"
+      - "say"

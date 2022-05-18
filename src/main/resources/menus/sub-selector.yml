@@ -1,0 +1,50 @@
+sub-selector:
+  title: "&9&lSelect a server to join..."
+  rows: 3
+
+  back-button:
+    enabled: true
+    name: "&cBack"
+    item: "REDSTONE"
+    data: 0
+    lore:
+      - "&cClick here to return to back menu!"
+
+  refill-glass:
+    enabled: true
+    data: 15
+
+  HCFactions:
+    Squads:
+      name: "&b&lSquads"
+      item: "DIAMOND_SWORD"
+      data: 0
+      slot: 11
+      lore:
+        - "&7&m-------------------------"
+        - "&7The original hardcore factions"
+        - "&7experience with several twists"
+        - ""
+        - "&b* &fPlayers&7: &b%bungee_Squads%"
+        - "&b* &fMap Kit&7: &bProt 2, Sharp 2"
+        - "&b* &fFaction Size&7: &b12"
+        - ""
+        - "&aClick to join the queue!"
+        - "&7&m-------------------------"
+
+    Teams:
+      name: "&b&lTeams"
+      item: "DIAMOND_SWORD"
+      data: 0
+      slot: 12
+      lore:
+        - "&7&m-------------------------"
+        - "&7The original hardcore factions"
+        - "&7experience with several twists"
+        - ""
+        - "&b* &fPlayers&7: &b%bungee_Teams%"
+        - "&b* &fMap Kit&7: &bProt 2, Sharp 2"
+        - "&b* &fFaction Size&7: &b30"
+        - ""
+        - "&aClick to join the queue!"
+        - "&7&m-------------------------"
