@@ -14,56 +14,46 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class JoinPlayerListener implements Listener {
 
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
-    private ConfigFile config = SharkHub.getInstance().getMainConfig();
-    private ConfigFile hotbar = SharkHub.getInstance().getHotbarConfig();
-    private ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
+    private final ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
+    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
+    private final ConfigFile hotbar = SharkHub.getInstance().getHotbarConfig();
+    private final ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
 
     @EventHandler
     public void registerSelector(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (toggle.getBoolean("normal.server-selector.enabled")) {
-                    ItemStack selector = new ItemBuilder(Material.valueOf(hotbar.getString("server-selector.material")))
-                            .name(hotbar.getString("server-selector.name"))
-                            .lore(hotbar.getStringList("server-selector.lore"))
-                            .data(hotbar.getInt("server-selector.data"))
-                            .build();
-                    player.getInventory().setItem(hotbar.getInt("server-selector.slot"), selector);
-                }
-                if (toggle.getBoolean("normal.hub-selector.enabled")) {
-                    ItemStack selector = new ItemBuilder(Material.valueOf(hotbar.getString("hub-selector.material")))
-                            .name(hotbar.getString("hub-selector.name"))
-                            .lore(hotbar.getStringList("hub-selector.lore"))
-                            .data(hotbar.getInt("hub-selector.data"))
-                            .build();
-                    player.getInventory().setItem(hotbar.getInt("hub-selector.slot"), selector);
-                }
-                if (toggle.getBoolean("normal.cosmetics.enabled")) {
-                    ItemStack cosmetics = new ItemBuilder(Material.valueOf(hotbar.getString("cosmetics.material")))
-                            .name(hotbar.getString("cosmetics.name"))
-                            .lore(hotbar.getStringList("cosmetics.lore"))
-                            .data(hotbar.getInt("cosmetics.data"))
-                            .build();
-                    player.getInventory().setItem(hotbar.getInt("cosmetics.slot"), cosmetics);
-                }
 
-                if (toggle.getBoolean("normal.pvp-mode.enabled")) {
-                    ItemStack pvpmode = new ItemBuilder(Material.valueOf(hotbar.getString("pvp-mode.material")))
-                            .name(hotbar.getString("pvp-mode.name"))
-                            .lore(hotbar.getStringList("pvp-mode.lore"))
-                            .data(hotbar.getInt("pvp-mode.data"))
-                            .build();
-                    player.getInventory().setItem(hotbar.getInt("pvp-mode.slot"), pvpmode);
-                }
-            }
-        } .runTaskLater(SharkHub.getInstance(), 0);
+        if (toggle.getBoolean("normal.server-selector.enabled")) {
+            ItemStack selector = new ItemBuilder(Material.valueOf(hotbar.getString("server-selector.material")))
+                    .name(hotbar.getString("server-selector.name")).lore(hotbar.getStringList("server-selector.lore"))
+                    .data(hotbar.getInt("server-selector.data")).build();
+            player.getInventory().setItem(hotbar.getInt("server-selector.slot"), selector);
+        }
+        if (toggle.getBoolean("normal.hub-selector.enabled")) {
+            ItemStack selector = new ItemBuilder(Material.valueOf(hotbar.getString("hub-selector.material")))
+                    .name(hotbar.getString("hub-selector.name")).lore(hotbar.getStringList("hub-selector.lore"))
+                    .data(hotbar.getInt("hub-selector.data")).build();
+            player.getInventory().setItem(hotbar.getInt("hub-selector.slot"), selector);
+        }
+        if (toggle.getBoolean("normal.cosmetics.enabled")) {
+            ItemStack cosmetics = new ItemBuilder(Material.valueOf(hotbar.getString("cosmetics.material")))
+                    .name(hotbar.getString("cosmetics.name"))
+                    .lore(hotbar.getStringList("cosmetics.lore"))
+                    .data(hotbar.getInt("cosmetics.data")).build();
+            player.getInventory().setItem(hotbar.getInt("cosmetics.slot"), cosmetics);
+        }
+
+        if (toggle.getBoolean("normal.pvp-mode.enabled")) {
+            ItemStack pvpmode = new ItemBuilder(Material.valueOf(hotbar.getString("pvp-mode.material")))
+                    .name(hotbar.getString("pvp-mode.name"))
+                    .lore(hotbar.getStringList("pvp-mode.lore"))
+                    .data(hotbar.getInt("pvp-mode.data"))
+                    .build();
+            player.getInventory().setItem(hotbar.getInt("pvp-mode.slot"), pvpmode);
+        }
     }
 
     @EventHandler
@@ -113,7 +103,7 @@ public class JoinPlayerListener implements Listener {
     }
 
     @EventHandler
-    public void JoinSpeed(PlayerJoinEvent event) {
+    public void joinSpeed(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
         if (toggle.getBoolean("normal.join-speed")) {
@@ -124,16 +114,11 @@ public class JoinPlayerListener implements Listener {
     }
 
     @EventHandler
-    public void ExitMessage(PlayerQuitEvent event) {
+    public void exitMessage(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         if (toggle.getBoolean("normal.player.leave")) {
             if (player.hasPermission("hubcore.donator")) {
-                config.getStringList("exit-player.message").stream()
-                        .map(line -> PlaceholderAPI.setPlaceholders(player, line))
-                        .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                        .map(line -> line.replace("%player%", player.getName()))
-                        .map(line -> line.replace("%prefix%", SharkHub.chat.getPlayerPrefix(player)))
-                        .forEach(m -> player.sendMessage(CC.translate(m)));
+                config.getStringList("exit-player.message").stream().map(line -> PlaceholderAPI.setPlaceholders(player, line)).map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player))).map(line -> line.replace("%player%", player.getName())).map(line -> line.replace("%prefix%", SharkHub.chat.getPlayerPrefix(player))).forEach(m -> player.sendMessage(CC.translate(m)));
             }
         }
         event.setQuitMessage(null);

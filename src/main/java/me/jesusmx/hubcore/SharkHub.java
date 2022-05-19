@@ -22,8 +22,6 @@ import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.listeners.*;
-import me.jesusmx.hubcore.manager.listeners.*;
-import me.jesusmx.hubcoreisteners.*;
 import me.jesusmx.hubcore.listeners.items.EnderButtListener;
 import me.jesusmx.hubcore.listeners.items.HidePlayersListener;
 import me.jesusmx.hubcore.listeners.items.JoinPlayerListener;
@@ -85,7 +83,7 @@ public class SharkHub extends JavaPlugin {
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
         this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
 
-        if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://146.66.141.134:82/api/client", "2680396e39db6bacb0e6d673b2936c19790c8376").verify()) {
+        if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
