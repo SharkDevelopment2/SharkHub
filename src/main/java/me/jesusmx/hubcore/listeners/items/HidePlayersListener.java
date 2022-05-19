@@ -41,18 +41,18 @@ public class HidePlayersListener implements Listener {
         if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             if(event.getPlayer().getItemInHand().isSimilar(showItem())) {
                 event.getPlayer().setMetadata("HIDE_ALL", new FixedMetadataValue(SharkHub.getInstance(), true));
-                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), null);
+                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), null);
                 event.getPlayer().updateInventory();
-                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), hideItem());
+                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), hideItem());
                 event.getPlayer().updateInventory();
                 SharkHub.getInstance().getOnlinePlayers().forEach(event.getPlayer()::hidePlayer);
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', messages.getString("player-visibility.hide-message")));
             }else if(event.getPlayer().getItemInHand().isSimilar(hideItem())) {
                 event.getPlayer().removeMetadata("HIDE_ALL", SharkHub.getInstance());
                 SharkHub.getInstance().getOnlinePlayers().forEach(event.getPlayer()::showPlayer);
-                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), null);
+                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), null);
                 event.getPlayer().updateInventory();
-                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), showItem());
+                event.getPlayer().getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), showItem());
                 event.getPlayer().updateInventory();
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', messages.getString("player-visibility.show-message")));
             }
@@ -60,12 +60,12 @@ public class HidePlayersListener implements Listener {
     }
 
     public static ItemStack hideItem() {
-        ItemStack itemStack = new ItemStack(Material.valueOf(SharkHub.getInstance().getMainConfig().getString("hide-player.hide.material")));
-        itemStack.setDurability((short) SharkHub.getInstance().getMainConfig().getInt("hide-player.hide.data"));
+        ItemStack itemStack = new ItemStack(Material.valueOf(SharkHub.getInstance().getHotbarConfig().getString("hide-player.hide.material")));
+        itemStack.setDurability((short) SharkHub.getInstance().getHotbarConfig().getInt("hide-player.hide.data"));
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', SharkHub.getInstance().getMainConfig().getString("hide-player.hide.name")));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', SharkHub.getInstance().getHotbarConfig().getString("hide-player.hide.name")));
         List<String> lore = new ArrayList<>();
-        for(String loreString : SharkHub.getInstance().getMainConfig().getStringList("hide-player.hide.lore")){
+        for(String loreString : SharkHub.getInstance().getHotbarConfig().getStringList("hide-player.hide.lore")){
             lore.add(ChatColor.translateAlternateColorCodes('&', loreString));
         }
         itemMeta.setLore(lore);
@@ -74,12 +74,12 @@ public class HidePlayersListener implements Listener {
     }
 
     public static ItemStack showItem(){
-        ItemStack itemStack = new ItemStack(Material.valueOf(SharkHub.getInstance().getMainConfig().getString("hide-player.show.material")));
-        itemStack.setDurability((short) SharkHub.getInstance().getMainConfig().getInt("hide-player.show.data"));
+        ItemStack itemStack = new ItemStack(Material.valueOf(SharkHub.getInstance().getHotbarConfig().getString("hide-player.show.material")));
+        itemStack.setDurability((short) SharkHub.getInstance().getHotbarConfig().getInt("hide-player.show.data"));
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', SharkHub.getInstance().getMainConfig().getString("hide-player.show.name")));
+        itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', SharkHub.getInstance().getHotbarConfig().getString("hide-player.show.name")));
         List<String> lore = new ArrayList<>();
-        for(String loreString : SharkHub.getInstance().getMainConfig().getStringList("hide-player.show.lore")){
+        for(String loreString : SharkHub.getInstance().getHotbarConfig().getStringList("hide-player.show.lore")){
             lore.add(ChatColor.translateAlternateColorCodes('&', loreString));
         }
         itemMeta.setLore(lore);
@@ -90,9 +90,9 @@ public class HidePlayersListener implements Listener {
     public static void hideJoin(Player player) {
         if(!toggle.getBoolean("normal.hide-players.enabled")) return;
         if(!player.hasMetadata("HIDE_ALL")) {
-            player.getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), showItem());
+            player.getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), showItem());
         } else {
-            player.getInventory().setItem(SharkHub.getInstance().getMainConfig().getInt("hide-player.slot"), hideItem());
+            player.getInventory().setItem(SharkHub.getInstance().getHotbarConfig().getInt("hide-player.slot"), hideItem());
         }
     }
 

@@ -21,7 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class PvPModeListener implements Listener {
 
-    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
+    private final ConfigFile config = SharkHub.getInstance().getHotbarConfig();
 
     /*Para abrir el pvp-mode */
     @EventHandler

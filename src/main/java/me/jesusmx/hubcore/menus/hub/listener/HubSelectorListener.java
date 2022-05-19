@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class HubSelectorListener implements Listener {
 
     /*Para abrir el Hub-Selector*/
-    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
+    private final ConfigFile config = SharkHub.getInstance().getHotbarConfig();
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {

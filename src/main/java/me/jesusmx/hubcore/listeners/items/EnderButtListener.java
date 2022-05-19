@@ -19,7 +19,7 @@ import org.spigotmc.event.entity.EntityDismountEvent;
 public class EnderButtListener implements Listener {
 
     private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
-    private ConfigFile config = SharkHub.getInstance().getMainConfig();
+    private ConfigFile config = SharkHub.getInstance().getHotbarConfig();
 
     @EventHandler
     public void RegisterListeners(PlayerJoinEvent event) {

@@ -1,6 +1,5 @@
 package me.jesusmx.hubcore.cosmetics.base.listener;
 
-import com.comphenix.protocol.PacketType;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.base.menu.CosmeticsMenu;
 import me.jesusmx.hubcore.util.CC;
@@ -16,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 public class CosmeticsListener implements Listener {
 
     /*Para abrir el cosmetics*/
-    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
+    private final ConfigFile config = SharkHub.getInstance().getHotbarConfig();
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @EventHandler

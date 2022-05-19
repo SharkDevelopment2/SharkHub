@@ -125,6 +125,11 @@ public class SharkHub extends JavaPlugin {
         }
     }
 
+    @Override
+    public void onDisable() {
+        RegisterHandler.getAssemble().getBoards().clear();
+    }
+
     private void managers() {
         queueManager = new QueueManager();
         queueHandler = new QueueHandler();
@@ -135,11 +140,41 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void commands() {
-        Arrays.asList(new DiscordCommand(), new TeamSpeakCommand(), new TwitterCommand(), new SetSpawnCommand(), new TelegramCommand(), new StoreCommand(), new SharkCommand(), new SpawnCommand(), new CosmeticsCommand(), new JoinQueueCommand(), new LeaveQueueCommand(), new ToggleQueueCommand(), new PvPModeCommand(), new SkullCommand()).forEach(Command::registerCommand);
+        Arrays.asList(new DiscordCommand(),
+                new TeamSpeakCommand(),
+                new TwitterCommand(),
+                new SetSpawnCommand(),
+                new TelegramCommand(),
+                new StoreCommand(),
+                new SharkCommand(),
+                new SpawnCommand(),
+                new CosmeticsCommand(),
+                new JoinQueueCommand(),
+                new LeaveQueueCommand(),
+                new ToggleQueueCommand(),
+                new PvPModeCommand(),
+                new SkullCommand()).forEach(Command::registerCommand);
     }
 
     public void listeners() {
-        Arrays.asList(new MenuListener(), new WorldListener(), new ProtectionListener(), new DoubleJumpListener(), new JoinPlayerListener(), new ChatListener(), new MovePlayerListener(), new EnderButtListener(), new HidePlayersListener(), new CosmeticsListener(), new GadgetsListener(), new PvPModeListener(), new DeveloperListener(), new HubExclusive(), new LaunchPadListener(), new HubSelectorListener(), new ServerSelectorListener(), new PageMenu()).forEach(listener -> this.getServer().getPluginManager().registerEvents(listener, this));
+        Arrays.asList(new MenuListener(),
+                new WorldListener(),
+                new ProtectionListener(),
+                new DoubleJumpListener(),
+                new JoinPlayerListener(),
+                new ChatListener(),
+                new MovePlayerListener(),
+                new EnderButtListener(),
+                new HidePlayersListener(),
+                new CosmeticsListener(),
+                new GadgetsListener(),
+                new PvPModeListener(),
+                new DeveloperListener(),
+                new HubExclusive(),
+                new LaunchPadListener(),
+                new HubSelectorListener(),
+                new ServerSelectorListener(),
+                new PageMenu()).forEach(listener -> this.getServer().getPluginManager().registerEvents(listener, this));
         if(Bukkit.getPluginManager().getPlugin("LunarClientAPI") != null) {
             Bukkit.getPluginManager().registerEvents(new LunarNameTagsListener(), this);
         }
