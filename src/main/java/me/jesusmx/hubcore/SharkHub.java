@@ -21,6 +21,7 @@ import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
 import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.listeners.*;
 import me.jesusmx.hubcore.listeners.items.EnderButtListener;
 import me.jesusmx.hubcore.listeners.items.HidePlayersListener;
@@ -53,6 +54,7 @@ public class SharkHub extends JavaPlugin {
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private PermissionCore permissionCore;
+    private HotbarManager hotbarManager;
 
     @Override
     public void onEnable() {
@@ -88,6 +90,8 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getScheduler().cancelTasks(this);
             return;
         }
+        this.hotbarManager = new HotbarManager();
+        hotbarManager.load();
 
         if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
             Bukkit.getPluginManager().disablePlugin(this);

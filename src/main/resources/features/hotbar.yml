@@ -1,58 +1,14 @@
-server-selector:
-  name: "&bServer Selector"
-  material: "COMPASS"
-  data: 0
-  slot: 0
-  lore:
-    - "&7click to use server selector"
-
-hub-selector:
-  name: "&bHub Selector"
-  material: "ENDER_CHEST"
-  data: 0
-  slot: 1
-  lore:
-    - "&7click to use server selector"
-
-cosmetics:
-  name: "&bCosmetics"
-  material: "NETHER_STAR"
-  data: 0
-  slot: 2
-  lore:
-    - "&7Right click to navigate cosmetics"
-
-pvp-mode:
-  name: "&bPvP Mode"
-  material: "DIAMOND_SWORD"
-  data: 0
-  slot: 3
-  lore:
-    - "&7Right click to enter pvp-mode"
-
-butt:
-  name: "&bEnderButt"
-  material: "ENDER_PEARL"
-  amount: 1
-  slot: 4
-  sound:
-    enabled: true
-    effect: "ORB_PICKUP"
-  lore:
-    - "&7click to use ender butt"
-
-hide-player:
-  slot: 5
-  show:
-    name: "&bShow Players"
-    material: "INK_SACK"
-    data: 10
-    lore:
-      - "&7Show all players"
-  hide:
-    name: "&bHide Players"
-    material: "INK_SACK"
-    data: 8
-    lore:
-      - "&7Hide all players"
+HOTBAR:
+  SERVER_SELECTOR:
+    ENABLE: true
+    DISPLAY_NAME: "&6Server Selector"
+    MATERIAL: BOOK
+    DATA: 0
+    AMOUNT: 1
+    LORE:
+      - "&7Click to open the server selector"
+      - "&7Right click to open the server selector"
+    SLOT: 1
+    ACTIONS:
+      - "SERVER_SELECTOR"
 
