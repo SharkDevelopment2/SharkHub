@@ -19,6 +19,7 @@ import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
+import me.jesusmx.hubcore.hotbar.listeners.EnderButtListener;
 import me.jesusmx.hubcore.hotbar.listeners.HubSelectorListener;
 import me.jesusmx.hubcore.hotbar.listeners.ServerSelectorListener;
 import me.jesusmx.hubcore.hotbar.listeners.VisibilityToggleListener;
@@ -31,6 +32,7 @@ import me.jesusmx.hubcore.util.bukkit.handlers.RegisterHandler;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -96,7 +98,6 @@ public class SharkHub extends JavaPlugin {
         }
 
         this.commands();
-        this.listeners();
         this.managers();
 
         if (togglesConfig.getBoolean("features.scoreboard")) {
@@ -121,6 +122,8 @@ public class SharkHub extends JavaPlugin {
         if (togglesConfig.getBoolean("addons.console-message")) {
             this.getServer().getConsoleSender().sendMessage((CC.CustomMessage(settingsConfig.getStringList("hubcore.style.messages"))));
         }
+
+        this.listeners();
     }
 
     @Override
@@ -159,6 +162,7 @@ public class SharkHub extends JavaPlugin {
         new ServerSelectorListener();
         new HubSelectorListener();
         new VisibilityToggleListener();
+        new EnderButtListener();
     }
 
     private String permissions() {

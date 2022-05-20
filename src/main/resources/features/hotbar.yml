@@ -15,38 +15,51 @@ HOTBAR:
   HUB_SELECTOR:
     ENABLE: true
     DISPLAY_NAME: "&6Hub Selector"
-    MATERIAL: BOOK
+    MATERIAL: ENDER_CHEST
     DATA: 0
     AMOUNT: 1
     LORE:
       - "&7Click to open the server selector"
       - "&7Right click to open the server selector"
-    SLOT: 1
+    SLOT: 2
     ACTIONS:
       - "OPEN_HUB_SELECTOR"
 
   VISIBILITY_ON:
     ENABLE: true
     DISPLAY_NAME: "&aVisibility On"
-    MATERIAL: BOOK
+    MATERIAL: TORCH
     DATA: 0
     AMOUNT: 1
     LORE:
       - "&7Click to open the server selector"
       - "&7Right click to open the server selector"
-    SLOT: 1
+    SLOT: 3
     ACTIONS:
       - "VISIBILITY_TOGGLE_ON"
 
   VISIBILITY_OFF:
     ENABLE: true
-    DISPLAY_NAME: "&aVisibility Off"
-    MATERIAL: BOOK
+    DISPLAY_NAME: "&cVisibility Off"
+    MATERIAL: LEVER
     DATA: 0
     AMOUNT: 1
     LORE:
       - "&7Click to open the server selector"
       - "&7Right click to open the server selector"
-    SLOT: 1
+    SLOT: 3
     ACTIONS:
       - "VISIBILITY_TOGGLE_OFF"
+
+  ENDER_BUTT:
+    ENABLE: true
+    DISPLAY_NAME: "&bEnder Butt"
+    MATERIAL: ENDER_PEARL
+    DATA: 0
+    AMOUNT: 1
+    LORE:
+      - "&7Click to open the server selector"
+      - "&7Right click to open the server selector"
+    SLOT: 4
+    ACTIONS:
+      - "ENDER_BUTT"

@@ -32,6 +32,7 @@ public class JoinPlayerListener implements Listener {
     @EventHandler
     public void registerSelector(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        player.getInventory().clear();
 
         for (Hotbar hotbar : SharkHub.getInstance().getHotbarManager().getHotbarItems()) {
             ItemStack item = new ItemBuilder(hotbar.getMaterial())
@@ -41,7 +42,7 @@ public class JoinPlayerListener implements Listener {
                     .setAmount(hotbar.getAmount())
                     .build();
 
-            if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) return;
+            if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
             player.getInventory().setItem(hotbar.getSlot() - 1, item);
         }
 
@@ -51,7 +52,6 @@ public class JoinPlayerListener implements Listener {
     public void registerListeners(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         event.setJoinMessage(null);
-        player.getInventory().clear();
 
         Location location = player.getLocation();
         float yaw = settings.getInt("world.spawn.yaw");
