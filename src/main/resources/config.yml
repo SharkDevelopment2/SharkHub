@@ -46,3 +46,7 @@ double-jump:
   sound:
     enabled: true
     effect: "FIREWORK_LARGE_BLAST"
+
+ENDER_BUTT:
+  VELOCITY: 0.5
+  SOUND: "ENDERMAN_TELEPORT"
