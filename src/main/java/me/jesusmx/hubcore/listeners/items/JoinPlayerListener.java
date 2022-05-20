@@ -6,6 +6,7 @@ import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -18,6 +19,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class JoinPlayerListener implements Listener {
+
+    public JoinPlayerListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     private final ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
@@ -36,6 +41,7 @@ public class JoinPlayerListener implements Listener {
                     .setAmount(hotbar.getAmount())
                     .build();
 
+            if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) return;
             player.getInventory().setItem(hotbar.getSlot() - 1, item);
         }
 

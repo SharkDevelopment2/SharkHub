@@ -2,9 +2,11 @@ package me.jesusmx.hubcore.hotbar;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
+import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,24 @@ public class HotbarManager {
             }
         }
         return null;
+    }
+
+    public static Hotbar getItemByAction(String action) {
+        for (Hotbar hotbar : SharkHub.getInstance().getHotbarManager().getHotbarItems()) {
+            if (hotbar.getActions().contains(action)) {
+                return hotbar;
+            }
+        }
+        return null;
+    }
+
+    public static ItemStack getHotbarItemStack(Hotbar hotbar) {
+        return new ItemBuilder(hotbar.getMaterial())
+                .name(hotbar.getDisplayName())
+                .data(hotbar.getData())
+                .lore(hotbar.getLore())
+                .setAmount(hotbar.getAmount())
+                .build();
     }
 
 }

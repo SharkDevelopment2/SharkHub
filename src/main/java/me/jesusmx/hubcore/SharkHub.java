@@ -13,29 +13,21 @@ import me.jesusmx.hubcore.commands.others.SkullCommand;
 import me.jesusmx.hubcore.commands.spawn.SetSpawnCommand;
 import me.jesusmx.hubcore.commands.spawn.SpawnCommand;
 import me.jesusmx.hubcore.cosmetics.base.command.CosmeticsCommand;
-import me.jesusmx.hubcore.cosmetics.base.listener.CosmeticsListener;
-import me.jesusmx.hubcore.cosmetics.types.gadgets.listener.GadgetsListener;
 import me.jesusmx.hubcore.hooks.hcf.Hooker;
-import me.jesusmx.hubcore.hooks.nametag.LunarNameTagsListener;
 import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
 import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.listeners.*;
-import me.jesusmx.hubcore.listeners.items.EnderButtListener;
-import me.jesusmx.hubcore.listeners.items.HidePlayersListener;
+import me.jesusmx.hubcore.hotbar.listeners.HubSelectorListener;
+import me.jesusmx.hubcore.hotbar.listeners.ServerSelectorListener;
+import me.jesusmx.hubcore.hotbar.listeners.VisibilityToggleListener;
 import me.jesusmx.hubcore.listeners.items.JoinPlayerListener;
-import me.jesusmx.hubcore.menus.hub.listener.HubSelectorListener;
-import me.jesusmx.hubcore.menus.server.listener.ServerSelectorListener;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
-import me.jesusmx.hubcore.pvpmode.listener.PvPModeListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
 import me.jesusmx.hubcore.util.bukkit.api.command.Command;
 import me.jesusmx.hubcore.util.bukkit.handlers.RegisterHandler;
-import me.jesusmx.hubcore.util.buttons.MenuListener;
-import me.jesusmx.hubcore.util.buttons.page.PageMenu;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
@@ -43,7 +35,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 @Getter
 public class SharkHub extends JavaPlugin {
@@ -113,7 +107,7 @@ public class SharkHub extends JavaPlugin {
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
 
-       this.permissions();
+        this.permissions();
 
         if (togglesConfig.getBoolean("features.tablist")) {
             RegisterHandler.tablist();
@@ -161,27 +155,10 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void listeners() {
-        Arrays.asList(new MenuListener(),
-                new WorldListener(),
-                new ProtectionListener(),
-                new DoubleJumpListener(),
-                new JoinPlayerListener(),
-                new ChatListener(),
-                new MovePlayerListener(),
-                new EnderButtListener(),
-                new HidePlayersListener(),
-                new CosmeticsListener(),
-                new GadgetsListener(),
-                new PvPModeListener(),
-                new DeveloperListener(),
-                new HubExclusive(),
-                new LaunchPadListener(),
-                new HubSelectorListener(),
-                new ServerSelectorListener(),
-                new PageMenu()).forEach(listener -> this.getServer().getPluginManager().registerEvents(listener, this));
-        if(Bukkit.getPluginManager().getPlugin("LunarClientAPI") != null) {
-            Bukkit.getPluginManager().registerEvents(new LunarNameTagsListener(), this);
-        }
+        new JoinPlayerListener();
+        new ServerSelectorListener();
+        new HubSelectorListener();
+        new VisibilityToggleListener();
     }
 
     private String permissions() {
