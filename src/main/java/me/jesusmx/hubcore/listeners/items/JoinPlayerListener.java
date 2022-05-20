@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.listeners.items;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
+import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
@@ -30,27 +31,10 @@ public class JoinPlayerListener implements Listener {
     private final ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
 
     @EventHandler
-    public void registerSelector(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        player.getInventory().clear();
-
-        for (Hotbar hotbar : SharkHub.getInstance().getHotbarManager().getHotbarItems()) {
-            ItemStack item = new ItemBuilder(hotbar.getMaterial())
-                    .name(hotbar.getDisplayName())
-                    .data(hotbar.getData())
-                    .lore(hotbar.getLore())
-                    .setAmount(hotbar.getAmount())
-                    .build();
-
-            if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
-            player.getInventory().setItem(hotbar.getSlot() - 1, item);
-        }
-
-    }
-
-    @EventHandler
     public void registerListeners(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        player.getInventory().clear();
+        HotbarManager.setHotbarItems(player);
         event.setJoinMessage(null);
 
         Location location = player.getLocation();

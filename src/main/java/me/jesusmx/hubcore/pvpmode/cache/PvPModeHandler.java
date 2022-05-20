@@ -2,7 +2,6 @@ package me.jesusmx.hubcore.pvpmode.cache;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.listeners.items.HidePlayersListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
@@ -96,7 +95,6 @@ public class PvPModeHandler {
             player.getInventory().setItem(hotbar.getInt("butt.slot"), enderbutt);
         }
 
-        HidePlayersListener.hideJoin(player);
         if (toggle.getBoolean("normal.join-speed")) {
             player.setWalkSpeed((float) config.getDouble("join-speed.velocity"));
         } else {

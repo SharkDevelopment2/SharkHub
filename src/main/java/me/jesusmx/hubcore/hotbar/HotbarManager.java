@@ -6,6 +6,7 @@ import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -61,6 +62,20 @@ public class HotbarManager {
                 .lore(hotbar.getLore())
                 .setAmount(hotbar.getAmount())
                 .build();
+    }
+
+    public static void setHotbarItems(Player player) {
+        for (Hotbar hotbar : SharkHub.getInstance().getHotbarManager().getHotbarItems()) {
+            ItemStack item = new ItemBuilder(hotbar.getMaterial())
+                    .name(hotbar.getDisplayName())
+                    .data(hotbar.getData())
+                    .lore(hotbar.getLore())
+                    .setAmount(hotbar.getAmount())
+                    .build();
+
+            if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
+            player.getInventory().setItem(hotbar.getSlot() - 1, item);
+        }
     }
 
 }
