@@ -18,7 +18,7 @@ public class VisibilityToggleListener implements Listener {
     }
 
     @EventHandler
-    public void onServerSelectorInteract(PlayerInteractEvent event) {
+    public void onVisibilityToggleInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Hotbar show = HotbarManager.getItemByAction("VISIBILITY_TOGGLE_ON");
         Hotbar hide = HotbarManager.getItemByAction("VISIBILITY_TOGGLE_OFF");

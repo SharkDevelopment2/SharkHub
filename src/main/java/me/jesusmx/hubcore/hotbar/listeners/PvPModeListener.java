@@ -3,9 +3,8 @@ package me.jesusmx.hubcore.hotbar.listeners;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.util.files.ConfigFile;
+import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,26 +12,22 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class EnderButtListener implements Listener {
+public class PvPModeListener implements Listener {
 
-    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
-
-    public EnderButtListener() {
+    public PvPModeListener() {
         Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
     }
 
     @EventHandler
-    public void onEnderButtInteract(PlayerInteractEvent event) {
+    public void onHubSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        Hotbar enderButt = HotbarManager.getItemByAction("ENDER_BUTT");
-        assert enderButt != null;
-        ItemStack item = HotbarManager.getHotbarItemStack(enderButt);
+        Hotbar pvpMode = HotbarManager.getItemByAction("JOIN_PVP_MODE");
+        assert pvpMode != null;
+        ItemStack item = HotbarManager.getHotbarItemStack(pvpMode);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (player.getItemInHand().isSimilar(item)) {
-                player.setVelocity(player.getLocation().getDirection().multiply(config.getDouble("ENDER_BUTT.VELOCITY")));
-                player.playSound(player.getLocation(), Sound.valueOf(config.getString("ENDER_BUTT.SOUND")), 1.0F, 1.0F);
-                player.updateInventory();
+                PvPModeHandler.togglePvPMode(event.getPlayer());
                 event.setCancelled(true);
             }
         }
