@@ -23,22 +23,6 @@ public class PvPModeListener implements Listener {
 
     private final ConfigFile config = SharkHub.getInstance().getHotbarConfig();
 
-    /*Para abrir el pvp-mode */
-    @EventHandler
-    public void onInteract(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
-        if(PvPModeHandler.isOnPvPMode(player)) return;
-        if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            ItemStack is = event.getItem();
-            if (is == null || is.getType() == Material.AIR) return;
-            if (!is.hasItemMeta() || !is.getItemMeta().hasDisplayName()) return;
-            if (is.getType() == Material.valueOf(config.getString("pvp-mode.material")) && is.getItemMeta().getDisplayName().equalsIgnoreCase(CC.translate(config.getString("pvp-mode.name")))) {
-                event.setCancelled(true);
-                PvPModeHandler.togglePvPMode(event.getPlayer());
-            }
-        }
-    }
-
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerAttack(EntityDamageByEntityEvent event) {
         if(!(event.getEntity() instanceof Player)) return;
