@@ -6,9 +6,6 @@ import me.jesusmx.hubcore.bungee.BungeeUtils;
 import me.jesusmx.hubcore.hooks.hcf.Hooker;
 import me.jesusmx.hubcore.hooks.hcf.Splitters;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
-import io.github.nosequel.tab.shared.entry.TabElement;
-import io.github.nosequel.tab.shared.entry.TabElementHandler;
-import io.github.nosequel.tab.shared.skin.SkinType;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import me.jesusmx.hubcore.util.string.StringUtils;
@@ -24,13 +21,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class TablistProvider implements TabElementHandler {
+public class TablistProvider {
 
     private final ConfigFile config = SharkHub.getInstance().getTablistConfig();
     private final ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
     private final ConfigFile hcf = SharkHub.getInstance().getHcfConfig();
 
-    @Override
+    /*@Override
     public TabElement getElement(Player player) {
         TabElement element = new TabElement();
         element.setHeader(CC.translate(PlaceholderAPI.setPlaceholders(player, config.getString("tablist.header").replace("<line>", "\n"))));
@@ -112,4 +109,5 @@ public class TablistProvider implements TabElementHandler {
         }
         return element;
     }
+     */
 }

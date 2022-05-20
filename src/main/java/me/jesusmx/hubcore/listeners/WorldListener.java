@@ -4,7 +4,6 @@ import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.EnderPearl;
@@ -134,48 +133,11 @@ public class WorldListener implements Listener {
         boolean e = false;
 
         if (!toggle.getBoolean("world.minehq-hideplayers.enabled")) {
+            player = (Player) event.getDamager();
+            Player damaged = (Player) event.getEntity();
 
-            if (Bukkit.getVersion().contains("1.7")) {
-                if (damager instanceof org.bukkit.craftbukkit.v1_7_R4.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.8")) {
-                if (damager instanceof org.bukkit.craftbukkit.v1_8_R3.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.9")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_9_R1.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.10")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_10_R1.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.12")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_12_R1.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.14")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_14_R1.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            } else if (Bukkit.getVersion().contains("1.15")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_15_R1.entity.CraftEnderPearl) {
-                    e = true;
-                }
-            }
-            else if (Bukkit.getVersion().contains("1.16")) {
-                if(damager instanceof org.bukkit.craftbukkit.v1_16_R3.entity.CraftEnderPearl) {
-                    e = true;
-                }
-                if (b && e) {
-                    player = null;
-                } else {
-                    player = (Player) event.getDamager();
-                }
-                Player damaged = (Player) event.getEntity();
-                if (damaged != null && player != null &&
-                        event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
+            if (damaged != null && player != null &&
+                    event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
                     if(!PvPModeHandler.isOnPvPMode(player) && PvPModeHandler.isOnPvPMode(damaged) ||
                     PvPModeHandler.isOnPvPMode(player) && !PvPModeHandler.isOnPvPMode(damaged)) {
                         event.setCancelled(true);
@@ -192,4 +154,3 @@ public class WorldListener implements Listener {
             }
         }
     }
-}

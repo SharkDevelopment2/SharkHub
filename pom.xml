@@ -29,77 +29,10 @@
         <!--Spigot 1.7-->
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.7</artifactId>
-            <version>1.7.10</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot-1.7.jar</systemPath>
-        </dependency>
-
-        <!-- Spigot 1.8 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8</artifactId>
             <version>1.8.8</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/spigots/Spigot-1.8R3.jar</systemPath>
-        </dependency>
-
-        <!-- Spigot 1.9 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.9</artifactId>
-            <version>v1_9_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.9.jar</systemPath>
-        </dependency>
-        <!-- Spigot 1.10 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.10</artifactId>
-            <version>v1_10_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.10.jar</systemPath>
-        </dependency>
-        <!-- Spigot 1.12 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.12</artifactId>
-            <version>v1_12_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.12.jar</systemPath>
-        </dependency>
-        <!-- Spigot 1.14 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.14</artifactId>
-            <version>v1_14_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.14.jar</systemPath>
-        </dependency>
-        <!-- Spigot 1.15 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.15</artifactId>
-            <version>v1_15_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.15.jar</systemPath>
-        </dependency>
-        <!-- Spigot 1.16 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.16</artifactId>
-            <version>v1_16_R3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot1.16.jar</systemPath>
-        </dependency>
-
-        <!-- Spigot 1.17 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-1.17</artifactId>
-            <version>v1_17_R1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/spigots/Spigot-1.17.jar</systemPath>
         </dependency>
 
         <!-- PlaceHolderAPI -->
