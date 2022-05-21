@@ -62,24 +62,25 @@ public class ServerUtil {
                         dis.close();
                         socket.close();
                         return str
-                                .replace("%" + sk + "_lives%", rs[1])
-                                .replace("%" + sk + "_deathban%", rs[2]);
+                                .replace("%" + sk + "_LIVES%", rs[1])
+                                .replace("%" + sk + "_DEATHBAN%", rs[2]);
                     } catch (IOException e) {
                         Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "The connection with the hook " + sk + " has been lost");
                         Hooker.getVerified().remove(sk);
                         Hooker.getUnverified().add(sk);
                         return str
-                                .replace("%" + sk + "_lives%", "0")
-                                .replace("%" + sk + "_deathban%", "Loading");
+                                .replace("%" + sk + "_LIVES%", "0")
+                                .replace("%" + sk + "_DEATHBAN%", "Loading");
                     }
                 }
             }
             for (String sk : Hooker.getUnverified()) {
                 return str
-                        .replace("%" + sk + "_lives%", "0")
-                        .replace("%" + sk + "_deathban%", "Loading");
+                        .replace("%" + sk + "_LIVES%", "0")
+                        .replace("%" + sk + "_DEATHBAN%", "Loading");
             }
         }
+
         return str
                 .replace("%RANK%", SharkHub.getInstance().getPermissionCore().getRank(player))
                 .replace("%PLAYER%", player.getName())
