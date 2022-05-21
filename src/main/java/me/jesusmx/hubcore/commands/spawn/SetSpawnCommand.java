@@ -32,21 +32,7 @@ public class SetSpawnCommand extends Command {
          player.sendMessage(CC.translate("&cYou dont have permission to use this command."));
 
       } else {
-         Location l = player.getLocation();
-         String world = l.getWorld().getName();
-         double x = l.getX();
-         double y = l.getY();
-         double z = l.getZ();
-         float yaw = l.getYaw();
-         float pitch = l.getPitch();
-         config.getConfiguration().set("world.spawn.world", world);
-         config.getConfiguration().set("world.spawn.x", x);
-         config.getConfiguration().set("world.spawn.y", y);
-         config.getConfiguration().set("world.spawn.z", z);
-         config.getConfiguration().set("world.spawn.yaw", yaw);
-         config.getConfiguration().set("world.spawn.pitch", pitch);
-         config.save();
-         config.reload();
+         SharkHub.getInstance().getSpawnManager().setLocation(player.getLocation());
          player.sendMessage(CC.translate("&aSuccessfully set the spawn point."));
       }
       return false;

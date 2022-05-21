@@ -21,6 +21,7 @@ import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.hotbar.listeners.*;
 import me.jesusmx.hubcore.listeners.JoinListener;
+import me.jesusmx.hubcore.managers.SpawnManager;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
@@ -41,12 +42,13 @@ import java.util.Collection;
 public class SharkHub extends JavaPlugin {
 
     @Getter private static SharkHub instance;
-    private ConfigFile togglesConfig, scoreboardConfig, settingsConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig;
+    private ConfigFile togglesConfig, scoreboardConfig, settingsConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig, spawnConfig;
     public static Chat chat;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private PermissionCore permissionCore;
     private HotbarManager hotbarManager;
+    private SpawnManager spawnManager;
 
     private boolean isPlaceholderAPI = false;
 
@@ -129,9 +131,12 @@ public class SharkHub extends JavaPlugin {
         this.armorsConfig = new ConfigFile(this, "features/cosmetics/armors");
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
         this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
+
+        this.spawnConfig = new ConfigFile(this, "data/spawn-location.yml");
     }
 
     private void registerManagers() {
+        this.spawnManager = new SpawnManager();
         this.queueManager = new QueueManager();
         this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();

@@ -32,18 +32,7 @@ public class SpawnCommand extends Command {
                 player.sendMessage(CC.translate("&cYou dont have permission to use this command."));
                 return false;
             } else {
-                Location location = player.getLocation();
-                float yaw = settings.getInt("world.spawn.yaw");
-                float pitch = settings.getInt("world.spawn.pitch");
-                double x = settings.getDouble("world.spawn.x");
-                double y = settings.getDouble("world.spawn.y");
-                double z = settings.getDouble("world.spawn.z");
-                location.setYaw(yaw);
-                location.setPitch(pitch);
-                location.setY(y);
-                location.setX(x);
-                location.setZ(z);
-                player.teleport(location);
+                SharkHub.getInstance().getSpawnManager().sendToSpawn(player);
                 return true;
             }
         }

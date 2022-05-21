@@ -6,7 +6,6 @@ import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,8 +21,6 @@ public class JoinListener implements Listener {
 
     private final ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
-    private final ConfigFile hotbar = SharkHub.getInstance().getHotbarConfig();
-    private final ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
 
     @EventHandler
     public void registerListeners(PlayerJoinEvent event) {
@@ -31,19 +28,7 @@ public class JoinListener implements Listener {
         player.getInventory().clear();
         HotbarManager.setHotbarItems(player);
         event.setJoinMessage(null);
-
-        Location location = player.getLocation();
-        float yaw = settings.getInt("world.spawn.yaw");
-        float pitch = settings.getInt("world.spawn.pitch");
-        double x = settings.getDouble("world.spawn.x");
-        double y = settings.getDouble("world.spawn.y");
-        double z = settings.getDouble("world.spawn.z");
-        location.setYaw(yaw);
-        location.setPitch(pitch);
-        location.setY(y);
-        location.setX(x);
-        location.setZ(z);
-        player.teleport(location);
+        SharkHub.getInstance().getSpawnManager().sendToSpawn(player);
 
         player.setHealth(20.0D);
         player.setFoodLevel(20);
