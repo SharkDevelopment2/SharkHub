@@ -24,6 +24,7 @@ public class HotbarManager {
         ConfigurationSection section = hotbarConfig.getConfiguration().getConfigurationSection("HOTBAR");
 
         for (String key : section.getKeys(false)) {
+            boolean enabled = section.getBoolean("HOTBAR." +key + ".ENABLE");
             String displayName = hotbarConfig.getString("HOTBAR." + key + ".DISPLAY_NAME");
             Material material = Material.getMaterial(hotbarConfig.getString("HOTBAR." + key + ".MATERIAL"));
             int data = hotbarConfig.getInt("HOTBAR." + key + ".DATA");
@@ -33,7 +34,7 @@ public class HotbarManager {
             int slot = hotbarConfig.getInt("HOTBAR." + key + ".SLOT");
             List<String> actions = hotbarConfig.getStringList("HOTBAR." + key + ".ACTIONS");
 
-            this.hotbarItems.add(new Hotbar(key, displayName, material, data, lore, amount, slot, actions));
+            this.hotbarItems.add(new Hotbar(enabled, key, displayName, material, data, lore, amount, slot, actions));
         }
     }
 
@@ -74,6 +75,7 @@ public class HotbarManager {
                     .build();
 
             if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
+            if (!hotbar.isEnabled()) continue;
             player.getInventory().setItem(hotbar.getSlot() - 1, item);
         }
     }

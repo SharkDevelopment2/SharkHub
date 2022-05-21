@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Hotbar {
 
+    private boolean enabled;
     private String name;
     private String displayName;
     private Material material;
