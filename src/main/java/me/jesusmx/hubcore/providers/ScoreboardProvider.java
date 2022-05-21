@@ -34,7 +34,6 @@ public class ScoreboardProvider implements AssembleAdapter {
         if (PvPModeHandler.isOnPvPMode(player)) {
             toReturn = config.getStringList("scoreboard.mode.pvp-mode")
                     .stream()
-                    .map(line -> PlaceholderAPI.setPlaceholders(player, line))
                     .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
                     .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
                     .map(line -> line.replace("%online%", String.valueOf(BungeeUtils.getGlobalPlayers())))
@@ -45,7 +44,6 @@ public class ScoreboardProvider implements AssembleAdapter {
             if (SharkHub.getInstance().getQueueManager().inQueue(player)) {
                 config.getStringList("scoreboard.mode.queue").stream()
                         .map(CC::translate)
-                        .map(line -> PlaceholderAPI.setPlaceholders(player, line))
                         .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
                         .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
                         .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
@@ -56,7 +54,6 @@ public class ScoreboardProvider implements AssembleAdapter {
             } else {
                 if (player.isOp() && player.hasPermission("hubcore.scoreboard.staff")) {
                     config.getStringList("scoreboard.mode.staff").stream()
-                            .map(line -> PlaceholderAPI.setPlaceholders(player, line))
                             .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
                             .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
                             .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
@@ -66,7 +63,6 @@ public class ScoreboardProvider implements AssembleAdapter {
                 } else {
                     config.getStringList("scoreboard.mode.normal").stream()
                             .map(CC::translate)
-                            .map(line -> PlaceholderAPI.setPlaceholders(player, line))
                             .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
                             .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
                             .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
@@ -83,7 +79,7 @@ public class ScoreboardProvider implements AssembleAdapter {
             toReturn = toReturn.stream().map(s -> s.replace("%title%", title)).collect(Collectors.toList());
         }
 
-        return toReturn;
+        return SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, toReturn) : toReturn;
     }
 
     private String footer() {
