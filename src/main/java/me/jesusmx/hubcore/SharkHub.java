@@ -19,11 +19,8 @@ import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.hotbar.listeners.EnderButtListener;
-import me.jesusmx.hubcore.hotbar.listeners.HubSelectorListener;
-import me.jesusmx.hubcore.hotbar.listeners.ServerSelectorListener;
-import me.jesusmx.hubcore.hotbar.listeners.VisibilityToggleListener;
-import me.jesusmx.hubcore.listeners.items.JoinPlayerListener;
+import me.jesusmx.hubcore.hotbar.listeners.*;
+import me.jesusmx.hubcore.listeners.JoinListener;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
@@ -32,7 +29,6 @@ import me.jesusmx.hubcore.util.bukkit.handlers.RegisterHandler;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -72,6 +68,7 @@ public class SharkHub extends JavaPlugin {
         }
 
         hotbarManager.load();
+        RegisterHandler.registerProviders();
 
         if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
             Bukkit.getPluginManager().disablePlugin(this);
@@ -103,6 +100,7 @@ public class SharkHub extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        RegisterHandler.getTablist().disable();
         RegisterHandler.getAssemble().getBoards().clear();
     }
 
@@ -159,11 +157,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void listeners() {
-        new JoinPlayerListener();
-        new ServerSelectorListener();
-        new HubSelectorListener();
-        new VisibilityToggleListener();
-        new EnderButtListener();
+        new JoinListener();
     }
 
     private String permissions() {

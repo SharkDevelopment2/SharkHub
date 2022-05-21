@@ -15,6 +15,11 @@ public class RegisterHandler {
     @Getter private static Assemble assemble;
     @Getter private static Omega tablist;
 
+    public static void registerProviders() {
+        registerScoreboard();
+        registerTablist();
+    }
+
     public static void registerTablist() {
         tablist = new Omega(SharkHub.getInstance(), new TablistProvider());
     }
