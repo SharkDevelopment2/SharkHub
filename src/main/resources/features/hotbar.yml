@@ -63,3 +63,25 @@ HOTBAR:
     SLOT: 4
     ACTIONS:
       - "ENDER_BUTT"
+
+  COSMETICS:
+    ENABLE: true
+    DISPLAY_NAME: "&dCosmetics"
+    MATERIAL: PAPER
+    DATA: 0
+    AMOUNT: 1
+    LORE: []
+    SLOT: 5
+    ACTIONS:
+      - "OPEN_COSMETICS_MENU"
+
+  PVP_MODE:
+    ENABLE: true
+    DISPLAY_NAME: "&CPVP Mode"
+    MATERIAL: DIAMOND_SWORD
+    DATA: 0
+    AMOUNT: 1
+    LORE: [ ]
+    SLOT: 6
+    ACTIONS:
+      - "JOIN_PVP_MODE"
