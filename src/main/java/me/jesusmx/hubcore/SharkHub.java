@@ -57,6 +57,7 @@ public class SharkHub extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+
         this.loadConfigs();
         this.registerManagers();
 
@@ -82,19 +83,11 @@ public class SharkHub extends JavaPlugin {
 
         this.commands();
 
-        if (togglesConfig.getBoolean("features.scoreboard")) {
-            RegisterHandler.registerScoreboard();
-        }
-
         new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
 
         this.permissions();
-
-        if (togglesConfig.getBoolean("features.tablist")) {
-            //RegisterHandler.tablist();
-        }
 
         RegisteredServiceProvider<Chat> chatProvider = this.getServer().getServicesManager().getRegistration(Chat.class);
         if (chatProvider != null) {

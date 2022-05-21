@@ -30,9 +30,6 @@ world:
     max-x: 1000
     max-z: 1000
     message: "&cYou can't get past the edge of the map!"
-  minehq-hideplayers:
-    message: "&bPop!"
-    sound: "BLAZE_HIT"
 
   spawn:
     world: world

@@ -2,12 +2,8 @@ package me.jesusmx.hubcore.listeners;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
-import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
-import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -45,8 +41,8 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onDamage(EntityDamageEvent event) {
-        if(!(event.getEntity() instanceof Player)) return;
-        if(PvPModeHandler.isOnPvPMode((Player) event.getEntity())) return;
+        if (!(event.getEntity() instanceof Player)) return;
+        if (PvPModeHandler.isOnPvPMode((Player) event.getEntity())) return;
         if (toggle.getBoolean("world.no-damage.enabled")) {
             event.setCancelled(true);
         }
@@ -59,10 +55,7 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onClick(InventoryClickEvent event) {
-        if(PvPModeHandler.isOnPvPMode((Player) event.getWhoClicked())) {
-            event.setCancelled(false);
-            return;
-        }
+        if (PvPModeHandler.isOnPvPMode((Player) event.getWhoClicked())) event.setCancelled(false);
         if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
     }
 
@@ -74,9 +67,7 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onDrop(PlayerDropItemEvent event) {
-        if (!toggle.getBoolean("world.drop-items.enabled")) {
-            event.setCancelled(true);
-        }
+        if (!toggle.getBoolean("world.drop-items.enabled")) event.setCancelled(true);
     }
 
     @EventHandler
@@ -111,7 +102,7 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onEntityDamage(EntityDamageEvent event) {
-        if(!(event.getEntity() instanceof Player)) return;
+        if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
         if (toggle.getBoolean("world.void-teleport.enabled") && event.getCause() == EntityDamageEvent.DamageCause.VOID) {
             event.setCancelled(true);
@@ -124,33 +115,4 @@ public class WorldListener implements Listener {
         event.setCancelled(true);
     }
 
-    @EventHandler
-    private void onPopDamager(EntityDamageByEntityEvent event) {
-        Entity damager = event.getDamager();
-        Player player;
-
-        boolean b = event.getDamager() == null || event.getDamager() instanceof EnderPearl;
-        boolean e = false;
-
-        if (!toggle.getBoolean("world.minehq-hideplayers.enabled")) {
-            player = (Player) event.getDamager();
-            Player damaged = (Player) event.getEntity();
-
-            if (damaged != null && player != null &&
-                    event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-                    if(!PvPModeHandler.isOnPvPMode(player) && PvPModeHandler.isOnPvPMode(damaged) ||
-                    PvPModeHandler.isOnPvPMode(player) && !PvPModeHandler.isOnPvPMode(damaged)) {
-                        event.setCancelled(true);
-                        return;
-                    }
-                    if(PvPModeHandler.isOnPvPMode(player) &&PvPModeHandler.isOnPvPMode(damaged)) {
-                        return;
-                    }
-                    player.hidePlayer(damaged);
-                    player.sendMessage(CC.translate(config.getString("world.minehq-hideplayers.message")));
-                    player.playSound(player.getLocation(), Sound.valueOf(config.getString("world.minehq-hideplayers.sound")), 2.0f, 1.0f);
-                }
-                event.setCancelled(true);
-            }
-        }
-    }
+}

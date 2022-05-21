@@ -75,8 +75,7 @@ public class HotbarManager {
                     .build();
 
             if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
-            if (!hotbar.isEnabled()) continue;
-            player.getInventory().setItem(hotbar.getSlot() - 1, item);
+            if (hotbar.isEnabled()) player.getInventory().setItem(hotbar.getSlot() - 1, item);
         }
     }
 

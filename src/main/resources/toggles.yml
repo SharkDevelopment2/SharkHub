@@ -55,8 +55,6 @@ world:
     enabled: true
   border:
     enabled: true
-  minehq-hideplayers:
-    enabled: false
   all-hide-players: false
 
 features:
