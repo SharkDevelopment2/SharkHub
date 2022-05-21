@@ -1,4 +1,4 @@
-# GLOBAL VARIABLES: %PLAYER% - %RANK% - %RANK_PREFIX% - %RANK_SUFFIX% - %ONLINE% - %SLOTS%
+# GLOBAL VARIABLES: %PLAYER% - %RANK% - %SLOTS%
 # QUEUE VARIABLES: %QUEUE_NAME% - %QUEUE_POSITION% - %QUEUE_SIZE%
 # TIME VARIABLES: %DATE% - %HOUR%
 #
@@ -23,11 +23,6 @@ TABLIST:
     - ''
     - '&7&o&lShark Development'
     - ''
-
-  QUEUE:
-    SERVER: "&cNot in queue" # %server-queue%
-    POSITION: "&7None" # %position%
-    IN_QUEUE: "&7None" # %total%
 
   LINES:
     LEFT:

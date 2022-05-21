@@ -17,13 +17,13 @@ public class ProtectionListener implements Listener {
 
     @EventHandler
     public void onPreCommand(PlayerCommandPreprocessEvent event) {
-        Player player = event.getPlayer();
         if (!toggle.getBoolean("addons.protection")) return;
+
+        Player player = event.getPlayer();
         String command = event.getMessage().split(" ")[0];
         List<String> blockedMessage = config.getStringList("addons.protection.blocked-commands");
-        if (command.startsWith("/")) {
-            command = command.substring(1);
-        }
+
+        if (command.startsWith("/")) command = command.substring(1);
         if (blockedMessage.contains(command.toLowerCase())) {
             player.sendMessage(CC.translate(config.getString("addons.protection.message")));
             event.setCancelled(true);
