@@ -50,3 +50,8 @@ double-jump:
 ENDER_BUTT:
   VELOCITY: 0.5
   SOUND: "ENDERMAN_TELEPORT"
+
+TIME:
+  ZONE: "Europe/Madrid"
+  DATE: "dd/MM/yyyy"
+  HOUR: "HH:mm:ss"

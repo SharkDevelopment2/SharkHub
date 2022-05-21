@@ -18,9 +18,9 @@ public class PvPModeHandler {
 
     private static Map<UUID, Long> inPvPMode;
     @Getter private static Map<UUID, Integer> kills;
-    static ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
+    private static final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
-    public PvPModeHandler() {
+    public static void init() {
         inPvPMode = new HashMap<>();
         kills = new HashMap<>();
     }

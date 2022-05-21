@@ -1,91 +1,276 @@
-tablist:
-  header: "&b&lShark Development<line>&fpurchase in<line>&7https://www.mc-market.org/resources/22976/"
-  footer: "&b&lShark Development<line>&fpurchase in<line>&7https://www.mc-market.org/resources/22976/"
-  queue:
-    server: "&cNot in queue" # %server-queue%
-    position: "&7None" # %position%
-    in-queue: "&7None" # %total%
-  left:
-    1: ""
-    2: ""
-    3: ""
-    4: ""
-    5: ""
-    6: ""
-    7: "&bSocial Media"
-    8: "{skin=MHF_Twitter} &fTwitter: &7twitter.com/server"
-    9: "{skin=KowzeLeOuf} &fDiscord: &7discord.gg/server"
-    10: ""
-    11: "&bQueue Information"
-    12: "&fServer: %server-queue%"
-    13: "&fPosition: %position%"
-    14: "&fSize: %total%"
-    15: ""
-    16: ""
-    17: ""
-    18: ""
-    19: ""
-    20: ""
-  middle:
-    1: ""
-    2: ""
-    3: ""
-    4: "&b&lShark Development"
-    5: "&fOnline: &b%players%"
-    6: ""
-    7: "{skin=$self} &bYour Profile"
-    8: "&fRank: &r%rank%"
-    9: "&fPing: &b%player_ping%"
-    10: ""
-    11: "&bPractice Information"
-    12: "&fFirst Season is &cComing Soon"
-    13: "&fHCF Kits added"
-    14: "&fParties and more"
-    15: ""
-    16: ""
-    17: ""
-    18: ""
-    19: ""
-    20: ""
-  right:
-    1: ""
-    2: ""
-    3: ""
-    4: ""
-    5: ""
-    6: ""
-    7: "&bServers Availables"
-    8: "{skin=ElMarcosFTW} &fHCF: &b%bungee_HCF%/600"
-    9: "{skin=natatos} &fPractice: &b%bungee_Practice%/600"
-    10: ""
-    11: "&bSOTW Information"
-    12: "&fHCF: &b%server_countdown_dd.MM.yyyy_18.02.2022%"
-    13: "&fKitmap: &b%server_countdown_dd.MM.yyyy_18.02.2022%"
-    14: "&fDevelopment: &cComing Soon"
-    15: ""
-    16: ""
-    17: ""
-    18: ""
-    19: ""
-    20: ""
-  far-right:
-    1: ""
-    2: ""
-    3: ""
-    4: ""
-    6: "{skin=Drift} &4&lWarning!"
-    5: ""
-    7: "&fPlease use"
-    8: "&f1.7 for the"
-    9: "&foptimal playing"
-    10: "&fexperience."
-    11: ""
-    12: ""
-    13: ""
-    14: ""
-    15: ""
-    16: ""
-    17: ""
-    18: ""
-    19: ""
-    20: ""
+# GLOBAL VARIABLES: %PLAYER% - %RANK% - %RANK_PREFIX% - %RANK_SUFFIX% - %ONLINE% - %SLOTS%
+# QUEUE VARIABLES: %QUEUE_NAME% - %QUEUE_POSITION% - %QUEUE_SIZE%
+# TIME VARIABLES: %DATE% - %HOUR%
+#
+# You can use PlaceholderAPIExpansion variables.
+#
+# TABLIST HEADS:
+# %PLAYER%, %DISCORD%, %YOUTUBE%, %TWITTER%, %FACEBOOK%, %STORE%, %WARNING%, %WEBSITE%, %QUEUE% %INFORMATION%
+# %WOOD_SHIELD%, %DIAMOND_SHIELD%, %BOW%, %POTION%, %TELEGRAM%, %ENDERCHEST%, %COIN%, %HEART%
+# %EARTH%, %CROWN%, %GREEN%, %BLUE%, %RED%, %YELLOW%, %DARK_BLUE%, %DARK_AQUA%, %DARK_PURPLE%
+# %LIGHT_PURPLE%, %GRAY%, %DARK_GREEN%, %DARK_RED%, %GOLD%, %AQUA%, %WHITE%
+# %DARK_GRAY%, %BLACK%
+#
+
+TABLIST:
+
+  HEADER:
+    - ''
+    - '&bShark Development'
+    - ''
+
+  FOOTER:
+    - ''
+    - '&7&o&lShark Development'
+    - ''
+
+  QUEUE:
+    SERVER: "&cNot in queue" # %server-queue%
+    POSITION: "&7None" # %position%
+    IN_QUEUE: "&7None" # %total%
+
+  LINES:
+    LEFT:
+      '1':
+        TEXT: ''
+        HEAD: ''
+      '2':
+        TEXT: ''
+        HEAD: ''
+      '3':
+        TEXT: ''
+        HEAD: ''
+      '4':
+        TEXT: ''
+        HEAD: ''
+      '5':
+        TEXT: ''
+        HEAD: ''
+      '6':
+        TEXT: '&bRank'
+        HEAD: '%INFORMATION%'
+      '7':
+        TEXT: '%RANK%'
+        HEAD: ''
+      '8':
+        TEXT: ''
+        HEAD: ''
+      '9':
+        TEXT: ''
+        HEAD: ''
+      '10':
+        TEXT: '&bHCF &a(%bungee_HCF%)'
+        HEAD: '%ENDERCHEST%'
+      '11':
+        TEXT: '&bStatus&7: %pinger_isonline_localhost:25565%'
+        HEAD: ''
+      '12':
+        TEXT: ''
+        HEAD: ''
+      '13':
+        TEXT: ''
+        HEAD: ''
+      '14':
+        TEXT: ''
+        HEAD: ''
+      '15':
+        TEXT: ''
+        HEAD: ''
+      '16':
+        TEXT: ''
+        HEAD: ''
+      '17':
+        TEXT: ''
+        HEAD: ''
+      '18':
+        TEXT: ''
+        HEAD: ''
+      '19':
+        TEXT: '&bDiscord'
+        HEAD: '%DISCORD%'
+      '20':
+        TEXT: '&f%DISCORD%'
+        HEAD: ''
+    MIDDLE:
+      '1':
+        TEXT: ''
+        HEAD: ''
+      '2':
+        TEXT: '&b&lOptimal Services'
+        HEAD: '%EARTH%'
+      '3':
+        TEXT: '&fOnline&7: &f%bungee_total%/%SLOTS%'
+        HEAD: ''
+      '4':
+        TEXT: ''
+        HEAD: ''
+      '5':
+        TEXT: ''
+        HEAD: ''
+      '6':
+        TEXT: '&b&lIGN'
+        HEAD: '%INFORMATION%'
+      '7':
+        TEXT: '%PLAYER%'
+        HEAD: '%PLAYER%'
+      '8':
+        TEXT: ''
+        HEAD: ''
+      '9':
+        TEXT: '&b&lServers'
+        HEAD: '%EARTH%'
+      '10':
+        TEXT: '&bKits &a(%bungee_KITS%)'
+        HEAD: '%ENDERCHEST%'
+      '11':
+        TEXT: '&bStatus&7: %pinger_isonline_localhost:25565%'
+        HEAD: ''
+      '12':
+        TEXT: ''
+        HEAD: ''
+      '13':
+        TEXT: ''
+        HEAD: ''
+      '14':
+        TEXT: ''
+        HEAD: ''
+      '15':
+        TEXT: ''
+        HEAD: ''
+      '16':
+        TEXT: ''
+        HEAD: ''
+      '17':
+        TEXT: ''
+        HEAD: ''
+      '18':
+        TEXT: ''
+        HEAD: ''
+      '19':
+        TEXT: '&bWebstore'
+        HEAD: '%STORE%'
+      '20':
+        TEXT: '&f%STORE%'
+        HEAD: ''
+    RIGHT:
+      '1':
+        TEXT: ''
+        HEAD: ''
+      '2':
+        TEXT: ''
+        HEAD: ''
+      '3':
+        TEXT: ''
+        HEAD: ''
+      '4':
+        TEXT: ''
+        HEAD: ''
+      '5':
+        TEXT: ''
+        HEAD: ''
+      '6':
+        TEXT: '&bInfo'
+        HEAD: '%INFORMATION%'
+      '7':
+        TEXT: '&bPing&7: &7%PING%'
+        HEAD: ''
+      '8':
+        TEXT: ''
+        HEAD: ''
+      '9':
+        TEXT: ''
+        HEAD: ''
+      '10':
+        TEXT: '&bPractice&7: &a(%bungee_PRACTICE%)'
+        HEAD: '%ENDERCHEST%'
+      '11':
+        TEXT: '&bStatus&7: %pinger_isonline_localhost:25565%'
+        HEAD: ''
+      '12':
+        TEXT: ''
+        HEAD: ''
+      '13':
+        TEXT: ''
+        HEAD: ''
+      '14':
+        TEXT: ''
+        HEAD: ''
+      '15':
+        TEXT: ''
+        HEAD: ''
+      '16':
+        TEXT: ''
+        HEAD: ''
+      '17':
+        TEXT: ''
+        HEAD: ''
+      '18':
+        TEXT: ''
+        HEAD: ''
+      '19':
+        TEXT: '&bTwitter'
+        HEAD: '%TWITTER%'
+      '20':
+        TEXT: '&f%TWITTER%'
+        HEAD: ''
+    FAR_RIGHT:
+      '1':
+        TEXT: ''
+        HEAD: ''
+      '2':
+        TEXT: ''
+        HEAD: ''
+      '3':
+        TEXT: ''
+        HEAD: ''
+      '4':
+        TEXT: ''
+        HEAD: ''
+      '5':
+        TEXT: ''
+        HEAD: ''
+      '6':
+        TEXT: ''
+        HEAD: ''
+      '7':
+        TEXT: ''
+        HEAD: ''
+      '8':
+        TEXT: ''
+        HEAD: ''
+      '9':
+        TEXT: ''
+        HEAD: ''
+      '10':
+        TEXT: ''
+        HEAD: ''
+      '11':
+        TEXT: ''
+        HEAD: ''
+      '12':
+        TEXT: ''
+        HEAD: ''
+      '13':
+        TEXT: ''
+        HEAD: ''
+      '14':
+        TEXT: ''
+        HEAD: ''
+      '15':
+        TEXT: ''
+        HEAD: ''
+      '16':
+        TEXT: ''
+        HEAD: ''
+      '17':
+        TEXT: ''
+        HEAD: ''
+      '18':
+        TEXT: ''
+        HEAD: ''
+      '19':
+        TEXT: '&bWebsite'
+        HEAD: '%WEBSITE%'
+      '20':
+        TEXT: '&f%WEBSITE%'
+        HEAD: ''

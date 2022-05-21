@@ -1,113 +1,182 @@
 package me.jesusmx.hubcore.providers;
 
-import me.clip.placeholderapi.PlaceholderAPI;
+import es.hulk.tablist.TablistAdapter;
+import es.hulk.tablist.TablistColumn;
+import es.hulk.tablist.TablistLayout;
+import es.hulk.tablist.utils.Skin;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.bungee.BungeeUtils;
-import me.jesusmx.hubcore.hooks.hcf.Hooker;
-import me.jesusmx.hubcore.hooks.hcf.Splitters;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.util.CC;
+import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;
-import me.jesusmx.hubcore.util.string.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Set;
 
-public class TablistProvider {
+public class TablistProvider implements TablistAdapter {
 
-    private final ConfigFile config = SharkHub.getInstance().getTablistConfig();
-    private final ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
-    private final ConfigFile hcf = SharkHub.getInstance().getHcfConfig();
+    private final ConfigFile tablistConfig = SharkHub.getInstance().getTablistConfig();
 
-    /*@Override
-    public TabElement getElement(Player player) {
-        TabElement element = new TabElement();
-        element.setHeader(CC.translate(PlaceholderAPI.setPlaceholders(player, config.getString("tablist.header").replace("<line>", "\n"))));
-        element.setFooter(CC.translate(PlaceholderAPI.setPlaceholders(player, config.getString("tablist.footer").replace("<line>", "\n"))));
+    @Override
+    public Set<TablistLayout> getProvider(Player player) {
+        Set<TablistLayout> layoutSet = new HashSet<>();
 
-        List<String> list = Arrays.asList("left", "middle", "right", "far-right");
-
-        for (int i = 0; i < 4; ++i) {
-            String s = list.get(i);
-            for (int l = 0; l < 20; ++l) {
-
-                String str = PlaceholderAPI.setPlaceholders(player, config.getString("tablist." + s + "." + (l + 1))
-                        .replace("%player%", player.getDisplayName())
-                        .replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                        .replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
-                        .replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player));
-
-                QueueManager queues = SharkHub.getInstance().getQueueManager();
-                String queue = CC.translate(config.getString("tablist.queue.server"));
-                String position = CC.translate(config.getString("tablist.queue.position"));
-                String size = CC.translate(config.getString("tablist.queue.in-queue"));
-
-                if(queues.inQueue(player)) {
-                    queue = queues.getQueueIn(player);
-                    position = String.valueOf(queues.getPosition(player));
-                    size = String.valueOf(queues.getInQueue(queue));
-                }
-
-                str = str.replace("%server-queue%", queue);
-                str = str.replace("%position%", position);
-                str = str.replace("%total%", size);
-
-                if(settings.getBoolean("system.hcf-hook")) {
-                    if(!Hooker.getVerified().isEmpty()) {
-                        for (String sk : Hooker.getVerified()) {
-                            String path = "hcf-hook.servers." + sk;
-                            String host = hcf.getString(path + ".host");
-                            int port = hcf.getInt(path + ".port");
-                            try {
-                                Socket socket = new Socket(host, port);
-                                DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-                                DataInputStream dis = new DataInputStream(socket.getInputStream());
-                                dos.writeUTF(sk + Splitters.REQUEST + player.getUniqueId());
-                                dos.flush();
-                                String response = dis.readUTF();
-                                String[] rs = response.split(Splitters.REQUEST);
-                                str = str.replace("%" + sk + "_lives%", rs[1]);
-                                str = str.replace("%" + sk + "_deathban%", rs[2]);
-                                dos.close();
-                                dis.close();
-                                socket.close();
-                            } catch (IOException e) {
-                                str = str.replace("%" + sk + "_lives%", "0");
-                                str = str.replace("%" + sk + "_deathban%", "Loading");
-                                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "The connection with the hook " + sk + " has been lost");
-                                Hooker.getVerified().remove(sk);
-                                Hooker.getUnverified().add(sk);
-                            }
-                        }
-                    }
-                    for(String sk : Hooker.getUnverified()) {
-                        str = str.replace("%" + sk + "_LIVES%", "0");
-                        str = str.replace("%" + sk + "_DEATHBAN%", "Loading");
-                    }
-                }
-
-                SkinType skinType = SkinType.DARK_GRAY;
-                if(str.toLowerCase(Locale.ROOT).contains("{skin=")) {
-                    String skin = StringUtils.after(StringUtils.before(str, "}"), "{skin=");
-                    if(skin.equalsIgnoreCase("$self")) {
-                        skinType = SkinType.fromUsername(player.getName());
-                    } else {
-                        skinType = SkinType.fromUsername(skin);
-                    }
-                    str = StringUtils.after(str, skin + "} ");
-                }
-                element.add(i, l, str, 0, skinType.getSkinData());
-            }
+        for (int i = 0; i < 21; i++) {
+            layoutSet.add(new TablistLayout(TablistColumn.LEFT, i)
+                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
+                    .setSkin(getSkin(player, getLines("LEFT", i, "HEAD"))));
+            layoutSet.add(new TablistLayout(TablistColumn.MIDDLE, i)
+                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
+                    .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD"))));
+            layoutSet.add(new TablistLayout(TablistColumn.RIGHT, i)
+                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
+                    .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD"))));
+            layoutSet.add(new TablistLayout(TablistColumn.FAR_RIGHT, i)
+                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
+                    .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD"))));
         }
-        return element;
+
+        return layoutSet;
     }
-     */
+
+    @Override
+    public List<String> getFooter(Player player) {
+        return headerFooterList(tablistConfig.getStringList("TABLIST.FOOTER"), player);
+    }
+
+    @Override
+    public List<String> getHeader(Player player) {
+        return headerFooterList(tablistConfig.getStringList("TABLIST.HEADER"), player);
+    }
+
+    public Skin getSkin(Player player, String skinTab) {
+        Skin skinDefault = Skin.DEFAULT;
+
+        if (skinTab.contains("%PLAYER%")) {
+            skinDefault = Skin.getSkin(player);
+        }
+        if (skinTab.contains("%DISCORD%")) {
+            skinDefault = Skin.DISCORD_SKIN;
+        }
+        if (skinTab.contains("%YOUTUBE%")) {
+            skinDefault = Skin.YOUTUBE_SKIN;
+        }
+        if (skinTab.contains("%TWITTER%")) {
+            skinDefault = Skin.TWITTER_SKIN;
+        }
+        if (skinTab.contains("%FACEBOOK%")) {
+            skinDefault = Skin.FACEBOOK_SKIN;
+        }
+        if (skinTab.contains("%STORE%")) {
+            skinDefault = Skin.STORE_SKIN;
+        }
+        if (skinTab.contains("%GREEN%")) {
+            skinDefault = Skin.getDot(ChatColor.GREEN);
+        }
+        if (skinTab.contains("%BLUE%")) {
+            skinDefault = Skin.getDot(ChatColor.BLUE);
+        }
+        if (skinTab.contains("%DARK_BLUE%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_BLUE);
+        }
+        if (skinTab.contains("%DARK_AQUA%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_AQUA);
+        }
+        if (skinTab.contains("%DARK_PURPLE%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_PURPLE);
+        }
+        if (skinTab.contains("%LIGHT_PURPLE%")) {
+            skinDefault = Skin.getDot(ChatColor.LIGHT_PURPLE);
+        }
+        if (skinTab.contains("%GRAY%")) {
+            skinDefault = Skin.getDot(ChatColor.GRAY);
+        }
+        if (skinTab.contains("%RED%")) {
+            skinDefault = Skin.getDot(ChatColor.RED);
+        }
+        if (skinTab.contains("%YELLOW%")) {
+            skinDefault = Skin.getDot(ChatColor.YELLOW);
+        }
+        if (skinTab.contains("%DARK_GREEN%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_GREEN);
+        }
+        if (skinTab.contains("%DARK_RED%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_RED);
+        }
+        if (skinTab.contains("%GOLD%")) {
+            skinDefault = Skin.getDot(ChatColor.GOLD);
+        }
+        if (skinTab.contains("%AQUA%")) {
+            skinDefault = Skin.getDot(ChatColor.AQUA);
+        }
+        if (skinTab.contains("%WHITE%")) {
+            skinDefault = Skin.getDot(ChatColor.WHITE);
+        }
+        if (skinTab.contains("%DARK_GRAY%")) {
+            skinDefault = Skin.getDot(ChatColor.DARK_GRAY);
+        }
+        if (skinTab.contains("%BLACK%")) {
+            skinDefault = Skin.getDot(ChatColor.BLACK);
+        }
+        if (skinTab.contains("%WARNING%")) {
+            skinDefault = Skin.WARNING_SKIN;
+        }
+        if (skinTab.contains("%WEBSITE%")) {
+            skinDefault = Skin.WEBSITE_SKIN;
+        }
+        if (skinTab.contains("%QUEUE%")) {
+            skinDefault = Skin.QUEUE_SKIN;
+        }
+        if (skinTab.contains("%INFORMATION%")) {
+            skinDefault = Skin.INFORMATION_SKIN;
+        }
+        if (skinTab.contains("%WOOD_SHIELD%")) {
+            skinDefault = Skin.WOOD_SHIELD_SKIN;
+        }
+        if (skinTab.contains("%DIAMOND_SHIELD%")) {
+            skinDefault = Skin.DIAMOND_SHIELD_SKIN;
+        }
+        if (skinTab.contains("%BOW%")) {
+            skinDefault = Skin.BOW_SKIN;
+        }
+        if (skinTab.contains("%POTION%")) {
+            skinDefault = Skin.POTION_SKIN;
+        }
+        if (skinTab.contains("%TELEGRAM%")) {
+            skinDefault = Skin.TELEGRAM_SKIN;
+        }
+        if (skinTab.contains("%ENDERCHEST%")) {
+            skinDefault = Skin.ENDERCHEST_SKIN;
+        }
+        if (skinTab.contains("%COIN%")) {
+            skinDefault = Skin.COIN_SKIN;
+        }
+        if (skinTab.contains("%HEART%")) {
+            skinDefault = Skin.HEART_SKIN;
+        }
+        if (skinTab.contains("%EARTH%")) {
+            skinDefault = Skin.EARTH_SKIN;
+        }
+        if (skinTab.contains("%CROWN%")) {
+            skinDefault = Skin.CROWN_SKIN;
+        }
+        return skinDefault;
+    }
+
+    private List<String> headerFooterList(List<String> path, Player player) {
+        List<String> list = new ArrayList<>();
+
+        for (String str : path) {
+            list.add(CC.translate(player, player, str, true));
+        }
+        return list;
+    }
+
+    private String getLines(String column, int position, String textOrHead) {
+        return tablistConfig.getString("TABLIST.LINES." + column + "." + position + "." + textOrHead);
+    }
 }

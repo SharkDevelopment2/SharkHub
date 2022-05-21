@@ -52,10 +52,68 @@ public class SharkHub extends JavaPlugin {
     private PermissionCore permissionCore;
     private HotbarManager hotbarManager;
 
+    private boolean isPlaceholderAPI = false;
+
     @Override
     public void onEnable() {
-        SharkHub.instance = this;
+        instance = this;
+        this.loadConfigs();
+        this.registerManagers();
 
+        if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
+            Bukkit.getPluginManager().disablePlugin(this);
+            Bukkit.getScheduler().cancelTasks(this);
+            return;
+        }
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            isPlaceholderAPI = true;
+        }
+
+        hotbarManager.load();
+
+        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+
+        if (togglesConfig.getBoolean("world.optimized")) {
+            RegisterHandler.world();
+        }
+
+        this.commands();
+
+        if (togglesConfig.getBoolean("features.scoreboard")) {
+            RegisterHandler.registerScoreboard();
+        }
+
+        new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
+
+        this.permissions();
+
+        if (togglesConfig.getBoolean("features.tablist")) {
+            //RegisterHandler.tablist();
+        }
+
+        RegisteredServiceProvider<Chat> chatProvider = this.getServer().getServicesManager().getRegistration(Chat.class);
+        if (chatProvider != null) {
+            chat = chatProvider.getProvider();
+        }
+
+        if (togglesConfig.getBoolean("addons.console-message")) {
+            this.getServer().getConsoleSender().sendMessage((CC.CustomMessage(settingsConfig.getStringList("hubcore.style.messages"))));
+        }
+
+        this.listeners();
+    }
+
+    @Override
+    public void onDisable() {
+        RegisterHandler.getAssemble().getBoards().clear();
+    }
+
+    private void loadConfigs() {
         this.settingsConfig = new ConfigFile(this, "settings");
         this.mainConfig = new ConfigFile(this, "config");
         this.togglesConfig = new ConfigFile(this, "toggles");
@@ -80,64 +138,14 @@ public class SharkHub extends JavaPlugin {
         this.armorsConfig = new ConfigFile(this, "features/cosmetics/armors");
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
         this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
+    }
 
-        if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
-            Bukkit.getPluginManager().disablePlugin(this);
-            Bukkit.getScheduler().cancelTasks(this);
-            return;
-        }
+    private void registerManagers() {
+        this.queueManager = new QueueManager();
+        this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();
-        hotbarManager.load();
-
-        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-
-        if (togglesConfig.getBoolean("world.optimized")) {
-            RegisterHandler.world();
-        }
-
-        this.commands();
-        this.managers();
-
-        if (togglesConfig.getBoolean("features.scoreboard")) {
-            RegisterHandler.scoreboard();
-        }
-
-        new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
-        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
-
-        this.permissions();
-
-        if (togglesConfig.getBoolean("features.tablist")) {
-            RegisterHandler.tablist();
-        }
-
-        RegisteredServiceProvider<Chat> chatProvider = this.getServer().getServicesManager().getRegistration(Chat.class);
-        if (chatProvider != null) {
-            chat = chatProvider.getProvider();
-        }
-
-        if (togglesConfig.getBoolean("addons.console-message")) {
-            this.getServer().getConsoleSender().sendMessage((CC.CustomMessage(settingsConfig.getStringList("hubcore.style.messages"))));
-        }
-
-        this.listeners();
-    }
-
-    @Override
-    public void onDisable() {
-        RegisterHandler.getAssemble().getBoards().clear();
-    }
-
-    private void managers() {
-        queueManager = new QueueManager();
-        queueHandler = new QueueHandler();
-        new PvPModeHandler();
-        if (settingsConfig.getBoolean("system.hcf-hook")) {
-            new Hooker();
-        }
+        PvPModeHandler.init();
+        if (settingsConfig.getBoolean("system.hcf-hook")) new Hooker();
     }
 
     public void commands() {
