@@ -12,9 +12,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class PvPModeListener implements Listener {
+public class PvPModeHotbarListener implements Listener {
 
-    public PvPModeListener() {
+    public PvPModeHotbarListener() {
         Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
     }
 

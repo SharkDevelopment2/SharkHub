@@ -1,6 +1,5 @@
 package me.jesusmx.hubcore.hotbar.listeners;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.base.menu.CosmeticsMenu;
 import me.jesusmx.hubcore.hotbar.Hotbar;
@@ -13,9 +12,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class CosmeticListener implements Listener {
+public class CosmeticHotbarListener implements Listener {
 
-    public CosmeticListener() {
+    public CosmeticHotbarListener() {
         Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
     }
 
