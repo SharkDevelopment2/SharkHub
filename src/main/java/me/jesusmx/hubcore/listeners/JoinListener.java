@@ -36,8 +36,8 @@ public class JoinListener implements Listener {
         if (toggle.getBoolean("normal.join-message")) {
             config.getStringList("join-message.lines").stream()
                     .map(line -> PlaceholderAPI.setPlaceholders(player, line))
-                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                    .map(line -> line.replace("%rankcolor%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                    .map(line -> line.replace("%rankcolor%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                     .map(line -> line.replace("%player%", player.getName()))
                     .forEach(m -> player.sendMessage(CC.translate(m)));
         }
@@ -48,8 +48,8 @@ public class JoinListener implements Listener {
         if (toggle.getBoolean("normal.player.join")) {
             config.getStringList("join-player.message").stream()
                     .map(line -> PlaceholderAPI.setPlaceholders(player, line))
-                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                    .map(line -> line.replace("%rankcolor%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                    .map(line -> line.replace("%rankcolor%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                     .map(line -> line.replace("%player%", player.getName()))
                     .forEach(m -> player.sendMessage(CC.translate(m)));
         }
@@ -73,7 +73,7 @@ public class JoinListener implements Listener {
         Player player = event.getPlayer();
         if (toggle.getBoolean("normal.player.leave")) {
             if (player.hasPermission("hubcore.donator")) {
-                config.getStringList("exit-player.message").stream().map(line -> PlaceholderAPI.setPlaceholders(player, line)).map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player))).map(line -> line.replace("%player%", player.getName())).map(line -> line.replace("%prefix%", SharkHub.chat.getPlayerPrefix(player))).forEach(m -> player.sendMessage(CC.translate(m)));
+                config.getStringList("exit-player.message").stream().map(line -> PlaceholderAPI.setPlaceholders(player, line)).map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player))).map(line -> line.replace("%player%", player.getName())).map(line -> line.replace("%prefix%", SharkHub.getInstance().getRankManager().getChat().getPlayerPrefix(player))).forEach(m -> player.sendMessage(CC.translate(m)));
             }
         }
         event.setQuitMessage(null);

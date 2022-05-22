@@ -82,7 +82,7 @@ public class ServerUtil {
         }
 
         return str
-                .replace("%RANK%", SharkHub.getInstance().getPermissionCore().getRank(player))
+                .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getRank(player))
                 .replace("%PLAYER%", player.getName())
                 .replace("%HOUR%", getHour())
                 .replace("%SLOTS%", Integer.toString(Bukkit.getServer().getMaxPlayers()))

@@ -34,8 +34,8 @@ public class ScoreboardProvider implements AssembleAdapter {
         if (PvPModeHandler.isOnPvPMode(player)) {
             toReturn = config.getStringList("scoreboard.mode.pvp-mode")
                     .stream()
-                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                    .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                    .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                     .map(line -> line.replace("%online%", String.valueOf(BungeeUtils.getGlobalPlayers())))
                     .map(line -> line.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))))
                     .map(line -> line.replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player)))))
@@ -45,8 +45,8 @@ public class ScoreboardProvider implements AssembleAdapter {
                 config.getStringList("scoreboard.mode.queue").stream()
                         .map(CC::translate)
                         .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                        .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                        .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                        .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                        .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                         .map(line -> line.replace("%server-queue%", String.valueOf(SharkHub.getInstance().getQueueManager().getQueueIn(player))))
                         .map(line -> line.replace("%position%", String.valueOf(SharkHub.getInstance().getQueueManager().getPosition(player))))
                         .map(line -> line.replace("%total%", String.valueOf(SharkHub.getInstance().getQueueManager().getInQueue(SharkHub.getInstance().getQueueManager().getQueueIn(player)))))
@@ -55,8 +55,8 @@ public class ScoreboardProvider implements AssembleAdapter {
                 if (player.isOp() && player.hasPermission("hubcore.scoreboard.staff")) {
                     config.getStringList("scoreboard.mode.staff").stream()
                             .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                             .forEach(toReturn::add);
 
 
@@ -64,8 +64,8 @@ public class ScoreboardProvider implements AssembleAdapter {
                     config.getStringList("scoreboard.mode.normal").stream()
                             .map(CC::translate)
                             .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getPermissionCore().getRank(player)))
-                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getPermissionCore().getRankColor(player)))
+                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
+                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
                             .forEach(toReturn::add);
                 }
             }

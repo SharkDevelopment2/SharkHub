@@ -1,11 +1,11 @@
 package me.jesusmx.hubcore.hooks.permissions.type;
 
 import com.broustudio.MizuAPI.MizuAPI;
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
 import org.bukkit.entity.Player;
 
 
-public class MizuPermissionCore implements PermissionCore {
+public class MizuRank implements Rank {
 
     @Override
     public String getRankColor(Player player) {

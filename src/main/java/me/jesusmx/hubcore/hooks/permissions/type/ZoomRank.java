@@ -1,11 +1,11 @@
 package me.jesusmx.hubcore.hooks.permissions.type;
 
 import club.frozed.core.ZoomAPI;
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
 import org.bukkit.entity.Player;
 
 
-public class ZoomPermissionCore implements PermissionCore {
+public class ZoomRank implements Rank {
 
     @Override
     public String getRankColor(Player player) {

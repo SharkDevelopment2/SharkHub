@@ -1,10 +1,10 @@
 package me.jesusmx.hubcore.hooks.permissions.type;
 
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
 import me.quartz.hestia.HestiaAPI;
 import org.bukkit.entity.Player;
 
-public class HestiaPermissionCore implements PermissionCore {
+public class HestiaRank implements Rank {
 
     @Override
     public String getRankColor(Player player) {

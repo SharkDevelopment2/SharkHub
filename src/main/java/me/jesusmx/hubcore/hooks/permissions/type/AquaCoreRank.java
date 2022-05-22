@@ -1,10 +1,10 @@
 package me.jesusmx.hubcore.hooks.permissions.type;
 
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
 import me.activated.core.plugin.AquaCoreAPI;
 import org.bukkit.entity.Player;
 
-public class AquaCorePermissionCore implements PermissionCore {
+public class AquaCoreRank implements Rank {
 
     @Override
     public String getRankColor(Player player) {

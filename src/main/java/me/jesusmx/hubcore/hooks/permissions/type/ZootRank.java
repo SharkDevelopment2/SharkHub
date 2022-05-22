@@ -1,11 +1,11 @@
 package me.jesusmx.hubcore.hooks.permissions.type;
 
 import com.minexd.zoot.profile.Profile;
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
 import org.bukkit.entity.Player;
 
 
-public class ZootPermissionCore implements PermissionCore {
+public class ZootRank implements Rank {
 
     @Override
     public String getRankColor(Player player) {

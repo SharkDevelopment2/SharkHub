@@ -14,12 +14,12 @@ import me.jesusmx.hubcore.commands.spawn.SetSpawnCommand;
 import me.jesusmx.hubcore.commands.spawn.SpawnCommand;
 import me.jesusmx.hubcore.cosmetics.base.command.CosmeticsCommand;
 import me.jesusmx.hubcore.hooks.hcf.Hooker;
-import me.jesusmx.hubcore.hooks.permissions.PermissionCore;
+import me.jesusmx.hubcore.hooks.permissions.Rank;
+import me.jesusmx.hubcore.hooks.permissions.RankManager;
 import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.hotbar.listeners.*;
 import me.jesusmx.hubcore.listeners.JoinListener;
 import me.jesusmx.hubcore.managers.SpawnManager;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
@@ -43,10 +43,9 @@ public class SharkHub extends JavaPlugin {
 
     @Getter private static SharkHub instance;
     private ConfigFile togglesConfig, scoreboardConfig, settingsConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig, spawnConfig;
-    public static Chat chat;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
-    private PermissionCore permissionCore;
+    private RankManager rankManager;
     private HotbarManager hotbarManager;
     private SpawnManager spawnManager;
 
@@ -59,6 +58,7 @@ public class SharkHub extends JavaPlugin {
         this.loadConfigs();
         this.registerManagers();
 
+
         if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
@@ -70,6 +70,7 @@ public class SharkHub extends JavaPlugin {
         }
 
         hotbarManager.load();
+        rankManager.load();
         RegisterHandler.registerProviders();
 
         if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
@@ -85,13 +86,6 @@ public class SharkHub extends JavaPlugin {
         new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
-
-        this.permissions();
-
-        RegisteredServiceProvider<Chat> chatProvider = this.getServer().getServicesManager().getRegistration(Chat.class);
-        if (chatProvider != null) {
-            chat = chatProvider.getProvider();
-        }
 
         if (togglesConfig.getBoolean("addons.console-message")) {
             this.getServer().getConsoleSender().sendMessage((CC.CustomMessage(settingsConfig.getStringList("hubcore.style.messages"))));
@@ -136,6 +130,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void registerManagers() {
+        this.rankManager = new RankManager();
         this.spawnManager = new SpawnManager();
         this.queueManager = new QueueManager();
         this.queueHandler = new QueueHandler();
@@ -163,31 +158,6 @@ public class SharkHub extends JavaPlugin {
 
     public void listeners() {
         new JoinListener();
-    }
-
-    private String permissions() {
-        String core = settingsConfig.getString("system.rank");
-        switch (core) {
-            case "AquaCore":
-                permissionCore = new AquaCorePermissionCore();
-                return "AquaCore";
-            case "Vault":
-                permissionCore = new VaultPermissionCore();
-                return "Vault";
-            case "Mizu":
-                permissionCore = new MizuPermissionCore();
-                return "Mizu";
-            case "Hestia":
-                permissionCore = new HestiaPermissionCore();
-                return "Hestia";
-            case "Zoom":
-                permissionCore = new ZoomPermissionCore();
-                return "Zoom";
-            case "Zoot":
-                permissionCore = new ZootPermissionCore();
-                return "Zoot";
-        }
-        return "Nothing";
     }
 
     public Collection<? extends Player> getOnlinePlayers() {
