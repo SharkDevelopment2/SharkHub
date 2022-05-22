@@ -1,19 +1,39 @@
 package me.jesusmx.hubcore.hooks.queue;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
+import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.hooks.queue.impl.Custom;
+import me.jesusmx.hubcore.hooks.queue.impl.Default;
+import me.jesusmx.hubcore.hooks.queue.impl.EzQueue;
+import me.jesusmx.hubcore.hooks.queue.impl.Portal;
 import me.jesusmx.hubcore.util.files.ConfigFile;
-import me.joeleoli.portal.shared.queue.Queue;
-import me.signatured.ezqueueshared.QueueInfo;
-import me.signatured.ezqueuespigot.EzQueueAPI;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
+@Getter
 public class QueueManager {
 
-	private ConfigFile config = SharkHub.getInstance().getSettingsConfig();
+	private final ConfigFile config = SharkHub.getInstance().getSettingsConfig();
+
+	private String queue;
+	private QueueInterface system;
+
+	public void load() {
+		if (Bukkit.getPluginManager().getPlugin("Portal") != null) {
+			this.queue = "Portal";
+			this.system = new Portal();
+		} else if (Bukkit.getPluginManager().getPlugin("EzQueue") != null) {
+			this.queue = "EzQueue";
+			this.system = new EzQueue();
+		} else if (config.getBoolean("queue-support.custom")) {
+			this.queue = "Custom";
+			this.system = new Custom();
+		} else {
+			this.queue = "None";
+			this.system = new Default();
+		}
+	}
+
+/*	private final ConfigFile config = SharkHub.getInstance().getSettingsConfig();
 
 	public QueueTypes getQueueSupport() {
 		if (config.getBoolean("queue-support.ezqueue")) {
@@ -96,5 +116,5 @@ public class QueueManager {
 			default:
 				return 0;
 		}
-	}
+	}*/
 }

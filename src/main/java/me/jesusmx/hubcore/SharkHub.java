@@ -58,7 +58,6 @@ public class SharkHub extends JavaPlugin {
         this.loadConfigs();
         this.registerManagers();
 
-
         if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
@@ -72,6 +71,7 @@ public class SharkHub extends JavaPlugin {
         hotbarManager.load();
         rankManager.load();
         RegisterHandler.registerProviders();
+        queueManager.load();
 
         if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
             Bukkit.getPluginManager().disablePlugin(this);
