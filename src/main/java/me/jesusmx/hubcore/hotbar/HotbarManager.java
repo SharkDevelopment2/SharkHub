@@ -26,6 +26,7 @@ public class HotbarManager {
         new EnderButtListener();
         new CosmeticHotbarListener();
         new PvPModeHotbarListener();
+        new OtherHotbarActionImplementation();
     }
 
     public void load() {
@@ -73,6 +74,10 @@ public class HotbarManager {
 
             player.getInventory().setItem(hotbar.getSlot() - 1, getHotbarItemStack(hotbar));
         }
+    }
+
+    public static List<Hotbar> getItems() {
+        return SharkHub.getInstance().getHotbarManager().getHotbarItems();
     }
 
 }
