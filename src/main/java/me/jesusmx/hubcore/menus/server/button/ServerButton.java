@@ -47,7 +47,7 @@ public class ServerButton extends Button {
             if(config.getBoolean("server-selector.items." + server + ".command.enabled")) {
                 Bukkit.dispatchCommand(player, config.getString("server-selector.items." + server + ".command.command"));
             } else {
-                SharkHub.getInstance().getQueueManager().sendPlayer(player, server);
+                SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
             }
         }
     }

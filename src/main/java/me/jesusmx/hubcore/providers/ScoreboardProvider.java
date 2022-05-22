@@ -41,15 +41,15 @@ public class ScoreboardProvider implements AssembleAdapter {
                     .map(line -> line.replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player)))))
                     .collect(Collectors.toList());
         } else {
-            if (SharkHub.getInstance().getQueueManager().inQueue(player)) {
+            if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
                 config.getStringList("scoreboard.mode.queue").stream()
                         .map(CC::translate)
                         .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
                         .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
                         .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
-                        .map(line -> line.replace("%server-queue%", String.valueOf(SharkHub.getInstance().getQueueManager().getQueueIn(player))))
-                        .map(line -> line.replace("%position%", String.valueOf(SharkHub.getInstance().getQueueManager().getPosition(player))))
-                        .map(line -> line.replace("%total%", String.valueOf(SharkHub.getInstance().getQueueManager().getInQueue(SharkHub.getInstance().getQueueManager().getQueueIn(player)))))
+                        .map(line -> line.replace("%server-queue%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getServer(player))))
+                        .map(line -> line.replace("%position%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getPosition(player))))
+                        .map(line -> line.replace("%total%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getSize(player))))
                         .forEach(toReturn::add);
             } else {
                 if (player.isOp() && player.hasPermission("hubcore.scoreboard.staff")) {

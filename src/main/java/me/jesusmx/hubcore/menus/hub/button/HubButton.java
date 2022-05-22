@@ -32,7 +32,7 @@ public class HubButton extends Button {
 
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
-        SharkHub.getInstance().getQueueManager().sendPlayer(player, server);
+        SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
     }
 
     private String d(String a) {

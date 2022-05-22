@@ -32,8 +32,8 @@ public class ChatListener implements Listener {
                     config.getString("chat-format.normal.message")
                             .replace("%player%", player.getName())
                             .replace("%message%", event.getMessage())
-                            .replace("%suffix%", SharkHub.chat.getPlayerSuffix(player))
-                            .replace("%prefix%", SharkHub.chat.getPlayerPrefix(player)));
+                            .replace("%suffix%", SharkHub.getInstance().getRankManager().getChat().getPlayerSuffix(player))
+                            .replace("%prefix%", SharkHub.getInstance().getRankManager().getChat().getPlayerPrefix(player)));
 
             if(Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
                 msg = ChatColor.translateAlternateColorCodes('&',
@@ -41,8 +41,8 @@ public class ChatListener implements Listener {
                                 .replace("%player%", player.getName())
                                 .replace("%lunar%", CC.translate(isLunarClient(player) ? config.getString("chat-format.normal.prefix-lunar") : ""))
                                 .replace("%message%", event.getMessage())
-                                .replace("%suffix%", SharkHub.chat.getPlayerSuffix(player))
-                                .replace("%prefix%", SharkHub.chat.getPlayerPrefix(player)));
+                                .replace("%suffix%", SharkHub.getInstance().getRankManager().getChat().getPlayerSuffix(player))
+                                .replace("%prefix%", SharkHub.getInstance().getRankManager().getChat().getPlayerPrefix(player)));
             }
             event.setFormat(msg);
         }

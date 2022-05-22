@@ -38,11 +38,11 @@ public class ServerUtil {
     }
 
     public static String replaceText(Player player, String str) {
-        if (queues.inQueue(player)) {
+        if (queues.getSystem().isInQueue(player)) {
             return str
-                    .replace("%QUEUE_SERVER%", queues.getQueueIn(player))
-                    .replace("%QUEUE_POSITION%", String.valueOf(queues.getPosition(player)))
-                    .replace("%QUEUE_SIZE%", String.valueOf(queues.getInQueue(queues.getQueueIn(player))));
+                    .replace("%QUEUE_SERVER%", queues.getSystem().getServer(player))
+                    .replace("%QUEUE_POSITION%", String.valueOf(queues.getSystem().getPosition(player)))
+                    .replace("%QUEUE_SIZE%", String.valueOf(queues.getSystem().getSize(player)));
         }
         if (settingsConfig.getBoolean("system.hcf-hook")) {
             if (!Hooker.getVerified().isEmpty()) {

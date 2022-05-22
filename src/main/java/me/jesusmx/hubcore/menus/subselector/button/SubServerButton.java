@@ -33,7 +33,7 @@ public class SubServerButton extends Button {
         if(config.getBoolean("sub-selector.items." + server + ".command.enabled")) {
             Bukkit.dispatchCommand(player, config.getString("sub-selector.items." + server + ".command.command"));
         } else {
-            SharkHub.getInstance().getQueueManager().sendPlayer(player, server);
+            SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
         }
     }
 
