@@ -31,7 +31,7 @@ public class ChatListener implements Listener {
             String msg = ChatColor.translateAlternateColorCodes('&',
                     config.getString("chat-format.normal.message")
                             .replace("%player%", player.getName())
-                            .replace("%message%", event.getMessage())
+                            .replace("%message%", "%2$s")
                             .replace("%suffix%", SharkHub.chat.getPlayerSuffix(player))
                             .replace("%prefix%", SharkHub.chat.getPlayerPrefix(player)));
 
@@ -40,7 +40,7 @@ public class ChatListener implements Listener {
                         config.getString("chat-format.normal.message")
                                 .replace("%player%", player.getName())
                                 .replace("%lunar%", CC.translate(isLunarClient(player) ? config.getString("chat-format.normal.prefix-lunar") : ""))
-                                .replace("%message%", event.getMessage())
+                                .replace("%message%", "%2$s")
                                 .replace("%suffix%", SharkHub.chat.getPlayerSuffix(player))
                                 .replace("%prefix%", SharkHub.chat.getPlayerPrefix(player)));
             }
