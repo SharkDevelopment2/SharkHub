@@ -6,6 +6,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -58,14 +59,14 @@ public class BungeeUtils implements PluginMessageListener {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("PlayerCount");
         out.writeUTF("ALL");
-        Player player = Iterables.getFirst(SharkHub.getInstance().getOnlinePlayers(), null);
+        Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
         if (player != null) player.sendPluginMessage(SharkHub.getInstance(), "BungeeCord", out.toByteArray());
     }
 
     public static void refreshServerList() {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("GetServers");
-        Player player = Iterables.getFirst(SharkHub.getInstance().getOnlinePlayers(), null);
+        Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
         if (player != null) player.sendPluginMessage(SharkHub.getInstance(), "BungeeCord", out.toByteArray());
     }
 
@@ -86,7 +87,7 @@ public class BungeeUtils implements PluginMessageListener {
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("PlayerCount");
             out.writeUTF(server.getName());
-            Player player = Iterables.getFirst(SharkHub.getInstance().getOnlinePlayers(), null);
+            Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
             if (player != null) player.sendPluginMessage(SharkHub.getInstance(), "BungeeCord", out.toByteArray());
         }
     }

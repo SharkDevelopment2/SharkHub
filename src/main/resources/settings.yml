@@ -1,29 +1,6 @@
 system:
   license: ""
-  rank: "Vault" # Vault, Aquacore, Mizu, Zoom, Zoot, Hestia
   hcf-hook: false #is boolean tablist
-
-queue-support:
-  ezqueue: false
-  portal: false
-  custom: false
-
-hubcore:
-  style:
-    messages:
-      - ""
-      - ""
-      - ""
-      - ""
-      - "&b&lServer Network"
-      - " &7• &fVersion: &b1.0"
-      - " &7• &fAuthor: &bYour-Name"
-      - " &7• &fRank-Support: &bVault"
-      - " &cConfigure this in settings.yml"
-      - ""
-      - ""
-      - ""
-      - ""
 
 world:
   border:

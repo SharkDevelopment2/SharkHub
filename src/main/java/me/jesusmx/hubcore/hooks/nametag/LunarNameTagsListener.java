@@ -35,7 +35,7 @@ public class LunarNameTagsListener implements Listener {
             if (show == null || show.isEmpty()) return;
             show = show.stream().map(s -> s.replace("%player-name%", player.getDisplayName())).collect(Collectors.toList());
             List<String> finalShow = show;
-            SharkHub.getInstance().getOnlinePlayers().forEach(target -> {
+            Bukkit.getOnlinePlayers().forEach(target -> {
                 LunarClientAPI.getInstance().overrideNametag(player, CC.translate(finalShow), target);
             });
         }, 5L);

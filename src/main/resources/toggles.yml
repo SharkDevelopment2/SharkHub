@@ -56,7 +56,3 @@ world:
   border:
     enabled: true
   all-hide-players: false
-
-features:
-  scoreboard: true
-  tablist: true
