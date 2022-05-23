@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.listeners;
+package me.jesusmx.hubcore.listeners.dev;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
