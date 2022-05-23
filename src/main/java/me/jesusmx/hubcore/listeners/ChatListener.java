@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.listeners;
 import com.lunarclient.bukkitapi.LunarClientAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
+import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,7 +15,6 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 public class ChatListener implements Listener {
 
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
-    private final ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
 
     private boolean isLunarClient(Player player) {
         return LunarClientAPI.getInstance().isRunningLunarClient(player);
@@ -23,28 +23,28 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
-        if (toggle.getBoolean("normal.chat.muted")) {
-            if(event.getPlayer().hasPermission("hub.chat-bypass")) return;
-            event.getPlayer().sendMessage(CC.translate(config.getString("chat-format.muted.message")));
-            event.setCancelled(true);
-        } else if (toggle.getBoolean("normal.chat.normal")) {
-            String msg = ChatColor.translateAlternateColorCodes('&',
-                    config.getString("chat-format.normal.message")
-                            .replace("%player%", player.getName())
-                            .replace("%message%", event.getMessage())
-                            .replace("%suffix%", SharkHub.getInstance().getRankManager().getChat().getPlayerSuffix(player))
-                            .replace("%prefix%", SharkHub.getInstance().getRankManager().getChat().getPlayerPrefix(player)));
 
-            if(Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
-                msg = ChatColor.translateAlternateColorCodes('&',
-                        config.getString("chat-format.normal.message")
-                                .replace("%player%", player.getName())
-                                .replace("%lunar%", CC.translate(isLunarClient(player) ? config.getString("chat-format.normal.prefix-lunar") : ""))
-                                .replace("%message%", event.getMessage())
-                                .replace("%suffix%", SharkHub.getInstance().getRankManager().getChat().getPlayerSuffix(player))
-                                .replace("%prefix%", SharkHub.getInstance().getRankManager().getChat().getPlayerPrefix(player)));
+        if (config.getBoolean("CHAT_FORMAT.MUTED.ENABLE")) {
+            player.sendMessage(CC.translate(config.getString("CHAT_FORMAT.MUTED.MESSAGE")));
+            event.setCancelled(true);
+        }
+
+        if (config.getBoolean("CHAT_FORMAT.NORMAL.ENABLE")) {
+            String path = config.getString("CHAT_FORMAT.NORMAL.MESSAGE");
+            String playerName = player.getName();
+            String prefix = SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId());
+            String replace = path.replaceAll("%PLAYER%", playerName).replaceAll("%RANK%", prefix).replace("%MESSAGE%", "%2$s");
+
+            event.setMessage(player.hasPermission("chub.vip") ? CC.translate("%2$s") : "%2$s");
+
+            if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
+                if (event.getFormat().contains("%LUNAR%") && isLunarClient(player)) {
+                    String lunarPath = CC.translate(config.getString("CHAT_FORMAT.FORMAT-LUNAR"));
+                    event.setFormat(ServerUtil.replaceText(player, lunarPath + replace));
+                    return;
+                }
             }
-            event.setFormat(msg);
+            event.setFormat(ServerUtil.replaceText(player, replace));
         }
     }
 }
