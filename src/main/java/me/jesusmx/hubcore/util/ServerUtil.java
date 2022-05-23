@@ -83,8 +83,10 @@ public class ServerUtil {
         }
 
         return str
-                .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getRank(player))
-                .replace("%RANK-COLOR%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player))
+                .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
+                .replace("%RANK-COLOR%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
+                .replace("%PREFIX%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
+                .replace("%SUFFIX%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
                 .replace("%GLOBAL_PLAYERS%", String.valueOf(BungeeUtils.getGlobalPlayers()))
                 .replace("%PLAYER%", player.getName())
                 .replace("%HOUR%", getHour())

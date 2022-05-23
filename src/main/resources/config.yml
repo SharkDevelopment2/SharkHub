@@ -32,12 +32,15 @@ RESTRICTED_HUB:
   PERMISSION: "hubcore.send-hub"
   SERVER: "Hub-Restricted"
 
-chat-format:
-  normal:
-    message: "%prefix%%player%&7: &r%message%" #variable %lunar%
-    prefix-lunar: "&9&l[L&b&lC]&r" #Variable %lunar% , this only works if LunarClient-API is on the server
-  muted:
-    message: "&cThe chat is disabled for the moment."
+CHAT_FORMAT:
+  MUTED:
+    ENABLE: true
+    MESSAGE: "&cGlobal chat is muted"
+
+  NORMAL:
+    ENABLE: true
+    MESSAGE: "%RANK%%PLAYER% &8» &r%MESSAGE%"
+    LUNAR_PREFIX: "&9&l[L&b&lC]&r" # Use variable %LUNAR% on message to display the prefix
 
 launch-pad:
   material: "STONE_PLATE"

@@ -1,9 +1,0 @@
-package me.jesusmx.hubcore.hooks.permissions;
-
-import org.bukkit.entity.Player;
-
-public interface Rank {
-
-    String getRankColor(Player player);
-    String getRank(Player player);
-}
