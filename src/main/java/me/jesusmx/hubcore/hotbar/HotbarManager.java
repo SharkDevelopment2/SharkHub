@@ -68,6 +68,7 @@ public class HotbarManager {
     }
 
     public static void setHotbarItems(Player player) {
+        player.getInventory().clear();
         for (Hotbar hotbar : SharkHub.getInstance().getHotbarManager().getHotbarItems()) {
             if (hotbar.getActions().contains("VISIBILITY_TOGGLE_OFF")) continue;
             if (!hotbar.isEnabled()) continue;

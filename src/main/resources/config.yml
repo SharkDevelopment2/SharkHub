@@ -1,5 +1,10 @@
-join-message:
-  lines:
+SYSTEM:
+  LICENSE: ""
+  HCF_HOOKER: false
+
+JOIN_MESSAGE:
+  ENABLE: true
+  LINES:
     - "&8&m------------------------------"
     - "&fWelcome to &b&lShark Development"
     - ""
@@ -9,17 +14,23 @@ join-message:
     - " &fDiscord&7: &bdiscord.gg/sharkdev"
     - " &fRules&7: &bshark.com/rules"
     - "&8&m------------------------------"
+  SOUND: "ENDERMAN_TELEPORT"
+  SPEED: 0.4
 
-exit-player:
-  message:
-    - "&7[&c-&7] %prefix%%player% &ehas left to the server."
+VIP_MESSAGE:
+  JOIN:
+    ENABLE: true
+    PERMISSION: "sharkhub.vip"
+    MESSAGE: "&7[&bVIP&7] %RANK%%PLAYER% &3has joined your server..."
+  LEAVE:
+    ENABLE: true
+    PERMISSION: "sharkhub.vip"
+    MESSAGE: "&7[&bVIP&7] %RANK%%PLAYER% &3has left your server..."
 
-join-player:
-  message:
-    - "&7[&a+&7] %prefix%%player% &ehas join to the server."
-
-restricted-hub: #permission: hubcore.send-hub
-  bungee-name: "Hub-Restricted"
+RESTRICTED_HUB:
+  ENABLE: false
+  PERMISSION: "hubcore.send-hub"
+  SERVER: "Hub-Restricted"
 
 chat-format:
   normal:
@@ -27,12 +38,6 @@ chat-format:
     prefix-lunar: "&9&l[L&b&lC]&r" #Variable %lunar% , this only works if LunarClient-API is on the server
   muted:
     message: "&cThe chat is disabled for the moment."
-
-join-sound:
-  sound: "BAT_TAKEOFF"
-
-join-speed:
-  velocity: 0.2
 
 launch-pad:
   material: "STONE_PLATE"
@@ -48,7 +53,7 @@ double-jump:
     effect: "FIREWORK_LARGE_BLAST"
 
 ENDER_BUTT:
-  VELOCITY: 0.5
+  VELOCITY: 2.5
   SOUND: "ENDERMAN_TELEPORT"
 
 TIME:

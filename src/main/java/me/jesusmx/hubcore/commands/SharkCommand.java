@@ -1,9 +1,12 @@
 package me.jesusmx.hubcore.commands;
 
 import me.jesusmx.hubcore.SharkHub;
+import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
@@ -41,6 +44,12 @@ public class SharkCommand extends Command {
                     SharkHub.getInstance().getHatsConfig().reload();
                     SharkHub.getInstance().getGadgetsConfig().reload();
                     SharkHub.getInstance().getParticlesConfig().reload();
+
+                    SharkHub.getInstance().getHotbarManager().load();
+                    for (Player online : Bukkit.getOnlinePlayers()) {
+                        HotbarManager.setHotbarItems(online);
+                    }
+
                     commandSender.sendMessage(CC.translate("&aSuccessfully all SharkHub files reloaded!"));
                 }
             }

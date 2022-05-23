@@ -68,7 +68,7 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
+        if(!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
@@ -133,7 +133,7 @@ public class SharkHub extends JavaPlugin {
         this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();
         PvPModeHandler.init();
-        if (settingsConfig.getBoolean("system.hcf-hook")) new Hooker();
+        if (settingsConfig.getBoolean("SYSTEM.HCF_HOOKER")) new Hooker();
     }
 
     public void loadCommands() {

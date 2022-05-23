@@ -1,20 +1,8 @@
-system:
-  license: ""
-  hcf-hook: false #is boolean tablist
-
 world:
   border:
     max-x: 1000
     max-z: 1000
     message: "&cYou can't get past the edge of the map!"
-
-  spawn:
-    world: world
-    x: 0
-    y: 120
-    z: 0
-    yaw: 0.0
-    pitch: 0.0
 
 addons:
   protection:

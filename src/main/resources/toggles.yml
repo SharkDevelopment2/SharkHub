@@ -6,9 +6,6 @@ commands:
   store: true
 
 normal:
-  join-message: true
-  join-sound: true
-  join-speed: true
   player:
     join: false
     leave: false
@@ -35,8 +32,6 @@ normal:
 
 addons:
   protection: true
-  console-message: true
-  restricted-hub: false
   lunar-nametags: false
 
 world:
