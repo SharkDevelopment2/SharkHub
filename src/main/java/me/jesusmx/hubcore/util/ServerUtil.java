@@ -1,6 +1,7 @@
 package me.jesusmx.hubcore.util;
 
 import me.jesusmx.hubcore.SharkHub;
+import me.jesusmx.hubcore.bungee.BungeeUtils;
 import me.jesusmx.hubcore.hooks.hcf.Hooker;
 import me.jesusmx.hubcore.hooks.hcf.Splitters;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
@@ -83,6 +84,8 @@ public class ServerUtil {
 
         return str
                 .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getRank(player))
+                .replace("%RANK-COLOR%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player))
+                .replace("%GLOBAL_PLAYERS%", String.valueOf(BungeeUtils.getGlobalPlayers()))
                 .replace("%PLAYER%", player.getName())
                 .replace("%HOUR%", getHour())
                 .replace("%SLOTS%", Integer.toString(Bukkit.getServer().getMaxPlayers()))

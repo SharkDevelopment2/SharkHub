@@ -1,21 +1,22 @@
-scoreboard:
-  title:
-    normal: "%title%"
-    animation:
-      enabled: true
-      interval: 1 #in seconds my son.
-      animated:
+SCOREBOARD:
+  ENABLED: true
+  TITLE:
+    NORMAL: "%title%"
+    ANIMATION:
+      ENABLED: true
+      INTERVAL: 1 #in seconds my son.
+      ANIMATED:
         - "&b&lServer Network"
         - "&b&lServer Network"
-  footer:
-    animation:
-      enabled: true
-      interval: 1 #in second my son.
-      animated:
+  FOOTER:
+    ANIMATION:
+      ENABLED: true
+      INTERVAL: 1 #in second my son.
+      ANIMATED:
         - "&bserver.com"
         - "&bserver.com"
-  mode:
-    normal:
+  MODES:
+    NORMAL:
       - "&7&m--------------------"
       - "&b&lInfo"
       - " &b• &fRank: &r%rank%"
@@ -26,7 +27,7 @@ scoreboard:
       - ""
       - "%footer%"
       - "&7&m--------------------"
-    queue:
+    QUEUE:
       - "&7&m--------------------"
       - "&b&lInfo"
       - " &b• &fRank: &r%rank%"
@@ -41,7 +42,7 @@ scoreboard:
       - ""
       - "%footer%"
       - "&7&m--------------------"
-    pvp-mode:
+    PVP_MODE:
       - "&7&m--------------------"
       - "&bYour Statistics"
       - "&fKills&7: &b%kills%"
@@ -53,7 +54,7 @@ scoreboard:
       - "%footer%"
       - ""
       - "&7&m--------------------"
-    staff:
+    STAFF:
       - "&7&m--------------------"
       - "&b&lInfo"
       - " &b• &fRank: &r%rank%"

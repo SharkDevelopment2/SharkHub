@@ -20,9 +20,10 @@ import me.jesusmx.hubcore.hooks.permissions.type.*;
 import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.listeners.JoinListener;
+import me.jesusmx.hubcore.listeners.*;
 import me.jesusmx.hubcore.managers.SpawnManager;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
+import me.jesusmx.hubcore.pvpmode.listener.PvPModeListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
 import me.jesusmx.hubcore.util.bukkit.api.command.Command;
@@ -31,12 +32,14 @@ import me.jesusmx.hubcore.util.files.ConfigFile;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 public class SharkHub extends JavaPlugin {
@@ -58,6 +61,13 @@ public class SharkHub extends JavaPlugin {
         this.loadConfigs();
         this.registerManagers();
 
+        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("ElTitoHulk")) {
+            for (int i = 0; i < 4; i++) {
+                Bukkit.getConsoleSender().sendMessage(CC.translate("&4THIS PLUGIN HAS BEEN DISABLED, DONT CHANGE AUTHOR OR NAME"));
+            }
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+
         if(!new SharkLicenses(this, settingsConfig.getString("system.license"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
@@ -70,28 +80,15 @@ public class SharkHub extends JavaPlugin {
 
         hotbarManager.load();
         rankManager.load();
-        RegisterHandler.registerProviders();
+        RegisterHandler.init();
         queueManager.load();
 
-        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("JesusMX")) {
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-
-        if (togglesConfig.getBoolean("world.optimized")) {
-            RegisterHandler.world();
-        }
-
-        this.commands();
+        this.loadCommands();
+        this.loadListeners();
 
         new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
-
-        if (togglesConfig.getBoolean("addons.console-message")) {
-            this.getServer().getConsoleSender().sendMessage((CC.CustomMessage(settingsConfig.getStringList("hubcore.style.messages"))));
-        }
-
-        this.listeners();
     }
 
     @Override
@@ -126,7 +123,7 @@ public class SharkHub extends JavaPlugin {
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
         this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
 
-        this.spawnConfig = new ConfigFile(this, "data/spawn-location.yml");
+        this.spawnConfig = new ConfigFile(this, "data/spawn-location");
     }
 
     private void registerManagers() {
@@ -139,7 +136,7 @@ public class SharkHub extends JavaPlugin {
         if (settingsConfig.getBoolean("system.hcf-hook")) new Hooker();
     }
 
-    public void commands() {
+    public void loadCommands() {
         Arrays.asList(new DiscordCommand(),
                 new TeamSpeakCommand(),
                 new TwitterCommand(),
@@ -156,15 +153,21 @@ public class SharkHub extends JavaPlugin {
                 new SkullCommand()).forEach(Command::registerCommand);
     }
 
-    public void listeners() {
-        new JoinListener();
-    }
+    public void loadListeners() {
+        List<Listener> listeners = Arrays.asList(
+                new ChatListener(),
+                new DoubleJumpListener(),
+                new HubExclusive(),
+                new JoinListener(),
+                new LaunchPadListener(),
+                new MovePlayerListener(),
+                new ProtectionListener(),
+                new WorldListener(),
+                new PvPModeListener()
+        );
 
-    public Collection<? extends Player> getOnlinePlayers() {
-        Collection<Player> collection = new ArrayList<>();
-        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-            collection.add(player);
+        for (Listener listener : listeners) {
+            Bukkit.getPluginManager().registerEvents(listener, this);
         }
-        return collection;
     }
 }

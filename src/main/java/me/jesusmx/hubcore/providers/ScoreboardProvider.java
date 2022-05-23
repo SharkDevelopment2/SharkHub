@@ -6,6 +6,7 @@ import me.jesusmx.hubcore.bungee.BungeeUtils;
 import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import io.github.thatkawaiisam.assemble.AssembleAdapter;
+import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.entity.Player;
 
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class ScoreboardProvider implements AssembleAdapter {
 
-    private ConfigFile config = SharkHub.getInstance().getScoreboardConfig();
+    private final ConfigFile config = SharkHub.getInstance().getScoreboardConfig();
     private long lastMillisFooter = System.currentTimeMillis();
     private long lastMillisTitle = System.currentTimeMillis();
     private int iFooter = 0;
@@ -24,59 +25,41 @@ public class ScoreboardProvider implements AssembleAdapter {
 
     @Override
     public String getTitle(Player player) {
-        boolean enabled = config.getBoolean("scoreboard.title.animation.enabled");
-        return enabled ? titles() : config.getString("scoreboard.title.static");
+        boolean enabled = config.getBoolean("SCOREBOARD.TITLE.ANIMATION.ENABLED");
+        return enabled ? titles() : config.getString("SCOREBOARD.TITLE.STATIC");
     }
 
     @Override
     public List<String> getLines(Player player) {
         List<String> toReturn = new ArrayList<>();
         if (PvPModeHandler.isOnPvPMode(player)) {
-            toReturn = config.getStringList("scoreboard.mode.pvp-mode")
-                    .stream()
-                    .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
-                    .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
-                    .map(line -> line.replace("%online%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                    .map(line -> line.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))))
-                    .map(line -> line.replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player)))))
-                    .collect(Collectors.toList());
+            for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
+                toReturn.add(ServerUtil.replaceText(player, str
+                        .replace("%KILLS%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0)))
+                        .replace("%DURATION%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
+            }
         } else {
             if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
-                config.getStringList("scoreboard.mode.queue").stream()
-                        .map(CC::translate)
-                        .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                        .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
-                        .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
-                        .map(line -> line.replace("%server-queue%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getServer(player))))
-                        .map(line -> line.replace("%position%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getPosition(player))))
-                        .map(line -> line.replace("%total%", String.valueOf(SharkHub.getInstance().getQueueManager().getSystem().getSize(player))))
-                        .forEach(toReturn::add);
+                for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
+                    toReturn.add(ServerUtil.replaceText(player, str));
+                }
             } else {
                 if (player.isOp() && player.hasPermission("hubcore.scoreboard.staff")) {
-                    config.getStringList("scoreboard.mode.staff").stream()
-                            .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
-                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
-                            .forEach(toReturn::add);
-
-
+                    for (String str : config.getStringList("SCOREBOARD.MODES.STAFF")) {
+                        toReturn.add(ServerUtil.replaceText(player, str));
+                    }
                 } else {
-                    config.getStringList("scoreboard.mode.normal").stream()
-                            .map(CC::translate)
-                            .map(line -> line.replace("%players%", String.valueOf(BungeeUtils.getGlobalPlayers())))
-                            .map(line -> line.replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getRank(player)))
-                            .map(line -> line.replace("%rank-color%", SharkHub.getInstance().getRankManager().getRank().getRankColor(player)))
-                            .forEach(toReturn::add);
+                    for (String str : config.getStringList("SCOREBOARD.MODES.NORMAL")) {
+                        toReturn.add(ServerUtil.replaceText(player, str));
+                    }
                 }
             }
         }
-        if (config.getBoolean("scoreboard.footer.animation.enabled")) {
-            String footer = footer();
-            toReturn = toReturn.stream().map(s -> s.replace("%footer%", footer)).collect(Collectors.toList());
+        if (config.getBoolean("SCOREBOARD.FOOTER.ANIMATION.ENABLED")) {
+            toReturn = toReturn.stream().map(s -> s.replace("%FOOTER%", footer())).collect(Collectors.toList());
         }
-        if (config.getBoolean("scoreboard.title.animation.enabled")) {
-            String title = titles();
-            toReturn = toReturn.stream().map(s -> s.replace("%title%", title)).collect(Collectors.toList());
+        if (config.getBoolean("SCOREBOARD.TITLE.ANIMATION.ENABLED")) {
+            toReturn = toReturn.stream().map(s -> s.replace("%TITLES%", titles())).collect(Collectors.toList());
         }
 
         return SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, toReturn) : toReturn;
