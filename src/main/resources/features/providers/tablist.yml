@@ -13,6 +13,7 @@
 #
 
 TABLIST:
+  ENABLE: true
 
   HEADER:
     - ''

@@ -66,9 +66,9 @@ public class ScoreboardProvider implements AssembleAdapter {
     }
 
     private String footer() {
-        List<String> footers = CC.translate(config.getStringList("scoreboard.footer.animation.animated"));
+        List<String> footers = CC.translate(config.getStringList("SCOREBOARD.FOOTER.ANIMATION.ANIMATED"));
         long time = System.currentTimeMillis();
-        long interval = TimeUnit.SECONDS.toMillis(config.getInt("scoreboard.footer.animation.interval"));
+        long interval = TimeUnit.SECONDS.toMillis(config.getInt("SCOREBOARD.FOOTER.ANIMATION.INTERVAL"));
 
         if (lastMillisFooter + interval <= time) {
             if (iFooter != footers.size() - 1) {
@@ -82,9 +82,9 @@ public class ScoreboardProvider implements AssembleAdapter {
     }
 
     private String titles() {
-        List<String> titles = CC.translate(config.getStringList("scoreboard.title.animation.animated"));
+        List<String> titles = CC.translate(config.getStringList("SCOREBOARD.TITLE.ANIMATION.ANIMATED"));
         long time = System.currentTimeMillis();
-        long interval = TimeUnit.SECONDS.toMillis(config.getInt("scoreboard.title.animation.interval"));
+        long interval = TimeUnit.SECONDS.toMillis(config.getInt("SCOREBOARD.TITLE.ANIMATION.INTERVAL"));
 
         if (lastMillisTitle + interval <= time) {
             if (iTitle != titles.size() - 1) {

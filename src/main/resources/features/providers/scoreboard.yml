@@ -1,5 +1,5 @@
 SCOREBOARD:
-  ENABLED: true
+  ENABLE: true
   TITLE:
     NORMAL: "%title%"
     ANIMATION:
