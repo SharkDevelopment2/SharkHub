@@ -19,7 +19,7 @@ public class DoubleJumpListener implements Listener {
     private ConfigFile config = SharkHub.getInstance().getMainConfig();
     private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
 
-    private void normal(PlayerToggleFlightEvent event) {
+    private void normalDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         event.setCancelled(true);
         player.setAllowFlight(false);
@@ -34,7 +34,7 @@ public class DoubleJumpListener implements Listener {
     }
 
     @EventHandler
-    public void e(PlayerMoveEvent event) {
+    public void normalDoubleJumpMoveEvent(PlayerMoveEvent event) {
         if(!toggle.getBoolean("normal.double-jump.normal")) return;
 
         Player player = event.getPlayer();
@@ -46,29 +46,25 @@ public class DoubleJumpListener implements Listener {
     }
 
     @EventHandler
-    public void a(PlayerToggleFlightEvent event) {
+    public void doubleJumpSelection(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         if(PvPModeHandler.isOnPvPMode(player)) return;
         if(player.getGameMode() == GameMode.CREATIVE) return;
         if(toggle.getBoolean("normal.double-jump.infinite")) {
-            infinite(event);
+            infiniteDoubleJump(event);
         } else {
-            normal(event);
+            normalDoubleJump(event);
         }
     }
 
-    public void infinite(PlayerToggleFlightEvent event) {
+    public void infiniteDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         event.setCancelled(true);
         player.setFlying(false);
         player.setVelocity(player.getLocation().getDirection().multiply(config.getDouble("double-jump.velocity")).setY(1));
-        try {
-            if (config.getBoolean("double-jump.sound.enabled")) {
-                player.playSound(player.getLocation(), Sound.valueOf(config.getString("double-jump.sound.effect").toUpperCase()), 1.0F, 1.0F);
-            }
-            player.getWorld().spigot().playEffect(player.getLocation(), Effect.valueOf(config.getString("double-jump.particle").toUpperCase()), 26, 0, 0.2F, 0.5F, 0.2F, 0.2F, 12, 387);
-        } catch (Exception e1) {
-            e1.printStackTrace();
+        if (config.getBoolean("double-jump.sound.enabled")) {
+            player.playSound(player.getLocation(), Sound.valueOf(config.getString("double-jump.sound.effect").toUpperCase()), 1.0F, 1.0F);
         }
+        player.getWorld().spigot().playEffect(player.getLocation(), Effect.valueOf(config.getString("double-jump.particle").toUpperCase()), 26, 0, 0.2F, 0.5F, 0.2F, 0.2F, 12, 387);
     }
 }
