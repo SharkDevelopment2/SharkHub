@@ -21,7 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class PvPModeListener implements Listener {
 
-    private final ConfigFile config = SharkHub.getInstance().getHotbarConfig();
+    private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerAttack(EntityDamageByEntityEvent event) {
@@ -29,8 +29,6 @@ public class PvPModeListener implements Listener {
         if(!(event.getDamager() instanceof Player)) return;
         Player damaged = (Player) event.getEntity();
         Player damager = (Player) event.getDamager();
-        System.out.println(damager.getName());
-        System.out.println(damaged.getName());
         if(!PvPModeHandler.isOnPvPMode(damager)) return;
         if(!PvPModeHandler.isOnPvPMode(damaged)) return;
         event.setCancelled(false);
@@ -57,12 +55,20 @@ public class PvPModeListener implements Listener {
         if(event.getEntity().getKiller() == null) return;
         if(!(event.getEntity().getKiller() instanceof Player)) return;
         event.getDrops().clear();
-        Player killed = event.getEntity();
-        Player killer = killed.getKiller();
+        Player victim = event.getEntity();
+        Player killer = victim.getKiller();
         PvPModeHandler.getKills().putIfAbsent(killer.getUniqueId(), 0);
-        int kills = PvPModeHandler.getKills().get(killer.getUniqueId()) + 1;
-        PvPModeHandler.getKills().replace(killer.getUniqueId(), kills);
-        PvPModeHandler.disablePvPMode(killed);
+        int killerKills = PvPModeHandler.getKills().get(killer.getUniqueId()) + 1;
+        int victimKills = PvPModeHandler.getKills().get(victim.getUniqueId()) + 1;
+        PvPModeHandler.getKills().replace(killer.getUniqueId(), killerKills);
+        PvPModeHandler.getKills().replace(victim.getUniqueId(), victimKills);
+        PvPModeHandler.disablePvPMode(victim);
+        event.setDeathMessage(CC.translate(messages.getString("PVP_MODE.DEATH_MESSAGE")
+                .replace("%KILLS_VICTIM%", String.valueOf(victimKills)))
+                .replace("%VICTIM%", victim.getDisplayName())
+                .replace("%KILLER_KILLS%", String.valueOf(killerKills))
+                .replace("%KILLER%", killer.getDisplayName())
+        );
     }
 
     @EventHandler

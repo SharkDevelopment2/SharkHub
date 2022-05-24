@@ -32,8 +32,8 @@ public class PvPModeCommand extends Command {
         Player player = (Player) sender;
         if(args.length > 0 && player.isOp()) {
             if(args[0].equalsIgnoreCase("setinv")) {
-                config.getConfiguration().set("inventory", player.getInventory().getContents());
-                config.getConfiguration().set("armor", player.getInventory().getArmorContents());
+                config.getConfiguration().set("INVENTORY", player.getInventory().getContents());
+                config.getConfiguration().set("ARMOR", player.getInventory().getArmorContents());
                 config.save();
                 config.reload();
                 player.sendMessage(getUsage());

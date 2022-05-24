@@ -35,8 +35,8 @@ public class PvPModeHandler {
     }
 
     public static void togglePvPMode(Player player) {
-        if(SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("inventory") == null || SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("armor") == null) {
-            player.sendMessage(CC.translate(messages.getString("pvp-mode.not-configured")));
+        if(SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("INVENTORY") == null || SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("ARMOR") == null) {
+            player.sendMessage(CC.translate(messages.getString("PVP_MODE.NOT_CONFIGURED")));
             return;
         }
         if(isOnPvPMode(player)) {
@@ -67,12 +67,12 @@ public class PvPModeHandler {
         player.updateInventory();
         //Teleport to spawn when disabled
         SharkHub.getInstance().getSpawnManager().sendToSpawn(player);
-        player.sendMessage(CC.translate(messages.getString("pvp-mode.disabled")));
+        player.sendMessage(CC.translate(messages.getString("PVP_MODE.DISABLED")));
     }
 
     public static void enablePvPMode(Player player) {
-        ItemStack[] contents = ((List<ItemStack>)SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("inventory")).stream().toArray(ItemStack[]::new) ;
-        ItemStack[] armor = ((List<ItemStack>)SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("armor")).stream().toArray(ItemStack[]::new) ;
+        ItemStack[] contents = ((List<ItemStack>)SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("INVENTORY")).stream().toArray(ItemStack[]::new) ;
+        ItemStack[] armor = ((List<ItemStack>)SharkHub.getInstance().getPvpmodeConfig().getConfiguration().get("ARMOR")).stream().toArray(ItemStack[]::new) ;
         /* Enabled */
         inPvPMode.put(player.getUniqueId(), System.currentTimeMillis());
         kills.put(player.getUniqueId(), 0);
@@ -84,6 +84,6 @@ public class PvPModeHandler {
         player.getInventory().setContents(contents);
         player.getInventory().setArmorContents(armor);
         player.updateInventory();
-        player.sendMessage(CC.translate(messages.getString("pvp-mode.activated")));
+        player.sendMessage(CC.translate(messages.getString("PVP_MODE.ACTIVATED")));
     }
 }

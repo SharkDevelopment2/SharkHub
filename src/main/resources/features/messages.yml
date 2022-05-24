@@ -17,11 +17,11 @@ player-visibility:
   hide-message: "&cPlayers are hidden for you!"
   show-message: "&aPlayers are visible for you!"
 
-pvp-mode:
-  activated: "&ePvPMode&7: &aenabled"
-  disabled: "&ePvPMode&7: &cdisabled"
-  not-configured: "&cUsage: /pvpmode setinv"
-  death-message: "&f[&b%kills-victim%&f]&b%victim% &fpaid the price and was killed by &f[&b%kills-killer%&f]&b%killer%"
+PVP_MODE:
+  ACTIVATED: "&ePvPMode&7: &aenabled"
+  DISABLED: "&ePvPMode&7: &cdisabled"
+  NOT_CONFIGURED: "&cUsage: /pvpmode setinv"
+  DEATH_MESSAGE: "&f[&b%KILLS_VICTIM%&f]&b%VICTIM% &fpaid the price and was killed by &f[&b%KILLER_KILLS%&f]&b%KILLER%"
 
 MEDIA:
   DISCORD:

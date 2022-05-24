@@ -105,7 +105,7 @@ public class SharkHub extends JavaPlugin {
         this.scoreboardConfig = new ConfigFile(this, "features/providers/scoreboard");
         this.tablistConfig = new ConfigFile(this, "features/providers/tablist");
 
-        this.pvpmodeConfig = new ConfigFile(this, "features/addons/pvp-mode");
+        this.pvpmodeConfig = new ConfigFile(this, "data/pvpmode-content");
         this.hcfConfig = new ConfigFile(this, "features/addons/hcf-hooks");
         this.nametagsConfig = new ConfigFile(this, "features/addons/nametags");
 
