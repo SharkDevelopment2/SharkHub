@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.menus.hub.button;
+package me.jesusmx.hubcore.menus.hub;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;

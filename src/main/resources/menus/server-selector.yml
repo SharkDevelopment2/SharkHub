@@ -1,39 +1,41 @@
-server-selector:
-  title: "&9&lSelect a servers to join..."
-  rows: 3
-  refill-glass:
-    enabled: true
-    data: 15
-  items:
+SERVER_SELECTOR:
+  TITLE: "&9&lSelect a servers to join..."
+  SIZE: 3
+
+  REFILL_GLASS:
+    ENABLE: true
+    GLASS_DATA: 15
+
+  ITEMS:
     HCFactions:
-      name: "&b&lHCFactions"
-      item: "FISHING_ROD"
-      data: 0
-      head:
-        enabled: false
-        name: ""
-      slot: 11
-      lore:
+      NAME: "&b&lHCFactions"
+      ITEM: "FISHING_ROD"
+      DATA: 0
+      HEAD:
+        ENABLE: false
+        NAME: ""
+      SLOT: 11
+      LORE:
         - "&7&m-------------------------"
         - "&7The original hardcore factions"
         - "&7experience with several twists"
         - ""
         - "&aClick to open menus"
         - "&7&m-------------------------"
-      sub-server: true
-      command:
-        enabled: false
-        command: ""
+      SUB_SERVER: true
+      COMMANDS:
+        ENABLE: false
+        COMMAND: ""
 
     Kitmap:
-      name: "&b&lKitmap"
-      item: "IRON_SWORD"
-      data: 0
-      head:
-        enabled: false
-        name: "Rousing"
-      slot: 13
-      lore:
+      NAME: "&b&lKitmap"
+      ITEM: "IRON_SWORD"
+      DATA: 0
+      HEAD:
+        ENABLE: false
+        NAME: "Rousing"
+      SLOT: 13
+      LORE:
         - "&7&m-------------------------"
         - "&7A practice version of HCF with"
         - "&7free kits, claims & no deathbans"
@@ -44,20 +46,20 @@ server-selector:
         - ""
         - "&aClick to join the queue!"
         - "&7&m-------------------------"
-      sub-server: false
-      command:
-        enabled: false
-        command: ""
+      SUB_SERVER: false
+      COMMANDS:
+        ENABLE: false
+        COMMAND: ""
 
     Practice:
-      name: "&b&lPractice"
-      item: "BOW"
-      data: 0
-      head:
-        enabled: false
-        name: "Rousing"
-      slot: 15
-      lore:
+      NAME: "&b&lPractice"
+      ITEM: "BOW"
+      DATA: 0
+      HEAD:
+        ENABLE: false
+        NAME: "Rousing"
+      SLOT: 15
+      LORE:
         - "&7&m-------------------------"
         - "&7Our original Practice experience"
         - "&7featuring several different regions"
@@ -66,7 +68,7 @@ server-selector:
         - ""
         - "&aClick to join the queue!"
         - "&7&m-------------------------"
-      sub-server: false
-      command:
-        enabled: false
-        command: ""
+      SUB_SERVER: false
+      COMMANDS:
+        ENABLE: false
+        COMMAND: ""

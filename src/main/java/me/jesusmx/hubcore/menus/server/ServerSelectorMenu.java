@@ -1,7 +1,7 @@
-package me.jesusmx.hubcore.menus.hub.menu;
+package me.jesusmx.hubcore.menus.server;
 
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.menus.hub.button.HubButton;
+import me.jesusmx.hubcore.menus.server.ServerButton;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
@@ -14,37 +14,36 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HubSelectorMenu extends Menu {
+public class ServerSelectorMenu extends Menu {
 
-    private ConfigFile config = SharkHub.getInstance().getHubselectorConfig();
+    private final ConfigFile config = SharkHub.getInstance().getSelectorConfig();
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("HUB_SELECTOR.TITLE"));
+        return CC.translate(config.getString("SERVER_SELECTOR.TITLE"));
     }
 
     @Override
     public int size() {
-        return config.getInt("HUB_SELECTOR.SIZE") * 9;
+        return config.getInt("SERVER_SELECTOR.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        for(String str : config.getConfiguration().getConfigurationSection("HUB_SELECTOR.ITEMS").getKeys(false)) {
-            buttons.put(config.getInt("HUB_SELECTOR.ITEMS." + str + ".SLOT"), new HubButton(str));
+        for(String str : config.getConfiguration().getConfigurationSection("SERVER_SELECTOR.ITEMS").getKeys(false)) {
+            buttons.put(config.getInt("SERVER_SELECTOR.items." + str + ".SLOT"), new ServerButton(str));
         }
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("HUB_SELECTOR.REFILL_GLASS.ENABLE");
+        return config.getBoolean("SERVER_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("HUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SERVER_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }
-

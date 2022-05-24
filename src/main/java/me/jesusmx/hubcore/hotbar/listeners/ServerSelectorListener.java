@@ -3,7 +3,7 @@ package me.jesusmx.hubcore.hotbar.listeners;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.menus.server.menu.ServerSelectorMenu;
+import me.jesusmx.hubcore.menus.server.ServerSelectorMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

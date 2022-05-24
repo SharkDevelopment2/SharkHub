@@ -1,7 +1,7 @@
 package me.jesusmx.hubcore.menus.subselector.button;
 
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.menus.server.menu.ServerSelectorMenu;
+import me.jesusmx.hubcore.menus.server.ServerSelectorMenu;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
 import me.jesusmx.hubcore.util.files.ConfigFile;
