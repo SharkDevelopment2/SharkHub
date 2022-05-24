@@ -11,19 +11,16 @@ import java.util.Arrays;
 
 public class TwitterCommand extends Command {
 
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public TwitterCommand() {
         super("twitter");
-        this.setAliases( Arrays.asList("tw"));
+        this.setAliases(Arrays.asList("tw"));
         this.setUsage(ChatColor.RED + "Usage: /twitter");
     }
 
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if (toggle.getBoolean("commands.twitter")) {
-            config.getStringList("media.twitter").stream().map(CC::translate).forEach(sender::sendMessage);
-        }
+        config.getStringList("media.twitter").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }

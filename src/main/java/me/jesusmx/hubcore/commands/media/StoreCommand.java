@@ -8,8 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 public class StoreCommand extends Command {
-
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public StoreCommand() {
@@ -18,9 +16,7 @@ public class StoreCommand extends Command {
     }
 
     public boolean execute(CommandSender sender, String s, String[] strings) {
-        if (toggle.getBoolean("commands.store")) {
-            config.getStringList("media.store").stream().map(CC::translate).forEach(sender::sendMessage);
-        }
+        config.getStringList("media.store").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }

@@ -10,20 +10,16 @@ import org.bukkit.command.CommandSender;
 import java.util.Arrays;
 
 public class TelegramCommand extends Command {
-
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public TelegramCommand() {
         super("telegram");
-        this.setAliases( Arrays.asList("tl", "tgm"));
+        this.setAliases(Arrays.asList("tl", "tgm"));
         this.setUsage(ChatColor.RED + "Usage: /telegram");
     }
 
     public boolean execute(CommandSender sender, String s, String[] strings) {
-        if (toggle.getBoolean("commands.telegram")) {
-            config.getStringList("media.telegram").stream().map(CC::translate).forEach(sender::sendMessage);
-        }
+        config.getStringList("media.telegram").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }

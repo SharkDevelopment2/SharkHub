@@ -10,8 +10,6 @@ import org.bukkit.command.CommandSender;
 import java.util.Arrays;
 
 public class DiscordCommand extends Command {
-
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
     private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public DiscordCommand() {
@@ -21,9 +19,7 @@ public class DiscordCommand extends Command {
     }
 
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if (toggle.getBoolean("commands.discord")) {
-            config.getStringList("media.discord").stream().map(CC::translate).forEach(sender::sendMessage);
-        }
+        config.getStringList("media.discord").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }
