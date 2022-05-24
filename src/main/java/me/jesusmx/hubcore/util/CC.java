@@ -2,6 +2,7 @@ package me.jesusmx.hubcore.util;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -40,5 +41,9 @@ public class CC {
             toReturn.add(ChatColor.translateAlternateColorCodes('&', line));
         }
         return toReturn.toArray(new String[0]);
+    }
+
+    public static void sendConsole(String str) {
+        Bukkit.getConsoleSender().sendMessage(CC.translate(str));
     }
 }

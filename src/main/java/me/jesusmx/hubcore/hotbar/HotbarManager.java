@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.hotbar;
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.listeners.*;
+import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Material;
@@ -47,6 +48,8 @@ public class HotbarManager {
 
             this.hotbarItems.add(new Hotbar(enable, key, displayName, material, data, lore, amount, slot, actions));
         }
+
+        CC.sendConsole("&bLoaded &e" + hotbarItems.size() + " &bHotbar items");
     }
 
     public static Hotbar getItemByAction(String action) {
