@@ -17,7 +17,7 @@ public class QueueHandler {
    public static List<QueueData> queues = new ArrayList();
 
    public QueueHandler() {
-      for(String queue : config.getStringList("queue.servers")) {
+      for(String queue : config.getStringList("QUEUE.SERVERS")) {
          queues.add(new QueueData(queue));
       }
       (new BukkitRunnable() {
@@ -30,12 +30,12 @@ public class QueueHandler {
             }
 
          }
-      }).runTaskTimer(SharkHub.getInstance(), 30L, 30L);
+      }).runTaskTimerAsynchronously(SharkHub.getInstance(), 30L, 30L);
    }
 
    public int playerCount() {
       for(QueueData queue : queues) {
-         for(String queues : config.getStringList("queue.servers")) {
+         for(String queues : config.getStringList("QUEUE.SERVERS")) {
             if (queue.getServer().equalsIgnoreCase(queues)) {
                return BungeeUtils.getServersByName().get(queues).getPlayerCount();
             }

@@ -5,6 +5,7 @@ import com.google.common.io.ByteStreams;
 import lombok.Getter;
 import lombok.Setter;
 import me.jesusmx.hubcore.SharkHub;
+import me.jesusmx.hubcore.bungee.BungeeUtils;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.entity.Player;
@@ -34,10 +35,10 @@ public class QueueData {
          public void run() {
             for(Player player : players) {
                if(player.isOnline()) {
-                  CC.translate(config.getStringList("queue.in-queue"))
+                  CC.translate(config.getStringList("QUEUE.IN_QUEUE"))
                           .stream()
-                          .map(s -> s.replace("%position%", String.valueOf(players.indexOf(player) + 1)))
-                          .map(s -> s.replace("%server%", server))
+                          .map(s -> s.replace("%POSITION%", String.valueOf(players.indexOf(player) + 1)))
+                          .map(s -> s.replace("%SERVER%", server))
                           .forEach(player::sendMessage);
                } else {
                   players.remove(player);
@@ -63,7 +64,7 @@ public class QueueData {
                   int pos = this.players.indexOf(user);
                   if(user != player && QueueHandler.getPriority(player) < QueueHandler.getPriority(user)) {
                      if(this.players.get(pos).isOnline()) {
-                        this.players.get(pos).sendMessage(CC.translate(config.getString("queue.higher")));
+                        this.players.get(pos).sendMessage(CC.translate(config.getString("QUEUE.HIGHER")));
                      }
                      Collections.swap(this.players, pos, this.players.size() - 1);
                   }
@@ -83,20 +84,13 @@ public class QueueData {
 
    public void sendFirst() {
       if (!this.players.isEmpty()) {
-         Player p = this.players.get(0);
-         ByteArrayDataOutput out = ByteStreams.newDataOutput();
-         out.writeUTF("Connect");
-         out.writeUTF(this.server);
-         p.sendPluginMessage(SharkHub.getInstance(), "BungeeCord", out.toByteArray());
+         Player player = this.players.get(0);
+         BungeeUtils.sendToServer(player, server);
       }
-
    }
 
    public void sendDirect(Player player) {
-      ByteArrayDataOutput out = ByteStreams.newDataOutput();
-      out.writeUTF("Connect");
-      out.writeUTF(this.server);
-      player.sendPluginMessage(SharkHub.getInstance(), "BungeeCord", out.toByteArray());
+      BungeeUtils.sendToServer(player, server);
    }
 
    public static QueueData getInstance() {

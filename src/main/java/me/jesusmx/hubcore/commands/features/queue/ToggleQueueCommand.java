@@ -38,12 +38,14 @@ public class ToggleQueueCommand extends Command {
          }
 
          QueueData queue = QueueHandler.getQueue(server);
+         if (queue == null) return false;
+
          if (queue.isPaused()) {
-            sender.sendMessage(CC.translate(config.getString("queue.unpaused"))
-                    .replaceAll("%server%", queue.getServer()));
+            sender.sendMessage(CC.translate(config.getString("QUEUE.UN_PAUSED"))
+                    .replaceAll("%SERVER%", queue.getServer()));
          } else {
-            sender.sendMessage(CC.translate(config.getString("queue.paused"))
-                    .replaceAll("%server%", queue.getServer()));
+            sender.sendMessage(CC.translate(config.getString("QUEUE.PAUSED"))
+                    .replaceAll("%SERVER%", queue.getServer()));
          }
 
          queue.setPaused(!queue.isPaused());

@@ -28,8 +28,8 @@ public class LeaveQueueCommand extends Command {
       if (QueueHandler.getQueue(player) == null) {
          player.sendMessage(CC.translate("&cYou aren't in the queue!"));
       } else {
-         player.sendMessage(CC.translate(config.getString("queue.leave"))
-                 .replaceAll("%server%", QueueHandler.getQueueName(player)));
+         player.sendMessage(CC.translate(config.getString("QUEUE.LEAVE"))
+                 .replaceAll("%SERVER%", QueueHandler.getQueueName(player)));
          QueueHandler.getQueue(player).removeEntry(player);
       }
       return false;

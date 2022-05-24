@@ -1,5 +1,5 @@
-queue:
-  servers:
+QUEUE:
+  SERVERS:
     - "Practice-NA"
     - "Practice-EU"
     - "Practice-SA"
@@ -14,11 +14,11 @@ queue:
     - "Skywars"
     - "Soup-PvP"
     - "Murder-Mistery"
-  leave: "&7You are no longer in queue for &b%server%&7."
-  higher: "&eSomeone with higher queue priority has joined the queue!"
-  paused: "&b%server% &7queue has been &cpaused"
-  unpaused: "&b%server% &7queue has been &aunpaused"
-  in-queue:
+  LEAVE: "&7You are no longer in queue for &b%server%&7."
+  HIGHER: "&eSomeone with higher queue priority has joined the queue!"
+  PAUSED: "&b%server% &7queue has been &cpaused"
+  UN_PAUSED: "&b%server% &7queue has been &aunpaused"
+  IN_QUEUE:
     - "&7&m------------------------------------------------"
     - "&7You are position &b#%position% &7in the &b%server% &7queue."
     - "&7you can upgrade your rank to skip to the front of the queue."

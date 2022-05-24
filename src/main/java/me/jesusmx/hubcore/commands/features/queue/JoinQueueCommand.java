@@ -35,8 +35,8 @@ public class JoinQueueCommand extends Command {
 				player.sendMessage(CC.translate("&cThe queue " + args[0] + " not exists"));
 			} else {
 				if(queue.isPaused()) {
-					player.sendMessage(CC.translate(config.getString("queue.paused")
-							.replace("%server%", queue.getServer())));
+					player.sendMessage(CC.translate(config.getString("QUEUE.PAUSED")
+							.replace("%SERVER%", queue.getServer())));
 				} else {
 					queue.addEntry(player);
 				}
