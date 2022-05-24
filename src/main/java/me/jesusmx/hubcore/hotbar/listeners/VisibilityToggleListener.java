@@ -3,6 +3,8 @@ package me.jesusmx.hubcore.hotbar.listeners;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
+import me.jesusmx.hubcore.util.CC;
+import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +14,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class VisibilityToggleListener implements Listener {
+
+    private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     public VisibilityToggleListener() {
         Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
@@ -35,12 +39,14 @@ public class VisibilityToggleListener implements Listener {
                     online.showPlayer(player);
                 }
 
+                player.sendMessage(CC.translate(messages.getString("PLAYER_VISIBILITY.HIDE")));
                 player.setItemInHand(hideItem);
             } else if (player.getItemInHand().isSimilar(hideItem)) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
                     online.hidePlayer(player);
                 }
 
+                player.sendMessage(CC.translate(messages.getString("PLAYER_VISIBILITY.SHOW")));
                 player.setItemInHand(showItem);
             }
         }

@@ -13,9 +13,9 @@ cosmetics:
     equipped: "&aYou have selected the head %gadget%."
     no-permission: "&cYou do not have permission to select this gadget"
 
-player-visibility:
-  hide-message: "&cPlayers are hidden for you!"
-  show-message: "&aPlayers are visible for you!"
+PLAYER_VISIBILITY:
+  HIDE: "&cPlayers are hidden for you!"
+  SHOW: "&aPlayers are visible for you!"
 
 PVP_MODE:
   ACTIVATED: "&ePvPMode&7: &aenabled"
