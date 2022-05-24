@@ -23,10 +23,10 @@ public class HubButton extends Button {
 
 
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString(d("item"))))
-                .name(PlaceholderAPI.setPlaceholders(player, config.getString(d("name"))))
-                .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(d("lore"))))
-                .data(config.getInt(d("data")))
+        return new ItemBuilder(Material.valueOf(config.getString(getSection("ITEM"))))
+                .name(PlaceholderAPI.setPlaceholders(player, config.getString(getSection("NAME"))))
+                .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getSection("LORE"))))
+                .data(config.getInt(getSection("DATA")))
                 .build();
     }
 
@@ -35,7 +35,7 @@ public class HubButton extends Button {
         SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
     }
 
-    private String d(String a) {
-        return "hub-selector.items." + server + "." + a;
+    private String getSection(String section) {
+        return "HUB_SELECTOR.ITEMS." + server + "." + section;
     }
 }

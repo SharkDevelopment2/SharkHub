@@ -20,31 +20,31 @@ public class HubSelectorMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("hub-selector.title"));
+        return CC.translate(config.getString("HUB_SELECTOR.TITLE"));
     }
 
     @Override
     public int size() {
-        return config.getInt("hub-selector.rows") * 9;
+        return config.getInt("HUB_SELECTOR.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        for(String s : config.getConfiguration().getConfigurationSection("hub-selector.items").getKeys(false)) {
-            buttons.put(config.getInt("hub-selector.items." + s + ".slot"), new HubButton(s));
+        for(String str : config.getConfiguration().getConfigurationSection("HUB_SELECTOR.ITEMS").getKeys(false)) {
+            buttons.put(config.getInt("HUB_SELECTOR.ITEMS." + str + ".SLOT"), new HubButton(str));
         }
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("hub-selector.refill-glass.enabled");
+        return config.getBoolean("HUB_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("hub-selector.refill-glass.data")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("HUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }
 

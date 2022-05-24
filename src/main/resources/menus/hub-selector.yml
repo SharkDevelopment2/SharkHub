@@ -1,78 +1,28 @@
-hub-selector:
-  title: "&9&lSelet a hub to join..."
-  rows: 4
+HUB_SELECTOR:
+  TITLE: "&9&lSelet a hub to join..."
+  SIZE: 1
 
-  refill-glass:
-    enabled: true
-    data: 15
+  REFILL_GLASS:
+    ENABLE: true
+    GLASS_DATA: 15
 
-  items:
+  ITEMS:
     Hub-01:
-      name: "&b&lHub-01 &7[%pinger_isonline_localhost:25566%&7]"
-      item: "INK_SACK"
-      data: 12
-      slot: 11
-      lore:
+      NAME: "&b&lHub-01 &7[%pinger_isonline_localhost:25566%&7]"
+      ITEM: "INK_SACK"
+      DATA: 12
+      SLOT: 0
+      LORE:
         - "&7&m-------------------------"
         - "&fPlayers: &b%Bungee_Hub-01%"
         - "&7&m-------------------------"
 
     Hub-02:
-      name: "&b&lHub-02 &7[%pinger_isonline_localhost:25567%&7]"
-      item: "INK_SACK"
-      data: 12
-      slot: 12
-      lore:
+      NAME: "&b&lHub-02 &7[%pinger_isonline_localhost:25567%&7]"
+      ITEM: "INK_SACK"
+      DATA: 12
+      SLOT: 1
+      LORE:
         - "&7&m-------------------------"
         - "&fPlayers: &b%Bungee_Hub-02%"
-        - "&7&m-------------------------"
-
-    Hub-03:
-      name: "&b&lHub-03 &7[%pinger_isonline_localhost:25568%&7]"
-      item: "INK_SACK"
-      data: 12
-      slot: 13
-      lore:
-        - "&7&m-------------------------"
-        - "&fPlayers: &b%Bungee_Hub-03%"
-        - "&7&m-------------------------"
-
-    Hub-04:
-      name: "&b&lHub-04 &7[%pinger_isonline_localhost:25569%&7]"
-      item: "INK_SACK"
-      data: 12
-      slot: 14
-      lore:
-        - "&7&m-------------------------"
-        - "&fPlayers: &b%Bungee_Hub-04%"
-        - "&7&m-------------------------"
-
-    Hub-05:
-      name: "&b&lHub-05 &7[%pinger_isonline_localhost:25570%&7]"
-      item: "INK_SACK"
-      data: 12
-      slot: 15
-      lore:
-        - "&7&m-------------------------"
-        - "&fPlayers: &b%Bungee_Hub-05%"
-        - "&7&m-------------------------"
-
-    Hub-06:
-      name: "&4&lDonator-Hub &7[%pinger_isonline_localhost:25571%&7]"
-      item: "INK_SACK"
-      data: 1
-      slot: 21
-      lore:
-        - "&7&m-------------------------"
-        - "&fPlayers: &4%Bungee_Hub-06%"
-        - "&7&m-------------------------"
-
-    Hub-07:
-      name: "&3&lExclusive-Hub &7[%pinger_isonline_localhost:25572%&7]"
-      item: "INK_SACK"
-      data: 6
-      slot: 23
-      lore:
-        - "&7&m-------------------------"
-        - "&fPlayers: &3%Bungee_Hub-07%"
         - "&7&m-------------------------"
