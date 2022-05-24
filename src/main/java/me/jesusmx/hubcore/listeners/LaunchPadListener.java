@@ -12,15 +12,14 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class LaunchPadListener implements Listener {
 
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
-    private final ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
 
     @EventHandler
     public void onLaunchEvent(PlayerMoveEvent event) {
         Player player = event.getPlayer();
-        if (!toggle.getBoolean("normal.launch-pad")) return;
-        if (player.getLocation().getBlock().getType() == Material.valueOf(config.getString("launch-pad.material"))) {
+        if (!config.getBoolean("LAUNCH_PAD.ENABLE")) return;
+        if (player.getLocation().getBlock().getType() == Material.valueOf(config.getString("LAUNCH_PAD.MATERIAL"))) {
             player.setVelocity(player.getLocation().getDirection().multiply(2.0).setY(1.0));
-            player.playSound(player.getLocation(), Sound.valueOf(config.getString("launch-pad.sound")), 2.0f, 2.0f);
+            player.playSound(player.getLocation(), Sound.valueOf(config.getString("LAUNCH_PAD.SOUND")), 2.0f, 2.0f);
         }
     }
 }

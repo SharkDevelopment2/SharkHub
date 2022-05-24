@@ -12,20 +12,19 @@ import java.util.List;
 
 public class ProtectionListener implements Listener {
 
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
-    private ConfigFile config = SharkHub.getInstance().getSettingsConfig();
+    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 
     @EventHandler
     public void onPreCommand(PlayerCommandPreprocessEvent event) {
-        if (!toggle.getBoolean("addons.protection")) return;
+        if (!config.getBoolean("BLOCKED_COMMANDS.ENABLE")) return;
 
         Player player = event.getPlayer();
         String command = event.getMessage().split(" ")[0];
-        List<String> blockedMessage = config.getStringList("addons.protection.blocked-commands");
+        List<String> blockedMessage = config.getStringList("BLOCKED_COMMANDS.COMMANDS");
 
         if (command.startsWith("/")) command = command.substring(1);
         if (blockedMessage.contains(command.toLowerCase())) {
-            player.sendMessage(CC.translate(config.getString("addons.protection.message")));
+            player.sendMessage(CC.translate(config.getString("BLOCKED_COMMANDS.MESSAGE")));
             event.setCancelled(true);
         }
     }

@@ -1,4 +1,5 @@
 lunar-nametags:
+  enabled: false
   staff:
     permission: "tags.staff"
     show:

@@ -2,6 +2,7 @@ package me.jesusmx.hubcore.pvpmode.cache;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
+import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.files.ConfigFile;
@@ -50,59 +51,22 @@ public class PvPModeHandler {
         inPvPMode.remove(player.getUniqueId());
         kills.remove(player.getUniqueId());
         ConfigFile config = SharkHub.getInstance().getMainConfig();
-        ConfigFile hotbar = SharkHub.getInstance().getHotbarConfig();
-        ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
         player.getActivePotionEffects().clear();
         player.getInventory().clear();
-        player.getInventory().setHelmet(new ItemStack(Material.AIR, 1));
-        player.getInventory().setChestplate(new ItemStack(Material.AIR, 1));
-        player.getInventory().setLeggings(new ItemStack(Material.AIR, 1));
-        player.getInventory().setBoots(new ItemStack(Material.AIR, 1));
+        player.getInventory().setArmorContents(null);
 
-        if (toggle.getBoolean("normal.server-selector.enabled")) {
-            ItemStack selector = new ItemBuilder(Material.valueOf(hotbar.getString("server-selector.material")))
-                    .name(hotbar.getString("server-selector.name"))
-                    .lore(hotbar.getStringList("server-selector.lore"))
-                    .data(hotbar.getInt("server-selector.data"))
-                    .build();
-            player.getInventory().setItem(hotbar.getInt("server-selector.slot"), selector);
+        HotbarManager.setHotbarItems(player);
+
+        if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
+            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+            return;
         }
 
-        if (toggle.getBoolean("normal.cosmetics.enabled")) {
-            ItemStack cosmetics = new ItemBuilder(Material.valueOf(hotbar.getString("cosmetics.material")))
-                    .name(hotbar.getString("cosmetics.name"))
-                    .lore(hotbar.getStringList("cosmetics.lore"))
-                    .data(hotbar.getInt("cosmetics.data"))
-                    .build();
-            player.getInventory().setItem(hotbar.getInt("cosmetics.slot"), cosmetics);
-        }
-
-        if (toggle.getBoolean("normal.pvp-mode.enabled")) {
-            ItemStack pvpmode = new ItemBuilder(Material.valueOf(hotbar.getString("pvp-mode.material")))
-                    .name(hotbar.getString("pvp-mode.name"))
-                    .lore(hotbar.getStringList("pvp-mode.lore"))
-                    .data(hotbar.getInt("pvp-mode.data"))
-                    .build();
-            player.getInventory().setItem(hotbar.getInt("pvp-mode.slot"), pvpmode);
-        }
-
-        if (toggle.getBoolean("normal.butt.enabled")) {
-            ItemStack enderbutt = new ItemBuilder(Material.valueOf(hotbar.getString("butt.material")))
-                    .name(hotbar.getString("butt.name"))
-                    .setAmount(hotbar.getInt("butt.amount"))
-                    .lore(hotbar.getStringList("butt.lore"))
-                    .build();
-            player.getInventory().setItem(hotbar.getInt("butt.slot"), enderbutt);
-        }
-
-        if (toggle.getBoolean("normal.join-speed")) {
-            player.setWalkSpeed((float) config.getDouble("join-speed.velocity"));
-        } else {
-            player.setWalkSpeed(0.2F);
-        }
+        player.setWalkSpeed(0.2F);
         player.updateInventory();
         //Teleport to spawn when disabled
-        player.teleport(player.getWorld().getSpawnLocation());
+        SharkHub.getInstance().getSpawnManager().sendToSpawn(player);
         player.sendMessage(CC.translate(messages.getString("pvp-mode.disabled")));
     }
 
@@ -114,7 +78,6 @@ public class PvPModeHandler {
         kills.put(player.getUniqueId(), 0);
         player.setWalkSpeed(0.2F);
         player.setAllowFlight(false);
-        //4*9=36
         player.getInventory().setContents(new ItemStack[36]);
         player.getInventory().setArmorContents(null);
         player.updateInventory();

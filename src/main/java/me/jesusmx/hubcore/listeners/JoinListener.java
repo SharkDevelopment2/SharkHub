@@ -33,14 +33,19 @@ public class JoinListener implements Listener {
         player.setFoodLevel(20);
         player.setAllowFlight(true);
 
-        if (config.getBoolean("JOIN_MESSAGE.ENABLE")) {
-            for (String str : config.getStringList("JOIN_MESSAGE.LINES")) {
+        if (config.getBoolean("JOIN_PLAYER.MESSAGE.ENABLE")) {
+            for (String str : config.getStringList("JOIN_MESSAGE.MESSAGE.LINES")) {
                 ServerUtil.replaceText(player, CC.translate(player, player, str, true));
             }
-            player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_MESSAGE.SOUND").toUpperCase()), 1.0F, 1.0F);
-            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED")));
-            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED")));
         }
+
+        if (config.getBoolean("JOIN_PLAYER.SOUND.ENABLE")) player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_PLAYER.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
+
+        if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
+            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+        }
+
 
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {

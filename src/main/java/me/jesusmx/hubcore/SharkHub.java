@@ -42,7 +42,7 @@ import java.util.List;
 public class SharkHub extends JavaPlugin {
 
     @Getter private static SharkHub instance;
-    private ConfigFile togglesConfig, scoreboardConfig, settingsConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig, spawnConfig;
+    private ConfigFile scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig, spawnConfig;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private RankManager rankManager;
@@ -95,9 +95,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void loadConfigs() {
-        this.settingsConfig = new ConfigFile(this, "settings");
         this.mainConfig = new ConfigFile(this, "config");
-        this.togglesConfig = new ConfigFile(this, "toggles");
         this.queueConfig = new ConfigFile(this, "queue");
 
         this.selectorConfig = new ConfigFile(this, "menus/server-selector");
@@ -130,7 +128,7 @@ public class SharkHub extends JavaPlugin {
         this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();
         PvPModeHandler.init();
-        if (settingsConfig.getBoolean("SYSTEM.HCF_HOOKER")) new Hooker();
+        if (mainConfig.getBoolean("SYSTEM.HCF_HOOKER")) new Hooker();
     }
 
     public void loadCommands() {

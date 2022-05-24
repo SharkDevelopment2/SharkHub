@@ -12,8 +12,6 @@ import java.util.Arrays;
 
 public class SetSpawnCommand extends Command {
 
-   private final ConfigFile config = SharkHub.getInstance().getSettingsConfig();
-
    public SetSpawnCommand() {
       super("SetSpawnCommand");
       this.setAliases( Arrays.asList("setspawn"));

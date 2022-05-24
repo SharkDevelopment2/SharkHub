@@ -24,9 +24,7 @@ public class SharkCommand extends Command {
                 getUsage();
             } else if(strings.length == 1) {
                 if(strings[0].equalsIgnoreCase("reload")) {
-                    SharkHub.getInstance().getSettingsConfig().reload();
                     SharkHub.getInstance().getMainConfig().reload();
-                    SharkHub.getInstance().getTogglesConfig().reload();
 
                     SharkHub.getInstance().getSelectorConfig().reload();
                     SharkHub.getInstance().getSubselectorConfig().reload();

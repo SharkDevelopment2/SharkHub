@@ -1,22 +1,29 @@
 SYSTEM:
   LICENSE: ""
   HCF_HOOKER: false
+  CUSTOM_QUEUE: false
 
-JOIN_MESSAGE:
-  ENABLE: true
-  LINES:
-    - "&8&m------------------------------"
-    - "&fWelcome to &b&lShark Development"
-    - ""
-    - " &fWebsite&7: &bwww.shark.com"
-    - " &fStore&7: &bstore.shark.com"
-    - " &fTeamspeak&7: &bts.shark.com"
-    - " &fDiscord&7: &bdiscord.gg/sharkdev"
-    - " &fRules&7: &bshark.com/rules"
-    - "&8&m------------------------------"
-  SOUND: "ENDERMAN_TELEPORT"
-  SPEED: 0.4
+JOIN_PLAYER:
+  MESSAGE:
+    ENABLE: true
+    LINES:
+      - "&8&m------------------------------"
+      - "&fWelcome to &b&lShark Development"
+      - ""
+      - " &fWebsite&7: &bwww.shark.com"
+      - " &fStore&7: &bstore.shark.com"
+      - " &fTeamspeak&7: &bts.shark.com"
+      - " &fDiscord&7: &bdiscord.gg/sharkdev"
+      - " &fRules&7: &bshark.com/rules"
+      - "&8&m------------------------------"
 
+  SOUND:
+    ENABLE: true
+    VALUE: "ENDERMAN_TELEPORT"
+
+  SPEED:
+    ENABLE: true
+    VALUE: 0.4
 VIP_MESSAGE:
   JOIN:
     ENABLE: true
@@ -42,18 +49,51 @@ CHAT_FORMAT:
     MESSAGE: "%RANK%%PLAYER% &8» &r%MESSAGE%"
     LUNAR_PREFIX: "&9&l[L&b&lC]&r" # Use variable %LUNAR% on message to display the prefix
 
-launch-pad:
-  material: "STONE_PLATE"
-  sound: "EXPLODE"
+WORLD_BORDER:
+  MAX_X: 1000
+  MAX_Z: 1000
+  MESSAGE: "&cYou can't get past the edge of the map!"
 
-double-jump:
-  velocity: 2.0
-  particle:
-    enabled: true
-    effect: "FLAME"
-  sound:
-    enabled: true
-    effect: "FIREWORK_LARGE_BLAST"
+BLOCKED_COMMANDS:
+  MESSAGE: "&cI'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error."
+  COMMANDS:
+    - "about"
+    - "bukkit:about"
+    - "bukkit:help"
+    - "bukkit:?"
+    - "bukkit:me"
+    - "bukkit:pl"
+    - "bukkit:plugins"
+    - "bukkit:ver"
+    - "bukkit:version"
+    - "icanhasbukkit"
+    - "info"
+    - "?"
+    - "pl"
+    - "plugins"
+    - "ver"
+    - "version"
+    - "me"
+    - "say"
+
+LAUNCH_PAD:
+  ENABLE:
+  MATERIAL: "STONE_PLATE"
+  SOUND: "EXPLODE"
+
+DOUBLE_JUMP:
+  ENABLE: true
+  # NORMAL or INFINITE
+  MODE: "INFINITE"
+  VELOCITY: 2.0
+
+  SOUND:
+    ENABLE: true
+    VALUE: "FIREWORK_LARGE_BLAST"
+
+  PARTICLE:
+    ENABLE: true
+    VALUE: "FLAME"
 
 ENDER_BUTT:
   VELOCITY: 2.5
@@ -63,3 +103,5 @@ TIME:
   ZONE: "Europe/Madrid"
   DATE: "dd/MM/yyyy"
   HOUR: "HH:mm:ss"
+
+OPTIMIZE_WORLD: true

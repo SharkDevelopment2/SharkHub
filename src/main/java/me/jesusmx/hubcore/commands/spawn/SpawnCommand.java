@@ -13,8 +13,6 @@ import java.util.Arrays;
 
 public class SpawnCommand extends Command {
 
-    private ConfigFile settings = SharkHub.getInstance().getSettingsConfig();
-
     public SpawnCommand() {
         super("SpawnCommand");
         this.setAliases(Arrays.asList("spawn"));

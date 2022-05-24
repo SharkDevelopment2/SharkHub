@@ -22,7 +22,6 @@ public class ServerUtil {
 
     private static final QueueManager queues = SharkHub.getInstance().getQueueManager();
     private static final ConfigFile config = SharkHub.getInstance().getMainConfig();
-    private static final ConfigFile settingsConfig = SharkHub.getInstance().getSettingsConfig();
     private static final ConfigFile hcfConfig = SharkHub.getInstance().getHcfConfig();
 
     private static final SimpleDateFormat timeDate = new SimpleDateFormat(config.getString("TIME.DATE"));
@@ -45,7 +44,7 @@ public class ServerUtil {
                     .replace("%QUEUE_POSITION%", String.valueOf(queues.getSystem().getPosition(player)))
                     .replace("%QUEUE_SIZE%", String.valueOf(queues.getSystem().getSize(player)));
         }
-        if (settingsConfig.getBoolean("system.hcf-hook")) {
+        if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
             if (!Hooker.getVerified().isEmpty()) {
                 for (String sk : Hooker.getVerified()) {
                     String path = "hcf-hook.servers." + sk;

@@ -16,11 +16,10 @@ import java.util.stream.Collectors;
 public class LunarNameTagsListener implements Listener {
 
     private ConfigFile config = SharkHub.getInstance().getNametagsConfig();
-    private ConfigFile toggles = SharkHub.getInstance().getTogglesConfig();
 
     @EventHandler
     public void lunarTags(PlayerJoinEvent event) {
-        if (!toggles.getBoolean("addons.lunar-nametags")) return;
+        if (!config.getBoolean("lunar-nametags.enabled")) return;
         Bukkit.getScheduler().runTaskLaterAsynchronously(SharkHub.getInstance(), () -> {
             Player player = event.getPlayer();
             List<String> show = null;

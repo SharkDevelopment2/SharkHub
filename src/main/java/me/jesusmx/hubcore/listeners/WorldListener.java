@@ -19,14 +19,9 @@ import org.bukkit.event.weather.WeatherChangeEvent;
 
 public class WorldListener implements Listener {
 
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
-    private ConfigFile config = SharkHub.getInstance().getSettingsConfig();
-
     @EventHandler
     private void onCreatureSpawn(CreatureSpawnEvent event) {
-        if (toggle.getBoolean("world.no-mobs-spawn.enabled")) {
-            event.setCancelled(true);
-        }
+        event.setCancelled(true);
     }
 
     @EventHandler
@@ -43,9 +38,7 @@ public class WorldListener implements Listener {
     private void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
         if (PvPModeHandler.isOnPvPMode((Player) event.getEntity())) return;
-        if (toggle.getBoolean("world.no-damage.enabled")) {
-            event.setCancelled(true);
-        }
+        event.setCancelled(true);
     }
 
     @EventHandler
@@ -67,27 +60,24 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onDrop(PlayerDropItemEvent event) {
-        if (!toggle.getBoolean("world.drop-items.enabled")) event.setCancelled(true);
+        event.setCancelled(true);
     }
 
     @EventHandler
     private void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (!toggle.getBoolean("world.place-blocks.enabled")) {
-            if (!player.hasPermission("hubcore.command.place") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
-                event.setCancelled(true);
-            }
+        if (!player.hasPermission("hubcore.command.place") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+            event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if (!toggle.getBoolean("world.break-blocks.enabled")) {
-            if (!player.hasPermission("hubcore.command.break") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
-                event.setCancelled(true);
-            }
+        if (!player.hasPermission("hubcore.command.break") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
+            event.setCancelled(true);
         }
+
     }
 
     @EventHandler
@@ -104,10 +94,8 @@ public class WorldListener implements Listener {
     private void onEntityDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
-        if (toggle.getBoolean("world.void-teleport.enabled") && event.getCause() == EntityDamageEvent.DamageCause.VOID) {
-            event.setCancelled(true);
-            player.teleport(event.getEntity().getWorld().getSpawnLocation());
-        }
+        event.setCancelled(true);
+        player.teleport(event.getEntity().getWorld().getSpawnLocation());
     }
 
     @EventHandler

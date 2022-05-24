@@ -10,20 +10,18 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 public class MovePlayerListener implements Listener {
 
-    private ConfigFile config = SharkHub.getInstance().getSettingsConfig();
-    private ConfigFile toggle = SharkHub.getInstance().getTogglesConfig();
+    private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 
     @EventHandler
     public void BorderPlayer(PlayerMoveEvent event) {
         Player player = event.getPlayer();
-        if (player.getLocation().getBlockY() < 0) {
-        }
-        if (toggle.getBoolean("world.border.enabled")) {
+        if (player.getLocation().getBlockY() < 0) return;
+        if (config.getBoolean("WORLD_BORDER.ENABLED")) {
             int X = event.getTo().getBlockX();
             int Z = event.getTo().getBlockZ();
-            int xMax = config.getInt("world.border.max-x");
-            int zMax = config.getInt("world.border.max-z");
-            String message = CC.translate(config.getString("world.border.message"));
+            int xMax = config.getInt("WORLD_BORDER.MAX_X");
+            int zMax = config.getInt("WORLD_BORDER.MAX_Z");
+            String message = CC.translate(config.getString("WORLD_BORDER.MESSAGE"));
             if (X >= xMax) {
                 player.teleport(player.getWorld().getSpawnLocation());
                 player.sendMessage(CC.translate(message));

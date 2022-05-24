@@ -28,7 +28,7 @@ public class Hooker {
 
     public Hooker() {
         try {
-            if (SharkHub.getInstance().getSettingsConfig().getBoolean("system.hcf-hook")) return;
+            if (SharkHub.getInstance().getMainConfig().getBoolean("SYSTEM.HCF_HOOKER")) return;
 
             unverified.addAll(config.getConfiguration().getConfigurationSection("hcf-hook.servers").getKeys(false));
             port = config.getInt("hcf-hook.hub-port");

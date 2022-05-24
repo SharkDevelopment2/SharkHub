@@ -15,7 +15,6 @@ public class RegisterHandler {
 
     @Getter private static Assemble assemble;
     @Getter private static Omega tablist;
-    private static final ConfigFile togglesConfig = SharkHub.getInstance().getTogglesConfig();
 
     public static void init() {
         registerScoreboard();
@@ -38,7 +37,7 @@ public class RegisterHandler {
     }
 
     public static void optimizeWorld() {
-        if (togglesConfig.getBoolean("world.optimized")) {
+        if (SharkHub.getInstance().getMainConfig().getBoolean("OPTIMIZE_WORLD")) {
             for (World world : Bukkit.getWorlds()) {
                 world.setGameRuleValue("doDaylightCycle", "false");
                 world.setGameRuleValue("doMobSpawning", "false");
