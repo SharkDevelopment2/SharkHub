@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import java.util.Arrays;
 
 public class TelegramCommand extends Command {
-    private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
+    private final ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public TelegramCommand() {
         super("telegram");
@@ -19,7 +19,7 @@ public class TelegramCommand extends Command {
     }
 
     public boolean execute(CommandSender sender, String s, String[] strings) {
-        config.getStringList("media.telegram").stream().map(CC::translate).forEach(sender::sendMessage);
+        config.getStringList("MEDIA.TELEGRAM").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }

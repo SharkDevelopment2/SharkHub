@@ -23,14 +23,14 @@ pvp-mode:
   not-configured: "&cUsage: /pvpmode setinv"
   death-message: "&f[&b%kills-victim%&f]&b%victim% &fpaid the price and was killed by &f[&b%kills-killer%&f]&b%killer%"
 
-media:
-  discord:
+MEDIA:
+  DISCORD:
     - "&7[&3SharkHub&7] &fDiscord&7: &bdiscord.gg/sharkdev"
-  teamspeak:
+  TEAMSPEAK:
     - "&7[&3SharkHub&7] &fTeamspeak&7: &bts.shark.com"
-  twitter:
+  TWITTER:
     - "&7[&3SharkHub&7] &fTwitter&7: &btwitter.com/sharkdev"
-  telegram:
+  TELEGRAM:
     - "&7[&3SharkHub&7] &fTelegram&7: &bt.me/sharkdev"
-  store:
+  STORE:
     - "&7[&3SharkHub&7] &fStore&7: &bstore.shark.com"

@@ -17,7 +17,7 @@ public class SkullCommand extends Command {
     }
 
     public boolean execute(CommandSender sender, String s, String[] args) {
-        if(!(sender instanceof Player)) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(CC.translate("&cOnly Players."));
             return false;
         }
@@ -40,8 +40,8 @@ public class SkullCommand extends Command {
 
     private ItemStack playerSkullForName(String name) {
         ItemStack is = new ItemStack(Material.SKULL_ITEM, 1);
-        is.setDurability((short)3);
-        SkullMeta meta = (SkullMeta)is.getItemMeta();
+        is.setDurability((short) 3);
+        SkullMeta meta = (SkullMeta) is.getItemMeta();
         meta.setOwner(name);
         is.setItemMeta(meta);
         return is;

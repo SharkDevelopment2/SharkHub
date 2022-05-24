@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import java.util.Arrays;
 
 public class TeamSpeakCommand extends Command {
-    private ConfigFile config = SharkHub.getInstance().getMessagesConfig();
+    private final ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
     public TeamSpeakCommand() {
         super("teamspeak");
@@ -19,7 +19,7 @@ public class TeamSpeakCommand extends Command {
     }
 
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        config.getStringList("media.teamspeak").stream().map(CC::translate).forEach(sender::sendMessage);
+        config.getStringList("MEDIA.TEAMSPEAK").stream().map(CC::translate).forEach(sender::sendMessage);
         return false;
     }
 }
