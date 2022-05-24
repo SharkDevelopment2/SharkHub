@@ -50,6 +50,7 @@ CHAT_FORMAT:
     LUNAR_PREFIX: "&9&l[L&b&lC]&r" # Use variable %LUNAR% on message to display the prefix
 
 WORLD_BORDER:
+  ENABLE: true
   MAX_X: 1000
   MAX_Z: 1000
   MESSAGE: "&cYou can't get past the edge of the map!"

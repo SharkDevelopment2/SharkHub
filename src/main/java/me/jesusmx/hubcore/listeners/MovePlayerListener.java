@@ -16,7 +16,7 @@ public class MovePlayerListener implements Listener {
     public void BorderPlayer(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (player.getLocation().getBlockY() < 0) return;
-        if (config.getBoolean("WORLD_BORDER.ENABLED")) {
+        if (config.getBoolean("WORLD_BORDER.ENABLE")) {
             int X = event.getTo().getBlockX();
             int Z = event.getTo().getBlockZ();
             int xMax = config.getInt("WORLD_BORDER.MAX_X");
