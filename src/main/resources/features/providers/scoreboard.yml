@@ -1,7 +1,7 @@
 SCOREBOARD:
   ENABLE: true
   TITLE:
-    NORMAL: "%title%"
+    NORMAL: "%TITLE%"
     ANIMATION:
       ENABLED: true
       INTERVAL: 1 #in seconds my son.
@@ -25,7 +25,7 @@ SCOREBOARD:
       - "&b&lServers"
       - " &b• &fAvailable Servers: &b3"
       - ""
-      - "%footer%"
+      - "%FOOTER%"
       - "&7&m--------------------"
     QUEUE:
       - "&7&m--------------------"
@@ -40,7 +40,7 @@ SCOREBOARD:
       - " &b• &c%server-queue%"
       - " &b• &f%position% / %total%"
       - ""
-      - "%footer%"
+      - "%FOOTER%"
       - "&7&m--------------------"
     PVP_MODE:
       - "&7&m--------------------"
@@ -51,7 +51,7 @@ SCOREBOARD:
       - "&cto leave pvp-mode"
       - "&cuse command /pvpmode"
       - ""
-      - "%footer%"
+      - "%FOOTER%"
       - ""
       - "&7&m--------------------"
     STAFF:
@@ -65,5 +65,5 @@ SCOREBOARD:
       - " &b• &fKitmap: %pinger_isonline_localhost:25568%"
       - " &b• &fPractice: %pinger_isonline_localhost:25569%"
       - ""
-      - "%footer%"
+      - "%FOOTER%"
       - "&7&m--------------------"
