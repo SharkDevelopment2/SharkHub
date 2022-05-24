@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.menus.subselector.menu;
+package me.jesusmx.hubcore.menus.subselector;
 
 import lombok.AllArgsConstructor;
 import me.jesusmx.hubcore.SharkHub;
@@ -24,32 +24,35 @@ public class SubSelectorMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("sub-selector.title").replace("%server%", server));
+        return CC.translate(config.getString("SUB_SELECTOR.TITLE").replace("%SERVER%", server));
     }
 
     @Override
     public int size() {
-        return config.getInt("sub-selector.rows") * 9;
+        return config.getInt("SUB_SELECTOR.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        for(String s : config.getConfiguration().getConfigurationSection("sub-selector." + server).getKeys(false)) {
-            buttons.put(config.getInt("sub-selector." + server + "." + s + ".slot"), new SubServerButton(server, s));
+        for(String s : config.getConfiguration().getConfigurationSection("SUB_SELECTOR." + server).getKeys(false)) {
+            buttons.put(config.getInt("SUB_SELECTOR." + server + "." + s + ".SLOT"), new SubServerButton(server, s));
         }
-        if (config.getBoolean("sub-selector.back-button.enabled"))
-        buttons.put(size() - 1, new BackButton());
+
+        if (config.getBoolean("SUB_SELECTOR.BACK_BUTTON.ENABLE")) {
+            buttons.put(size() - 1, new BackButton());
+        }
+
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("sub-selector.refill-glass.enabled");
+        return config.getBoolean("SUB_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("sub-selector.refill-glass.data")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

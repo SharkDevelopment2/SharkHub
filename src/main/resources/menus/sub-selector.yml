@@ -1,26 +1,26 @@
-sub-selector:
-  title: "&9&lSelect a server to join..."
-  rows: 3
+SUB_SELECTOR:
+  TITLE: "&9&lSelect a server to join..."
+  SIZE: 3
 
-  back-button:
-    enabled: true
-    name: "&cBack"
-    item: "REDSTONE"
-    data: 0
-    lore:
+  BACK_BUTTON:
+    ENABLE: true
+    NAME: "&cBack"
+    ITEM: "REDSTONE"
+    DATA: 0
+    LORE:
       - "&cClick here to return to back menu!"
 
-  refill-glass:
-    enabled: true
-    data: 15
+  REFILL_GLASS:
+    ENABLE: true
+    GLASS_DATA: 15
 
   HCFactions:
     Squads:
-      name: "&b&lSquads"
-      item: "DIAMOND_SWORD"
-      data: 0
-      slot: 11
-      lore:
+      NAME: "&b&lSquads"
+      ITEM: "DIAMOND_SWORD"
+      DATA: 0
+      SLOT: 11
+      LORE:
         - "&7&m-------------------------"
         - "&7The original hardcore factions"
         - "&7experience with several twists"
@@ -33,11 +33,11 @@ sub-selector:
         - "&7&m-------------------------"
 
     Teams:
-      name: "&b&lTeams"
-      item: "DIAMOND_SWORD"
-      data: 0
-      slot: 12
-      lore:
+      NAME: "&b&lTeams"
+      ITEM: "DIAMOND_SWORD"
+      DATA: 0
+      SLOT: 12
+      LORE:
         - "&7&m-------------------------"
         - "&7The original hardcore factions"
         - "&7experience with several twists"

@@ -21,10 +21,10 @@ public class BackButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString("sub-selector.back-button.item")))
-                .name(config.getString("sub-selector.back-button.name"))
-                .lore(config.getStringList("sub-selector.back-button.lore"))
-                .data(config.getInt("sub-selector.back-button.data"))
+        return new ItemBuilder(Material.valueOf(config.getString("SUB_SELECTOR.BACK_BUTTON.ITEM")))
+                .name(config.getString("SUB_SELECTOR.BACK_BUTTON.NAME"))
+                .lore(config.getStringList("SUB_SELECTOR.BACK_BUTTON.LORE"))
+                .data(config.getInt("SUB_SELECTOR.BACK_BUTTON.DATA"))
                 .build();
     }
 }

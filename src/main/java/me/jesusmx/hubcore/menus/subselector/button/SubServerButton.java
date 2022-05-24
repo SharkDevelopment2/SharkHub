@@ -21,23 +21,23 @@ public class SubServerButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString(d("item"))))
-                .name(PlaceholderAPI.setPlaceholders(player, config.getString(d("name"))))
-                .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(d("lore"))))
-                .data(config.getInt(d("data")))
+        return new ItemBuilder(Material.valueOf(config.getString(getConfigPath("ITEM"))))
+                .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
+                .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
+                .data(config.getInt(getConfigPath("DATA")))
                 .build();
     }
 
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
-        if(config.getBoolean("sub-selector.items." + server + ".command.enabled")) {
-            Bukkit.dispatchCommand(player, config.getString("sub-selector.items." + server + ".command.command"));
+        if(config.getBoolean("SUB_SELECTOR." + server + ".COMMANDS.ENABLE")) {
+            Bukkit.dispatchCommand(player, config.getString("SUB_SELECTOR.ITEMS." + server + ".COMMANDS.COMMAND"));
         } else {
             SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
         }
     }
 
-    private String d(String a) {
-        return "sub-selector." + mServer + "." + server + "." + a;
+    private String getConfigPath(String a) {
+        return "SUB_SELECTOR." + mServer + "." + server + "." + a;
     }
 }

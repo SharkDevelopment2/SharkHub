@@ -3,7 +3,7 @@ package me.jesusmx.hubcore.menus.server;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.menus.subselector.menu.SubSelectorMenu;
+import me.jesusmx.hubcore.menus.subselector.SubSelectorMenu;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
 import me.jesusmx.hubcore.util.files.ConfigFile;
