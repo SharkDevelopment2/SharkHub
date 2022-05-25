@@ -13,6 +13,7 @@ import me.jesusmx.hubcore.commands.others.SkullCommand;
 import me.jesusmx.hubcore.commands.spawn.SetSpawnCommand;
 import me.jesusmx.hubcore.commands.spawn.SpawnCommand;
 import me.jesusmx.hubcore.cosmetics.base.command.CosmeticsCommand;
+import me.jesusmx.hubcore.cosmetics.types.gadgets.listener.GadgetsListener;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.listeners.*;
 import me.jesusmx.hubcore.listeners.dev.DeveloperListener;
@@ -172,5 +173,6 @@ public class SharkHub extends JavaPlugin {
         new DeveloperListener();
         new MarketListener();
         new MenuListener();
+        new GadgetsListener();
     }
 }
