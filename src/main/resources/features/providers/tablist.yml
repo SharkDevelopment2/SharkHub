@@ -14,6 +14,7 @@
 
 TABLIST:
   ENABLE: true
+  PING: 0
 
   HEADER:
     - ''
@@ -83,9 +84,9 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bDiscord'
-        HEAD: 'discord.sharkdevelopment.org'
+        HEAD: '%DISCORD%'
       '20':
-        TEXT: '&f%DISCORD%'
+        TEXT: '&fdiscord.sharkdevelopment.org'
         HEAD: ''
     MIDDLE:
       '1':
@@ -144,9 +145,9 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bWebstore'
-        HEAD: 'store.crowl.club'
+        HEAD: '%STORE%'
       '20':
-        TEXT: '&f%STORE%'
+        TEXT: '&fstore.sharkdevelopment.org'
         HEAD: ''
     RIGHT:
       '1':
@@ -266,7 +267,7 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bWebsite'
-        HEAD: 'www.github.com/miquelangelamengual'
+        HEAD: '%WEBSITE%'
       '20':
-        TEXT: '&f%WEBSITE%'
+        TEXT: '&fwww.github.com/miquelangelamengual'
         HEAD: ''

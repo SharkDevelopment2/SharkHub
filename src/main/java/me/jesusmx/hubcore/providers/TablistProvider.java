@@ -27,16 +27,20 @@ public class TablistProvider implements TablistAdapter {
         for (int i = 0; i < 21; i++) {
             layoutSet.add(new TablistLayout(TablistColumn.LEFT, i)
                     .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("LEFT", i, "HEAD"))));
+                    .setSkin(getSkin(player, getLines("LEFT", i, "HEAD")))
+                    .setPing(tablistConfig.getInt("TABLIST.PING")));
             layoutSet.add(new TablistLayout(TablistColumn.MIDDLE, i)
                     .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD"))));
+                    .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD")))
+                    .setPing(tablistConfig.getInt("TABLIST.PING")));
             layoutSet.add(new TablistLayout(TablistColumn.RIGHT, i)
                     .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD"))));
+                    .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD")))
+                    .setPing(tablistConfig.getInt("TABLIST.PING")));
             layoutSet.add(new TablistLayout(TablistColumn.FAR_RIGHT, i)
                     .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD"))));
+                    .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD")))
+                    .setPing(tablistConfig.getInt("TABLIST.PING")));
         }
 
         return layoutSet;
