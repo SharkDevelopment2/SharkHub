@@ -18,23 +18,23 @@ import org.bukkit.metadata.FixedMetadataValue;
 @AllArgsConstructor
 public class HatButton extends Button {
 
-    private String s;
+    private String hatName;
     private final ConfigFile config = SharkHub.getInstance().getHatsConfig();
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
-        if(!player.hasPermission("hats." + s)) {
+        if(!player.hasPermission("hats." + hatName)) {
             player.sendMessage(CC.translate(messages.getString("cosmetics.hats.no-permission")));
             return;
         }
-        String path = "menu.hats." + s + ".";
+        String path = "HATS_MENU.HATS." + hatName + ".";
         ItemStack item;
-        if(config.getBoolean(path + "skull.enabled")) {
+        if(config.getBoolean(path + "SKULL.ENABLE")) {
             item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
             SkullMeta skull = (SkullMeta) item.getItemMeta();
-            skull.setOwner(config.getString(path + "skull.owner"));
-            skull.setDisplayName(CC.translate(config.getString(path + "name")));
+            skull.setOwner(config.getString(path + "SKULL.OWNER"));
+            skull.setDisplayName(CC.translate(config.getString(path + "NAME")));
             item.setItemMeta(skull);
         } else {
             item = getItem(player);
@@ -43,27 +43,27 @@ public class HatButton extends Button {
         }
         player.getInventory().setHelmet(item);
         player.updateInventory();
-        player.setMetadata("HAT", new FixedMetadataValue(SharkHub.getInstance(), s));
-        player.sendMessage(CC.translate(messages.getString("cosmetics.hats.equipped").replace("%hat%", s)));
+        player.setMetadata("HAT", new FixedMetadataValue(SharkHub.getInstance(), hatName));
+        player.sendMessage(CC.translate(messages.getString("cosmetics.hats.equipped").replace("%hat%", hatName)));
     }
 
     @Override
     public ItemStack getItem(Player player) {
-        String path = "menu.hats." + s + ".";
+        String path = "HATS_MENU.HATS." + hatName + ".";
         //System.out.println(path);
-        if(config.getBoolean(path + "skull.enabled")) {
+        if(config.getBoolean(path + "SKULL.ENABLE")) {
             ItemStack item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), 1, (short) 3);
             SkullMeta skull = (SkullMeta) item.getItemMeta();
-            skull.setOwner(config.getString(path + "skull.owner"));
-            skull.setDisplayName(CC.translate(config.getString(path + "name")));
-            skull.setLore(config.getStringList(path + "lore"));
+            skull.setOwner(config.getString(path + "SKULL.OWNER"));
+            skull.setDisplayName(CC.translate(config.getString(path + "NAME")));
+            skull.setLore(config.getStringList(path + "LORE"));
             item.setItemMeta(skull);
             return item;
         } else {
-            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "item"))).parseMaterial())
-                    .name(config.getString(path + "name"))
-                    .lore(config.getStringList(path + "lore"))
-                    .data(config.getInt(path + "data"))
+            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "ITEM"))).parseMaterial())
+                    .name(config.getString(path + "NAME"))
+                    .lore(config.getStringList(path + "LORE"))
+                    .data(config.getInt(path + "DATA"))
                     .build();
         }
     }

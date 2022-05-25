@@ -21,34 +21,34 @@ public class HatsMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("menu.title"));
+        return CC.translate(config.getString("HATS_MENU.TITLE"));
     }
 
     @Override
     public int size() {
-        return config.getInt("menu.rows") * 9;
+        return config.getInt("HATS_MENU.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        for(String s : config.getConfiguration().getConfigurationSection("menu.hats").getKeys(false)) {
-            buttons.put(config.getInt("menu.hats." + s + ".slot"), new HatButton(s));
+        for(String hats : config.getConfiguration().getConfigurationSection("HATS_MENU.HATS").getKeys(false)) {
+            buttons.put(config.getInt("HATS_MENU.HATS." + hats + ".SLOT"), new HatButton(hats));
         }
-        buttons.put(config.getInt("menu.remove_hat.slot"), new HatRemoveButton());
+        buttons.put(config.getInt("HATS_MENU.REMOVE_HAT.SLOT"), new HatRemoveButton());
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("menu.refill-glass.enabled");
+        return config.getBoolean("HATS_MENU.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
         return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial())
                 .name(" ")
-                .data(config.getInt("menu.refill-glass.data"))
+                .data(config.getInt("HATS_MENU.REFILL_GLASS.GLASS_DATA"))
                 .build();
     }
 }

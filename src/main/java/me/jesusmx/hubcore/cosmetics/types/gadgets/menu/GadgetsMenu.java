@@ -21,30 +21,30 @@ public class GadgetsMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("menu.title"));
+        return CC.translate(config.getString("GADGETS_MENU.TITLE"));
     }
 
     @Override
     public int size() {
-        return 27;
+        return config.getInt("GADGETS_MENU.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         //11, 15
         Map<Integer, Button> buttons = new HashMap<>();
-        buttons.put(config.getInt("menu.bow.slot"), new TeleportBowButton());
-        buttons.put(config.getInt("menu.snow.slot"), new SnowBallButton());
+        buttons.put(config.getInt("GADGETS_MENU.TELEPORT_BOW.SLOT"), new TeleportBowButton());
+        buttons.put(config.getInt("GADGETS_MENU.SNOWBALL_HIDER.SLOT"), new SnowBallButton());
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("menu.refill-glass.enabled");
+        return config.getBoolean("GADGETS_MENU.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("menu.refill-glass.data")).build();
+        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("GADGETS_MENU.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

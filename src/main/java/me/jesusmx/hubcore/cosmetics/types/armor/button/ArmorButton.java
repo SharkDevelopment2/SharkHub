@@ -25,52 +25,42 @@ public class ArmorButton extends Button {
 
     public ArmorButton(String armor) {
         this.armor = armor;
-        this.path = "menu.armors." + armor + ".";
+        this.path = "ARMOR_MENU.ARMORS." + armor + ".";
     }
 
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
-        if(!player.hasPermission(config.getString(path + "permission"))) {
-            player.sendMessage(CC.translate(messages.getString("cosmetics.armor.no-permission")));
+        if(!player.hasPermission(config.getString(path + "PERMISSION"))) {
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.NO_PERMISSION")));
             return;
         }
-        player.getInventory().setHelmet(
-                new ArmorBuilder(this, "helmet")
-                        .build()
-        );
-        player.getInventory().setChestplate(
-                new ArmorBuilder(this, "chestplate")
-                        .build()
-        );
-        player.getInventory().setLeggings(
-                new ArmorBuilder(this, "leggings")
-                        .build()
-        );
-        player.getInventory().setBoots(
-                new ArmorBuilder(this, "boots")
-                        .build()
-        );
+
+        player.getInventory().setHelmet(new ArmorBuilder(this, "HELMET").build());
+        player.getInventory().setChestplate(new ArmorBuilder(this, "CHESTPLATE").build());
+        player.getInventory().setLeggings(new ArmorBuilder(this, "LEGGINGS").build());
+        player.getInventory().setBoots(new ArmorBuilder(this, "BOOTS").build());
+
         player.updateInventory();
         player.setMetadata("ARMOR", new FixedMetadataValue(SharkHub.getInstance(), armor));
-        player.sendMessage(CC.translate(messages.getString("cosmetics.armor.equipped").replace("%armor%", armor)));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.EQUIPPED").replace("%ARMOR%", armor)));
     }
 
     @Override
     public ItemStack getItem(Player player) {
         ItemBuilder builder = new ItemBuilder(XMaterial.LEATHER_HELMET.parseMaterial())
-                .data(config.getInt(path + "icon.data"))
-                .name(config.getString(path + "icon.name"));
-        if(player.hasPermission(config.getString(path + "permission"))) {
-            builder.lore(config.getStringList(path + "icon.lore.with_permissions"));
+                .data(config.getInt(path + "ICON.DATA"))
+                .name(config.getString(path + "ICON.NAME"));
+        if(player.hasPermission(config.getString(path + "PERMISSION"))) {
+            builder.lore(config.getStringList(path + "ICON.LORE.WITH_PERMISSION"));
         } else {
-            builder.lore(config.getStringList(path + "icon.lore.without_permissions"));
+            builder.lore(config.getStringList(path + "ICON.LORE.WITHOUT_PERMISSION"));
         }
         ItemStack stack = builder.build();
         LeatherArmorMeta meta = (LeatherArmorMeta) stack.getItemMeta();
         meta.setColor(Color.fromBGR(
-                config.getInt(path + "icon.color.b"),
-                config.getInt(path + "icon.color.g"),
-                config.getInt(path + "icon.color.r")
+                config.getInt(path + "ICON.COLOR.B"),
+                config.getInt(path + "ICON.COLOR.G"),
+                config.getInt(path + "ICON.COLOR.R")
         ));
         stack.setItemMeta(meta);
         return stack;

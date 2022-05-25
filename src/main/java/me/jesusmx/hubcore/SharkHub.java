@@ -114,7 +114,7 @@ public class SharkHub extends JavaPlugin {
         this.hatsConfig = new ConfigFile(this, "features/cosmetics/hats");
         this.armorsConfig = new ConfigFile(this, "features/cosmetics/armors");
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
-        this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
+        //this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
 
         this.spawnConfig = new ConfigFile(this, "data/spawn-location");
     }

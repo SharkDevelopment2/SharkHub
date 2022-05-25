@@ -24,19 +24,16 @@ public class HatRemoveButton extends Button {
             player.updateInventory();
             player.removeMetadata("HAT", SharkHub.getInstance());
             player.closeInventory();
-            player.sendMessage(CC.translate(messages.getString("cosmetics.hats.un-equipped").replace("%hat-remove%", hat)));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.UN_EQUIPPED").replace("%HAT_REMOVE%", hat)));
         }
     }
 
     @Override
     public ItemStack getItem(Player player) {
-       /* if(player.hasMetadata("HAT")) {
-            //String hat = player.getMetadata("HAT").get(0).asString();
-        */
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("menu.remove_hat.item"))).parseMaterial())
-                .name(config.getString("menu.remove_hat.name"))
-                .lore(config.getStringList("menu.remove_hat.lore"))
-                .data(config.getInt("menu.remove_hat.data"))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("HATS_MENU.REMOVE_HAT.ITEM"))).parseMaterial())
+                .name(config.getString("HATS_MENU.REMOVE_HAT.NAME"))
+                .lore(config.getStringList("HATS_MENU.REMOVE_HAT.LORE"))
+                .data(config.getInt("HATS_MENU.REMOVE_HAT.DATA"))
                 .build();
     }
 }

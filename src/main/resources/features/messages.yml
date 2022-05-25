@@ -1,17 +1,17 @@
-cosmetics:
-  menu:
-    no-permission: "&cYou do not have permissions to use the cosmetics, but you can purchase one at &lstore.server.com"
-  armor:
-    equipped: "&aYou have selected the armor %armor%."
-    un-equipped: "&cYou have removed the armor %armor-remove%."
-    no-permission: "&cYou do not have permission to select this armor"
-  hats:
-    equipped: "&aYou have selected the head %hat%."
-    un-equipped: "&cYou have removed the head %hat-remove%."
-    no-permission: "&cYou do not have permission to select this hat"
-  gadgets:
-    equipped: "&aYou have selected the head %gadget%."
-    no-permission: "&cYou do not have permission to select this gadget"
+COSMETICS:
+  MENU:
+    NO_PERMISSION: "&cYou do not have permissions to use the cosmetics, but you can purchase one at &lstore.server.com"
+  ARMOR:
+    EQUIPPED: "&aYou have selected the armor %armor%."
+    UN_EQUIPPED: "&cYou have removed the armor %armor-remove%."
+    NO_PERMISSION: "&cYou do not have permission to select this armor"
+  HATS:
+    EQUIPPED: "&aYou have selected the head %hat%."
+    UN_EQUIPPED: "&cYou have removed the head %hat-remove%."
+    NO_PERMISSION: "&cYou do not have permission to select this hat"
+  GADGETS:
+    EQUIPPED: "&aYou have selected the head %gadget%."
+    NO_PERMISSION: "&cYou do not have permission to select this gadget"
 
 PLAYER_VISIBILITY:
   HIDE: "&cPlayers are hidden for you!"

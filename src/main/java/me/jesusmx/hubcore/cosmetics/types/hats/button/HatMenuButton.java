@@ -22,11 +22,11 @@ public class HatMenuButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        String s = "cosmetics.hats.";
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(s + "item"))).parseMaterial())
-                .name(config.getString(s + "name"))
-                .lore(config.getStringList( s + "lore"))
-                .data(config.getInt(s + "data"))
+        String path = "COSMETICS_MENU.HATS.";
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "ITEM"))).parseMaterial())
+                .name(config.getString(path + "NAME"))
+                .lore(config.getStringList( path + "LORE"))
+                .data(config.getInt(path + "DATA"))
                 .build();
     }
 }

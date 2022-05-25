@@ -19,18 +19,18 @@ public class SnowBallButton extends Button {
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(!player.hasPermission("gadget.snowball")) {
-            player.sendMessage(CC.translate(messages.getString("cosmetics.gadgets.no-permission")));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.NO_PERMISSION")));
             return;
         }
         player.getInventory().addItem(new ItemBuilder(getItem(player)).setAmount(64).build());
-        player.sendMessage(CC.translate(messages.getString("cosmetics.gadgets.equipped").replace("%gadget%", config.getString("menu.snow.name"))));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%GADGET%", config.getString("GADGETS_MENU.SNOWBALL_HIDER.NAME"))));
     }
 
     @Override
     public ItemStack getItem(Player player) {
         return new ItemBuilder(XMaterial.SNOWBALL.parseMaterial())
-                .name(config.getString("menu.snow.name"))
-                .lore(config.getStringList("menu.snow.lore"))
+                .name(config.getString("GADGETS_MENU.SNOWBALL_HIDER.NAME"))
+                .lore(config.getStringList("GADGETS_MENU.SNOWBALL_HIDER.LORE"))
                 .build();
     }
 }
