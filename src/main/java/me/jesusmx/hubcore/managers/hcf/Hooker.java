@@ -28,18 +28,18 @@ public class Hooker {
 
     public Hooker() {
         try {
-            if (SharkHub.getInstance().getMainConfig().getBoolean("SYSTEM.HCF_HOOKER")) return;
+            if (config.getBoolean("HCF_HOOKER.ENABLE")) return;
 
-            unverified.addAll(config.getConfiguration().getConfigurationSection("hcf-hook.servers").getKeys(false));
-            port = config.getInt("hcf-hook.hub-port");
+            unverified.addAll(config.getConfiguration().getConfigurationSection("HCF_HOOKER.SERVERS").getKeys(false));
+            port = config.getInt("HCF_HOOKER.HUB_PORT");
             server = new ServerSocket(port);
             Bukkit.getScheduler().runTaskLaterAsynchronously(SharkHub.getInstance(), () -> Bukkit.getConsoleSender().sendMessage(CC.translate(" &7• &fHCF-Hooks: &bChecking " + unverified.size() + " hooks")), 1L);
             List<String> toRemove = new ArrayList<>();
             List<String> toAdd = new ArrayList<>();
             for(String s : Hooker.getUnverified()) {
-                String path = "hcf-hook.servers." + s;
-                String host =  config.getString(path + ".host");
-                int port = config.getInt(path + ".port");
+                String path = "HCF_HOOKER.SERVERS." + s;
+                String host =  config.getString(path + ".HOST");
+                int port = config.getInt(path + ".PORT");
                 try {
                     Socket socket = new Socket(host, port);
                     DataInputStream dis = new DataInputStream(socket.getInputStream());
@@ -63,7 +63,7 @@ public class Hooker {
             Bukkit.getScheduler().runTaskLaterAsynchronously(SharkHub.getInstance(), () -> Bukkit.getConsoleSender().sendMessage(CC.translate(" &7• &fHCF-Hooks: &aVerified " + verified.size() + " hooks, You have " + ChatColor.GREEN + unverified.size() + " &aunverified hooks!")), 2L);
         } catch (IOException e) {
             Bukkit.getConsoleSender().sendMessage(" &7• &fHCF-Hooks: &cError initializing the hooker");
-            if(config.getBoolean("hcf-hook.debug-mode")) e.printStackTrace();
+            if(config.getBoolean("HCF_HOOKER.DEBUG_MODE")) e.printStackTrace();
         }
     }
 }

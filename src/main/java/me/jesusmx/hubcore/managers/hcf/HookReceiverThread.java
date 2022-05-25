@@ -16,7 +16,7 @@ public class HookReceiverThread extends Thread {
     public HookReceiverThread() {
         super.setName("Hooker - HooksReceiver");
     }
-    private ConfigFile config = SharkHub.getInstance().getHcfConfig();
+    private final ConfigFile config = SharkHub.getInstance().getHcfConfig();
 
     @Override
     public void run() {
