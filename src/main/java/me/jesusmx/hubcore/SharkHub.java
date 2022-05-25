@@ -72,6 +72,9 @@ public class SharkHub extends JavaPlugin {
             isPlaceholderAPI = true;
         }
 
+        rankManager.loadRank();
+        queueManager.load();
+
         CC.sendConsole("&7&m-----------------------------------------------------");
         CC.sendConsole("");
         CC.sendConsole("&bShark Development");
@@ -83,9 +86,7 @@ public class SharkHub extends JavaPlugin {
         CC.sendConsole(" &bQueue System&7: &a" + queueManager.getQueue());
         CC.sendConsole("");
         hotbarManager.load();
-        rankManager.loadRank();
         RegisterHandler.init();
-        queueManager.load();
         CC.sendConsole("");
         CC.sendConsole("&7&m-----------------------------------------------------");
 
