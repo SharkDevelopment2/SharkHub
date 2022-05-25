@@ -4,6 +4,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class CC {
     }
     
     public static List<String> translate(List<String> lines) {
-        List<String> toReturn = new ArrayList<String>();
+        List<String> toReturn = new ArrayList<>();
         for (String line : lines) {
             toReturn.add(ChatColor.translateAlternateColorCodes('&', line));
         }
@@ -29,9 +30,9 @@ public class CC {
 
     public static String placeholder(Player player, String text, boolean isPlaceholderAPI, boolean colorized) {
         if (colorized) {
-            return translate(isPlaceholderAPI ? PlaceholderAPI.setPlaceholders(player, text) : text);
+            return ServerUtil.replaceText(player, translate(isPlaceholderAPI ? PlaceholderAPI.setPlaceholders(player, text) : ServerUtil.replaceText(player, text)));
         } else {
-            return isPlaceholderAPI ? PlaceholderAPI.setPlaceholders(player, text) : text;
+            return isPlaceholderAPI ? PlaceholderAPI.setPlaceholders(player, ServerUtil.replaceText(player, text)) : ServerUtil.replaceText(player, text);
         }
     }
 

@@ -40,29 +40,29 @@ public class ServerUtil {
     public static String replaceText(Player player, String str) {
         if (queues.getSystem().isInQueue(player)) {
             return str
-                    .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
-                    .replace("%RANK-COLOR%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
-                    .replace("%PREFIX%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
-                    .replace("%SUFFIX%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
-                    .replace("%GLOBAL_PLAYERS%", String.valueOf(BungeeUtils.getGlobalPlayers()))
-                    .replace("%PLAYER%", player.getName())
-                    .replace("%HOUR%", getHour())
-                    .replace("%SLOTS%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
-                    .replace("%DATE%", getDate())
-                    .replace("%QUEUE_SERVER%", queues.getSystem().getServer(player))
-                    .replace("%QUEUE_POSITION%", String.valueOf(queues.getSystem().getPosition(player)))
-                    .replace("%QUEUE_SIZE%", String.valueOf(queues.getSystem().getSize(player)));
+                    .replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
+                    .replace("%rank_color%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
+                    .replace("%prefix%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
+                    .replace("%sufixx%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
+                    .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
+                    .replace("%player%", player.getName())
+                    .replace("%hour%", getHour())
+                    .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
+                    .replace("%date%", getDate())
+                    .replace("%queue_server%", queues.getSystem().getServer(player))
+                    .replace("%queue_position%", String.valueOf(queues.getSystem().getPosition(player)))
+                    .replace("%queue_size%", String.valueOf(queues.getSystem().getSize(player)));
         }
         return str
-                .replace("%RANK%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
-                .replace("%RANK-COLOR%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
-                .replace("%PREFIX%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
-                .replace("%SUFFIX%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
-                .replace("%GLOBAL_PLAYERS%", String.valueOf(BungeeUtils.getGlobalPlayers()))
-                .replace("%PLAYER%", player.getName())
-                .replace("%HOUR%", getHour())
-                .replace("%SLOTS%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
-                .replace("%DATE%", getDate());
+                .replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
+                .replace("%rank_color%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
+                .replace("%prefix%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
+                .replace("%sufixx%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
+                .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
+                .replace("%player%", player.getName())
+                .replace("%hour%", getHour())
+                .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
+                .replace("%date%", getDate());
     }
 
 }

@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.listeners;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
@@ -34,7 +35,7 @@ public class JoinListener implements Listener {
 
         if (config.getBoolean("JOIN_PLAYER.MESSAGE.ENABLE")) {
             for (String str : config.getStringList("JOIN_PLAYER.MESSAGE.LINES")) {
-                player.sendMessage(ServerUtil.replaceText(player, CC.translate(player, str, true)));
+                player.sendMessage(ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str));
             }
         }
 
@@ -48,9 +49,9 @@ public class JoinListener implements Listener {
 
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
-                String path = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
+                String str = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
                 for (Player online : Bukkit.getOnlinePlayers())
-                    online.sendMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
+                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
             }
         }
     }
@@ -62,8 +63,9 @@ public class JoinListener implements Listener {
 
         if (config.getBoolean("VIP_MESSAGE.LEAVE.ENABLE")) {
             if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") != null) {
-                String path = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
+                String str = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
+                for (Player online : Bukkit.getOnlinePlayers())
+                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
             }
         }
     }
