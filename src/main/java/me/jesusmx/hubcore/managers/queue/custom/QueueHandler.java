@@ -20,7 +20,7 @@ public class QueueHandler {
       for(String queue : config.getStringList("QUEUE.SERVERS")) {
          queues.add(new QueueData(queue));
       }
-      (new BukkitRunnable() {
+      new BukkitRunnable() {
          public void run() {
             for(QueueData queue : QueueHandler.queues) {
                if (!queue.isPaused() && !queue.getPlayers().isEmpty() && QueueHandler.this.playerCount() < queue.getLimit()) {
@@ -30,7 +30,7 @@ public class QueueHandler {
             }
 
          }
-      }).runTaskTimerAsynchronously(SharkHub.getInstance(), 30L, 30L);
+      }.runTaskTimerAsynchronously(SharkHub.getInstance(), 30L, 30L);
    }
 
    public int playerCount() {
@@ -54,9 +54,8 @@ public class QueueHandler {
       List<QueueData> queue = queues.stream().filter(q -> q.getServer().equalsIgnoreCase(server)).collect(Collectors.toList());
       if (queue.isEmpty()) {
          return null;
-      } else {
-         return queue.get(0);
       }
+      return queue.get(0);
    }
 
    public static String getQueueName(Player player) {
