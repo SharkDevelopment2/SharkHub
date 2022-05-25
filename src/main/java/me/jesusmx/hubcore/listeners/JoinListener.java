@@ -41,8 +41,8 @@ public class JoinListener implements Listener {
         if (config.getBoolean("JOIN_PLAYER.SOUND.ENABLE")) player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_PLAYER.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
 
         if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
-            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
-            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
+            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
         }
 
 
