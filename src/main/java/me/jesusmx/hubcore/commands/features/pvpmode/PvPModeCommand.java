@@ -1,7 +1,7 @@
 package me.jesusmx.hubcore.commands.features.pvpmode;
 
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
+import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.command.Command;

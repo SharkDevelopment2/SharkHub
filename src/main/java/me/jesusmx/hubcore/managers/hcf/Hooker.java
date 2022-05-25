@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.hooks.hcf;
+package me.jesusmx.hubcore.managers.hcf;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;

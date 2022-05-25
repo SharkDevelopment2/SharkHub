@@ -13,28 +13,26 @@ import me.jesusmx.hubcore.commands.others.SkullCommand;
 import me.jesusmx.hubcore.commands.spawn.SetSpawnCommand;
 import me.jesusmx.hubcore.commands.spawn.SpawnCommand;
 import me.jesusmx.hubcore.cosmetics.base.command.CosmeticsCommand;
-import me.jesusmx.hubcore.hooks.hcf.Hooker;
-import me.jesusmx.hubcore.hooks.queue.QueueManager;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.listeners.dev.DeveloperListener;
+import me.jesusmx.hubcore.listeners.dev.MarketListener;
+import me.jesusmx.hubcore.managers.hcf.Hooker;
+import me.jesusmx.hubcore.managers.queue.QueueManager;
+import me.jesusmx.hubcore.managers.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.listeners.*;
 import me.jesusmx.hubcore.managers.SpawnManager;
-import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
-import me.jesusmx.hubcore.pvpmode.listener.PvPModeListener;
+import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
+import me.jesusmx.hubcore.pvpmode.PvPModeListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
 import me.jesusmx.hubcore.util.bukkit.api.command.Command;
-import me.jesusmx.hubcore.util.bukkit.handlers.RegisterHandler;
+import me.jesusmx.hubcore.managers.RegisterHandler;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import me.jesusmx.hubcore.util.rank.RankManager;
-import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -158,7 +156,10 @@ public class SharkHub extends JavaPlugin {
                 new MovePlayerListener(),
                 new ProtectionListener(),
                 new WorldListener(),
-                new PvPModeListener()
+                new PvPModeListener(),
+                new LunarNameTagsListener(),
+                new DeveloperListener(),
+                new MarketListener()
         );
 
         for (Listener listener : listeners) {

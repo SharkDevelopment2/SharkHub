@@ -3,7 +3,7 @@ package me.jesusmx.hubcore.hotbar.listeners;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
-import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
+import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

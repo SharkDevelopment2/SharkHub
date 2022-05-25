@@ -1,7 +1,7 @@
-package me.jesusmx.hubcore.hooks.queue.impl;
+package me.jesusmx.hubcore.managers.queue.impl;
 
-import me.jesusmx.hubcore.hooks.queue.QueueInterface;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.managers.queue.QueueInterface;
+import me.jesusmx.hubcore.managers.queue.custom.QueueHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

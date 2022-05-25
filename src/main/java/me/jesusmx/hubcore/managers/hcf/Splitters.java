@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.hooks.hcf;
+package me.jesusmx.hubcore.managers.hcf;
 
 
 public class Splitters {

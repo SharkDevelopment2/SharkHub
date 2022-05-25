@@ -1,11 +1,11 @@
-package me.jesusmx.hubcore.hooks.queue;
+package me.jesusmx.hubcore.managers.queue;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.hooks.queue.impl.Custom;
-import me.jesusmx.hubcore.hooks.queue.impl.Default;
-import me.jesusmx.hubcore.hooks.queue.impl.EzQueue;
-import me.jesusmx.hubcore.hooks.queue.impl.Portal;
+import me.jesusmx.hubcore.managers.queue.impl.Custom;
+import me.jesusmx.hubcore.managers.queue.impl.Default;
+import me.jesusmx.hubcore.managers.queue.impl.EzQueue;
+import me.jesusmx.hubcore.managers.queue.impl.Portal;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 

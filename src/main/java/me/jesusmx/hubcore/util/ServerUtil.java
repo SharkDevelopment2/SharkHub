@@ -2,9 +2,9 @@ package me.jesusmx.hubcore.util;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.bungee.BungeeUtils;
-import me.jesusmx.hubcore.hooks.hcf.Hooker;
-import me.jesusmx.hubcore.hooks.hcf.Splitters;
-import me.jesusmx.hubcore.hooks.queue.QueueManager;
+import me.jesusmx.hubcore.managers.hcf.Hooker;
+import me.jesusmx.hubcore.managers.hcf.Splitters;
+import me.jesusmx.hubcore.managers.queue.QueueManager;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

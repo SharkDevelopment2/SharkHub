@@ -1,23 +1,19 @@
-package me.jesusmx.hubcore.pvpmode.listener;
+package me.jesusmx.hubcore.pvpmode;
 
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
+import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class PvPModeListener implements Listener {
 

@@ -1,7 +1,5 @@
-package me.jesusmx.hubcore.hooks.queue.custom;
+package me.jesusmx.hubcore.managers.queue.custom;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import lombok.Getter;
 import lombok.Setter;
 import me.jesusmx.hubcore.SharkHub;

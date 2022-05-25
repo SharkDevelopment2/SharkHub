@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.hooks.queue.custom;
+package me.jesusmx.hubcore.managers.queue.custom;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.bungee.BungeeUtils;

@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.util.bukkit.handlers;
+package me.jesusmx.hubcore.managers;
 
 import es.hulk.tablist.Omega;
 import io.github.thatkawaiisam.assemble.Assemble;

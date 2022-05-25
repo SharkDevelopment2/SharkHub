@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.hooks.queue;
+package me.jesusmx.hubcore.managers.queue;
 
 import org.bukkit.entity.Player;
 

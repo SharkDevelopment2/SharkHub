@@ -1,8 +1,8 @@
 package me.jesusmx.hubcore.commands.features.queue;
 
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueData;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.managers.queue.custom.QueueData;
+import me.jesusmx.hubcore.managers.queue.custom.QueueHandler;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.command.Command;

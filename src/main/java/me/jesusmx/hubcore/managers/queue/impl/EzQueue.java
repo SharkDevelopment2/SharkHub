@@ -1,6 +1,6 @@
-package me.jesusmx.hubcore.hooks.queue.impl;
+package me.jesusmx.hubcore.managers.queue.impl;
 
-import me.jesusmx.hubcore.hooks.queue.QueueInterface;
+import me.jesusmx.hubcore.managers.queue.QueueInterface;
 import me.signatured.ezqueuespigot.EzQueueAPI;
 import org.bukkit.entity.Player;
 

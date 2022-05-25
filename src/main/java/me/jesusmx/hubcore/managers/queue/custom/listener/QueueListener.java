@@ -1,7 +1,7 @@
-package me.jesusmx.hubcore.hooks.queue.custom.listener;
+package me.jesusmx.hubcore.managers.queue.custom.listener;
 
-import me.jesusmx.hubcore.hooks.queue.custom.QueueData;
-import me.jesusmx.hubcore.hooks.queue.custom.QueueHandler;
+import me.jesusmx.hubcore.managers.queue.custom.QueueData;
+import me.jesusmx.hubcore.managers.queue.custom.QueueHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

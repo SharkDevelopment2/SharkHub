@@ -5,7 +5,6 @@ import es.hulk.tablist.TablistColumn;
 import es.hulk.tablist.TablistLayout;
 import es.hulk.tablist.utils.Skin;
 import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.hooks.queue.QueueManager;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;

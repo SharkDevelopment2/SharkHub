@@ -1,8 +1,6 @@
 package me.jesusmx.hubcore.listeners;
 
-import me.jesusmx.hubcore.SharkHub;
-import me.jesusmx.hubcore.pvpmode.cache.PvPModeHandler;
-import me.jesusmx.hubcore.util.files.ConfigFile;
+import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

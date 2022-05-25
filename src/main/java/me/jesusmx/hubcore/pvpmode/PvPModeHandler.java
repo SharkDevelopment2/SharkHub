@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.pvpmode.cache;
+package me.jesusmx.hubcore.pvpmode;
 
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;

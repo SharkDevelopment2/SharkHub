@@ -1,7 +1,7 @@
-package me.jesusmx.hubcore.hooks.queue.impl;
+package me.jesusmx.hubcore.managers.queue.impl;
 
 import me.jesusmx.hubcore.bungee.BungeeUtils;
-import me.jesusmx.hubcore.hooks.queue.QueueInterface;
+import me.jesusmx.hubcore.managers.queue.QueueInterface;
 import org.bukkit.entity.Player;
 
 public class Default implements QueueInterface {

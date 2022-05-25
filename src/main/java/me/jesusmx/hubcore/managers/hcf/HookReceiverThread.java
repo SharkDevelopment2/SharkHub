@@ -1,4 +1,4 @@
-package me.jesusmx.hubcore.hooks.hcf;
+package me.jesusmx.hubcore.managers.hcf;
 
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.files.ConfigFile;
