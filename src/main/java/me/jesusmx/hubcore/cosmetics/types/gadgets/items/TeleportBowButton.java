@@ -23,7 +23,7 @@ public class TeleportBowButton extends Button {
         }
         player.getInventory().addItem(getItem(player));
         player.getInventory().addItem(new ItemStack(XMaterial.ARROW.parseMaterial(), 64));
-        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%GADGET%", config.getString("GADGETS_MENU.TELEPORT_BOW.NAME"))));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%gadget%", config.getString("GADGETS_MENU.TELEPORT_BOW.NAME"))));
     }
 
     @Override

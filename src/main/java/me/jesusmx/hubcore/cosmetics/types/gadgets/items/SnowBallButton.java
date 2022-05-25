@@ -23,7 +23,7 @@ public class SnowBallButton extends Button {
             return;
         }
         player.getInventory().addItem(new ItemBuilder(getItem(player)).setAmount(64).build());
-        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%GADGET%", config.getString("GADGETS_MENU.SNOWBALL_HIDER.NAME"))));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%gadget%", config.getString("GADGETS_MENU.SNOWBALL_HIDER.NAME"))));
     }
 
     @Override

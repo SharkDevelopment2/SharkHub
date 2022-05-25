@@ -2,6 +2,8 @@ package me.jesusmx.hubcore.cosmetics.types.gadgets.listener;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import me.jesusmx.hubcore.SharkHub;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
@@ -16,6 +18,10 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class GadgetsListener implements Listener {
+
+    public GadgetsListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     @EventHandler(ignoreCancelled = true)
     public void onBowUse(EntityShootBowEvent event) {
