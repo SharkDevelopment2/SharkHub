@@ -83,7 +83,7 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bDiscord'
-        HEAD: '%DISCORD%'
+        HEAD: 'discord.sharkdevelopment.org'
       '20':
         TEXT: '&f%DISCORD%'
         HEAD: ''
@@ -92,7 +92,7 @@ TABLIST:
         TEXT: ''
         HEAD: ''
       '2':
-        TEXT: '&b&lOptimal Services'
+        TEXT: '&b&lShark Development'
         HEAD: '%EARTH%'
       '3':
         TEXT: '&fOnline&7: &f%bungee_total%/%SLOTS%'
@@ -144,7 +144,7 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bWebstore'
-        HEAD: '%STORE%'
+        HEAD: 'store.crowl.club'
       '20':
         TEXT: '&f%STORE%'
         HEAD: ''
@@ -168,7 +168,7 @@ TABLIST:
         TEXT: '&bInfo'
         HEAD: '%INFORMATION%'
       '7':
-        TEXT: '&bPing&7: &7%PING%'
+        TEXT: '&bPing&7: &7%player_ping%ms'
         HEAD: ''
       '8':
         TEXT: ''
@@ -207,7 +207,7 @@ TABLIST:
         TEXT: '&bTwitter'
         HEAD: '%TWITTER%'
       '20':
-        TEXT: '&f%TWITTER%'
+        TEXT: 'twitter.com/infinityhvlk'
         HEAD: ''
     FAR_RIGHT:
       '1':
@@ -266,7 +266,7 @@ TABLIST:
         HEAD: ''
       '19':
         TEXT: '&bWebsite'
-        HEAD: '%WEBSITE%'
+        HEAD: 'www.github.com/miquelangelamengual'
       '20':
         TEXT: '&f%WEBSITE%'
         HEAD: ''

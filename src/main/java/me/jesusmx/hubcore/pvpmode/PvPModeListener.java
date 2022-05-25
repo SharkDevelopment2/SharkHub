@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.pvpmode;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,6 +16,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class PvPModeListener implements Listener {
+
+    public PvPModeListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+
+    }
 
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 

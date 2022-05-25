@@ -1,12 +1,18 @@
 package me.jesusmx.hubcore.listeners.dev;
 
+import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class MarketListener implements Listener {
+
+    public MarketListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     @EventHandler
     public void mcmarket(PlayerJoinEvent event) {

@@ -6,6 +6,7 @@ import com.cryptomorin.xseries.particles.XParticle;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import me.jesusmx.hubcore.util.files.ConfigFile;
+import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -17,6 +18,10 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
 public class DoubleJumpListener implements Listener {
+
+    public DoubleJumpListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 

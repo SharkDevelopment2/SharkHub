@@ -72,10 +72,22 @@ public class SharkHub extends JavaPlugin {
             isPlaceholderAPI = true;
         }
 
+        CC.sendConsole("&7&m-----------------------------------------------------");
+        CC.sendConsole("");
+        CC.sendConsole("&bShark Development");
+        CC.sendConsole(" &bPlugin&7: &aSharkHub");
+        CC.sendConsole(" &bVersion&7: &a" + this.getDescription().getVersion());
+        CC.sendConsole(" &bAuthor&7: &aElTitoHulk");
+        CC.sendConsole(" ");
+        CC.sendConsole(" &bRank System&7: &a" + rankManager.getRankSystem());
+        CC.sendConsole(" &bQueue System&7: &a" + queueManager.getQueue());
+        CC.sendConsole("");
         hotbarManager.load();
         rankManager.loadRank();
         RegisterHandler.init();
         queueManager.load();
+        CC.sendConsole("");
+        CC.sendConsole("&7&m-----------------------------------------------------");
 
         this.loadCommands();
         this.loadListeners();

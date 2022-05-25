@@ -13,6 +13,10 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatListener implements Listener {
 
+    public ChatListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
+
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 
     private boolean isLunarClient(Player player) {
