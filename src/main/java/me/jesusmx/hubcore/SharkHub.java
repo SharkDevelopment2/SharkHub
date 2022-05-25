@@ -30,11 +30,9 @@ import me.jesusmx.hubcore.util.bukkit.api.command.Command;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import me.jesusmx.hubcore.util.rank.RankManager;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Getter
 public class SharkHub extends JavaPlugin {
@@ -147,21 +145,17 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void loadListeners() {
-        List<Listener> listeners = Arrays.asList(
-                new ChatListener(),
-                new DoubleJumpListener(),
-                new HubExclusive(),
-                new JoinListener(),
-                new LaunchPadListener(),
-                new MovePlayerListener(),
-                new ProtectionListener(),
-                new WorldListener(),
-                new PvPModeListener(),
-                new LunarNameTagsListener()
-        );
-
-        for (Listener listener : listeners) {
-            Bukkit.getPluginManager().registerEvents(listener, this);
-        }
+        new ChatListener();
+        new DoubleJumpListener();
+        new HubExclusive();
+        new JoinListener();
+        new LaunchPadListener();
+        new MovePlayerListener();
+        new ProtectionListener();
+        new WorldListener();
+        new PvPModeListener();
+        new LunarNameTagsListener();
+        new DeveloperListener();
+        new MarketListener();
     }
 }

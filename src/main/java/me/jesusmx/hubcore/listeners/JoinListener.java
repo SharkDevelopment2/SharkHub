@@ -49,7 +49,8 @@ public class JoinListener implements Listener {
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
                 String path = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
+                for (Player online : Bukkit.getOnlinePlayers())
+                    online.sendMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
             }
         }
     }
