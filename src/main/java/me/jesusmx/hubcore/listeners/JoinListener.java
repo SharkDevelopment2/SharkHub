@@ -33,8 +33,8 @@ public class JoinListener implements Listener {
         player.setAllowFlight(true);
 
         if (config.getBoolean("JOIN_PLAYER.MESSAGE.ENABLE")) {
-            for (String str : config.getStringList("JOIN_MESSAGE.MESSAGE.LINES")) {
-                ServerUtil.replaceText(player, CC.translate(player, player, str, true));
+            for (String str : config.getStringList("JOIN_PLAYER.MESSAGE.LINES")) {
+                player.sendMessage(ServerUtil.replaceText(player, CC.translate(player, str, true)));
             }
         }
 
@@ -49,7 +49,7 @@ public class JoinListener implements Listener {
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
                 String path = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, player, path, true)));
+                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
             }
         }
     }
@@ -62,7 +62,7 @@ public class JoinListener implements Listener {
         if (config.getBoolean("VIP_MESSAGE.LEAVE.ENABLE")) {
             if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") != null) {
                 String path = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, player, path, true)));
+                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, path, true)));
             }
         }
     }

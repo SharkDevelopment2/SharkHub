@@ -157,9 +157,7 @@ public class SharkHub extends JavaPlugin {
                 new ProtectionListener(),
                 new WorldListener(),
                 new PvPModeListener(),
-                new LunarNameTagsListener(),
-                new DeveloperListener(),
-                new MarketListener()
+                new LunarNameTagsListener()
         );
 
         for (Listener listener : listeners) {

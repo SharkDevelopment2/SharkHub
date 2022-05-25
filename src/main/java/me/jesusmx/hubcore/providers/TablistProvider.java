@@ -26,16 +26,16 @@ public class TablistProvider implements TablistAdapter {
 
         for (int i = 0; i < 21; i++) {
             layoutSet.add(new TablistLayout(TablistColumn.LEFT, i)
-                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
+                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
                     .setSkin(getSkin(player, getLines("LEFT", i, "HEAD"))));
             layoutSet.add(new TablistLayout(TablistColumn.MIDDLE, i)
-                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
+                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
                     .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD"))));
             layoutSet.add(new TablistLayout(TablistColumn.RIGHT, i)
-                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
+                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
                     .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD"))));
             layoutSet.add(new TablistLayout(TablistColumn.FAR_RIGHT, i)
-                    .setText(CC.translate(player, player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
+                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
                     .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD"))));
         }
 
@@ -170,7 +170,7 @@ public class TablistProvider implements TablistAdapter {
         List<String> list = new ArrayList<>();
 
         for (String str : path) {
-            list.add(CC.translate(player, player, str, true));
+            list.add(CC.translate(player, str, true));
         }
         return list;
     }

@@ -23,7 +23,7 @@ public class CC {
         return toReturn;
     }
 
-    public static String translate(Player player, Player target, String text, boolean colorized) {
+    public static String translate(Player player, String text, boolean colorized) {
         return placeholder(player, text, SharkHub.getInstance().isPlaceholderAPI(), colorized);
     }
 
