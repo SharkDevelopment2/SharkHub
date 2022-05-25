@@ -23,16 +23,16 @@ public class ArmorRemoveButton extends Button {
             player.getInventory().setArmorContents(null);
             player.removeMetadata("ARMOR", SharkHub.getInstance());
             player.closeInventory();
-            player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.UN_EQUIPPED").replace("%ARMOR_REMOVE%", s)));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.UN_EQUIPPED").replace("%armor_remove%", s)));
         }
     }
 
     @Override
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("ARMOR_MENU.REMOVE_ARMOR.ITEM"))).parseMaterial())
-                .name(config.getString("ARMOR_MENU.REMOVE_ARMOR.NAME"))
-                .lore(config.getStringList("ARMOR_MENU.REMOVE_ARMOR.LORE"))
-                .data(config.getInt("ARMOR_MENU.REMOVE_ARMOR.DATA"))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("ARMORS_MENU.REMOVE_ARMOR.ITEM"))).parseMaterial())
+                .name(config.getString("ARMORS_MENU.REMOVE_ARMOR.NAME"))
+                .lore(config.getStringList("ARMORS_MENU.REMOVE_ARMOR.LORE"))
+                .data(config.getInt("ARMORS_MENU.REMOVE_ARMOR.DATA"))
                 .build();
     }
 }

@@ -25,7 +25,7 @@ public class ArmorButton extends Button {
 
     public ArmorButton(String armor) {
         this.armor = armor;
-        this.path = "ARMOR_MENU.ARMORS." + armor + ".";
+        this.path = "ARMORS_MENU.ARMORS." + armor + ".";
     }
 
     @Override
@@ -42,7 +42,7 @@ public class ArmorButton extends Button {
 
         player.updateInventory();
         player.setMetadata("ARMOR", new FixedMetadataValue(SharkHub.getInstance(), armor));
-        player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.EQUIPPED").replace("%ARMOR%", armor)));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.EQUIPPED").replace("%armor%", armor)));
     }
 
     @Override
