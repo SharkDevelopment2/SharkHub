@@ -3,11 +3,11 @@ COSMETICS:
     NO_PERMISSION: "&cYou do not have permissions to use the cosmetics, but you can purchase one at &lstore.server.com"
   ARMOR:
     EQUIPPED: "&aYou have selected the armor %armor%."
-    UN_EQUIPPED: "&cYou have removed the armor %armor-remove%."
+    UN_EQUIPPED: "&cYou have removed the armor %armor_remove%."
     NO_PERMISSION: "&cYou do not have permission to select this armor"
   HATS:
     EQUIPPED: "&aYou have selected the head %hat%."
-    UN_EQUIPPED: "&cYou have removed the head %hat-remove%."
+    UN_EQUIPPED: "&cYou have removed the head %hat_remove%."
     NO_PERMISSION: "&cYou do not have permission to select this hat"
   GADGETS:
     EQUIPPED: "&aYou have selected the head %gadget%."
