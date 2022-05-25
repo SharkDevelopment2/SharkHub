@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.cosmetics.types.gadgets.menu;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.types.gadgets.items.SnowBallButton;
 import me.jesusmx.hubcore.cosmetics.types.gadgets.items.TeleportBowButton;
@@ -8,7 +9,6 @@ import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
 import me.jesusmx.hubcore.util.buttons.Menu;
 import me.jesusmx.hubcore.util.files.ConfigFile;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -45,6 +45,6 @@ public class GadgetsMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("menu.refill-glass.data")).build();
+        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("menu.refill-glass.data")).build();
     }
 }

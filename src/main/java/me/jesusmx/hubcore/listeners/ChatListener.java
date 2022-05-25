@@ -6,7 +6,6 @@ import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

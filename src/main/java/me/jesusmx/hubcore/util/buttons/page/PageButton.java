@@ -1,8 +1,8 @@
 package me.jesusmx.hubcore.util.buttons.page;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -21,11 +21,11 @@ public class PageButton extends Button {
     @Override
     public ItemStack getItem(Player player) {
         if (this.hasNext(player)) {
-            return new ItemBuilder(Material.ARROW)
+            return new ItemBuilder(XMaterial.ARROW.parseMaterial())
                     .name("§a(§e" + (menu.getPage() + mod) + "/§e" + menu.getPages(player) + "§a)")
                     .build();
         } else {
-            return new ItemBuilder(Material.ARROW)
+            return new ItemBuilder(XMaterial.ARROW.parseMaterial())
                     .name(mod > 0 ? "§7Last page" : "§7First page")
                     .build();
         }

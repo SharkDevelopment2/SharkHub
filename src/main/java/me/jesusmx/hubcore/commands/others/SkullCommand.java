@@ -1,8 +1,8 @@
 package me.jesusmx.hubcore.commands.others;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.util.CC;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -39,7 +39,8 @@ public class SkullCommand extends Command {
     }
 
     private ItemStack playerSkullForName(String name) {
-        ItemStack is = new ItemStack(Material.SKULL_ITEM, 1);
+        assert XMaterial.CREEPER_HEAD.parseMaterial() != null;
+        ItemStack is = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), 1);
         is.setDurability((short) 3);
         SkullMeta meta = (SkullMeta) is.getItemMeta();
         meta.setOwner(name);

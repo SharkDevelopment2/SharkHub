@@ -1,7 +1,8 @@
 package me.jesusmx.hubcore.cosmetics.types.gadgets.listener;
 
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -28,7 +29,7 @@ public class GadgetsListener implements Listener {
     public void onSnowballUse(PlayerInteractEvent event) {
         if(event.getAction() != Action.RIGHT_CLICK_AIR) return;
         Player player = event.getPlayer();
-        if(player.getItemInHand().getType() != Material.SNOW_BALL) return;
+        if(player.getItemInHand().getType() != XMaterial.SNOWBALL.parseMaterial()) return;
         event.setCancelled(true);
         player.launchProjectile(Snowball.class).setVelocity(player.getLocation().getDirection().multiply(1.5));
     }
@@ -52,7 +53,7 @@ public class GadgetsListener implements Listener {
         Player shooter = (Player) arrow.getShooter();
         arrow.remove();
         shooter.teleport(arrow.getLocation());
-        shooter.playSound(shooter.getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, 1.0f);
+        shooter.playSound(shooter.getLocation(), XSound.matchXSound(Sound.ENDERMAN_TELEPORT).parseSound(), 1.0f, 1.0f);
     }
 
 }

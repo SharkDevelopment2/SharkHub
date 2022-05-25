@@ -1,14 +1,14 @@
 package me.jesusmx.hubcore.cosmetics.types.armor.button;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
-import me.jesusmx.hubcore.util.bukkit.cosmetics.ArmorBuilder;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
+import me.jesusmx.hubcore.util.bukkit.cosmetics.ArmorBuilder;
 import me.jesusmx.hubcore.util.buttons.Button;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Color;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -57,7 +57,7 @@ public class ArmorButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        ItemBuilder builder = new ItemBuilder(Material.LEATHER_HELMET)
+        ItemBuilder builder = new ItemBuilder(XMaterial.LEATHER_HELMET.parseMaterial())
                 .data(config.getInt(path + "icon.data"))
                 .name(config.getString(path + "icon.name"));
         if(player.hasPermission(config.getString(path + "permission"))) {

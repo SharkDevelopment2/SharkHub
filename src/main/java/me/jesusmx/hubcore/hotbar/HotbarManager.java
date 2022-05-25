@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.hotbar;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.listeners.*;
@@ -38,7 +39,7 @@ public class HotbarManager {
         for (String key : section.getKeys(false)) {
             boolean enable = hotbarConfig.getBoolean("HOTBAR." +key + ".ENABLE");
             String displayName = hotbarConfig.getString("HOTBAR." + key + ".DISPLAY_NAME");
-            Material material = Material.getMaterial(hotbarConfig.getString("HOTBAR." + key + ".MATERIAL"));
+            XMaterial material = XMaterial.matchXMaterial(Material.getMaterial(hotbarConfig.getString("HOTBAR." + key + ".MATERIAL")));
             int data = hotbarConfig.getInt("HOTBAR." + key + ".DATA");
             List<String> lore = hotbarConfig.getStringList("HOTBAR." + key + ".LORE");
             int amount = hotbarConfig.getInt("HOTBAR." + key + ".AMOUNT");
@@ -62,7 +63,7 @@ public class HotbarManager {
     }
 
     public static ItemStack getHotbarItemStack(Hotbar hotbar) {
-        return new ItemBuilder(hotbar.getMaterial())
+        return new ItemBuilder(hotbar.getMaterial().parseMaterial())
                 .name(hotbar.getDisplayName())
                 .data(hotbar.getData())
                 .lore(hotbar.getLore())

@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.menus.subselector.button;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
@@ -21,7 +22,7 @@ public class SubServerButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString(getConfigPath("ITEM"))))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigPath("ITEM")))).parseMaterial())
                 .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
                 .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
                 .data(config.getInt(getConfigPath("DATA")))

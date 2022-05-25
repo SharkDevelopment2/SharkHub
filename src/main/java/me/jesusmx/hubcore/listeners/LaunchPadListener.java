@@ -1,5 +1,7 @@
 package me.jesusmx.hubcore.listeners;
 
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Material;
@@ -17,9 +19,9 @@ public class LaunchPadListener implements Listener {
     public void onLaunchEvent(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (!config.getBoolean("LAUNCH_PAD.ENABLE")) return;
-        if (player.getLocation().getBlock().getType() == Material.valueOf(config.getString("LAUNCH_PAD.MATERIAL"))) {
+        if (player.getLocation().getBlock().getType() == XMaterial.matchXMaterial(Material.valueOf(config.getString("LAUNCH_PAD.MATERIAL"))).parseMaterial()) {
             player.setVelocity(player.getLocation().getDirection().multiply(2.0).setY(1.0));
-            player.playSound(player.getLocation(), Sound.valueOf(config.getString("LAUNCH_PAD.SOUND")), 2.0f, 2.0f);
+            player.playSound(player.getLocation(), XSound.matchXSound(Sound.valueOf(config.getString("LAUNCH_PAD.SOUND"))).parseSound(), 2.0f, 2.0f);
         }
     }
 }

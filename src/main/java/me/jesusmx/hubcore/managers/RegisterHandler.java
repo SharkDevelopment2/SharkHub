@@ -7,7 +7,6 @@ import lombok.Getter;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.providers.ScoreboardProvider;
 import me.jesusmx.hubcore.providers.TablistProvider;
-import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 

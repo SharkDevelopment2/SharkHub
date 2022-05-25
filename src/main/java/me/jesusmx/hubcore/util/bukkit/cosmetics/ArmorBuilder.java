@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.util.bukkit.cosmetics;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.types.armor.button.ArmorButton;
 import me.jesusmx.hubcore.util.CC;
@@ -26,7 +27,7 @@ public class ArmorBuilder {
     public ArmorBuilder(ArmorButton button, String part) {
         this.button = button;
         this.part = part;
-        this.stack = new ItemStack(Material.valueOf("LEATHER_" + part.toUpperCase(Locale.ROOT)));
+        this.stack = new ItemStack(XMaterial.matchXMaterial(Material.valueOf("LEATHER_" + part.toUpperCase(Locale.ROOT))).parseMaterial());
         this.meta = (LeatherArmorMeta) this.stack.getItemMeta();
         if(isPresent(part)) {
             meta.setColor(getColor());

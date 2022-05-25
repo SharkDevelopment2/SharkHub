@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.cosmetics.types.gadgets.button;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.types.gadgets.menu.GadgetsMenu;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
@@ -22,7 +23,7 @@ public class GadgetsMenuButton extends Button {
     @Override
     public ItemStack getItem(Player player) {
         String s = "cosmetics.gadgets.";
-        return new ItemBuilder(Material.valueOf(config.getString(s + "item")))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(s + "item"))).parseMaterial())
                 .name(config.getString(s + "name"))
                 .lore(config.getStringList( s + "lore"))
                 .data(config.getInt(s + "data"))

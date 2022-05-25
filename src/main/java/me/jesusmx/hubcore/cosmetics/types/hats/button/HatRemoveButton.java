@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.cosmetics.types.hats.button;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
@@ -32,7 +33,7 @@ public class HatRemoveButton extends Button {
        /* if(player.hasMetadata("HAT")) {
             //String hat = player.getMetadata("HAT").get(0).asString();
         */
-        return new ItemBuilder(Material.valueOf(config.getString("menu.remove_hat.item")))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("menu.remove_hat.item"))).parseMaterial())
                 .name(config.getString("menu.remove_hat.name"))
                 .lore(config.getStringList("menu.remove_hat.lore"))
                 .data(config.getInt("menu.remove_hat.data"))

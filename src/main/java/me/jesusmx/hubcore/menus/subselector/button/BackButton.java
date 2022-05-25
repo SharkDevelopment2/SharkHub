@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.menus.subselector.button;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.menus.server.ServerSelectorMenu;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
@@ -21,7 +22,7 @@ public class BackButton extends Button {
 
     @Override
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString("SUB_SELECTOR.BACK_BUTTON.ITEM")))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("SUB_SELECTOR.BACK_BUTTON.ITEM"))).parseMaterial())
                 .name(config.getString("SUB_SELECTOR.BACK_BUTTON.NAME"))
                 .lore(config.getStringList("SUB_SELECTOR.BACK_BUTTON.LORE"))
                 .data(config.getInt("SUB_SELECTOR.BACK_BUTTON.DATA"))

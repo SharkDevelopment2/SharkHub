@@ -1,6 +1,5 @@
 package me.jesusmx.hubcore.listeners;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;

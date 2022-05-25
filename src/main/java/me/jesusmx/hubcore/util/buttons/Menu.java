@@ -1,10 +1,10 @@
 package me.jesusmx.hubcore.util.buttons;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.Getter;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -103,7 +103,7 @@ public abstract class Menu {
     }
 
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).data(3)
+        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).data(3)
                 .build();
     }
 

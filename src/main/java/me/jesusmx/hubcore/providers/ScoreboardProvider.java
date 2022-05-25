@@ -1,10 +1,10 @@
 package me.jesusmx.hubcore.providers;
 
+import io.github.thatkawaiisam.assemble.AssembleAdapter;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import me.jesusmx.hubcore.util.CC;
-import io.github.thatkawaiisam.assemble.AssembleAdapter;
 import me.jesusmx.hubcore.util.ServerUtil;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.entity.Player;

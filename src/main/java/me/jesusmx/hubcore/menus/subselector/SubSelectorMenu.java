@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.menus.subselector;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.AllArgsConstructor;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.menus.subselector.button.BackButton;
@@ -53,6 +54,6 @@ public class SubSelectorMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

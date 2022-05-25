@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.menus.hub;
 
+import com.cryptomorin.xseries.XMaterial;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.bukkit.ItemBuilder;
@@ -23,7 +24,7 @@ public class HubButton extends Button {
 
 
     public ItemStack getItem(Player player) {
-        return new ItemBuilder(Material.valueOf(config.getString(getSection("ITEM"))))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getSection("ITEM")))).parseMaterial())
                 .name(PlaceholderAPI.setPlaceholders(player, config.getString(getSection("NAME"))))
                 .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getSection("LORE"))))
                 .data(config.getInt(getSection("DATA")))

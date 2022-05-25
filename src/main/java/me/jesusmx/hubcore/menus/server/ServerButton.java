@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.menus.server;
 
+import com.cryptomorin.xseries.XMaterial;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
@@ -23,7 +24,7 @@ public class ServerButton extends Button {
     @Override
     public ItemStack getItem(Player player) {
         if (config.getBoolean(getConfigSection("HEAD.ENABLE"))) {
-            ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+            ItemStack item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
             SkullMeta skull = (SkullMeta) item.getItemMeta();
             skull.setOwner(config.getString(getConfigSection("HEAD.NAME")));
             skull.setDisplayName(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigSection("NAME"))));
@@ -31,7 +32,7 @@ public class ServerButton extends Button {
             item.setItemMeta(skull);
             return item;
         } else {
-            return new ItemBuilder(Material.valueOf(config.getString(getConfigSection("ITEM"))))
+            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigSection("ITEM")))).parseMaterial())
                     .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigSection("NAME"))))
                     .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigSection("LORE"))))
                     .data(config.getInt(getConfigSection("DATA")))

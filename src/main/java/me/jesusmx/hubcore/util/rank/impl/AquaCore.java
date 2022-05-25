@@ -1,9 +1,9 @@
 package me.jesusmx.hubcore.util.rank.impl;
 
-import me.jesusmx.hubcore.util.rank.Rank;
 import me.activated.core.api.player.GlobalPlayer;
 import me.activated.core.api.player.PlayerData;
 import me.activated.core.plugin.AquaCoreAPI;
+import me.jesusmx.hubcore.util.rank.Rank;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;

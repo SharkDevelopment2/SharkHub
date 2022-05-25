@@ -1,9 +1,8 @@
 package io.github.thatkawaiisam.assemble;
 
+import lombok.Setter;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
-
-import lombok.Setter;
 
 public class AssembleBoardEntry {
 

@@ -1,11 +1,13 @@
 package me.jesusmx.hubcore.listeners;
 
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.XParticle;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Effect;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -32,7 +34,7 @@ public class DoubleJumpListener implements Listener {
         Player player = event.getPlayer();
         if(PvPModeHandler.isOnPvPMode(player)) return;
         if(player.getGameMode() == GameMode.CREATIVE) return;
-        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() != Material.AIR) {
+        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() != XMaterial.AIR.parseMaterial()) {
             player.setAllowFlight(true);
         }
     }
@@ -64,7 +66,7 @@ public class DoubleJumpListener implements Listener {
             player.getWorld().spigot().playEffect(player.getLocation(), Effect.valueOf(config.getString("DOUBLE_JUMP.PARTICLE.VALUE").toUpperCase()), 26, 0, 0.2F, 0.5F, 0.2F, 0.2F, 12, 387);
         }
         if (config.getBoolean("DOUBLE_JUMP.SOUND.ENABLE")) {
-            player.playSound(player.getLocation(), Sound.valueOf(config.getString("DOUBLE_JUMP.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
+            player.playSound(player.getLocation(), XSound.matchXSound(Sound.valueOf(config.getString("DOUBLE_JUMP.SOUND.VALUE").toUpperCase())).parseSound(), 1.0F, 1.0F);
         }
     }
 }
