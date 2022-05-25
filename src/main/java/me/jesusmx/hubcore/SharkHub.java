@@ -27,6 +27,7 @@ import me.jesusmx.hubcore.pvpmode.PvPModeListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
 import me.jesusmx.hubcore.util.bukkit.api.command.Command;
+import me.jesusmx.hubcore.util.buttons.MenuListener;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import me.jesusmx.hubcore.util.rank.RankManager;
 import org.bukkit.Bukkit;
@@ -157,5 +158,6 @@ public class SharkHub extends JavaPlugin {
         new LunarNameTagsListener();
         new DeveloperListener();
         new MarketListener();
+        new MenuListener();
     }
 }

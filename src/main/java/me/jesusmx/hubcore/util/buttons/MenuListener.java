@@ -1,5 +1,7 @@
 package me.jesusmx.hubcore.util.buttons;
 
+import me.jesusmx.hubcore.SharkHub;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,6 +14,10 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.Map;
 
 public class MenuListener implements Listener {
+
+    public MenuListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(InventoryClickEvent event) {
