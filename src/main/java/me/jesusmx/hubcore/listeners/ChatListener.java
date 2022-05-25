@@ -36,9 +36,9 @@ public class ChatListener implements Listener {
             String path = config.getString("CHAT_FORMAT.NORMAL.MESSAGE");
             String playerName = player.getName();
             String prefix = SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId());
-            String replace = path.replaceAll("%PLAYER%", playerName).replaceAll("%RANK%", prefix).replace("%MESSAGE%", event.getMessage());
 
-            event.setMessage(player.hasPermission("chub.vip") ? CC.translate(event.getMessage()) : event.getMessage());
+            event.setMessage(player.hasPermission("sharkhub.vip") || player.isOp() ? CC.translate(event.getMessage()) : event.getMessage());
+            String replace = path.replaceAll("%PLAYER%", playerName).replaceAll("%RANK%", prefix).replace("%MESSAGE%", event.getMessage());
 
             if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
                 if (event.getFormat().contains("%LUNAR%") && isLunarClient(player)) {
