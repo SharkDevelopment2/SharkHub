@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Material;
 
 import java.util.List;
 
