@@ -1,19 +1,19 @@
-lunar-nametags:
-  enabled: false
+LUNAR_NAMETAGS:
+  ENABLE: false
   staff:
-    permission: "tags.staff"
-    show:
+    PERMISSION: "tags.staff"
+    DISPLAY:
       - "&9[Staff]"
       - "%player-name%"
   test1:
-    permission: "tags.test1"
-    show:
+    PERMISSION: "tags.test1"
+    DISPLAY:
       - "%player-name%"
   test2:
-    permission: "tags.test2"
-    show:
+    PERMISSION: "tags.test2"
+    DISPLAY:
       - "%player-name%"
   test3:
-    permission: "tags.test3"
-    show:
+    PERMISSION: "tags.test3"
+    DISPLAY:
       - "%player-name%"
