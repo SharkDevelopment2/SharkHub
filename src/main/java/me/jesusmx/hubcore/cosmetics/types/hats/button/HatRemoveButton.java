@@ -24,7 +24,7 @@ public class HatRemoveButton extends Button {
             player.updateInventory();
             player.removeMetadata("HAT", SharkHub.getInstance());
             player.closeInventory();
-            player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.UN_EQUIPPED").replace("%HAT_REMOVE%", hat)));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.UN_EQUIPPED").replace("%hat_remove%", hat)));
         }
     }
 

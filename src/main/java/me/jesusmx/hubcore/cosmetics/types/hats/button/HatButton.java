@@ -25,7 +25,7 @@ public class HatButton extends Button {
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(!player.hasPermission("hats." + hatName)) {
-            player.sendMessage(CC.translate(messages.getString("cosmetics.hats.no-permission")));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.NO_PERMISSION")));
             return;
         }
         String path = "HATS_MENU.HATS." + hatName + ".";
@@ -44,7 +44,7 @@ public class HatButton extends Button {
         player.getInventory().setHelmet(item);
         player.updateInventory();
         player.setMetadata("HAT", new FixedMetadataValue(SharkHub.getInstance(), hatName));
-        player.sendMessage(CC.translate(messages.getString("cosmetics.hats.equipped").replace("%hat%", hatName)));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.EQUIPPED").replace("%hat%", hatName)));
     }
 
     @Override
