@@ -13,6 +13,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
@@ -20,7 +21,26 @@ public class DoubleJumpListener implements Listener {
 
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 
-    private void normalDoubleJump(PlayerToggleFlightEvent event) {
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        if (SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) {
+            event.getPlayer().setAllowFlight(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerDoubleJump(PlayerToggleFlightEvent event) {
+        Player player = event.getPlayer();
+        if (PvPModeHandler.isOnPvPMode(player)) return;
+        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR || player.isFlying()) return;
+
+        if (SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) {
+            event.setCancelled(true);
+            playEffectSound(player);
+        }
+    }
+
+/*    private void normalDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         event.setCancelled(true);
         player.setAllowFlight(false);
@@ -60,8 +80,10 @@ public class DoubleJumpListener implements Listener {
         playEffectSound(player);
     }
 
+ */
+
     private void playEffectSound(Player player) {
-        player.setVelocity(player.getLocation().getDirection().multiply(config.getDouble("DOUBLE_JUMP.velocity")).setY(1));
+        player.setVelocity(player.getLocation().getDirection().multiply(config.getDouble("DOUBLE_JUMP.VELOCITY")).setY(1));
         if (!config.getBoolean("DOUBLE_JUMP.PARTICLE.ENABLE")) {
             player.getWorld().spigot().playEffect(player.getLocation(), Effect.valueOf(config.getString("DOUBLE_JUMP.PARTICLE.VALUE").toUpperCase()), 26, 0, 0.2F, 0.5F, 0.2F, 0.2F, 12, 387);
         }
