@@ -13,44 +13,59 @@ import java.util.Arrays;
 public class SharkCommand extends Command {
 
     public SharkCommand() {
-        super("SharkCommand");
-        this.setAliases(Arrays.asList("sharkhub", "hubcore", "hub", "shark", "hubcore"));
+        super("sharkhub");
         this.setUsage(CC.translate("&cUsage: /sharkhub reload"));
     }
 
-    public boolean execute(CommandSender commandSender, String s, String[] strings) {
-        if (commandSender.hasPermission("hubcore.command.reload"))
-            if (strings.length == 0) {
-                getUsage();
-            } else if(strings.length == 1) {
-                if(strings[0].equalsIgnoreCase("reload")) {
-                    SharkHub.getInstance().getMainConfig().reload();
+    public boolean execute(CommandSender sender, String string, String[] args) {
+        if (args.length == 0) {
+            sender.sendMessage(CC.translate(""));
+            sender.sendMessage(CC.translate("&b&lSharkHub &7- &f2.0"));
+            sender.sendMessage(CC.translate(""));
+            sender.sendMessage(CC.translate("/sharkhub reload"));
+            sender.sendMessage(CC.translate("/sharkhub version"));
+            sender.sendMessage(CC.translate(""));
+            return false;
+        }
 
-                    SharkHub.getInstance().getSelectorConfig().reload();
-                    SharkHub.getInstance().getSubselectorConfig().reload();
-                    SharkHub.getInstance().getHubselectorConfig().reload();
+        if (args[0].equalsIgnoreCase("version")) {
+            sender.sendMessage("&bSharkHub");
+            sender.sendMessage("");
+            sender.sendMessage("Version: " + SharkHub.getInstance().getDescription().getVersion());
+            sender.sendMessage("Author: " + SharkHub.getInstance().getDescription().getAuthors());
+            sender.sendMessage("");
+            return false;
+        }
 
-                    SharkHub.getInstance().getQueueConfig().reload();
-                    SharkHub.getInstance().getScoreboardConfig().reload();
-                    SharkHub.getInstance().getTablistConfig().reload();
-                    SharkHub.getInstance().getPvpmodeConfig().reload();
-                    SharkHub.getInstance().getMessagesConfig().reload();
-                    SharkHub.getInstance().getHcfConfig().reload();
+        if (args[0].equalsIgnoreCase("reload")) {
+            if (sender.hasPermission("sharkhub.reload")) {
+                SharkHub.getInstance().getMainConfig().reload();
 
-                    SharkHub.getInstance().getCosmeticsConfig().reload();
-                    SharkHub.getInstance().getArmorsConfig().reload();
-                    SharkHub.getInstance().getHatsConfig().reload();
-                    SharkHub.getInstance().getGadgetsConfig().reload();
-                    //SharkHub.getInstance().getParticlesConfig().reload();
+                SharkHub.getInstance().getSelectorConfig().reload();
+                SharkHub.getInstance().getSubselectorConfig().reload();
+                SharkHub.getInstance().getHubselectorConfig().reload();
 
-                    SharkHub.getInstance().getHotbarManager().load();
-                    for (Player online : Bukkit.getOnlinePlayers()) {
-                        HotbarManager.setHotbarItems(online);
-                    }
+                SharkHub.getInstance().getQueueConfig().reload();
+                SharkHub.getInstance().getScoreboardConfig().reload();
+                SharkHub.getInstance().getTablistConfig().reload();
+                SharkHub.getInstance().getPvpmodeConfig().reload();
+                SharkHub.getInstance().getMessagesConfig().reload();
+                SharkHub.getInstance().getHcfConfig().reload();
 
-                    commandSender.sendMessage(CC.translate("&aSuccessfully all SharkHub files reloaded!"));
+                SharkHub.getInstance().getCosmeticsConfig().reload();
+                SharkHub.getInstance().getArmorsConfig().reload();
+                SharkHub.getInstance().getHatsConfig().reload();
+                SharkHub.getInstance().getGadgetsConfig().reload();
+                //SharkHub.getInstance().getParticlesConfig().reload();
+
+                SharkHub.getInstance().getHotbarManager().load();
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    HotbarManager.setHotbarItems(online);
                 }
+
+                sender.sendMessage(CC.translate("&aSuccessfully all SharkHub files reloaded!"));
             }
+        }
         return true;
     }
 }
