@@ -38,22 +38,49 @@ public class ServerUtil {
     }
 
     public static String replaceText(Player player, String str) {
+        String replace = str;
         if (queues.getSystem().isInQueue(player)) {
-            return str
-                    .replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
-                    .replace("%rank_color%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
-                    .replace("%prefix%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
-                    .replace("%sufixx%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
-                    .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
-                    .replace("%player%", player.getName())
-                    .replace("%hour%", getHour())
-                    .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
-                    .replace("%date%", getDate())
+            replace = replace
                     .replace("%queue_server%", queues.getSystem().getServer(player))
                     .replace("%queue_position%", String.valueOf(queues.getSystem().getPosition(player)))
                     .replace("%queue_size%", String.valueOf(queues.getSystem().getSize(player)));
         }
-        return str
+
+        if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
+            if (!Hooker.getVerified().isEmpty()) {
+                for (String sk : Hooker.getVerified()) {
+                    String path = "HCF_HOOKER.SERVERS." + sk;
+                    String host = hcfConfig.getString(path + ".HOST");
+                    int port = hcfConfig.getInt(path + ".PORT");
+                    try {
+                        Socket socket = new Socket(host, port);
+                        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+                        DataInputStream dis = new DataInputStream(socket.getInputStream());
+                        dos.writeUTF(sk + Splitters.REQUEST + player.getUniqueId());
+                        dos.flush();
+                        String response = dis.readUTF();
+                        String[] rs = response.split(Splitters.REQUEST);
+                        dos.close();
+                        dis.close();
+                        socket.close();
+                        replace = replace.replace("%" + sk + "_lives%", rs[1]);
+                        replace = replace.replace("%" + sk + "_deathban%", rs[2]);
+                    } catch (IOException e) {
+                        Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "The connection with the hook " + sk + " has been lost");
+                        Hooker.getVerified().remove(sk);
+                        Hooker.getUnverified().add(sk);
+                        replace = replace.replace("%" + sk + "_lives%", "0");
+                        replace = replace.replace("%" + sk + "_deathban%", "Loading");
+                    }
+                }
+            }
+            for (String sk : Hooker.getUnverified()) {
+                replace = replace.replace("%" + sk + "_lives%", "0");
+                replace = replace.replace("%" + sk + "_deathban%", "Loading");
+            }
+        }
+
+        replace = replace
                 .replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
                 .replace("%rank_color%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
                 .replace("%prefix%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
@@ -63,6 +90,8 @@ public class ServerUtil {
                 .replace("%hour%", getHour())
                 .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
                 .replace("%date%", getDate());
+
+        return replace;
     }
 
 }

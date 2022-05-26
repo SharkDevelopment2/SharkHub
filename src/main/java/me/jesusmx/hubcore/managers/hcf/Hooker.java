@@ -28,8 +28,6 @@ public class Hooker {
 
     public Hooker() {
         try {
-            if (config.getBoolean("HCF_HOOKER.ENABLE")) return;
-
             unverified.addAll(config.getConfiguration().getConfigurationSection("HCF_HOOKER.SERVERS").getKeys(false));
             port = config.getInt("HCF_HOOKER.HUB_PORT");
             server = new ServerSocket(port);
@@ -62,7 +60,7 @@ public class Hooker {
             new HookReceiverThread().start();
             Bukkit.getScheduler().runTaskLaterAsynchronously(SharkHub.getInstance(), () -> Bukkit.getConsoleSender().sendMessage(CC.translate(" &7• &fHCF-Hooks: &aVerified " + verified.size() + " hooks, You have " + ChatColor.GREEN + unverified.size() + " &aunverified hooks!")), 2L);
         } catch (IOException e) {
-            Bukkit.getConsoleSender().sendMessage(" &7• &fHCF-Hooks: &cError initializing the hooker");
+            Bukkit.getConsoleSender().sendMessage(CC.translate(" &7• &fHCF-Hooks: &cError initializing the hooker"));
             if(config.getBoolean("HCF_HOOKER.DEBUG_MODE")) e.printStackTrace();
         }
     }

@@ -1,6 +1,7 @@
 SYSTEM:
   LICENSE: ""
   CUSTOM_QUEUE: false
+  HCF_HOOKER: false
 
 JOIN_PLAYER:
 

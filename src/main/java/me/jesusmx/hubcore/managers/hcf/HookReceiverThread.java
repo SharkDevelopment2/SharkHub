@@ -42,7 +42,7 @@ public class HookReceiverThread extends Thread {
                 socket.close();
             } catch (IOException e) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "Error Receiving a hooker request!");
-                if(config.getBoolean("hcf-hook.debug-mode")) e.printStackTrace();
+                if(config.getBoolean("HCF_HOOKER.DEBUG_MODE")) e.printStackTrace();
             }
         }
     }

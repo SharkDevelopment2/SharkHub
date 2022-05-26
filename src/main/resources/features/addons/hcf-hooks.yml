@@ -1,5 +1,4 @@
 HCF_HOOKER:
-  ENABLE: false
   HUB_PORT: 4025
   DEBUG_MODE: false
   SERVERS:
