@@ -1,8 +1,24 @@
 SYSTEM:
   LICENSE: ""
   CUSTOM_QUEUE: false
+  HCF_HOOKER: false
 
 JOIN_PLAYER:
+
+  ACTION_BAR:
+    ENABLE: false
+    MESSAGE: "welcome %player%"
+    DURATION: 2.0
+
+  TITLES:
+    ENABLE: false
+    TITLE: "Welcome %player%"
+    SUBTITLE: "to server.com"
+
+    FADEIN: 10
+    STAY: 10
+    FADEOUT: 10
+
   MESSAGE:
     ENABLE: true
     LINES:
