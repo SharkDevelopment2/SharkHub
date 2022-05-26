@@ -1,6 +1,6 @@
 name: SharkHub
 version: 2.0
-main: me.jesusmx.hubcore.SharkHub
+main: es.hulk.hub.SharkHub
 author: ElTitoHulk
 
 depend: ["PlaceholderAPI"]
