@@ -56,14 +56,12 @@ public class PvPModeHandler {
         HotbarManager.setHotbarItems(player);
 
         if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
-            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
-            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
-            return;
+            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
+            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
         }
 
-        player.setWalkSpeed(0.2F);
+        player.setAllowFlight(true);
         player.updateInventory();
-        //Teleport to spawn when disabled
         SharkHub.getInstance().getSpawnManager().sendToSpawn(player);
         player.sendMessage(CC.translate(messages.getString("PVP_MODE.DISABLED")));
     }

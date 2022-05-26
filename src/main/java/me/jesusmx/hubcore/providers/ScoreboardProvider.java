@@ -34,8 +34,8 @@ public class ScoreboardProvider implements AssembleAdapter {
         if (PvPModeHandler.isOnPvPMode(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
                 toReturn.add(ServerUtil.replaceText(player, str
-                        .replace("%KILLS%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0)))
-                        .replace("%DURATION%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
+                        .replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0)))
+                        .replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
             }
         } else {
             if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
