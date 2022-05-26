@@ -1,5 +1,6 @@
 package me.jesusmx.hubcore.listeners;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.util.CC;
@@ -33,23 +34,24 @@ public class JoinListener implements Listener {
         player.setAllowFlight(true);
 
         if (config.getBoolean("JOIN_PLAYER.MESSAGE.ENABLE")) {
-            for (String str : config.getStringList("JOIN_MESSAGE.MESSAGE.LINES")) {
-                ServerUtil.replaceText(player, CC.translate(player, player, str, true));
+            for (String str : config.getStringList("JOIN_PLAYER.MESSAGE.LINES")) {
+                player.sendMessage(ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str));
             }
         }
 
         if (config.getBoolean("JOIN_PLAYER.SOUND.ENABLE")) player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_PLAYER.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
 
         if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
-            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
-            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_MESSAGE.SPEED.VALUE")));
+            player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
+            player.setFlySpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
         }
 
 
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
-                String path = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, player, path, true)));
+                String str = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
+                for (Player online : Bukkit.getOnlinePlayers())
+                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
             }
         }
     }
@@ -61,8 +63,9 @@ public class JoinListener implements Listener {
 
         if (config.getBoolean("VIP_MESSAGE.LEAVE.ENABLE")) {
             if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") != null) {
-                String path = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
-                Bukkit.broadcastMessage(ServerUtil.replaceText(player, CC.translate(player, player, path, true)));
+                String str = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
+                for (Player online : Bukkit.getOnlinePlayers())
+                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
             }
         }
     }

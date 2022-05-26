@@ -13,6 +13,7 @@ import me.jesusmx.hubcore.commands.others.SkullCommand;
 import me.jesusmx.hubcore.commands.spawn.SetSpawnCommand;
 import me.jesusmx.hubcore.commands.spawn.SpawnCommand;
 import me.jesusmx.hubcore.cosmetics.base.command.CosmeticsCommand;
+import me.jesusmx.hubcore.cosmetics.types.gadgets.listener.GadgetsListener;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.listeners.*;
 import me.jesusmx.hubcore.listeners.dev.DeveloperListener;
@@ -27,14 +28,13 @@ import me.jesusmx.hubcore.pvpmode.PvPModeListener;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
 import me.jesusmx.hubcore.util.bukkit.api.command.Command;
+import me.jesusmx.hubcore.util.buttons.MenuListener;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import me.jesusmx.hubcore.util.rank.RankManager;
 import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Getter
 public class SharkHub extends JavaPlugin {
@@ -73,10 +73,23 @@ public class SharkHub extends JavaPlugin {
             isPlaceholderAPI = true;
         }
 
-        hotbarManager.load();
         rankManager.loadRank();
-        RegisterHandler.init();
         queueManager.load();
+
+        CC.sendConsole("&7&m-----------------------------------------------------");
+        CC.sendConsole("");
+        CC.sendConsole("&bShark Development");
+        CC.sendConsole(" &bPlugin&7: &aSharkHub");
+        CC.sendConsole(" &bVersion&7: &a" + this.getDescription().getVersion());
+        CC.sendConsole(" &bAuthor&7: &aElTitoHulk");
+        CC.sendConsole(" ");
+        CC.sendConsole(" &bRank System&7: &a" + rankManager.getRankSystem());
+        CC.sendConsole(" &bQueue System&7: &a" + queueManager.getQueue());
+        CC.sendConsole("");
+        hotbarManager.load();
+        RegisterHandler.init();
+        CC.sendConsole("");
+        CC.sendConsole("&7&m-----------------------------------------------------");
 
         this.loadCommands();
         this.loadListeners();
@@ -114,7 +127,7 @@ public class SharkHub extends JavaPlugin {
         this.hatsConfig = new ConfigFile(this, "features/cosmetics/hats");
         this.armorsConfig = new ConfigFile(this, "features/cosmetics/armors");
         this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
-        this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
+        //this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
 
         this.spawnConfig = new ConfigFile(this, "data/spawn-location");
     }
@@ -147,23 +160,19 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void loadListeners() {
-        List<Listener> listeners = Arrays.asList(
-                new ChatListener(),
-                new DoubleJumpListener(),
-                new HubExclusive(),
-                new JoinListener(),
-                new LaunchPadListener(),
-                new MovePlayerListener(),
-                new ProtectionListener(),
-                new WorldListener(),
-                new PvPModeListener(),
-                new LunarNameTagsListener(),
-                new DeveloperListener(),
-                new MarketListener()
-        );
-
-        for (Listener listener : listeners) {
-            Bukkit.getPluginManager().registerEvents(listener, this);
-        }
+        new ChatListener();
+        new DoubleJumpListener();
+        new HubExclusive();
+        new JoinListener();
+        new LaunchPadListener();
+        new MovePlayerListener();
+        new ProtectionListener();
+        new WorldListener();
+        new PvPModeListener();
+        new LunarNameTagsListener();
+        new DeveloperListener();
+        new MarketListener();
+        new MenuListener();
+        new GadgetsListener();
     }
 }

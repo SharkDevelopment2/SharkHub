@@ -4,6 +4,7 @@ import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.menus.hub.HubSelectorMenu;
+import me.jesusmx.hubcore.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,12 @@ public class HubSelectorListener implements Listener {
     public void onHubSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Hotbar hubSelector = HotbarManager.getItemByAction("OPEN_HUB_SELECTOR");
-        assert hubSelector != null;
+
+        if (hubSelector == null) {
+            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_HUB_SELECTOR'");
+            return;
+        }
+
         ItemStack item = HotbarManager.getHotbarItemStack(hubSelector);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

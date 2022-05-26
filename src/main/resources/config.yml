@@ -23,6 +23,7 @@ JOIN_PLAYER:
   SPEED:
     ENABLE: true
     VALUE: 0.4
+
 VIP_MESSAGE:
   JOIN:
     ENABLE: true

@@ -27,7 +27,7 @@ public class ArmorBuilder {
     public ArmorBuilder(ArmorButton button, String part) {
         this.button = button;
         this.part = part;
-        this.stack = new ItemStack(XMaterial.matchXMaterial(Material.valueOf("LEATHER_" + part.toUpperCase(Locale.ROOT))).parseMaterial());
+        this.stack = new ItemStack(XMaterial.matchXMaterial(Material.valueOf("LEATHER_" + part)).parseMaterial());
         this.meta = (LeatherArmorMeta) this.stack.getItemMeta();
         if(isPresent(part)) {
             meta.setColor(getColor());

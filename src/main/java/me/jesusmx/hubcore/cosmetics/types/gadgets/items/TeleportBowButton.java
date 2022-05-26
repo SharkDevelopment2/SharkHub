@@ -18,19 +18,19 @@ public class TeleportBowButton extends Button {
     @Override
     public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(!player.hasPermission("gadget.teleport-bow")) {
-            player.sendMessage(CC.translate(messages.getString("cosmetics.gadgets.no-permission")));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.NO_PERMISSION")));
             return;
         }
         player.getInventory().addItem(getItem(player));
         player.getInventory().addItem(new ItemStack(XMaterial.ARROW.parseMaterial(), 64));
-        player.sendMessage(CC.translate(messages.getString("cosmetics.gadgets.equipped").replace("%gadget%", config.getString("menu.bow.name"))));
+        player.sendMessage(CC.translate(messages.getString("COSMETICS.GADGETS.EQUIPPED").replace("%gadget%", config.getString("GADGETS_MENU.TELEPORT_BOW.NAME"))));
     }
 
     @Override
     public ItemStack getItem(Player player) {
         return new ItemBuilder(XMaterial.BOW.parseMaterial())
-                .name(config.getString("menu.bow.name"))
-                .lore(config.getStringList("menu.bow.lore"))
+                .name(config.getString("GADGETS_MENU.TELEPORT_BOW.NAME"))
+                .lore(config.getStringList("GADGETS_MENU.TELEPORT_BOW.LORE"))
                 .build();
     }
 }

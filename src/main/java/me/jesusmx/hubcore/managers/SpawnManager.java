@@ -49,7 +49,7 @@ public class SpawnManager {
 
     public void sendToSpawn(Player player) {
         if (this.getLocation() == null) {
-            player.sendMessage(CC.translate(lang.getString("SPAWN.NOT_FOUND")));
+            player.sendMessage(CC.translate(lang.getString("SPAWN_NOT_FOUND")));
             return;
         }
         player.teleport(this.getLocation());

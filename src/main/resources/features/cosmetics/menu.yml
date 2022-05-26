@@ -1,39 +1,39 @@
-cosmetics:
-  title: "&7Cosmetics"
-  rows: 1
+COSMETICS_MENU:
+  TITLE: "&7Cosmetics"
+  SIZE: 1
 
-  refill-glass:
-    enabled: true
-    data: 15
+  REFILL_GLASS:
+    ENABLE: true
+    GLASS_DATA: 15
 
-  armor:
-    name: "&bArmors"
-    item: "LEATHER_CHESTPLATE"
-    data: 0
-    slot: 1
-    lore:
+  ARMOR:
+    NAME: "&bArmors"
+    ITEM: "LEATHER_CHESTPLATE"
+    DATA: 0
+    SLOT: 1
+    LORE:
       - "&7Right click to select"
       - "&7your favorite armor!"
       - ""
       - "&aClick to view armors"
 
-  hats:
-    name: "&bHats"
-    item: "DIAMOND_HELMET"
-    data: 0
-    slot: 4
-    lore:
+  HATS:
+    NAME: "&bHats"
+    ITEM: "DIAMOND_HELMET"
+    DATA: 0
+    SLOT: 4
+    LORE:
       - "&7Right click to select"
       - "&7your favorite hat!"
       - ""
       - "&aClick to view hats"
 
-  gadgets:
-    name: "&bGadgets"
-    item: "NETHER_STAR"
-    data: 0
-    slot: 7
-    lore:
+  GADGETS:
+    NAME: "&bGadgets"
+    ITEM: "NETHER_STAR"
+    DATA: 0
+    SLOT: 7
+    LORE:
       - "&7Right click to select"
       - "&7your favorite gadgets!"
       - ""

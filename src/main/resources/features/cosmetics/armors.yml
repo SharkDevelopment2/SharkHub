@@ -1,74 +1,81 @@
-menu:
-  title: "&7Armors"
-  rows: 4
-  refill-glass:
-    enabled: true
-    data: 15
-  remove_armor:
-    slot: 35
-    name: "&cClick to remove armor"
-    item: "REDSTONE"
-    data: 0
-    lore:
+ARMORS_MENU:
+  TITLE: "&7Armors"
+  SIZE: 4
+
+  REFILL_GLASS:
+    ENABLE: true
+    DATA: 15
+
+  REMOVE_ARMOR:
+    SLOT: 35
+    NAME: "&cClick to remove armor"
+    ITEM: "REDSTONE"
+    DATA: 0
+    LORE:
       - "&7Right Click to remove armor"
-  armors:
+
+  ARMORS:
     Owner:
-      permission: "sharkhub.armor.owner"
-      slot: 1
-      name: "&4Owner Armor"
-      icon:
-        color:
-          r: 170
-          g: 0
-          b: 0
-        name: "&4Owner Armor"
-        lore:
-          with_permissions:
+      PERMISSION: "sharkhub.armor.owner"
+      SLOT: 1
+      NAME: "&4Owner Armor"
+      ICON:
+        COLOR:
+          R: 170
+          G: 0
+          B: 0
+
+        NAME: "&4Owner Armor"
+        LORE:
+          WITH_PERMISSION:
             - "&aRight click to equip"
-          without_permissions:
+          WITHOUT_PERMISSION:
             - "&cYou no have permissions to use this!"
-      color:
-        r: 170
-        g: 0
-        b: 0
+
+      COLOR:
+        R: 170
+        G: 0
+        B: 0
     Co-Owner:
-      permission: "sharkhub.armor.co-owner"
-      slot: 2
-      name: "&4Co-Owner Armor"
-      icon:
-        color:
-          r: 170
-          g: 0
-          b: 0
-        name: "&4Co-Owner Armor"
-        lore:
-          with_permissions:
+      PERMISSION: "sharkhub.armor.co-owner"
+      SLOT: 2
+      NAME: "&4Co-Owner Armor"
+      ICON:
+        COLOR:
+          R: 170
+          G: 0
+          B: 0
+
+        NAME: "&4Co-Owner Armor"
+        LORE:
+          WITH_PERMISSION:
             - "&aRight click to equip"
-          without_permissions:
+          WITHOUT_PERMISSION:
             - "&cYou no have permissions to use this!"
-      color:
-        r: 170
-        g: 0
-        b: 0
+
+      COLOR:
+        R: 170
+        G: 0
+        B: 0
     Developer:
-      permission: "sharkhub.armor.developer"
-      slot: 2
-      name: "&9Developer Armor"
-      icon:
-        color:
-          r: 0
-          g: 0
-          b: 170
-        name: "&9Developer Armor"
-        lore:
-          with_permissions:
+      PERMISSION: "sharkhub.armor.developer"
+      SLOT: 2
+      NAME: "&9Developer Armor"
+      ICON:
+        COLOR:
+          R: 0
+          G: 0
+          B: 170
+        NAME: "&9Developer Armor"
+        LORE:
+          WITH_PERMISSION:
             - "&aRight click to equip"
-          without_permissions:
+          WITHOUT_PERMISSION:
             - "&cYou no have permissions to use this!"
-      color:
-        r: 0
-        g: 0
-        b: 170
+      COLOR:
+        R: 0
+        G: 0
+        B: 170
 
 
 

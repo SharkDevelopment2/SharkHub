@@ -4,6 +4,7 @@ import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.menus.server.ServerSelectorMenu;
+import me.jesusmx.hubcore.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,12 @@ public class ServerSelectorListener implements Listener {
     public void onServerSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Hotbar serverSelector = HotbarManager.getItemByAction("OPEN_SERVER_SELECTOR");
-        assert serverSelector != null;
+
+        if (serverSelector == null) {
+            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_SERVER_SELECTOR'");
+            return;
+        }
+
         ItemStack item = HotbarManager.getHotbarItemStack(serverSelector);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

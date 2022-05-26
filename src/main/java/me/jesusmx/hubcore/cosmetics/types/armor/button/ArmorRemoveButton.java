@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class ArmorRemoveButton extends Button {
 
-    private final ConfigFile config = SharkHub.getInstance().getHatsConfig();
+    private final ConfigFile config = SharkHub.getInstance().getArmorsConfig();
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @Override
@@ -23,19 +23,16 @@ public class ArmorRemoveButton extends Button {
             player.getInventory().setArmorContents(null);
             player.removeMetadata("ARMOR", SharkHub.getInstance());
             player.closeInventory();
-            player.sendMessage(CC.translate(messages.getString("cosmetics.armor.un-equipped").replace("%armor-remove%", s)));
+            player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.UN_EQUIPPED").replace("%armor_remove%", s)));
         }
     }
 
     @Override
     public ItemStack getItem(Player player) {
-       /* if(player.hasMetadata("HAT")) {
-            //String hat = player.getMetadata("HAT").get(0).asString();
-        */
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("menu.remove_hat.item"))).parseMaterial())
-                .name(config.getString("menu.remove_hat.name"))
-                .lore(config.getStringList("menu.remove_hat.lore"))
-                .data(config.getInt("menu.remove_hat.data"))
+        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("ARMORS_MENU.REMOVE_ARMOR.ITEM"))).parseMaterial())
+                .name(config.getString("ARMORS_MENU.REMOVE_ARMOR.NAME"))
+                .lore(config.getStringList("ARMORS_MENU.REMOVE_ARMOR.LORE"))
+                .data(config.getInt("ARMORS_MENU.REMOVE_ARMOR.DATA"))
                 .build();
     }
 }

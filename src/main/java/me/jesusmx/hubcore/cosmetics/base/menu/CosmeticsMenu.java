@@ -22,30 +22,30 @@ public class CosmeticsMenu extends Menu {
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("cosmetics.title"));
+        return CC.translate(config.getString("COSMETICS_MENU.TITLE"));
     }
 
     @Override
     public int size() {
-        return config.getInt("cosmetics.rows") * 9;
+        return config.getInt("COSMETICS_MENU.SIZE") * 9;
     }
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        buttons.put(config.getInt("cosmetics.hats.slot"), new HatMenuButton());
-        buttons.put(config.getInt("cosmetics.armor.slot"), new ArmorMenuButton());
-        buttons.put(config.getInt("cosmetics.gadgets.slot"), new GadgetsMenuButton());
+        buttons.put(config.getInt("COSMETICS_MENU.HATS.SLOT"), new HatMenuButton());
+        buttons.put(config.getInt("COSMETICS_MENU.ARMOR.SLOT"), new ArmorMenuButton());
+        buttons.put(config.getInt("COSMETICS_MENU.GADGETS.SLOT"), new GadgetsMenuButton());
         return buttons;
     }
 
     @Override
     public boolean usePlaceholder() {
-        return config.getBoolean("cosmetics.refill-glass.enabled");
+        return config.getBoolean("COSMETICS_MENU.REFILL_GLASS.ENABLE");
     }
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("cosmetics.refill-glass.data")).build();
+        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("COSMETICS_MENU.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

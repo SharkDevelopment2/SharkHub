@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.hotbar.listeners;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
+import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -25,7 +26,12 @@ public class EnderButtListener implements Listener {
     public void onEnderButtInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Hotbar enderButt = HotbarManager.getItemByAction("ENDER_BUTT");
-        assert enderButt != null;
+
+        if (enderButt == null) {
+            CC.sendConsole("&cCould not find hotbar item with action 'ENDER_BUTT'");
+            return;
+        }
+
         ItemStack item = HotbarManager.getHotbarItemStack(enderButt);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

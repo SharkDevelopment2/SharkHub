@@ -3,6 +3,7 @@ package me.jesusmx.hubcore.listeners.dev;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.util.CC;
 import me.jesusmx.hubcore.util.bukkit.SharkLicenses;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -10,6 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class DeveloperListener implements Listener {
+
+    public DeveloperListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     @EventHandler
     public void Developer(PlayerJoinEvent event) {

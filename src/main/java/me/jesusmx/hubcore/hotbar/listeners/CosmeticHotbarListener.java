@@ -4,6 +4,7 @@ import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.cosmetics.base.menu.CosmeticsMenu;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
+import me.jesusmx.hubcore.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,8 +22,13 @@ public class CosmeticHotbarListener implements Listener {
     @EventHandler
     public void onHubSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        Hotbar cosmetic = HotbarManager.getItemByAction("OPEN_COSMETIC_MENU");
-        assert cosmetic != null;
+        Hotbar cosmetic = HotbarManager.getItemByAction("OPEN_COSMETICS_MENU");
+
+        if (cosmetic == null) {
+            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_COSMETICS_MENU'");
+            return;
+        }
+
         ItemStack item = HotbarManager.getHotbarItemStack(cosmetic);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

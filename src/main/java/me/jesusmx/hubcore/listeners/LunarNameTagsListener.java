@@ -16,6 +16,10 @@ import java.util.List;
 
 public class LunarNameTagsListener implements Listener {
 
+    public LunarNameTagsListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
+
     private final ConfigFile config = SharkHub.getInstance().getNametagsConfig();
 
     @EventHandler

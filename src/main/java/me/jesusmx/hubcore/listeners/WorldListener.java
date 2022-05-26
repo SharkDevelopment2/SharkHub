@@ -1,6 +1,8 @@
 package me.jesusmx.hubcore.listeners;
 
+import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +18,10 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
 public class WorldListener implements Listener {
+
+    public WorldListener() {
+        Bukkit.getPluginManager().registerEvents(this, SharkHub.getInstance());
+    }
 
     @EventHandler
     private void onCreatureSpawn(CreatureSpawnEvent event) {

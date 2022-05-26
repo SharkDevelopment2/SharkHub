@@ -14,6 +14,7 @@
 
 TABLIST:
   ENABLE: true
+  PING: 0
 
   HEADER:
     - ''
@@ -85,14 +86,14 @@ TABLIST:
         TEXT: '&bDiscord'
         HEAD: '%DISCORD%'
       '20':
-        TEXT: '&f%DISCORD%'
+        TEXT: '&fdiscord.sharkdevelopment.org'
         HEAD: ''
     MIDDLE:
       '1':
         TEXT: ''
         HEAD: ''
       '2':
-        TEXT: '&b&lOptimal Services'
+        TEXT: '&b&lShark Development'
         HEAD: '%EARTH%'
       '3':
         TEXT: '&fOnline&7: &f%bungee_total%/%SLOTS%'
@@ -146,7 +147,7 @@ TABLIST:
         TEXT: '&bWebstore'
         HEAD: '%STORE%'
       '20':
-        TEXT: '&f%STORE%'
+        TEXT: '&fstore.sharkdevelopment.org'
         HEAD: ''
     RIGHT:
       '1':
@@ -168,7 +169,7 @@ TABLIST:
         TEXT: '&bInfo'
         HEAD: '%INFORMATION%'
       '7':
-        TEXT: '&bPing&7: &7%PING%'
+        TEXT: '&bPing&7: &7%player_ping%ms'
         HEAD: ''
       '8':
         TEXT: ''
@@ -207,7 +208,7 @@ TABLIST:
         TEXT: '&bTwitter'
         HEAD: '%TWITTER%'
       '20':
-        TEXT: '&f%TWITTER%'
+        TEXT: 'twitter.com/infinityhvlk'
         HEAD: ''
     FAR_RIGHT:
       '1':
@@ -268,5 +269,5 @@ TABLIST:
         TEXT: '&bWebsite'
         HEAD: '%WEBSITE%'
       '20':
-        TEXT: '&f%WEBSITE%'
+        TEXT: '&fwww.github.com/miquelangelamengual'
         HEAD: ''

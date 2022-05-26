@@ -4,6 +4,7 @@ import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.Hotbar;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
 import me.jesusmx.hubcore.pvpmode.PvPModeHandler;
+import me.jesusmx.hubcore.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,12 @@ public class PvPModeHotbarListener implements Listener {
     public void onHubSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Hotbar pvpMode = HotbarManager.getItemByAction("JOIN_PVP_MODE");
-        assert pvpMode != null;
+
+        if (pvpMode == null) {
+            CC.sendConsole("&cCould not find hotbar item with action 'JOIN_PVP_MODE'");
+            return;
+        }
+
         ItemStack item = HotbarManager.getHotbarItemStack(pvpMode);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
