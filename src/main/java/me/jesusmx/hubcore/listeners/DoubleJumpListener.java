@@ -40,48 +40,6 @@ public class DoubleJumpListener implements Listener {
         }
     }
 
-/*    private void normalDoubleJump(PlayerToggleFlightEvent event) {
-        Player player = event.getPlayer();
-        event.setCancelled(true);
-        player.setAllowFlight(false);
-        player.setFlying(false);
-        playEffectSound(player);
-    }
-
-    @EventHandler
-    public void normalDoubleJumpMoveEvent(PlayerMoveEvent event) {
-
-        Player player = event.getPlayer();
-        if(PvPModeHandler.isOnPvPMode(player)) return;
-        if(player.getGameMode() == GameMode.CREATIVE) return;
-        if (player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() != XMaterial.AIR.parseMaterial()) {
-            player.setAllowFlight(true);
-        }
-    }
-
-    @EventHandler
-    public void doubleJumpSelection(PlayerToggleFlightEvent event) {
-        Player player = event.getPlayer();
-        if(PvPModeHandler.isOnPvPMode(player)) return;
-        if(player.getGameMode() == GameMode.CREATIVE) return;
-
-        switch(config.getString("DOUBLE_JUMP.MODE")) {
-            case "INFINITE":
-                infiniteDoubleJump(event);
-            case "NORMAL":
-                normalDoubleJump(event);
-        }
-    }
-
-    public void infiniteDoubleJump(PlayerToggleFlightEvent event) {
-        Player player = event.getPlayer();
-        event.setCancelled(true);
-        player.setFlying(false);
-        playEffectSound(player);
-    }
-
- */
-
     private void playEffectSound(Player player) {
         player.setVelocity(player.getLocation().getDirection().multiply(config.getDouble("DOUBLE_JUMP.VELOCITY")).setY(1));
         if (!config.getBoolean("DOUBLE_JUMP.PARTICLE.ENABLE")) {
