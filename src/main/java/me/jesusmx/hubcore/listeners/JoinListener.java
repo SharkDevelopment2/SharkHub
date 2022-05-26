@@ -1,5 +1,7 @@
 package me.jesusmx.hubcore.listeners;
 
+import com.cryptomorin.xseries.messages.ActionBar;
+import com.cryptomorin.xseries.messages.Titles;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.jesusmx.hubcore.SharkHub;
 import me.jesusmx.hubcore.hotbar.HotbarManager;
@@ -44,6 +46,25 @@ public class JoinListener implements Listener {
         if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
             player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
             player.setFlySpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
+        }
+
+        if (config.getBoolean("JOIN_PLAYER.ACTION_BAR.ENABLE")) {
+            ActionBar.sendActionBar(SharkHub.getInstance(),
+                    player,
+                    ServerUtil.replaceText(player, CC.translate(player, config.getString("JOIN_PLAYER.ACTION_BAR.MESSAGE"), true)),
+                    (long) config.getDouble("JOIN_PLAYER.ACTION_BAR.DURATION"));
+        }
+
+        if (config.getBoolean("JOIN_PLAYER.TITLES.ENABLE")) {
+            String path = "JOIN_PLAYER.TITLES.";
+            String title = config.getString(path + ".TITLE");
+            String subTitle = config.getString(path + ".SUBTITLE");
+
+            int fadeIn = config.getInt(path + "FADEIN");
+            int stay = config.getInt(path + "STAY");
+            int fadeOut = config.getInt(path + "FADEOUT");
+
+            Titles.sendTitle(player, fadeIn, stay, fadeOut, title, subTitle);
         }
 
 
