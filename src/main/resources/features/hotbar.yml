@@ -1,3 +1,17 @@
+# AVAILABLE ACTIOONS:
+#
+# [PLAYER] command --> player executes an specified command
+# [CONSOLE] command --> console executes an specified command
+# [MESSAGE] message --> sends a message to the player
+#
+# OPEN_SERVER_SELECTOR --> opens the server selector
+# OPEN_HUB_SELECTOR --> opens the hub selector
+# VISIBILITY_TOGGLE_ON --> toggles the visibility on
+# VISIBILITY_TOGGLE_OFF --> toggles the visibility off
+# ENDER_BUTT --> for the ender butt
+# OPEN_COSMETICS_MENU --> opens the cosmetics menu
+# JOIN_PVP_MODE --> joins the pvp mode
+#
 HOTBAR:
   SERVER_SELECTOR:
     ENABLE: true
