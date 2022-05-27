@@ -18,20 +18,20 @@ public class SharkCommand extends Command {
     public boolean execute(CommandSender sender, String string, String[] args) {
         if (args.length == 0) {
             sender.sendMessage(CC.translate(""));
-            sender.sendMessage(CC.translate("&b&lSharkHub &7- &f2.0"));
+            sender.sendMessage(CC.translate("&bSharkHub &7- &f2.0"));
             sender.sendMessage(CC.translate(""));
-            sender.sendMessage(CC.translate("/sharkhub reload"));
-            sender.sendMessage(CC.translate("/sharkhub version"));
+            sender.sendMessage(CC.translate("&7/sharkhub reload"));
+            sender.sendMessage(CC.translate("&7/sharkhub version"));
             sender.sendMessage(CC.translate(""));
             return false;
         }
 
         if (args[0].equalsIgnoreCase("version")) {
-            sender.sendMessage("&bSharkHub");
-            sender.sendMessage("");
-            sender.sendMessage("Version: " + SharkHub.getInstance().getDescription().getVersion());
-            sender.sendMessage("Author: " + SharkHub.getInstance().getDescription().getAuthors());
-            sender.sendMessage("");
+            sender.sendMessage(CC.translate("&bSharkHub"));
+            sender.sendMessage(CC.translate(""));
+            sender.sendMessage(CC.translate("&eVersion&7: &a" + SharkHub.getInstance().getDescription().getVersion()));
+            sender.sendMessage(CC.translate("&eAuthor&7: &a" + SharkHub.getInstance().getDescription().getAuthors()));
+            sender.sendMessage(CC.translate(""));
             return false;
         }
 

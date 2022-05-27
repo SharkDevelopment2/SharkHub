@@ -4,8 +4,8 @@ import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
-import es.hulk.hub.util.buttons.Menu;
+import es.hulk.hub.util.menu.Button;
+import es.hulk.hub.util.menu.Menu;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -23,7 +23,7 @@ public class HubSelectorMenu extends Menu {
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return config.getInt("HUB_SELECTOR.SIZE") * 9;
     }
 

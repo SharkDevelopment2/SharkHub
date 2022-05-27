@@ -1,11 +1,11 @@
 package es.hulk.hub.cosmetics.types.hats.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.util.menu.Button;
 import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,7 +23,7 @@ public class HatButton extends Button {
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(!player.hasPermission("hats." + hatName)) {
             player.sendMessage(CC.translate(messages.getString("COSMETICS.HATS.NO_PERMISSION")));
             return;
@@ -37,7 +37,7 @@ public class HatButton extends Button {
             skull.setDisplayName(CC.translate(config.getString(path + "NAME")));
             item.setItemMeta(skull);
         } else {
-            item = getItem(player);
+            item = getButtonItem(player);
             ItemMeta meta = item.getItemMeta();
             item.setItemMeta(meta);
         }
@@ -48,7 +48,7 @@ public class HatButton extends Button {
     }
 
     @Override
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         String path = "HATS_MENU.HATS." + hatName + ".";
         //System.out.println(path);
         if(config.getBoolean(path + "SKULL.ENABLE")) {

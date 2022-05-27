@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
+import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -21,7 +21,7 @@ public class SubServerButton extends Button {
     private final ConfigFile config = SharkHub.getInstance().getSubselectorConfig();
 
     @Override
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigPath("ITEM")))).parseMaterial())
                 .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
                 .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
@@ -30,7 +30,7 @@ public class SubServerButton extends Button {
     }
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(config.getBoolean("SUB_SELECTOR." + server + ".COMMANDS.ENABLE")) {
             Bukkit.dispatchCommand(player, config.getString("SUB_SELECTOR.ITEMS." + server + ".COMMANDS.COMMAND"));
         } else {

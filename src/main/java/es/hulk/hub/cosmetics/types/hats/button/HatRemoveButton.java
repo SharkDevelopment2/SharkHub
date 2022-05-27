@@ -4,8 +4,8 @@ import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.menu.Button;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -17,7 +17,7 @@ public class HatRemoveButton extends Button {
     private final ConfigFile messages = SharkHub.getInstance().getMessagesConfig();
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(player.hasMetadata("HAT")) {
             String hat = player.getMetadata("HAT").get(0).asString();
             player.getInventory().setHelmet(null);
@@ -29,7 +29,7 @@ public class HatRemoveButton extends Button {
     }
 
     @Override
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("HATS_MENU.REMOVE_HAT.ITEM"))).parseMaterial())
                 .name(config.getString("HATS_MENU.REMOVE_HAT.NAME"))
                 .lore(config.getStringList("HATS_MENU.REMOVE_HAT.LORE"))

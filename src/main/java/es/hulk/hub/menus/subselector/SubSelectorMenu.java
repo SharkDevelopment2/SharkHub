@@ -7,8 +7,8 @@ import es.hulk.hub.menus.subselector.button.BackButton;
 import es.hulk.hub.menus.subselector.button.SubServerButton;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
-import es.hulk.hub.util.buttons.Menu;
+import es.hulk.hub.util.menu.Button;
+import es.hulk.hub.util.menu.Menu;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -28,7 +28,7 @@ public class SubSelectorMenu extends Menu {
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return config.getInt("SUB_SELECTOR.SIZE") * 9;
     }
 
@@ -40,7 +40,7 @@ public class SubSelectorMenu extends Menu {
         }
 
         if (config.getBoolean("SUB_SELECTOR.BACK_BUTTON.ENABLE")) {
-            buttons.put(size() - 1, new BackButton());
+            buttons.put(getSize() - 1, new BackButton());
         }
 
         return buttons;

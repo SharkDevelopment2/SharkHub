@@ -6,7 +6,7 @@ import lombok.Getter;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
+import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
@@ -29,7 +29,7 @@ public class ArmorButton extends Button {
     }
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(!player.hasPermission(config.getString(path + "PERMISSION"))) {
             player.sendMessage(CC.translate(messages.getString("COSMETICS.ARMOR.NO_PERMISSION")));
             return;
@@ -46,7 +46,7 @@ public class ArmorButton extends Button {
     }
 
     @Override
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         ItemBuilder builder = new ItemBuilder(XMaterial.LEATHER_HELMET.parseMaterial())
                 .data(config.getInt(path + "ICON.DATA"))
                 .name(config.getString(path + "ICON.NAME"));

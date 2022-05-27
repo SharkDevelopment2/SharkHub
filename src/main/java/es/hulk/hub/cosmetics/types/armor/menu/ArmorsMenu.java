@@ -5,8 +5,8 @@ import es.hulk.hub.cosmetics.types.armor.button.ArmorButton;
 import es.hulk.hub.cosmetics.types.armor.button.ArmorRemoveButton;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
-import es.hulk.hub.util.buttons.Button;
-import es.hulk.hub.util.buttons.Menu;
+import es.hulk.hub.util.menu.Button;
+import es.hulk.hub.util.menu.Menu;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class ArmorsMenu extends Menu {
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return config.getInt("ARMORS_MENU.SIZE") * 9;
     }
 

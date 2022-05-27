@@ -4,7 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
+import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -21,9 +21,7 @@ public class HubButton extends Button {
     }
 
     @Override
-
-
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getSection("ITEM")))).parseMaterial())
                 .name(PlaceholderAPI.setPlaceholders(player, config.getString(getSection("NAME"))))
                 .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getSection("LORE"))))
@@ -32,7 +30,7 @@ public class HubButton extends Button {
     }
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
     }
 

@@ -6,9 +6,9 @@ import es.hulk.hub.cosmetics.types.hats.button.HatRemoveButton;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
-import es.hulk.hub.util.buttons.Menu;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.menu.Button;
+import es.hulk.hub.util.menu.Menu;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -25,7 +25,7 @@ public class HatsMenu extends Menu {
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return config.getInt("HATS_MENU.SIZE") * 9;
     }
 

@@ -23,13 +23,13 @@ import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.SharkLicenses;
 import es.hulk.hub.util.bukkit.api.command.Command;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.menu.ButtonListener;
 import lombok.Getter;
 import es.hulk.hub.cosmetics.base.command.CosmeticsCommand;
 import es.hulk.hub.cosmetics.types.gadgets.listener.GadgetsListener;
 import es.hulk.hub.listeners.dev.DeveloperListener;
 import es.hulk.hub.listeners.dev.MarketListener;
 import es.hulk.hub.managers.SpawnManager;
-import es.hulk.hub.util.buttons.MenuListener;
 import es.hulk.hub.util.rank.RankManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -172,7 +172,7 @@ public class SharkHub extends JavaPlugin {
         new LunarNameTagsListener();
         new DeveloperListener();
         new MarketListener();
-        new MenuListener();
+        new ButtonListener();
         new GadgetsListener();
     }
 }

@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
-import es.hulk.hub.util.buttons.Button;
+import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,7 +22,7 @@ public class ServerButton extends Button {
     private final ConfigFile config = SharkHub.getInstance().getSelectorConfig();
 
     @Override
-    public ItemStack getItem(Player player) {
+    public ItemStack getButtonItem(Player player) {
         if (config.getBoolean(getConfigSection("HEAD.ENABLE"))) {
             ItemStack item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
             SkullMeta skull = (SkullMeta) item.getItemMeta();
@@ -41,7 +41,7 @@ public class ServerButton extends Button {
     }
 
     @Override
-    public void click(Player player, int slot, ClickType clickType, int hotbarButton) {
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(config.getBoolean("SERVER_SELECTOR.ITEMS." + server + ".SUB_SERVER")) {
             new SubSelectorMenu(server).openMenu(player);
         } else {
