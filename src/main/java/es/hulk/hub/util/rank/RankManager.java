@@ -3,7 +3,6 @@ package es.hulk.hub.util.rank;
 import es.hulk.hub.util.rank.impl.*;
 import lombok.Getter;
 import lombok.Setter;
-import me.jesusmx.hubcore.util.rank.impl.*;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
