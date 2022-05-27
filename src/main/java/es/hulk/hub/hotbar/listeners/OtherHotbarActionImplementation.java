@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class OtherHotbarActionImplementation implements Listener {
 
@@ -21,13 +22,14 @@ public class OtherHotbarActionImplementation implements Listener {
         Player player = event.getPlayer();
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             for (Hotbar hotbar : HotbarManager.getItems()) {
+                ItemStack hotbarItemStack = HotbarManager.getHotbarItemStack(hotbar);
                 for (String action : hotbar.getActions()) {
                     if (action.contains("[PLAYER]")) {
-                        player.performCommand(action.replace("[PLAYER]", ""));
+                        if (hotbarItemStack.equals(player.getItemInHand())) player.performCommand(action.replace("[PLAYER] ", ""));
                     } else if (action.contains("[CONSOLE]")) {
-                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), action.replace("[CONSOLE]", ""));
+                        if (hotbarItemStack.equals(player.getItemInHand())) Bukkit.dispatchCommand(Bukkit.getConsoleSender(), action.replace("[CONSOLE] ", ""));
                     } else if (action.contains("[MESSAGE]")) {
-                        player.sendMessage(action.replace("[MESSAGE]", ""));
+                        if (hotbarItemStack.equals(player.getItemInHand())) player.sendMessage(action.replace("[MESSAGE] ", ""));
                     }
                 }
             }
