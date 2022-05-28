@@ -31,7 +31,7 @@ public class ServerSelectorMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
         for(String str : config.getConfiguration().getConfigurationSection("SERVER_SELECTOR.ITEMS").getKeys(false)) {
-            buttons.put(config.getInt("SERVER_SELECTOR.items." + str + ".SLOT"), new ServerButton(str));
+            buttons.put(config.getInt("SERVER_SELECTOR.ITEMS." + str + ".SLOT"), new ServerButton(str));
         }
         return buttons;
     }
