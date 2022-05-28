@@ -29,6 +29,7 @@ public class SetSpawnCommand extends Command {
 
       } else {
          SharkHub.getInstance().getSpawnManager().setLocation(player.getLocation());
+         SharkHub.getInstance().getSpawnManager().saveLocation();
          player.sendMessage(CC.translate("&aSuccessfully set the spawn point."));
       }
       return false;
