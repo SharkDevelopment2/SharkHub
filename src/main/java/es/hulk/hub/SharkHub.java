@@ -103,6 +103,7 @@ public class SharkHub extends JavaPlugin {
     public void onDisable() {
         RegisterHandler.getTablist().disable();
         RegisterHandler.getAssemble().getBoards().clear();
+        spawnManager.saveLocation();
     }
 
     private void loadConfigs() {
