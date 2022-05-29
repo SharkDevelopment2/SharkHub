@@ -38,14 +38,14 @@ public class VisibilityToggleListener implements Listener {
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             if (player.getItemInHand().isSimilar(showItem)) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
-                    player.showPlayer(online);
+                    player.hidePlayer(online);
                 }
 
                 player.sendMessage(CC.translate(messages.getString("PLAYER_VISIBILITY.SHOW")));
                 player.setItemInHand(hideItem);
             } else if (player.getItemInHand().isSimilar(hideItem)) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
-                    player.hidePlayer(online);
+                    player.showPlayer(online);
                 }
 
                 player.sendMessage(CC.translate(messages.getString("PLAYER_VISIBILITY.HIDE")));
