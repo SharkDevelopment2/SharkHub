@@ -1,6 +1,7 @@
 package es.hulk.hub.cosmetics.types.hats.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.menu.Button;
 import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
@@ -31,7 +32,11 @@ public class HatButton extends Button {
         String path = "HATS_MENU.HATS." + hatName + ".";
         ItemStack item;
         if(config.getBoolean(path + "SKULL.ENABLE")) {
-            item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
+            if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+                item = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+            } else {
+                item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
+            }
             SkullMeta skull = (SkullMeta) item.getItemMeta();
             skull.setOwner(config.getString(path + "SKULL.OWNER"));
             skull.setDisplayName(CC.translate(config.getString(path + "NAME")));
@@ -50,9 +55,13 @@ public class HatButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         String path = "HATS_MENU.HATS." + hatName + ".";
-        //System.out.println(path);
         if(config.getBoolean(path + "SKULL.ENABLE")) {
-            ItemStack item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), 1, (short) 3);
+            ItemStack item;
+            if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+                item = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+            } else {
+                item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
+            }
             SkullMeta skull = (SkullMeta) item.getItemMeta();
             skull.setOwner(config.getString(path + "SKULL.OWNER"));
             skull.setDisplayName(CC.translate(config.getString(path + "NAME")));
@@ -60,6 +69,13 @@ public class HatButton extends Button {
             item.setItemMeta(skull);
             return item;
         } else {
+            if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+                return new ItemBuilder(Material.valueOf(config.getString(path + "ITEM")))
+                        .name(config.getString(path + "NAME"))
+                        .lore(config.getStringList(path + "LORE"))
+                        .data(config.getInt(path + "DATA"))
+                        .build();
+            }
             return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "ITEM"))).parseMaterial())
                     .name(config.getString(path + "NAME"))
                     .lore(config.getStringList(path + "LORE"))
