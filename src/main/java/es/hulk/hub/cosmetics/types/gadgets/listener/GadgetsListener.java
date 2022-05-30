@@ -3,8 +3,10 @@ package es.hulk.hub.cosmetics.types.gadgets.listener;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.util.ServerUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
@@ -35,7 +37,11 @@ public class GadgetsListener implements Listener {
     public void onSnowballUse(PlayerInteractEvent event) {
         if(event.getAction() != Action.RIGHT_CLICK_AIR) return;
         Player player = event.getPlayer();
-        if(player.getItemInHand().getType() != XMaterial.SNOWBALL.parseMaterial()) return;
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            if (player.getItemInHand().getType() != Material.SNOW_BALL) return;
+        } else {
+            if (player.getItemInHand().getType() != XMaterial.SNOWBALL.parseMaterial()) return;
+        }
         event.setCancelled(true);
         player.launchProjectile(Snowball.class).setVelocity(player.getLocation().getDirection().multiply(1.5));
     }

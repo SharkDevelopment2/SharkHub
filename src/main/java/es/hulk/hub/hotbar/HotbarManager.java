@@ -1,12 +1,13 @@
 package es.hulk.hub.hotbar;
 
 import com.cryptomorin.xseries.XMaterial;
-import es.hulk.hub.hotbar.listeners.*;
-import lombok.Getter;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.hotbar.listeners.*;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -39,7 +40,7 @@ public class HotbarManager {
         for (String key : section.getKeys(false)) {
             boolean enable = hotbarConfig.getBoolean("HOTBAR." +key + ".ENABLE");
             String displayName = hotbarConfig.getString("HOTBAR." + key + ".DISPLAY_NAME");
-            XMaterial material = XMaterial.matchXMaterial(Material.getMaterial(hotbarConfig.getString("HOTBAR." + key + ".MATERIAL")));
+            Material material = Material.getMaterial(hotbarConfig.getString("HOTBAR." + key + ".MATERIAL"));
             int data = hotbarConfig.getInt("HOTBAR." + key + ".DATA");
             List<String> lore = hotbarConfig.getStringList("HOTBAR." + key + ".LORE");
             int amount = hotbarConfig.getInt("HOTBAR." + key + ".AMOUNT");
@@ -63,12 +64,20 @@ public class HotbarManager {
     }
 
     public static ItemStack getHotbarItemStack(Hotbar hotbar) {
-        return new ItemBuilder(hotbar.getMaterial().parseMaterial())
-                .name(hotbar.getDisplayName())
-                .data(hotbar.getData())
-                .lore(hotbar.getLore())
-                .setAmount(hotbar.getAmount())
-                .build();
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4"))
+            return new ItemBuilder(hotbar.getMaterial())
+                    .name(hotbar.getDisplayName())
+                    .data(hotbar.getData())
+                    .lore(hotbar.getLore())
+                    .setAmount(hotbar.getAmount())
+                    .build();
+        else
+            return new ItemBuilder(XMaterial.matchXMaterial(hotbar.getMaterial()).parseMaterial())
+                    .name(hotbar.getDisplayName())
+                    .data(hotbar.getData())
+                    .lore(hotbar.getLore())
+                    .setAmount(hotbar.getAmount())
+                    .build();
     }
 
     public static void setHotbarItems(Player player) {

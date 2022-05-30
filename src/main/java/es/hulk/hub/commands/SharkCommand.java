@@ -54,8 +54,8 @@ public class SharkCommand extends Command {
                 SharkHub.getInstance().getArmorsConfig().reload();
                 SharkHub.getInstance().getHatsConfig().reload();
                 SharkHub.getInstance().getGadgetsConfig().reload();
-                //SharkHub.getInstance().getParticlesConfig().reload();
 
+                SharkHub.getInstance().getHotbarConfig().reload();
                 SharkHub.getInstance().getHotbarManager().load();
                 for (Player online : Bukkit.getOnlinePlayers()) {
                     HotbarManager.setHotbarItems(online);

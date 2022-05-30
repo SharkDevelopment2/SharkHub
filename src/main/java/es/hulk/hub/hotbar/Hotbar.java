@@ -1,6 +1,5 @@
 package es.hulk.hub.hotbar;
 
-import com.cryptomorin.xseries.XMaterial;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +14,7 @@ public class Hotbar {
     private boolean enabled;
     private String name;
     private String displayName;
-    private XMaterial material;
+    private Material material;
     private int data;
     private List<String> lore;
     private int amount;

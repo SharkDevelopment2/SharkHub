@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.armor.button.ArmorButton;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -26,7 +27,8 @@ public class ArmorBuilder {
     public ArmorBuilder(ArmorButton button, String part) {
         this.button = button;
         this.part = part;
-        this.stack = new ItemStack(XMaterial.matchXMaterial(Material.valueOf("LEATHER_" + part)).parseMaterial());
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) this.stack = new ItemStack(Material.valueOf("LEATHER_" + part));
+        else this.stack = new ItemStack(XMaterial.matchXMaterial(Material.valueOf("LEATHER_" + part)).parseMaterial());
         this.meta = (LeatherArmorMeta) this.stack.getItemMeta();
         if(isPresent(part)) {
             meta.setColor(getColor());
