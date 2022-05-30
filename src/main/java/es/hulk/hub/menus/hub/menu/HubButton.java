@@ -1,4 +1,4 @@
-package es.hulk.hub.menus.hub;
+package es.hulk.hub.menus.hub.menu;
 
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.util.ServerUtil;

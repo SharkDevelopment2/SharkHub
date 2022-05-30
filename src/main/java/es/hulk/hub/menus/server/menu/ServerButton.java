@@ -1,4 +1,4 @@
-package es.hulk.hub.menus.server;
+package es.hulk.hub.menus.server.menu;
 
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.menus.subselector.SubSelectorMenu;

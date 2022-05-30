@@ -3,7 +3,7 @@ package es.hulk.hub.hotbar.listeners;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.Hotbar;
 import es.hulk.hub.hotbar.HotbarManager;
-import es.hulk.hub.menus.server.ServerSelectorMenu;
+import es.hulk.hub.menus.server.menu.ServerSelectorMenu;
 import es.hulk.hub.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

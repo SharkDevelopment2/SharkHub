@@ -1,7 +1,7 @@
 package es.hulk.hub.menus.subselector.button;
 
 import com.cryptomorin.xseries.XMaterial;
-import es.hulk.hub.menus.server.ServerSelectorMenu;
+import es.hulk.hub.menus.server.menu.ServerSelectorMenu;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
