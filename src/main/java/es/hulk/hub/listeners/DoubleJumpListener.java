@@ -33,7 +33,7 @@ public class DoubleJumpListener implements Listener {
     public void onPlayerDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         if (PvPModeHandler.isOnPvPMode(player)) return;
-        if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR || player.isFlying()) return;
+        if (player.getGameMode() == GameMode.CREATIVE || player.isFlying()) return;
 
         if (SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) {
             event.setCancelled(true);
