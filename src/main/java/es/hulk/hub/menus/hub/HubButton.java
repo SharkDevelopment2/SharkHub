@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.hub;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.util.ServerUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
@@ -22,6 +23,13 @@ public class HubButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            return new ItemBuilder(Material.valueOf(config.getString(getSection("ITEM"))))
+                    .name(PlaceholderAPI.setPlaceholders(player, config.getString(getSection("NAME"))))
+                    .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getSection("LORE"))))
+                    .data(config.getInt(getSection("DATA")))
+                    .build();
+        }
         return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getSection("ITEM")))).parseMaterial())
                 .name(PlaceholderAPI.setPlaceholders(player, config.getString(getSection("NAME"))))
                 .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getSection("LORE"))))

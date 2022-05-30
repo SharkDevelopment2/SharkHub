@@ -25,6 +25,7 @@ import es.hulk.hub.managers.queue.custom.QueueHandler;
 import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.pvpmode.PvPModeListener;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.SharkLicenses;
 import es.hulk.hub.util.bukkit.api.command.Command;
 import es.hulk.hub.util.files.ConfigFile;
@@ -85,7 +86,7 @@ public class SharkHub extends JavaPlugin {
         CC.sendConsole(" ");
         CC.sendConsole(" &bRank System&7: &a" + rankManager.getRankSystem());
         CC.sendConsole(" &bQueue System&7: &a" + queueManager.getQueue());
-        CC.sendConsole("");
+        CC.sendConsole(" &bServer Version&7: &a" + ServerUtil.getServerVersion());
         hotbarManager.load();
         RegisterHandler.init();
         CC.sendConsole("");

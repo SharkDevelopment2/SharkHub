@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.subselector.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.util.ServerUtil;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
@@ -22,11 +23,19 @@ public class SubServerButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigPath("ITEM")))).parseMaterial())
-                .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
-                .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
-                .data(config.getInt(getConfigPath("DATA")))
-                .build();
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            return new ItemBuilder(Material.valueOf(config.getString(getConfigPath("ITEM"))))
+                    .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
+                    .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
+                    .data(config.getInt(getConfigPath("DATA")))
+                    .build();
+        } else {
+            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigPath("ITEM")))).parseMaterial())
+                    .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigPath("NAME"))))
+                    .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigPath("LORE"))))
+                    .data(config.getInt(getConfigPath("DATA")))
+                    .build();
+        }
     }
 
     @Override
