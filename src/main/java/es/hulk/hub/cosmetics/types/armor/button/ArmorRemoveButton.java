@@ -3,6 +3,7 @@ package es.hulk.hub.cosmetics.types.armor.button;
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
@@ -29,10 +30,18 @@ public class ArmorRemoveButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("ARMORS_MENU.REMOVE_ARMOR.ITEM"))).parseMaterial())
-                .name(config.getString("ARMORS_MENU.REMOVE_ARMOR.NAME"))
-                .lore(config.getStringList("ARMORS_MENU.REMOVE_ARMOR.LORE"))
-                .data(config.getInt("ARMORS_MENU.REMOVE_ARMOR.DATA"))
-                .build();
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            return new ItemBuilder(Material.valueOf(config.getString("ARMORS_MENU.REMOVE_ARMOR.ITEM")))
+                    .name(config.getString("ARMORS_MENU.REMOVE_ARMOR.NAME"))
+                    .lore(config.getStringList("ARMORS_MENU.REMOVE_ARMOR.LORE"))
+                    .data(config.getInt("ARMORS_MENU.REMOVE_ARMOR.DATA"))
+                    .build();
+        } else {
+            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("ARMORS_MENU.REMOVE_ARMOR.ITEM"))).parseMaterial())
+                    .name(config.getString("ARMORS_MENU.REMOVE_ARMOR.NAME"))
+                    .lore(config.getStringList("ARMORS_MENU.REMOVE_ARMOR.LORE"))
+                    .data(config.getInt("ARMORS_MENU.REMOVE_ARMOR.DATA"))
+                    .build();
+        }
     }
 }

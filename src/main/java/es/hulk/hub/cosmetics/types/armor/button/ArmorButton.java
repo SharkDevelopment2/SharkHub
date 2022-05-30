@@ -1,6 +1,7 @@
 package es.hulk.hub.cosmetics.types.armor.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.cosmetics.ArmorBuilder;
 import lombok.Getter;
 import es.hulk.hub.SharkHub;
@@ -9,6 +10,7 @@ import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Color;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
@@ -47,9 +49,16 @@ public class ArmorButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        ItemBuilder builder = new ItemBuilder(XMaterial.LEATHER_HELMET.parseMaterial())
-                .data(config.getInt(path + "ICON.DATA"))
-                .name(config.getString(path + "ICON.NAME"));
+        ItemBuilder builder;
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            builder = new ItemBuilder(Material.LEATHER_HELMET)
+                    .data(config.getInt(path + "ICON.DATA"))
+                    .name(config.getString(path + "ICON.NAME"));
+        } else {
+            builder = new ItemBuilder(XMaterial.LEATHER_HELMET.parseMaterial())
+                    .data(config.getInt(path + "ICON.DATA"))
+                    .name(config.getString(path + "ICON.NAME"));
+        }
         if(player.hasPermission(config.getString(path + "PERMISSION"))) {
             builder.lore(config.getStringList(path + "ICON.LORE.WITH_PERMISSION"));
         } else {

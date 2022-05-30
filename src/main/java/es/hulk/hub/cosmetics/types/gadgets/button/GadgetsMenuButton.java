@@ -3,6 +3,7 @@ package es.hulk.hub.cosmetics.types.gadgets.button;
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.gadgets.menu.GadgetsMenu;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
@@ -23,10 +24,18 @@ public class GadgetsMenuButton extends Button {
     @Override
     public ItemStack getButtonItem(Player player) {
         String path = "COSMETICS_MENU.GADGETS.";
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "ITEM"))).parseMaterial())
-                .name(config.getString(path + "NAME"))
-                .lore(config.getStringList( path + "LORE"))
-                .data(config.getInt(path + "DATA"))
-                .build();
+        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            return new ItemBuilder(Material.valueOf(config.getString(path + "ITEM")))
+                    .name(config.getString(path + "NAME"))
+                    .lore(config.getStringList(path + "LORE"))
+                    .data(config.getInt(path + "DATA"))
+                    .build();
+        } else {
+            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(path + "ITEM"))).parseMaterial())
+                    .name(config.getString(path + "NAME"))
+                    .lore(config.getStringList(path + "LORE"))
+                    .data(config.getInt(path + "DATA"))
+                    .build();
+        }
     }
 }
