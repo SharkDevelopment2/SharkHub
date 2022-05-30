@@ -6,8 +6,10 @@ import es.hulk.hub.managers.hcf.Hooker;
 import es.hulk.hub.managers.hcf.Splitters;
 import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import java.io.DataInputStream;
@@ -23,9 +25,10 @@ public class ServerUtil {
     private static final QueueManager queues = SharkHub.getInstance().getQueueManager();
     private static final ConfigFile config = SharkHub.getInstance().getMainConfig();
     private static final ConfigFile hcfConfig = SharkHub.getInstance().getHcfConfig();
-
     private static final SimpleDateFormat timeDate = new SimpleDateFormat(config.getString("TIME.DATE"));
     private static final SimpleDateFormat timeHour = new SimpleDateFormat(config.getString("TIME.HOUR"));
+
+    @Getter private static final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
     public static String getDate() {
         timeDate.setTimeZone(TimeZone.getTimeZone(config.getString("TIME.ZONE")));
