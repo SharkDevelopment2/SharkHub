@@ -21,6 +21,13 @@ public class RegisterHandler {
         optimizeWorld();
     }
 
+    public static void reloadProviders() {
+        tablist.disable();
+        assemble.getBoards().clear();
+
+        init();
+    }
+
     public static void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
             tablist = new Omega(SharkHub.getInstance(), new TablistProvider());
