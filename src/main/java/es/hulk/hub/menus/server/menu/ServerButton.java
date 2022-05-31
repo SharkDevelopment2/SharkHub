@@ -3,6 +3,7 @@ package es.hulk.hub.menus.server.menu;
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.menus.server.Server;
+import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.menus.subselector.SubSelectorMenu;
 import es.hulk.hub.util.ServerUtil;
 import lombok.RequiredArgsConstructor;
@@ -25,39 +26,13 @@ public class ServerButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        if (server.isHeadEnabled()) {
-            ItemStack item;
-            if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
-                item = new ItemStack(Material.SKULL_ITEM, (short) 3);
-            } else {
-                item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
-            }
-            SkullMeta skull = (SkullMeta) item.getItemMeta();
-            skull.setOwner(server.getHeadName());
-            skull.setDisplayName(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()));
-            skull.setLore(PlaceholderAPI.setPlaceholders(player, server.getLore()));
-            item.setItemMeta(skull);
-            return item;
-
-        } if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
-            return new ItemBuilder(server.getMaterial())
-                    .name(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()))
-                    .lore(PlaceholderAPI.setPlaceholders(player, server.getLore()))
-                    .data(server.getData())
-                    .build();
-        } else {
-            return new ItemBuilder(XMaterial.matchXMaterial(server.getMaterial()).parseMaterial())
-                    .name(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()))
-                    .lore(PlaceholderAPI.setPlaceholders(player, server.getLore()))
-                    .data(server.getData())
-                    .build();
-        }
+        return ServerManager.getItemStackFromServer(player, server);
     }
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
         if(server.isSubServer()) {
-            new SubSelectorMenu(server).openMenu(player);
+            new SubSelectorMenu(server.getName()).openMenu(player);
             return;
         }
 

@@ -1,10 +1,19 @@
 package es.hulk.hub.menus.server;
 
+import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ItemMaker;
+import es.hulk.hub.util.ServerUtil;
+import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import lombok.Getter;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +52,8 @@ public class ServerManager {
 
             serverList.add(new Server(name, displayName, material, data, headEnabled, headName, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
         }
+
+        CC.sendConsole("&bLoaded &e" + serverList.size() + " &bServers");
     }
 
     public static Server getServerByServerName(String serverName) {
@@ -52,6 +63,27 @@ public class ServerManager {
             }
         }
         return null;
+    }
+
+    public static ItemStack getItemStackFromServer(Player player, Server server) {
+        if (server.isHeadEnabled()) {
+            ItemStack item;
+            if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+                item = new ItemStack(Material.SKULL_ITEM, (short) 3);
+            } else {
+                item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
+            }
+            SkullMeta skull = (SkullMeta) item.getItemMeta();
+            skull.setOwner(server.getHeadName());
+            skull.setDisplayName(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()));
+            skull.setLore(PlaceholderAPI.setPlaceholders(player, server.getLore()));
+            item.setItemMeta(skull);
+            return item;
+        }
+        return new ItemMaker(server.getMaterial(), server.getAmount(), (short) server.getData())
+                .lore(server.getLore())
+                .displayName(server.getDisplayName())
+                .build();
     }
 
 

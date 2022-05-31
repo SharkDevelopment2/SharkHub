@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 @AllArgsConstructor
 public class SubServerButton extends Button {
 
-    private Server mServer;
+    private String mServer;
     private String server;
     private final ConfigFile config = SharkHub.getInstance().getSubselectorConfig();
 
@@ -49,6 +49,6 @@ public class SubServerButton extends Button {
     }
 
     private String getConfigPath(String a) {
-        return "SUB_SELECTOR." + mServer.getName() + "." + server + "." + a;
+        return "SUB_SELECTOR." + mServer + "." + server + "." + a;
     }
 }

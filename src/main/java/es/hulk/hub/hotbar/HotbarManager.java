@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.listeners.*;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ItemMaker;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
@@ -64,20 +65,10 @@ public class HotbarManager {
     }
 
     public static ItemStack getHotbarItemStack(Hotbar hotbar) {
-        if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4"))
-            return new ItemBuilder(hotbar.getMaterial())
-                    .name(hotbar.getDisplayName())
-                    .data(hotbar.getData())
-                    .lore(hotbar.getLore())
-                    .setAmount(hotbar.getAmount())
-                    .build();
-        else
-            return new ItemBuilder(XMaterial.matchXMaterial(hotbar.getMaterial()).parseMaterial())
-                    .name(hotbar.getDisplayName())
-                    .data(hotbar.getData())
-                    .lore(hotbar.getLore())
-                    .setAmount(hotbar.getAmount())
-                    .build();
+        return new ItemMaker(hotbar.getMaterial(), hotbar.getAmount(), (short) hotbar.getData())
+                .lore(hotbar.getLore())
+                .displayName(hotbar.getDisplayName())
+                .build();
     }
 
     public static void setHotbarItems(Player player) {
