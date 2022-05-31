@@ -47,8 +47,8 @@ public class HubManager {
 
     public static ItemStack getItemStackFromServer(Player player, Hub hub) {
         return new ItemMaker(hub.getMaterial(), 1, (short) hub.getData())
-                .lore(hub.getLore())
-                .displayName(hub.getDisplayName())
+                .lore(SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, hub.getLore()) : hub.getLore())
+                .displayName(SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, hub.getDisplayName()) : hub.getDisplayName())
                 .build();
     }
 

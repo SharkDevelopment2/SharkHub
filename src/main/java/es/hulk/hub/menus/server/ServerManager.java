@@ -72,8 +72,8 @@ public class ServerManager {
             return item;
         }
         return new ItemMaker(server.getMaterial(), server.getAmount(), (short) server.getData())
-                .lore(server.getLore())
-                .displayName(server.getDisplayName())
+                .lore(SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, server.getLore()) : server.getLore())
+                .displayName(SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, server.getDisplayName()) : server.getDisplayName())
                 .build();
     }
 
