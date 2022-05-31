@@ -30,7 +30,7 @@ public class ServerManager {
 
         for (String str : section.getKeys(false)) {
 
-            String name = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str);
+            String name = str;
             String displayName = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".DISPLAY_NAME");
             Material material = Material.getMaterial(serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".MATERIAL"));
             int data = serverConfig.getInt("SERVER_SELECTOR.ITEMS." + str + ".DATA");

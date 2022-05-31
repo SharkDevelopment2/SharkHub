@@ -32,9 +32,11 @@ public class ServerSelectorMenu extends Menu {
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
+
         for (Server server : ServerManager.getServerList()) {
             buttons.put(server.getSlot(), new ServerButton(server));
         }
+
         return buttons;
     }
 

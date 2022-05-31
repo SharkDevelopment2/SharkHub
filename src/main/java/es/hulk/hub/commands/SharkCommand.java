@@ -1,6 +1,7 @@
 package es.hulk.hub.commands;
 
 import es.hulk.hub.hotbar.HotbarManager;
+import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.SharkHub;
 import org.bukkit.Bukkit;
@@ -54,9 +55,11 @@ public class SharkCommand extends Command {
                 SharkHub.getInstance().getArmorsConfig().reload();
                 SharkHub.getInstance().getHatsConfig().reload();
                 SharkHub.getInstance().getGadgetsConfig().reload();
-
                 SharkHub.getInstance().getHotbarConfig().reload();
+
                 SharkHub.getInstance().getHotbarManager().load();
+                ServerManager.load();
+
                 for (Player online : Bukkit.getOnlinePlayers()) {
                     HotbarManager.setHotbarItems(online);
                 }

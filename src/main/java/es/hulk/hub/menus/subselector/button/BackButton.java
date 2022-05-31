@@ -3,6 +3,7 @@ package es.hulk.hub.menus.subselector.button;
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.menus.server.menu.ServerSelectorMenu;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.util.ItemMaker;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
@@ -22,10 +23,9 @@ public class BackButton extends Button {
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString("SUB_SELECTOR.BACK_BUTTON.ITEM"))).parseMaterial())
-                .name(config.getString("SUB_SELECTOR.BACK_BUTTON.NAME"))
+        return new ItemMaker(Material.valueOf(config.getString("SUB_SELECTOR.BACK_BUTTON.ITEM")), 1, (short) config.getInt("SUB_SELECTOR.BACK_BUTTON.DATA"))
+                .displayName(config.getString("SUB_SELECTOR.BACK_BUTTON.NAME"))
                 .lore(config.getStringList("SUB_SELECTOR.BACK_BUTTON.LORE"))
-                .data(config.getInt("SUB_SELECTOR.BACK_BUTTON.DATA"))
                 .build();
     }
 }

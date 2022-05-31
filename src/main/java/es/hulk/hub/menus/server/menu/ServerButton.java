@@ -1,23 +1,16 @@
 package es.hulk.hub.menus.server.menu;
 
-import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.SharkHub;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.menus.subselector.SubSelectorMenu;
-import es.hulk.hub.util.ServerUtil;
-import lombok.RequiredArgsConstructor;
-import me.clip.placeholderapi.PlaceholderAPI;
-import es.hulk.hub.SharkHub;
-import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
-import es.hulk.hub.util.files.ConfigFile;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 @RequiredArgsConstructor
 public class ServerButton extends Button {
