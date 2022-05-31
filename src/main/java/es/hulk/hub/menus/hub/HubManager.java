@@ -32,7 +32,7 @@ public class HubManager {
         for (String hub : section.getKeys(false)) {
 
             String displayName = section.getString(hub + ".DISPLAY_NAME");
-            Material material = Material.getMaterial(section.getString(hub + ".MATERIAL"));
+            Material material = Material.valueOf(section.getString(hub + ".MATERIAL"));
             int data = section.getInt(hub + ".DATA");
             int slot = section.getInt(hub + ".SLOT");
             List<String> lore = section.getStringList(hub + ".LORE");

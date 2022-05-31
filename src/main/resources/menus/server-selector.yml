@@ -25,6 +25,7 @@ SERVER_SELECTOR:
         - "&aClick to open menus"
         - "&7&m-------------------------"
       SUB_SERVER: true
+      AMOUNT: 1
       COMMANDS:
         ENABLE: false
         COMMANDS:
@@ -42,6 +43,7 @@ SERVER_SELECTOR:
       QUEUE: false
       SERVER_NAME: "KitMap"
       SLOT: 13
+      AMOUNT: 1
       LORE:
         - "&7&m-------------------------"
         - "&7A practice version of HCF with"
@@ -71,6 +73,7 @@ SERVER_SELECTOR:
       QUEUE: false
       SERVER_NAME: "KitMap"
       SLOT: 15
+      AMOUNT: 1
       LORE:
         - "&7&m-------------------------"
         - "&7Our original Practice experience"
