@@ -8,8 +8,8 @@ HUB_SELECTOR:
 
   ITEMS:
     Hub-01:
-      NAME: "&b&lHub-01 &7[%pinger_isonline_localhost:25566%&7]"
-      ITEM: "INK_SACK"
+      DISPLAY_NAME: "&b&lHub-01 &7[%pinger_isonline_localhost:25566%&7]"
+      MATERIAL: "INK_SACK"
       DATA: 12
       SLOT: 0
       LORE:
@@ -20,8 +20,8 @@ HUB_SELECTOR:
       SERVER_NAME: "Hub-01"
 
     Hub-02:
-      NAME: "&b&lHub-02 &7[%pinger_isonline_localhost:25567%&7]"
-      ITEM: "INK_SACK"
+      DISPLAY_NAME: "&b&lHub-02 &7[%pinger_isonline_localhost:25567%&7]"
+      MATERIAL: "INK_SACK"
       DATA: 12
       SLOT: 1
       LORE:

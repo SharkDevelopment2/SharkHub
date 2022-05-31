@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.hub.menu;
 
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.menus.hub.Hub;
 import es.hulk.hub.menus.hub.HubManager;
 import es.hulk.hub.util.files.ConfigFile;
@@ -23,6 +24,11 @@ public class HubButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
-        SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, hub.getServerName());
+        if (hub.isQueue()) {
+            SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, hub.getServerName());
+            return;
+        }
+
+        BungeeUtils.sendToServer(player, hub.getServerName());
     }
 }
