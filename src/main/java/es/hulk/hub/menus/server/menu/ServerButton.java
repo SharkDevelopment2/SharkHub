@@ -1,9 +1,11 @@
 package es.hulk.hub.menus.server.menu;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.bungee.BungeeUtils;
+import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.menus.subselector.SubSelectorMenu;
 import es.hulk.hub.util.ServerUtil;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.bukkit.ItemBuilder;
@@ -16,15 +18,14 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ServerButton extends Button {
 
-    private String server;
-    private final ConfigFile config = SharkHub.getInstance().getSelectorConfig();
+    private final Server server;
 
     @Override
     public ItemStack getButtonItem(Player player) {
-        if (config.getBoolean(getConfigSection("HEAD.ENABLE"))) {
+        if (server.isHeadEnabled()) {
             ItemStack item;
             if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
                 item = new ItemStack(Material.SKULL_ITEM, (short) 3);
@@ -32,37 +33,51 @@ public class ServerButton extends Button {
                 item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
             }
             SkullMeta skull = (SkullMeta) item.getItemMeta();
-            skull.setOwner(config.getString(getConfigSection("HEAD.NAME")));
-            skull.setDisplayName(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigSection("NAME"))));
-            skull.setLore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigSection("LORE"))));
+            skull.setOwner(server.getHeadName());
+            skull.setDisplayName(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()));
+            skull.setLore(PlaceholderAPI.setPlaceholders(player, server.getLore()));
             item.setItemMeta(skull);
             return item;
-        } else if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
-            return new ItemBuilder(Material.valueOf(config.getString(getConfigSection("ITEM"))))
-                    .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigSection("NAME"))))
-                    .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigSection("LORE"))))
-                    .data(config.getInt(getConfigSection("DATA")))
+
+        } if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
+            return new ItemBuilder(server.getMaterial())
+                    .name(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()))
+                    .lore(PlaceholderAPI.setPlaceholders(player, server.getLore()))
+                    .data(server.getData())
                     .build();
         } else {
-            return new ItemBuilder(XMaterial.matchXMaterial(Material.valueOf(config.getString(getConfigSection("ITEM")))).parseMaterial())
-                    .name(PlaceholderAPI.setPlaceholders(player, config.getString(getConfigSection("NAME"))))
-                    .lore(PlaceholderAPI.setPlaceholders(player, config.getStringList(getConfigSection("LORE"))))
-                    .data(config.getInt(getConfigSection("DATA")))
+            return new ItemBuilder(XMaterial.matchXMaterial(server.getMaterial()).parseMaterial())
+                    .name(PlaceholderAPI.setPlaceholders(player, server.getDisplayName()))
+                    .lore(PlaceholderAPI.setPlaceholders(player, server.getLore()))
+                    .data(server.getData())
                     .build();
         }
     }
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
-        if(config.getBoolean("SERVER_SELECTOR.ITEMS." + server + ".SUB_SERVER")) {
+        if(server.isSubServer()) {
             new SubSelectorMenu(server).openMenu(player);
-        } else {
-            if(config.getBoolean("SERVER_SELECTOR.ITEMS." + server + ".COMMANDS.ENABLE")) {
-                Bukkit.dispatchCommand(player, config.getString("SERVER_SELECTOR.ITEMS." + server + ".COMMANDS.COMMAND"));
-            } else {
-                SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
-            }
+            return;
         }
+
+        if(server.isCommandsEnabled()) {
+            for (String command : server.getCommands()) {
+                if (command.contains("[PLAYER]")) {
+                    player.performCommand(command.replace("[PLAYER] ", player.getName()));
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                }
+            }
+            return;
+        }
+
+        if (server.isQueue()) {
+            SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server.getServerName());
+            return;
+        }
+
+        BungeeUtils.sendToServer(player, server.getServerName());
     }
 
     private String getConfigSection(String a) {

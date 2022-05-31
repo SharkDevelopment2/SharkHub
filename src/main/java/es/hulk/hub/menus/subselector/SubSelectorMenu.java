@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.subselector;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.menus.server.Server;
 import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.subselector.button.BackButton;
@@ -19,12 +20,12 @@ import java.util.Map;
 @AllArgsConstructor
 public class SubSelectorMenu extends Menu {
 
-    private String server;
+    private Server server;
     private final ConfigFile config = SharkHub.getInstance().getSubselectorConfig();
 
     @Override
     public String getTitle(Player player) {
-        return CC.translate(config.getString("SUB_SELECTOR.TITLE").replace("%SERVER%", server));
+        return CC.translate(config.getString("SUB_SELECTOR.TITLE").replace("%SERVER%", server.getDisplayName()));
     }
 
     @Override

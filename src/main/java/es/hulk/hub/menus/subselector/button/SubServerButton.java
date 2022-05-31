@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.subselector.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.util.ServerUtil;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -17,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
 @AllArgsConstructor
 public class SubServerButton extends Button {
 
-    private String mServer;
+    private Server mServer;
     private String server;
     private final ConfigFile config = SharkHub.getInstance().getSubselectorConfig();
 
@@ -48,6 +49,6 @@ public class SubServerButton extends Button {
     }
 
     private String getConfigPath(String a) {
-        return "SUB_SELECTOR." + mServer + "." + server + "." + a;
+        return "SUB_SELECTOR." + mServer.getName() + "." + server + "." + a;
     }
 }

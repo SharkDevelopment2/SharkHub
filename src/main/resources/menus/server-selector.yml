@@ -8,12 +8,14 @@ SERVER_SELECTOR:
 
   ITEMS:
     HCFactions:
-      NAME: "&b&lHCFactions"
-      ITEM: "FISHING_ROD"
+      DISPLAY_NAME: "&b&lHCFactions"
+      MATERIAL: "FISHING_ROD"
       DATA: 0
       HEAD:
         ENABLE: false
         NAME: ""
+      QUEUE: false
+      SERVER_NAME: "KitMap"
       SLOT: 11
       LORE:
         - "&7&m-------------------------"
@@ -25,15 +27,20 @@ SERVER_SELECTOR:
       SUB_SERVER: true
       COMMANDS:
         ENABLE: false
-        COMMAND: ""
+        COMMANDS:
+          - ""
+          - ""
+          - ""
 
     Kitmap:
-      NAME: "&b&lKitmap"
-      ITEM: "IRON_SWORD"
+      DISPLAY_NAME: "&b&lKitmap"
+      MATERIAL: "IRON_SWORD"
       DATA: 0
       HEAD:
         ENABLE: false
         NAME: "Rousing"
+      QUEUE: false
+      SERVER_NAME: "KitMap"
       SLOT: 13
       LORE:
         - "&7&m-------------------------"
@@ -49,15 +56,20 @@ SERVER_SELECTOR:
       SUB_SERVER: false
       COMMANDS:
         ENABLE: false
-        COMMAND: ""
+        COMMANDS:
+          - ""
+          - ""
+          - ""
 
     Practice:
-      NAME: "&b&lPractice"
-      ITEM: "BOW"
+      DISPLAY_NAME: "&b&lPractice"
+      MATERIAL: "BOW"
       DATA: 0
       HEAD:
         ENABLE: false
         NAME: "Rousing"
+      QUEUE: false
+      SERVER_NAME: "KitMap"
       SLOT: 15
       LORE:
         - "&7&m-------------------------"
@@ -71,4 +83,7 @@ SERVER_SELECTOR:
       SUB_SERVER: false
       COMMANDS:
         ENABLE: false
-        COMMAND: ""
+        COMMANDS:
+          - ""
+          - ""
+          - ""

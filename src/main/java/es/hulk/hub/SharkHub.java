@@ -22,6 +22,7 @@ import es.hulk.hub.managers.SpawnManager;
 import es.hulk.hub.managers.hcf.Hooker;
 import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.managers.queue.custom.QueueHandler;
+import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.pvpmode.PvPModeListener;
 import es.hulk.hub.util.CC;
@@ -90,6 +91,7 @@ public class SharkHub extends JavaPlugin {
         CC.sendConsole("&bServer Version&7: &a" + ServerUtil.getServerVersion());
         CC.sendConsole("");
         hotbarManager.load();
+        ServerManager.load();
         RegisterHandler.init();
         CC.sendConsole("");
         CC.sendConsole("&7&m-----------------------------------------------------");

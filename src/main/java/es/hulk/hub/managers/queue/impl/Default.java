@@ -2,6 +2,7 @@ package es.hulk.hub.managers.queue.impl;
 
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.managers.queue.QueueInterface;
+import es.hulk.hub.util.CC;
 import org.bukkit.entity.Player;
 
 public class Default implements QueueInterface {
@@ -27,6 +28,6 @@ public class Default implements QueueInterface {
 
     @Override
     public void sendPlayer(Player player, String server) {
-        BungeeUtils.sendToServer(player, server);
+        player.sendMessage(CC.translate("&cNo Queue implementation found! Disable queue boolean in your server-selector config"));
     }
 }
