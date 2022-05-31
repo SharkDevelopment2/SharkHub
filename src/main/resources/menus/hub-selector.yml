@@ -16,6 +16,8 @@ HUB_SELECTOR:
         - "&7&m-------------------------"
         - "&fPlayers: &b%Bungee_Hub-01%"
         - "&7&m-------------------------"
+      QUEUE: false
+      SERVER_NAME: "Hub-01"
 
     Hub-02:
       NAME: "&b&lHub-02 &7[%pinger_isonline_localhost:25567%&7]"
@@ -26,3 +28,5 @@ HUB_SELECTOR:
         - "&7&m-------------------------"
         - "&fPlayers: &b%Bungee_Hub-02%"
         - "&7&m-------------------------"
+      QUEUE: false
+      SERVER_NAME: "Hub-02"

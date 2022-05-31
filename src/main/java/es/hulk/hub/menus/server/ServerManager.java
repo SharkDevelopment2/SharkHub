@@ -56,15 +56,6 @@ public class ServerManager {
         CC.sendConsole("&bLoaded &e" + serverList.size() + " &bServers");
     }
 
-    public static Server getServerByServerName(String serverName) {
-        for (Server server : serverList) {
-            if (server.getServerName().equalsIgnoreCase(serverName)) {
-                return server;
-            }
-        }
-        return null;
-    }
-
     public static ItemStack getItemStackFromServer(Player player, Server server) {
         if (server.isHeadEnabled()) {
             ItemStack item;

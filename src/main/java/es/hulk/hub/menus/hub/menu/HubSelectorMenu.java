@@ -2,6 +2,8 @@ package es.hulk.hub.menus.hub.menu;
 
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.menus.hub.Hub;
+import es.hulk.hub.menus.hub.HubManager;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
@@ -30,9 +32,11 @@ public class HubSelectorMenu extends Menu {
     @Override
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
-        for(String str : config.getConfiguration().getConfigurationSection("HUB_SELECTOR.ITEMS").getKeys(false)) {
-            buttons.put(config.getInt("HUB_SELECTOR.ITEMS." + str + ".SLOT"), new HubButton(str));
+
+        for (Hub hub : HubManager.getHubList()) {
+            buttons.put(hub.getSlot(), new HubButton(hub));
         }
+
         return buttons;
     }
 
