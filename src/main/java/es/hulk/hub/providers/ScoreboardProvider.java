@@ -1,20 +1,23 @@
 package es.hulk.hub.providers;
 
+import com.bizarrealex.aether.scoreboard.Board;
+import com.bizarrealex.aether.scoreboard.BoardAdapter;
+import com.bizarrealex.aether.scoreboard.cooldown.BoardCooldown;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
-import io.github.thatkawaiisam.assemble.AssembleAdapter;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.util.ServerUtil;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-public class ScoreboardProvider implements AssembleAdapter {
+public class ScoreboardProvider implements BoardAdapter {
 
     private final ConfigFile config = SharkHub.getInstance().getScoreboardConfig();
     private long lastMillisFooter = System.currentTimeMillis();
@@ -29,7 +32,7 @@ public class ScoreboardProvider implements AssembleAdapter {
     }
 
     @Override
-    public List<String> getLines(Player player) {
+    public List<String> getScoreboard(Player player, Board board, Set<BoardCooldown> cooldowns) {
         List<String> toReturn = new ArrayList<>();
         if (PvPModeHandler.isOnPvPMode(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
