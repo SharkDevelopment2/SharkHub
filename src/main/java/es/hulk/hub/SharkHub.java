@@ -104,7 +104,7 @@ public class SharkHub extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        RegisterHandler.getTablist().disable();
+        if (RegisterHandler.getTablist() != null) RegisterHandler.getTablist().disable();
         spawnManager.saveLocation();
     }
 
