@@ -3,6 +3,7 @@ package es.hulk.hub;
 import es.hulk.hub.bungee.BungeeTask;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.commands.SharkCommand;
+import es.hulk.hub.commands.customtimer.CustomTimerCommand;
 import es.hulk.hub.commands.features.pvpmode.PvPModeCommand;
 import es.hulk.hub.commands.features.queue.JoinQueueCommand;
 import es.hulk.hub.commands.features.queue.LeaveQueueCommand;
@@ -178,7 +179,8 @@ public class SharkHub extends JavaPlugin {
                 new LeaveQueueCommand(),
                 new ToggleQueueCommand(),
                 new PvPModeCommand(),
-                new SkullCommand());
+                new SkullCommand(),
+                new CustomTimerCommand());
 
         for (Object obj : commands) {
             CommandManager.getInstance().registerCommands(obj, null);
