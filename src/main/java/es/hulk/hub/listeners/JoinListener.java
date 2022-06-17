@@ -57,8 +57,8 @@ public class JoinListener implements Listener {
 
         if (config.getBoolean("JOIN_PLAYER.TITLES.ENABLE")) {
             String path = "JOIN_PLAYER.TITLES.";
-            String title = config.getString(path + ".TITLE");
-            String subTitle = config.getString(path + ".SUBTITLE");
+            String title = ServerUtil.replaceText(player, CC.translate(config.getString(path + ".TITLE")));
+            String subTitle = ServerUtil.replaceText(player, CC.translate(config.getString(path + ".SUBTITLE")));
 
             int fadeIn = config.getInt(path + "FADEIN");
             int stay = config.getInt(path + "STAY");
