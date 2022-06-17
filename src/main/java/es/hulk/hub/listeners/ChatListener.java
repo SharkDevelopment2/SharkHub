@@ -5,6 +5,7 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.ServerUtil;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -39,15 +40,16 @@ public class ChatListener implements Listener {
 
             event.setMessage(player.hasPermission("sharkhub.vip") || player.isOp() ? CC.translate(event.getMessage()) : event.getMessage());
             String replace = path.replaceAll("%PLAYER%", playerName).replaceAll("%RANK%", prefix).replace("%MESSAGE%", event.getMessage());
+            replace = replace.replace('§', '&');
 
             if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
                 if (event.getFormat().contains("%LUNAR%") && isLunarClient(player)) {
                     String lunarPath = CC.translate(config.getString("CHAT_FORMAT.FORMAT-LUNAR"));
-                    event.setFormat(ServerUtil.replaceText(player, lunarPath + replace));
+                    event.setFormat(CC.translate(ServerUtil.replaceText(player, lunarPath + replace)));
                     return;
                 }
             }
-            event.setFormat(ServerUtil.replaceText(player, replace));
+            event.setFormat(CC.translate(player, replace, true));
         }
     }
 }

@@ -96,10 +96,13 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onEntityDamage(EntityDamageEvent event) {
-        if (!(event.getEntity() instanceof Player)) return;
-        Player player = (Player) event.getEntity();
-        event.setCancelled(true);
-        player.teleport(event.getEntity().getWorld().getSpawnLocation());
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            event.setCancelled(true);
+            if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
+                player.teleport(event.getEntity().getWorld().getSpawnLocation());
+            }
+        }
     }
 
     @EventHandler
