@@ -4,8 +4,10 @@ import com.bizarrealex.aether.scoreboard.Board;
 import com.bizarrealex.aether.scoreboard.BoardAdapter;
 import com.bizarrealex.aether.scoreboard.cooldown.BoardCooldown;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.managers.customtimer.CustomTimer;
 import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.JavaUtils;
 import es.hulk.hub.util.files.ConfigFile;
 import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.util.ServerUtil;
@@ -36,27 +38,21 @@ public class ScoreboardProvider implements BoardAdapter {
         List<String> toReturn = new ArrayList<>();
         if (PvPModeHandler.isOnPvPMode(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
-                toReturn.add(ServerUtil.replaceText(player, str
-                        .replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0)))
-                        .replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
+                customTimerLines(str, toReturn);
+                toReturn.add(ServerUtil.replaceText(player, str.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))).replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
+            }
+        } else if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
+            for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
+                customTimerLines(str, toReturn);
+                toReturn.add(ServerUtil.replaceText(player, str));
             }
         } else {
-            if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
-                for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
-                    toReturn.add(ServerUtil.replaceText(player, str));
-                }
-            } else {
-                if (player.isOp() && player.hasPermission("hubcore.scoreboard.staff")) {
-                    for (String str : config.getStringList("SCOREBOARD.MODES.STAFF")) {
-                        toReturn.add(ServerUtil.replaceText(player, str));
-                    }
-                } else {
-                    for (String str : config.getStringList("SCOREBOARD.MODES.NORMAL")) {
-                        toReturn.add(ServerUtil.replaceText(player, str));
-                    }
-                }
+            for (String str : config.getStringList("SCOREBOARD.MODES.NORMAL")) {
+                customTimerLines(str, toReturn);
+                toReturn.add(ServerUtil.replaceText(player, str));
             }
         }
+
         if (config.getBoolean("SCOREBOARD.FOOTER.ANIMATION.ENABLED")) {
             toReturn = toReturn.stream().map(s -> s.replace("%FOOTER%", footer())).collect(Collectors.toList());
         }
@@ -97,5 +93,15 @@ public class ScoreboardProvider implements BoardAdapter {
             lastMillisTitle = time;
         }
         return titles.get(iTitle);
+    }
+
+    public void customTimerLines(String str, List<String> lines) {
+        if (str.contains("%custom_timer%")) {
+            for (CustomTimer customTimer : SharkHub.getInstance().getCustomTimerManager().getCustomTimers()) {
+                for (String customTimerLine : config.getStringList("SCOREBOARD.CUSTOM_TIMER")) {
+                    lines.add(customTimerLine.replace("%TIMER%", customTimer.getDisplayName()).replace("%TIME%", JavaUtils.formatLongHour(customTimer.getRemaining())));
+                }
+            }
+        }
     }
 }

@@ -15,6 +15,8 @@ SCOREBOARD:
       ANIMATED:
         - "&bserver.com"
         - "&bserver.com"
+  CUSTOM_TIMER:
+    - "%displayname%: %duration%"
   MODES:
     NORMAL:
       - "&7&m--------------------"
@@ -25,6 +27,7 @@ SCOREBOARD:
       - "&b&lServers"
       - " &b• &fAvailable Servers: &b3"
       - ""
+      - "%custom_timer%"
       - "%FOOTER%"
       - "&7&m--------------------"
     QUEUE:
@@ -36,6 +39,7 @@ SCOREBOARD:
       - "&b&lServers"
       - " &b• &fAvailable Servers: &b3"
       - ""
+      - "%custom_timer%"
       - "&b&lQueue"
       - " &b• &c%server_queue%"
       - " &b• &f%server_position% / %server_size%"
@@ -51,19 +55,7 @@ SCOREBOARD:
       - "&cto leave pvp-mode"
       - "&cuse command /pvpmode"
       - ""
+      - "%custom_timer%"
       - "%FOOTER%"
       - ""
-      - "&7&m--------------------"
-    STAFF:
-      - "&7&m--------------------"
-      - "&b&lInfo"
-      - " &b• &fRank: &r%rank%"
-      - " &b• &fGlobal: &7%global_players%"
-      - ""
-      - "&b&lServers"
-      - " &b• &fHCF: %pinger_isonline_localhost:25567%"
-      - " &b• &fKitmap: %pinger_isonline_localhost:25568%"
-      - " &b• &fPractice: %pinger_isonline_localhost:25569%"
-      - ""
-      - "%FOOTER%"
       - "&7&m--------------------"
