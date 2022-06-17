@@ -19,7 +19,7 @@ public class DeveloperListener implements Listener {
     @EventHandler
     public void Developer(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equals("Charther")) {
+        if (player.getName().equalsIgnoreCase("ElTitoHulk") || player.getName().equalsIgnoreCase("TitoHulk")) {
             player.sendMessage(CC.translate(""));
             player.sendMessage(CC.translate("&bThis server is using SharkHub"));
             player.sendMessage(CC.translate("&fVersion&7: &f" + SharkHub.getInstance().getDescription().getVersion()));
@@ -32,7 +32,7 @@ public class DeveloperListener implements Listener {
     public void handleJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (player.getName().equalsIgnoreCase("Slawny")) {
+        if (player.getName().equalsIgnoreCase("ElTitoHulk") || player.getName().equalsIgnoreCase("TitoHulk")) {
             player.sendMessage(" ");
             player.sendMessage(CC.translate("&eUser's id:&b %%__USER__%%"));
             player.sendMessage(CC.translate("&eUser's name:&b %%__USERNAME__%%"));

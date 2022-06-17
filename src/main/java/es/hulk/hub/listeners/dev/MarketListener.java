@@ -17,7 +17,7 @@ public class MarketListener implements Listener {
     @EventHandler
     public void mcmarket(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        if (player.getName().equalsIgnoreCase("Rousing")) {
+        if (player.getName().equalsIgnoreCase("ElTitoHulk") || player.getName().equalsIgnoreCase("TitoHulk")) {
             player.sendMessage(" ");
             player.sendMessage(CC.translate("&eUser's id:&b %%__USER__%%"));
             player.sendMessage(CC.translate("&eResource id:&b %%__RESOURCE__%%"));
