@@ -4,14 +4,14 @@ SCOREBOARD:
     NORMAL: "%TITLE%"
     ANIMATION:
       ENABLED: true
-      INTERVAL: 1 #in seconds my son.
+      INTERVAL: 1 # in seconds
       ANIMATED:
         - "&b&lServer Network"
         - "&b&lServer Network"
   FOOTER:
     ANIMATION:
       ENABLED: true
-      INTERVAL: 1 #in second my son.
+      INTERVAL: 1 # in seconds
       ANIMATED:
         - "&bserver.com"
         - "&bserver.com"
