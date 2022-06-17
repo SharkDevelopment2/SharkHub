@@ -116,13 +116,7 @@ public class SharkHub extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        RegisterHandler.getTablist().onDisable(this);
-        for (Player online : Bukkit.getOnlinePlayers()) {
-            RegisterHandler.getTablist().getProvider().getProvider(online).clear();
-            RegisterHandler.getTablist().getProvider().getFooter(online).clear();
-            RegisterHandler.getTablist().getProvider().getHeader(online).clear();
-        }
-        RegisterHandler.getTablist().getThread().stop();
+        RegisterHandler.disable();
         this.spawnManager.saveLocation();
     }
 

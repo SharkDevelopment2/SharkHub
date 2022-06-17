@@ -8,6 +8,7 @@ import es.hulk.hub.providers.ScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 public class RegisterHandler {
 
@@ -18,6 +19,16 @@ public class RegisterHandler {
         registerScoreboard();
         registerTablist();
         optimizeWorld();
+    }
+
+    public static void disable() {
+        tablist.onDisable(SharkHub.getInstance());
+        for (Player online : Bukkit.getOnlinePlayers()) {
+            tablist.getProvider().getProvider(online).clear();
+            tablist.getProvider().getFooter(online).clear();
+            tablist.getProvider().getHeader(online).clear();
+        }
+        tablist.getThread().stop();
     }
 
     public static void registerTablist() {
