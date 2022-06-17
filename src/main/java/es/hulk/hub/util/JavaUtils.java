@@ -82,7 +82,7 @@ public class JavaUtils {
         return builder.append(" and ").append(last).toString();
     }
 
-    public static long parse(String input) {
+    public static long formatLong(String input) {
         if (input == null || input.isEmpty()) {
             return -1L;
         }

@@ -1,25 +1,27 @@
 package es.hulk.hub.commands.media;
 
-import es.hulk.hub.util.CC;
-import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
+import es.hulk.hub.util.command.BaseCommand;
+import es.hulk.hub.util.command.Command;
+import es.hulk.hub.util.command.CommandArgs;
+import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
-public class TelegramCommand extends Command {
+public class TelegramCommand extends BaseCommand {
     private final ConfigFile config = SharkHub.getInstance().getMessagesConfig();
 
-    public TelegramCommand() {
-        super("telegram");
-        this.setAliases(Arrays.asList("tl", "tgm"));
-        this.setUsage(ChatColor.RED + "Usage: /telegram");
-    }
-
-    public boolean execute(CommandSender sender, String s, String[] strings) {
-        config.getStringList("MEDIA.TELEGRAM").stream().map(CC::translate).forEach(sender::sendMessage);
-        return false;
+    @Command(name = "telegram")
+    @Override
+    public void onCommand(CommandArgs command) {
+        Player player = command.getPlayer();
+        for (String str : config.getStringList("MEDIA.TELEGRAM")) {
+            player.sendMessage(CC.translate(player, ServerUtil.replaceText(player, str), true));
+        }
     }
 }

@@ -31,6 +31,8 @@ import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.SharkLicenses;
 import es.hulk.hub.util.bukkit.api.command.Command;
+import es.hulk.hub.util.command.BaseCommand;
+import es.hulk.hub.util.command.CommandManager;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.ButtonListener;
 import es.hulk.hub.util.rank.RankManager;
@@ -40,11 +42,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Getter
 public class SharkHub extends JavaPlugin {
 
-    @Getter private static SharkHub instance;
+    @Getter
+    private static SharkHub instance;
     private ConfigFile scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, particlesConfig, pvpmodeConfig, hcfConfig, nametagsConfig, hotbarConfig, spawnConfig;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
@@ -52,7 +56,7 @@ public class SharkHub extends JavaPlugin {
     private HotbarManager hotbarManager;
     private SpawnManager spawnManager;
     private CustomTimerManager customTimerManager;
-
+    private CommandManager commandManager;
     private boolean isPlaceholderAPI = false;
 
     @Override
@@ -69,7 +73,7 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if(!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
+        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
@@ -79,8 +83,8 @@ public class SharkHub extends JavaPlugin {
             isPlaceholderAPI = true;
         }
 
-        rankManager.loadRank();
-        queueManager.load();
+        this.rankManager.loadRank();
+        this.queueManager.load();
 
         CC.sendConsole("&7&m-----------------------------------------------------");
         CC.sendConsole("");
@@ -94,7 +98,7 @@ public class SharkHub extends JavaPlugin {
         CC.sendConsole("&bQueue System&7: &a" + queueManager.getQueue());
         CC.sendConsole("&bServer Version&7: &a" + ServerUtil.getServerVersion());
         CC.sendConsole("");
-        hotbarManager.load();
+        this.hotbarManager.load();
         ServerManager.load();
         HubManager.load();
         RegisterHandler.init();
@@ -118,7 +122,7 @@ public class SharkHub extends JavaPlugin {
             RegisterHandler.getTablist().getProvider().getHeader(online).clear();
         }
         RegisterHandler.getTablist().getThread().stop();
-        spawnManager.saveLocation();
+        this.spawnManager.saveLocation();
     }
 
     private void loadConfigs() {
@@ -149,6 +153,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void registerManagers() {
+        this.commandManager = new CommandManager(this);
         this.customTimerManager = new CustomTimerManager();
         this.rankManager = new RankManager(this);
         this.spawnManager = new SpawnManager();
@@ -160,7 +165,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void loadCommands() {
-        Arrays.asList(new DiscordCommand(),
+        List<Object> commands = Arrays.asList(new DiscordCommand(),
                 new TeamSpeakCommand(),
                 new TwitterCommand(),
                 new SetSpawnCommand(),
@@ -173,7 +178,11 @@ public class SharkHub extends JavaPlugin {
                 new LeaveQueueCommand(),
                 new ToggleQueueCommand(),
                 new PvPModeCommand(),
-                new SkullCommand()).forEach(Command::registerCommand);
+                new SkullCommand());
+
+        for (Object obj : commands) {
+            CommandManager.getInstance().registerCommands(obj, null);
+        }
     }
 
     public void loadListeners() {

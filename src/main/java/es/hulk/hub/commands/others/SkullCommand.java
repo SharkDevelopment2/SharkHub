@@ -2,40 +2,29 @@ package es.hulk.hub.commands.others;
 
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.command.BaseCommand;
+import es.hulk.hub.util.command.Command;
+import es.hulk.hub.util.command.CommandArgs;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-public class SkullCommand extends Command {
+public class SkullCommand extends BaseCommand {
 
-    public SkullCommand() {
-        super("Skull");
-        this.setUsage(CC.translate("&cUsage: /skull <player>"));
-    }
+    @Command(name = "skull", permission = "hubcore.command.skull")
+    @Override
+    public void onCommand(CommandArgs command) {
+        Player player = command.getPlayer();
+        String[] args = command.getArgs();
 
-    public boolean execute(CommandSender sender, String s, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(CC.translate("&cOnly Players."));
-            return false;
-        }
-
-        if (!sender.hasPermission("hubcore.command.skull")) {
-            sender.sendMessage(CC.translate("&cYou don't have permissions."));
-            return true;
-        }
-
-        Player player = (Player) sender;
         if (args.length != 1) {
-            sender.sendMessage(usageMessage);
-            return true;
+            player.sendMessage(CC.translate("&cUsage: /skull <player>"));
         }
 
         player.getInventory().addItem(playerSkullForName(args[0]));
         player.sendMessage(ChatColor.GREEN + "You have received " + args[0] + "'s head.");
-        return false;
     }
 
     private ItemStack playerSkullForName(String name) {
