@@ -41,7 +41,8 @@ public class JoinListener implements Listener {
             }
         }
 
-        if (config.getBoolean("JOIN_PLAYER.SOUND.ENABLE")) player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_PLAYER.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
+        if (config.getBoolean("JOIN_PLAYER.SOUND.ENABLE"))
+            player.playSound(player.getLocation(), Sound.valueOf(config.getString("JOIN_PLAYER.SOUND.VALUE").toUpperCase()), 1.0F, 1.0F);
 
         if (config.getBoolean("JOIN_PLAYER.SPEED.ENABLE")) {
             player.setWalkSpeed(Float.parseFloat(config.getString("JOIN_PLAYER.SPEED.VALUE")));
@@ -71,8 +72,7 @@ public class JoinListener implements Listener {
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
             if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
                 String str = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
-                for (Player online : Bukkit.getOnlinePlayers())
-                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
+                Bukkit.broadcastMessage(CC.translate(player, ServerUtil.replaceText(player, CC.translate(str)), true));
             }
         }
     }
@@ -85,8 +85,7 @@ public class JoinListener implements Listener {
         if (config.getBoolean("VIP_MESSAGE.LEAVE.ENABLE")) {
             if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") != null) {
                 String str = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
-                for (Player online : Bukkit.getOnlinePlayers())
-                    online.sendMessage(ServerUtil.replaceText(player, ServerUtil.replaceText(player, SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, str) : str)));
+                Bukkit.broadcastMessage(CC.translate(player, ServerUtil.replaceText(player, CC.translate(str)), true));
             }
         }
     }

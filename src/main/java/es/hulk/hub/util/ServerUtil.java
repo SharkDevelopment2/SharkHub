@@ -42,6 +42,11 @@ public class ServerUtil {
 
     public static String replaceText(Player player, String str) {
         String replace = str;
+        replace = replace
+                .replace("%queue_server%", "None")
+                .replace("%queue_position%", "0")
+                .replace("%queue_size%", "0");
+
         if (queues.getSystem().isInQueue(player)) {
             replace = replace
                     .replace("%queue_server%", queues.getSystem().getServer(player))
@@ -84,10 +89,10 @@ public class ServerUtil {
         }
 
         replace = replace
-                .replace("%rank%", SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId()))
-                .replace("%rank_color%", SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId()))
-                .replace("%prefix%", SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId()))
-                .replace("%sufixx%", SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId()))
+                .replace("%rank%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId())))
+                .replace("%rank_color%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId())))
+                .replace("%prefix%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId())))
+                .replace("%sufixx%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId())))
                 .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
                 .replace("%player%", player.getName())
                 .replace("%hour%", getHour())
@@ -96,5 +101,4 @@ public class ServerUtil {
 
         return replace;
     }
-
 }
