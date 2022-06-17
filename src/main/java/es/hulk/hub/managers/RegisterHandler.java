@@ -1,7 +1,7 @@
 package es.hulk.hub.managers;
 
 import com.bizarrealex.aether.Aether;
-import es.hulk.tablist.Omega;
+import dev.hely.tab.TablistModule;
 import lombok.Getter;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.providers.ScoreboardProvider;
@@ -12,7 +12,7 @@ import org.bukkit.World;
 public class RegisterHandler {
 
     @Getter private static Aether scoreboard;
-    @Getter private static Omega tablist;
+    @Getter private static TablistModule tablist = TablistModule.INSTANCE;
 
     public static void init() {
         registerScoreboard();
@@ -22,7 +22,8 @@ public class RegisterHandler {
 
     public static void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
-            tablist = new Omega(SharkHub.getInstance(), new TablistProvider());
+            tablist.onEnable(SharkHub.getInstance());
+            tablist.setProvider(new TablistProvider());
         }
     }
 
