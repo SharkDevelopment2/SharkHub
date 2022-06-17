@@ -22,8 +22,8 @@ public class RegisterHandler {
 
     public static void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
-            tablist.onEnable(SharkHub.getInstance());
-            tablist.setProvider(new TablistProvider());
+            TablistModule.INSTANCE.onEnable(SharkHub.getInstance());
+            TablistModule.INSTANCE.setProvider(new TablistProvider());
         }
     }
 

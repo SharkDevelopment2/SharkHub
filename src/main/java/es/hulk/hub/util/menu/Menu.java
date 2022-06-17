@@ -136,6 +136,6 @@ public abstract class Menu {
     }
 
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).data(3).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).data(3).build();
     }
 }

@@ -81,7 +81,7 @@ public class SharkHub extends JavaPlugin {
 
         CC.sendConsole("&7&m-----------------------------------------------------");
         CC.sendConsole("");
-        CC.sendConsole("&bShark Development");
+        CC.sendConsole("&b&lShark Development");
         CC.sendConsole("");
         CC.sendConsole("&bPlugin&7: &aSharkHub");
         CC.sendConsole("&bVersion&7: &a" + this.getDescription().getVersion());

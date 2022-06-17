@@ -1,6 +1,6 @@
 package es.hulk.hub.menus.subselector;
 
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.subselector.button.BackButton;
@@ -54,6 +54,6 @@ public class SubSelectorMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

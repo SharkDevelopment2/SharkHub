@@ -1,6 +1,6 @@
 package es.hulk.hub.cosmetics.base.menu;
 
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.armor.button.ArmorMenuButton;
 import es.hulk.hub.cosmetics.types.gadgets.button.GadgetsMenuButton;
@@ -46,6 +46,6 @@ public class CosmeticsMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("COSMETICS_MENU.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("COSMETICS_MENU.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

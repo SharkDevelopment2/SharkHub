@@ -1,6 +1,5 @@
 package es.hulk.hub.menus.hub.menu;
 
-import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.hub.Hub;
 import es.hulk.hub.menus.hub.HubManager;
@@ -9,6 +8,7 @@ import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
 import es.hulk.hub.util.files.ConfigFile;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -47,7 +47,7 @@ public class HubSelectorMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("HUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("HUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }
 

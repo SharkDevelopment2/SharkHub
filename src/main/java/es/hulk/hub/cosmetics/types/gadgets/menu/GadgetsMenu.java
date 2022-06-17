@@ -1,6 +1,6 @@
 package es.hulk.hub.cosmetics.types.gadgets.menu;
 
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.gadgets.items.SnowBallButton;
 import es.hulk.hub.cosmetics.types.gadgets.items.TeleportBowButton;
@@ -31,7 +31,6 @@ public class GadgetsMenu extends Menu {
 
     @Override
     public Map<Integer, Button> getButtons(Player player) {
-        //11, 15
         Map<Integer, Button> buttons = new HashMap<>();
         buttons.put(config.getInt("GADGETS_MENU.TELEPORT_BOW.SLOT"), new TeleportBowButton());
         buttons.put(config.getInt("GADGETS_MENU.SNOWBALL_HIDER.SLOT"), new SnowBallButton());
@@ -45,6 +44,6 @@ public class GadgetsMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("GADGETS_MENU.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("GADGETS_MENU.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

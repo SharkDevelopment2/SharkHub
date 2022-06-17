@@ -5,10 +5,13 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.util.CC;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
 import es.hulk.hub.util.files.ConfigFile;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -47,6 +50,6 @@ public class ServerSelectorMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial()).name(" ").data(config.getInt("SERVER_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SERVER_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
     }
 }

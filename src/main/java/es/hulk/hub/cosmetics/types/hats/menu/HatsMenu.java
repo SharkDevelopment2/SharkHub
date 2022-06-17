@@ -1,6 +1,5 @@
 package es.hulk.hub.cosmetics.types.hats.menu;
 
-import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.cosmetics.types.hats.button.HatButton;
 import es.hulk.hub.cosmetics.types.hats.button.HatRemoveButton;
 import es.hulk.hub.SharkHub;
@@ -9,6 +8,7 @@ import es.hulk.hub.util.bukkit.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -46,7 +46,7 @@ public class HatsMenu extends Menu {
 
     @Override
     public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(XMaterial.GLASS_PANE.parseMaterial())
+        return new ItemBuilder(Material.STAINED_GLASS_PANE)
                 .name(" ")
                 .data(config.getInt("HATS_MENU.REFILL_GLASS.GLASS_DATA"))
                 .build();
