@@ -179,7 +179,16 @@
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
-            <version>8.7.1</version>
+            <version>8.8.0</version>
+        </dependency>
+
+        <!-- PhoenixCore API -->
+        <dependency>
+            <groupId>phoenixcore</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/api/Phoenix-API.jar</systemPath>
         </dependency>
     </dependencies>
 
