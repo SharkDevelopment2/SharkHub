@@ -38,17 +38,26 @@ public class ScoreboardProvider implements BoardAdapter {
         List<String> toReturn = new ArrayList<>();
         if (PvPModeHandler.isOnPvPMode(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
-                customTimerLines(str, toReturn);
+                if (str.contains("custom_timer%")) {
+                    customTimerLines(toReturn);
+                    continue;
+                }
                 toReturn.add(ServerUtil.replaceText(player, str.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))).replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
             }
         } else if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
-                customTimerLines(str, toReturn);
+                if (str.contains("custom_timer%")) {
+                    customTimerLines(toReturn);
+                    continue;
+                }
                 toReturn.add(ServerUtil.replaceText(player, str));
             }
         } else {
             for (String str : config.getStringList("SCOREBOARD.MODES.NORMAL")) {
-                customTimerLines(str, toReturn);
+                if (str.contains("custom_timer%")) {
+                    customTimerLines(toReturn);
+                    continue;
+                }
                 toReturn.add(ServerUtil.replaceText(player, str));
             }
         }
@@ -95,12 +104,10 @@ public class ScoreboardProvider implements BoardAdapter {
         return titles.get(iTitle);
     }
 
-    public void customTimerLines(String str, List<String> lines) {
-        if (str.contains("%custom_timer%")) {
-            for (CustomTimer customTimer : SharkHub.getInstance().getCustomTimerManager().getCustomTimers()) {
-                for (String customTimerLine : config.getStringList("SCOREBOARD.CUSTOM_TIMER")) {
-                    lines.add(customTimerLine.replace("%TIMER%", customTimer.getDisplayName()).replace("%TIME%", JavaUtils.formatLongHour(customTimer.getRemaining())));
-                }
+    public void customTimerLines(List<String> lines) {
+        for (CustomTimer customTimer : SharkHub.getInstance().getCustomTimerManager().getCustomTimers()) {
+            for (String customTimerLine : config.getStringList("SCOREBOARD.CUSTOM_TIMER")) {
+                lines.add(customTimerLine.replace("%TIMER%", customTimer.getDisplayName()).replace("%TIME%", JavaUtils.formatLongHour(customTimer.getRemaining())));
             }
         }
     }
