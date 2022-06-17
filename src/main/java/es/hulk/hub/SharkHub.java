@@ -19,6 +19,7 @@ import es.hulk.hub.listeners.dev.DeveloperListener;
 import es.hulk.hub.listeners.dev.MarketListener;
 import es.hulk.hub.managers.RegisterHandler;
 import es.hulk.hub.managers.SpawnManager;
+import es.hulk.hub.managers.customtimer.CustomTimerManager;
 import es.hulk.hub.managers.hcf.Hooker;
 import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.managers.queue.custom.QueueHandler;
@@ -50,6 +51,7 @@ public class SharkHub extends JavaPlugin {
     private RankManager rankManager;
     private HotbarManager hotbarManager;
     private SpawnManager spawnManager;
+    private CustomTimerManager customTimerManager;
 
     private boolean isPlaceholderAPI = false;
 
@@ -147,6 +149,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void registerManagers() {
+        this.customTimerManager = new CustomTimerManager();
         this.rankManager = new RankManager(this);
         this.spawnManager = new SpawnManager();
         this.queueManager = new QueueManager();

@@ -133,4 +133,14 @@ public class JavaUtils {
         CHAR_MATCHER_ASCII = CharMatcher.inRange('0', '9').or(CharMatcher.inRange('a', 'z')).or(CharMatcher.inRange('A', 'Z')).or(CharMatcher.WHITESPACE).precomputed();
         UUID_PATTERN = Pattern.compile("[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[34][0-9a-fA-F]{3}-[89ab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}");
     }
+
+    public static String formatLongHour(long time) {
+        long totalSecs = time / 1000L;
+
+        long seconds = totalSecs % 60L;
+        long minutes = totalSecs % 3600L / 60L;
+        long hours = totalSecs / 3600L;
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
 }
