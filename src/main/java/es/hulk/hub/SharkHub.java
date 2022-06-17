@@ -35,6 +35,7 @@ import es.hulk.hub.util.menu.ButtonListener;
 import es.hulk.hub.util.rank.RankManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
@@ -109,6 +110,12 @@ public class SharkHub extends JavaPlugin {
     @Override
     public void onDisable() {
         RegisterHandler.getTablist().onDisable(this);
+        for (Player online : Bukkit.getOnlinePlayers()) {
+            RegisterHandler.getTablist().getProvider().getProvider(online).clear();
+            RegisterHandler.getTablist().getProvider().getFooter(online).clear();
+            RegisterHandler.getTablist().getProvider().getHeader(online).clear();
+        }
+        RegisterHandler.getTablist().getThread().stop();
         spawnManager.saveLocation();
     }
 
