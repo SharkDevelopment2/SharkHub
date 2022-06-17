@@ -107,7 +107,9 @@ public class ScoreboardProvider implements BoardAdapter {
     public void customTimerLines(List<String> lines) {
         for (CustomTimer customTimer : SharkHub.getInstance().getCustomTimerManager().getCustomTimers()) {
             for (String customTimerLine : config.getStringList("SCOREBOARD.CUSTOM_TIMER")) {
-                lines.add(customTimerLine.replace("%TIMER%", customTimer.getDisplayName()).replace("%TIME%", JavaUtils.formatLongHour(customTimer.getRemaining())));
+                lines.add(
+                        customTimerLine.replace("%displayname%",
+                        customTimer.getDisplayName()).replace("%duration%", JavaUtils.formatLongHour(customTimer.getRemaining())));
             }
         }
     }
