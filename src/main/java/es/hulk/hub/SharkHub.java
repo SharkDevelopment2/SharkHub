@@ -29,8 +29,6 @@ import es.hulk.hub.pvpmode.PvPModeListener;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.bukkit.SharkLicenses;
-import es.hulk.hub.util.bukkit.api.command.Command;
-import es.hulk.hub.util.command.BaseCommand;
 import es.hulk.hub.util.command.CommandManager;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.ButtonListener;
@@ -128,21 +126,20 @@ public class SharkHub extends JavaPlugin {
         this.subselectorConfig = new ConfigFile(this, "menus/sub-selector");
         this.hubselectorConfig = new ConfigFile(this, "menus/hub-selector");
 
-        this.scoreboardConfig = new ConfigFile(this, "features/providers/scoreboard");
-        this.tablistConfig = new ConfigFile(this, "features/providers/tablist");
+        this.scoreboardConfig = new ConfigFile(this, "providers/scoreboard");
+        this.tablistConfig = new ConfigFile(this, "providers/tablist");
 
         this.pvpmodeConfig = new ConfigFile(this, "data/pvpmode-content");
-        this.hcfConfig = new ConfigFile(this, "features/addons/hcf-hooks");
-        this.nametagsConfig = new ConfigFile(this, "features/addons/nametags");
+        this.hcfConfig = new ConfigFile(this, "addons/hcf-hooks");
+        this.nametagsConfig = new ConfigFile(this, "addons/nametags");
 
         this.messagesConfig = new ConfigFile(this, "features/messages");
         this.hotbarConfig = new ConfigFile(this, "features/hotbar");
 
-        this.cosmeticsConfig = new ConfigFile(this, "features/cosmetics/menu");
-        this.hatsConfig = new ConfigFile(this, "features/cosmetics/hats");
-        this.armorsConfig = new ConfigFile(this, "features/cosmetics/armors");
-        this.gadgetsConfig = new ConfigFile(this, "features/cosmetics/gadgets");
-        //this.particlesConfig = new ConfigFile(this, "features/cosmetics/particles");
+        this.cosmeticsConfig = new ConfigFile(this, "cosmetics/menu");
+        this.hatsConfig = new ConfigFile(this, "cosmetics/hats");
+        this.armorsConfig = new ConfigFile(this, "cosmetics/armors");
+        this.gadgetsConfig = new ConfigFile(this, "cosmetics/gadgets");
 
         this.spawnConfig = new ConfigFile(this, "data/spawn-location");
     }
