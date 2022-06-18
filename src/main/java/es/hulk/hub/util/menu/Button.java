@@ -1,6 +1,6 @@
 package es.hulk.hub.util.menu;
 
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

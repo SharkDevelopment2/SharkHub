@@ -4,7 +4,7 @@ import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import org.bukkit.Material;

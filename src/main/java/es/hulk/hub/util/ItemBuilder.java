@@ -1,7 +1,6 @@
-package es.hulk.hub.util.bukkit;
+package es.hulk.hub.util;
 
 import com.google.common.base.Preconditions;
-import es.hulk.hub.util.CC;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

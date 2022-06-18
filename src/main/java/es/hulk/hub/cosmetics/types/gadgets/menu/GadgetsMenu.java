@@ -5,7 +5,7 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.gadgets.items.SnowBallButton;
 import es.hulk.hub.cosmetics.types.gadgets.items.TeleportBowButton;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;

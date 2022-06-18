@@ -2,7 +2,7 @@ package es.hulk.hub.util.menu.pagination;
 
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.menu.Button;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;

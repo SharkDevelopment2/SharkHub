@@ -1,4 +1,4 @@
-package es.hulk.hub.util.bukkit.cosmetics;
+package es.hulk.hub.util.cosmetics;
 
 import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;

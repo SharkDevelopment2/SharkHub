@@ -1,9 +1,8 @@
 package es.hulk.hub.util.menu;
 
-import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;

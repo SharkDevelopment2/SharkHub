@@ -1,7 +1,7 @@
 package es.hulk.hub.util.menu.buttons;
 
 import es.hulk.hub.util.menu.Button;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.menu.callback.TypeCallback;
 import org.bukkit.Material;
 import org.bukkit.Sound;

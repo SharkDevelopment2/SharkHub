@@ -4,7 +4,7 @@ import es.hulk.hub.cosmetics.types.hats.button.HatButton;
 import es.hulk.hub.cosmetics.types.hats.button.HatRemoveButton;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;

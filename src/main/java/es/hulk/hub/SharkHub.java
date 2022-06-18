@@ -28,7 +28,7 @@ import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.pvpmode.PvPModeListener;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
-import es.hulk.hub.util.bukkit.SharkLicenses;
+import es.hulk.hub.util.SharkLicenses;
 import es.hulk.hub.util.command.CommandManager;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.ButtonListener;
@@ -129,7 +129,6 @@ public class SharkHub extends JavaPlugin {
         this.scoreboardConfig = new ConfigFile(this, "providers/scoreboard");
         this.tablistConfig = new ConfigFile(this, "providers/tablist");
 
-        this.pvpmodeConfig = new ConfigFile(this, "data/pvpmode-content");
         this.hcfConfig = new ConfigFile(this, "addons/hcf-hooks");
         this.nametagsConfig = new ConfigFile(this, "addons/nametags");
 
@@ -142,6 +141,7 @@ public class SharkHub extends JavaPlugin {
         this.gadgetsConfig = new ConfigFile(this, "cosmetics/gadgets");
 
         this.spawnConfig = new ConfigFile(this, "data/spawn-location");
+        this.pvpmodeConfig = new ConfigFile(this, "data/pvpmode-content");
     }
 
     private void registerManagers() {

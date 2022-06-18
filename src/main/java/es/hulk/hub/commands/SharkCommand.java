@@ -2,10 +2,8 @@ package es.hulk.hub.commands;
 
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.HotbarManager;
-import es.hulk.hub.menus.hub.HubManager;
-import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.SharkLicenses;
+import es.hulk.hub.util.SharkLicenses;
 import es.hulk.hub.util.command.BaseCommand;
 import es.hulk.hub.util.command.Command;
 import es.hulk.hub.util.command.CommandArgs;

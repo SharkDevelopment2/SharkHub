@@ -1,7 +1,6 @@
-package es.hulk.hub.util.bukkit;
+package es.hulk.hub.util;
 
 import lombok.Getter;
-import es.hulk.hub.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.json.simple.JSONObject;

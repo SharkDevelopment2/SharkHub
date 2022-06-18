@@ -6,7 +6,7 @@ import es.hulk.hub.cosmetics.types.armor.button.ArmorMenuButton;
 import es.hulk.hub.cosmetics.types.gadgets.button.GadgetsMenuButton;
 import es.hulk.hub.cosmetics.types.hats.button.HatMenuButton;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;

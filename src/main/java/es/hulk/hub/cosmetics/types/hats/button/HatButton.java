@@ -6,7 +6,7 @@ import es.hulk.hub.util.menu.Button;
 import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.bukkit.ItemBuilder;
+import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
