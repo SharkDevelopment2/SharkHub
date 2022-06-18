@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class LeaveQueueCommand extends BaseCommand {
 
@@ -22,10 +23,11 @@ public class LeaveQueueCommand extends BaseCommand {
         Player player = command.getPlayer();
         if (QueueHandler.getQueue(player) == null) {
             player.sendMessage(CC.translate("&cYou aren't in the queue!"));
-        } else {
-            player.sendMessage(CC.translate(config.getString("QUEUE.LEAVE"))
-                    .replaceAll("%SERVER%", QueueHandler.getQueueName(player)));
-            QueueHandler.getQueue(player).removeEntry(player);
+            return;
         }
+
+        Objects.requireNonNull(QueueHandler.getQueue(player)).removeEntry(player);
+        player.sendMessage(CC.translate(config.getString("QUEUE.LEAVE"))
+                .replaceAll("%server%", QueueHandler.getQueueName(player)));
     }
 }

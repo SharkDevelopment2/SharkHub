@@ -38,10 +38,10 @@ public class ToggleQueueCommand extends BaseCommand {
 
             if (queue.isPaused()) {
                 player.sendMessage(CC.translate(config.getString("QUEUE.UN_PAUSED"))
-                        .replaceAll("%SERVER%", queue.getServer()));
+                        .replaceAll("%server%", queue.getServer()));
             } else {
                 player.sendMessage(CC.translate(config.getString("QUEUE.PAUSED"))
-                        .replaceAll("%SERVER%", queue.getServer()));
+                        .replaceAll("%server%", queue.getServer()));
             }
 
             queue.setPaused(!queue.isPaused());

@@ -160,7 +160,8 @@ public class SharkHub extends JavaPlugin {
     }
 
     public void loadCommands() {
-        List<Object> commands = Arrays.asList(new DiscordCommand(),
+        List<Object> commands = Arrays.asList(
+                new DiscordCommand(),
                 new TeamSpeakCommand(),
                 new TwitterCommand(),
                 new SetSpawnCommand(),

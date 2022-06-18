@@ -29,6 +29,6 @@ public class Custom implements QueueInterface {
 
     @Override
     public void sendPlayer(Player player, String queueName) {
-        Bukkit.getServer().dispatchCommand(player, "play " + queueName);
+        Bukkit.getServer().dispatchCommand(player, "joinqueue " + queueName);
     }
 }

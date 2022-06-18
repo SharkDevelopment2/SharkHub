@@ -32,7 +32,7 @@ public class JoinQueueCommand extends BaseCommand {
             } else {
                 if (queue.isPaused()) {
                     player.sendMessage(CC.translate(config.getString("QUEUE.PAUSED")
-                            .replace("%SERVER%", queue.getServer())));
+                            .replace("%server%", queue.getServer())));
                 } else {
                     queue.addEntry(player);
                 }
