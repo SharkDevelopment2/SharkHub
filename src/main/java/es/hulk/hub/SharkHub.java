@@ -133,8 +133,8 @@ public class SharkHub extends JavaPlugin {
         this.hcfConfig = new ConfigFile(this, "addons/hcf-hooks");
         this.nametagsConfig = new ConfigFile(this, "addons/nametags");
 
-        this.messagesConfig = new ConfigFile(this, "features/messages");
-        this.hotbarConfig = new ConfigFile(this, "features/hotbar");
+        this.messagesConfig = new ConfigFile(this, "messages");
+        this.hotbarConfig = new ConfigFile(this, "hotbar");
 
         this.cosmeticsConfig = new ConfigFile(this, "cosmetics/menu");
         this.hatsConfig = new ConfigFile(this, "cosmetics/hats");
@@ -145,6 +145,9 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void registerManagers() {
+        this.registerHandler = new RegisterHandler();
+        this.hubManager = new HubManager();
+        this.serverManager = new ServerManager();
         this.commandManager = new CommandManager(this);
         this.customTimerManager = new CustomTimerManager();
         this.rankManager = new RankManager(this);
