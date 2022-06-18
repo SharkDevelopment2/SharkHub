@@ -16,8 +16,6 @@ import es.hulk.hub.cosmetics.base.command.CosmeticsCommand;
 import es.hulk.hub.cosmetics.types.gadgets.listener.GadgetsListener;
 import es.hulk.hub.hotbar.HotbarManager;
 import es.hulk.hub.listeners.*;
-import es.hulk.hub.listeners.dev.DeveloperListener;
-import es.hulk.hub.listeners.dev.MarketListener;
 import es.hulk.hub.managers.RegisterHandler;
 import es.hulk.hub.managers.SpawnManager;
 import es.hulk.hub.managers.customtimer.CustomTimerManager;
@@ -39,7 +37,6 @@ import es.hulk.hub.util.menu.ButtonListener;
 import es.hulk.hub.util.rank.RankManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
@@ -58,6 +55,9 @@ public class SharkHub extends JavaPlugin {
     private SpawnManager spawnManager;
     private CustomTimerManager customTimerManager;
     private CommandManager commandManager;
+    private ServerManager serverManager;
+    private HubManager hubManager;
+    private RegisterHandler registerHandler;
     private boolean isPlaceholderAPI = false;
 
     @Override
@@ -100,9 +100,9 @@ public class SharkHub extends JavaPlugin {
         CC.sendConsole("&bServer Version&7: &a" + ServerUtil.getServerVersion());
         CC.sendConsole("");
         this.hotbarManager.load();
-        ServerManager.load();
-        HubManager.load();
-        RegisterHandler.init();
+        this.serverManager.load();
+        this.hubManager.load();
+        this.registerHandler.init();
         CC.sendConsole("");
         CC.sendConsole("&7&m-----------------------------------------------------");
 
@@ -116,7 +116,7 @@ public class SharkHub extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        RegisterHandler.disable();
+        this.registerHandler.disable();
         this.spawnManager.saveLocation();
     }
 
@@ -193,8 +193,6 @@ public class SharkHub extends JavaPlugin {
         new WorldListener();
         new PvPModeListener();
         new LunarNameTagsListener();
-        new DeveloperListener();
-        new MarketListener();
         new ButtonListener();
         new GadgetsListener();
     }

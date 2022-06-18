@@ -1,11 +1,8 @@
 package es.hulk.hub.menus.hub;
 
-import com.cryptomorin.xseries.XMaterial;
 import es.hulk.hub.SharkHub;
-import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ItemMaker;
-import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
 import lombok.Getter;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -13,19 +10,18 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class HubManager {
 
-    @Getter
-    private static List<Hub> hubList = new ArrayList<>();
-    private static final ConfigFile hubConfig = SharkHub.getInstance().getHubselectorConfig();
+    private List<Hub> hubList = new ArrayList<>();
+    private final ConfigFile hubConfig = SharkHub.getInstance().getHubselectorConfig();
 
-    public static void load() {
-        hubList.clear();
+    public void load() {
+        this.hubList.clear();
 
         ConfigurationSection section = hubConfig.getConfiguration().getConfigurationSection("HUB_SELECTOR.ITEMS");
 
@@ -39,7 +35,7 @@ public class HubManager {
             boolean queue = section.getBoolean(hub + ".QUEUE");
             String serverName = section.getString(hub + ".SERVER_NAME");
 
-            hubList.add(new Hub(hub, displayName, material, data, slot, lore, queue, serverName));
+            this.hubList.add(new Hub(hub, displayName, material, data, slot, lore, queue, serverName));
         }
 
         CC.sendConsole("&bLoaded &e" + hubList.size() + " &bHubs");

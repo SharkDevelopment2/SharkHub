@@ -18,13 +18,14 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ServerManager {
 
-    @Getter private static final List<Server> serverList = new ArrayList<>();
-    private static final ConfigFile serverConfig = SharkHub.getInstance().getSelectorConfig();
+    private final List<Server> serverList = new ArrayList<>();
+    private final ConfigFile serverConfig = SharkHub.getInstance().getSelectorConfig();
 
-    public static void load() {
-        serverList.clear();
+    public void load() {
+        this.serverList.clear();
 
         ConfigurationSection section = serverConfig.getConfiguration().getConfigurationSection("SERVER_SELECTOR.ITEMS");
 
@@ -50,7 +51,7 @@ public class ServerManager {
             boolean commandsEnabled = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.ENABLE");
             List<String> commands = serverConfig.getStringList("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.COMMANDS");
 
-            serverList.add(new Server(name, displayName, material, data, headEnabled, headName, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
+            this.serverList.add(new Server(name, displayName, material, data, headEnabled, headName, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
         }
 
         CC.sendConsole("&bLoaded &e" + serverList.size() + " &bServers");

@@ -36,7 +36,7 @@ public class ServerSelectorMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        for (Server server : ServerManager.getServerList()) {
+        for (Server server : SharkHub.getInstance().getServerManager().getServerList()) {
             buttons.put(server.getSlot(), new ServerButton(server));
         }
 

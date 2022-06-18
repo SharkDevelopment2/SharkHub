@@ -33,7 +33,7 @@ public class HubSelectorMenu extends Menu {
     public Map<Integer, Button> getButtons(Player player) {
         Map<Integer, Button> buttons = new HashMap<>();
 
-        for (Hub hub : HubManager.getHubList()) {
+        for (Hub hub : SharkHub.getInstance().getHubManager().getHubList()) {
             buttons.put(hub.getSlot(), new HubButton(hub));
         }
 

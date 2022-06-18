@@ -10,18 +10,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+@Getter
 public class RegisterHandler {
 
-    @Getter private static Aether scoreboard;
-    @Getter private static TablistModule tablist = TablistModule.INSTANCE;
+    private Aether scoreboard;
+    private TablistModule tablist = TablistModule.INSTANCE;
 
-    public static void init() {
+    public void init() {
         registerScoreboard();
         registerTablist();
         optimizeWorld();
     }
 
-    public static void disable() {
+    public void disable() {
         tablist.onDisable(SharkHub.getInstance());
         for (Player online : Bukkit.getOnlinePlayers()) {
             tablist.getProvider().getProvider(online).clear();
@@ -31,20 +32,20 @@ public class RegisterHandler {
         tablist.getThread().stop();
     }
 
-    public static void registerTablist() {
+    public void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
             TablistModule.INSTANCE.onEnable(SharkHub.getInstance());
             TablistModule.INSTANCE.setProvider(new TablistProvider());
         }
     }
 
-    public static void registerScoreboard() {
+    public void registerScoreboard() {
         if (SharkHub.getInstance().getScoreboardConfig().getBoolean("SCOREBOARD.ENABLE")) {
             scoreboard = new Aether(SharkHub.getInstance(), new ScoreboardProvider());
         }
     }
 
-    public static void optimizeWorld() {
+    public void optimizeWorld() {
         if (SharkHub.getInstance().getMainConfig().getBoolean("OPTIMIZE_WORLD")) {
             for (World world : Bukkit.getWorlds()) {
                 world.setGameRuleValue("doDaylightCycle", "false");
