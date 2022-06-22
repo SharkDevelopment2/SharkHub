@@ -93,7 +93,7 @@ public class ServerUtil {
                 .replace("%rank_color%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId())))
                 .replace("%prefix%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId())))
                 .replace("%sufixx%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId())))
-                .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
+                .replace("%global_players%", SharkHub.getInstance().isPlaceholderAPI() ? CC.translate(player, "%bungee_all%", true) : "0")
                 .replace("%player%", player.getName())
                 .replace("%hour%", getHour())
                 .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
