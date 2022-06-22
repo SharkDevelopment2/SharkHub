@@ -1,5 +1,6 @@
 package es.hulk.hub;
 
+import es.hulk.hub.bungee.BungeeTask;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.commands.SharkCommand;
 import es.hulk.hub.commands.customtimer.CustomTimerCommand;
@@ -106,7 +107,9 @@ public class SharkHub extends JavaPlugin {
         this.loadCommands();
         this.loadListeners();
 
+        new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
     }
 
     @Override
