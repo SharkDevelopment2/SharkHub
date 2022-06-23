@@ -169,8 +169,8 @@
         </dependency>
 
         <dependency>
-            <groupId>dev.hely.tab</groupId>
-            <artifactId>Horizon</artifactId>
+            <groupId>es.hulk.tablist</groupId>
+            <artifactId>Omega</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
