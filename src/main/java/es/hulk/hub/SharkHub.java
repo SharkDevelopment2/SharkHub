@@ -65,7 +65,7 @@ public class SharkHub extends JavaPlugin {
         this.loadConfigs();
         this.registerManagers();
 
-        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("ElTitoHulk")) {
+        /*if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("ElTitoHulk")) {
             for (int i = 0; i < 4; i++) {
                 Bukkit.getConsoleSender().sendMessage(CC.translate("&4THIS PLUGIN HAS BEEN DISABLED, DONT CHANGE AUTHOR OR NAME"));
             }
@@ -76,7 +76,7 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
-        }
+        }*/
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             isPlaceholderAPI = true;

@@ -70,7 +70,8 @@ public class JoinListener implements Listener {
 
 
         if (config.getBoolean("VIP_MESSAGE.JOIN.ENABLE")) {
-            if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") != null) {
+            if (config.getString("VIP_MESSAGE.JOIN.PERMISSION") == null) return;
+            if (player.hasPermission(config.getString("VIP_MESSAGE.JOIN.PERMISSION"))) {
                 String str = config.getString("VIP_MESSAGE.JOIN.MESSAGE");
                 Bukkit.broadcastMessage(CC.translate(player, ServerUtil.replaceText(player, CC.translate(str)), true));
             }
@@ -83,7 +84,8 @@ public class JoinListener implements Listener {
         event.setQuitMessage(null);
 
         if (config.getBoolean("VIP_MESSAGE.LEAVE.ENABLE")) {
-            if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") != null) {
+            if (config.getString("VIP_MESSAGE.LEAVE.PERMISSION") == null) return;
+            if (player.hasPermission(config.getString("VIP_MESSAGE.LEAVE.PERMISSION"))) {
                 String str = config.getString("VIP_MESSAGE.LEAVE.MESSAGE");
                 Bukkit.broadcastMessage(CC.translate(player, ServerUtil.replaceText(player, CC.translate(str)), true));
             }
