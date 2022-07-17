@@ -33,6 +33,7 @@ import es.hulk.hub.util.command.CommandManager;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.ButtonListener;
 import es.hulk.hub.util.rank.RankManager;
+import es.hulk.hub.util.skull.SkullManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -56,6 +57,7 @@ public class SharkHub extends JavaPlugin {
     private ServerManager serverManager;
     private HubManager hubManager;
     private RegisterHandler registerHandler;
+    private SkullManager skullManager;
     private boolean isPlaceholderAPI = false;
 
     @Override
@@ -65,18 +67,18 @@ public class SharkHub extends JavaPlugin {
         this.loadConfigs();
         this.registerManagers();
 
-        /*if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("ElTitoHulk")) {
+        if (!this.getDescription().getName().equals("SharkHub") || !this.getDescription().getAuthors().contains("ElTitoHulk")) {
             for (int i = 0; i < 4; i++) {
                 Bukkit.getConsoleSender().sendMessage(CC.translate("&4THIS PLUGIN HAS BEEN DISABLED, DONT CHANGE AUTHOR OR NAME"));
             }
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "7a14d8912679db679f8dfc9a31e4637331edd378").verify()) {
+        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "d4dfb74a90e8f5f65e8e6a6dd7e2c56dbb7f33c0").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
-        }*/
+        }
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             isPlaceholderAPI = true;
@@ -145,6 +147,7 @@ public class SharkHub extends JavaPlugin {
     }
 
     private void registerManagers() {
+        this.skullManager = new SkullManager();
         this.registerHandler = new RegisterHandler();
         this.hubManager = new HubManager();
         this.serverManager = new ServerManager();

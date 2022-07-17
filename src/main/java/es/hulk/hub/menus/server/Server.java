@@ -19,6 +19,9 @@ public class Server {
     private boolean headEnabled;
     private String headName;
 
+    private boolean customHead;
+    private String customHeadValue;
+
     private boolean queue;
     private String serverName;
 

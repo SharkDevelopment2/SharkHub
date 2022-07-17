@@ -38,6 +38,9 @@ public class ServerManager {
             boolean headEnabled = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".HEAD.ENABLE");
             String headName = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".HEAD.NAME");
 
+            boolean customHead = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".CUSTOM_HEAD.ENABLE");
+            String customHeadValue = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".CUSTOM_HEAD.VALUE");
+
             boolean queue = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".QUEUE");
             String serverName = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".SERVER_NAME");
 
@@ -50,7 +53,7 @@ public class ServerManager {
             boolean commandsEnabled = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.ENABLE");
             List<String> commands = serverConfig.getStringList("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.COMMANDS");
 
-            this.serverList.add(new Server(name, displayName, material, data, headEnabled, headName, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
+            this.serverList.add(new Server(name, displayName, material, data, headEnabled, headName, customHead, customHeadValue, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
         }
 
         CC.sendConsole("&bLoaded &e" + serverList.size() + " &bServers");
@@ -70,6 +73,11 @@ public class ServerManager {
             skull.setLore(PlaceholderAPI.setPlaceholders(player, server.getLore()));
             item.setItemMeta(skull);
             return item;
+        } else if (server.isCustomHead()) {
+            return SharkHub.getInstance().getSkullManager().getVersion().createCustomSkull(
+                    server.getCustomHeadValue(),
+                    SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, server.getDisplayName()) : server.getDisplayName(),
+                    SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, server.getLore()) : server.getLore());
         }
         return new ItemMaker(server.getMaterial(), server.getAmount(), (short) server.getData())
                 .lore(SharkHub.getInstance().isPlaceholderAPI() ? PlaceholderAPI.setPlaceholders(player, server.getLore()) : server.getLore())

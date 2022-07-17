@@ -30,6 +30,17 @@ public class ServerUtil {
 
     @Getter private static final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
+    public static final String SERVER_VERSION =
+            Bukkit.getServer()
+                    .getClass().getPackage()
+                    .getName().split("\\.")[3]
+                    .substring(1);
+
+    public static final int SERVER_VERSION_INT = Integer.parseInt(
+            SERVER_VERSION
+                    .replace("1_", "")
+                    .replaceAll("_R\\d", ""));
+
     public static String getDate() {
         timeDate.setTimeZone(TimeZone.getTimeZone(config.getString("TIME.ZONE")));
         return timeDate.format(new Date());

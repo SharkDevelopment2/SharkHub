@@ -24,21 +24,19 @@ public class DoubleJumpListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        if (SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) {
-            event.getPlayer().setAllowFlight(true);
-        }
+        if (!SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) return;
+        event.getPlayer().setAllowFlight(true);
     }
 
     @EventHandler
     public void onPlayerDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
+        if (!SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) return;
         if (PvPModeHandler.isOnPvPMode(player)) return;
         if (player.getGameMode() == GameMode.CREATIVE || player.isFlying()) return;
 
-        if (SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) {
-            event.setCancelled(true);
-            playEffectSound(player);
-        }
+        event.setCancelled(true);
+        this.playEffectSound(player);
     }
 
     private void playEffectSound(Player player) {

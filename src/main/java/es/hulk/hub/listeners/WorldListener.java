@@ -81,7 +81,6 @@ public class WorldListener implements Listener {
         if (!player.hasPermission("hubcore.command.break") || !event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
             event.setCancelled(true);
         }
-
     }
 
     @EventHandler
