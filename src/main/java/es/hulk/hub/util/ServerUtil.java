@@ -53,19 +53,20 @@ public class ServerUtil {
 
     public static String replaceText(Player player, String str) {
         String replace = str;
-        replace = replace
-                .replace("%queue_server%", "None")
-                .replace("%queue_position%", "0")
-                .replace("%queue_size%", "0");
 
-        if (queues.getSystem().isInQueue(player)) {
+        if (config.getBoolean("SYSTEM.CUSTOM_QUEUE")) {
             replace = replace
-                    .replace("%queue_server%", queues.getSystem().getServer(player))
-                    .replace("%queue_position%", String.valueOf(queues.getSystem().getPosition(player)))
-                    .replace("%queue_size%", String.valueOf(queues.getSystem().getSize(player)));
-        }
+                    .replace("%queue_server%", "None")
+                    .replace("%queue_position%", "0")
+                    .replace("%queue_size%", "0");
 
-        if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
+            if (queues.getSystem().isInQueue(player)) {
+                replace = replace
+                        .replace("%queue_server%", queues.getSystem().getServer(player))
+                        .replace("%queue_position%", String.valueOf(queues.getSystem().getPosition(player)))
+                        .replace("%queue_size%", String.valueOf(queues.getSystem().getSize(player)));
+            }
+        } else if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
             if (!Hooker.getVerified().isEmpty()) {
                 for (String sk : Hooker.getVerified()) {
                     String path = "HCF_HOOKER.SERVERS." + sk;
@@ -97,18 +98,18 @@ public class ServerUtil {
                 replace = replace.replace("%" + sk + "_lives%", "0");
                 replace = replace.replace("%" + sk + "_deathban%", "Loading");
             }
+        } else {
+            replace = replace
+                    .replace("%rank%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId())))
+                    .replace("%rank_color%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId())))
+                    .replace("%prefix%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId())))
+                    .replace("%sufixx%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId())))
+                    .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
+                    .replace("%player%", player.getName())
+                    .replace("%hour%", getHour())
+                    .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
+                    .replace("%date%", getDate());
         }
-
-        replace = replace
-                .replace("%rank%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getName(player.getUniqueId())))
-                .replace("%rank_color%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getColor(player.getUniqueId())))
-                .replace("%prefix%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId())))
-                .replace("%sufixx%", CC.translate(SharkHub.getInstance().getRankManager().getRank().getSuffix(player.getUniqueId())))
-                .replace("%global_players%", String.valueOf(BungeeUtils.getGlobalPlayers()))
-                .replace("%player%", player.getName())
-                .replace("%hour%", getHour())
-                .replace("%slots%", Integer.toString(Bukkit.getServer().getMaxPlayers()))
-                .replace("%date%", getDate());
 
         return replace;
     }
