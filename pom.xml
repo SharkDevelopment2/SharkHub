@@ -190,12 +190,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/api/Phoenix-API.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>com.mojang</groupId>
-            <artifactId>authlib</artifactId>
-            <version>3.5.41</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>

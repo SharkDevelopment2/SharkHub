@@ -65,6 +65,7 @@ public class ServerManager {
             if (ServerUtil.getServerVersion().equalsIgnoreCase("v1_7_R4")) {
                 item = new ItemStack(Material.SKULL_ITEM, (short) 3);
             } else {
+                assert XMaterial.CREEPER_HEAD.parseMaterial() != null;
                 item = new ItemStack(XMaterial.CREEPER_HEAD.parseMaterial(), (short) 3);
             }
             SkullMeta skull = (SkullMeta) item.getItemMeta();
