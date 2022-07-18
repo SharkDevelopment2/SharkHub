@@ -9,7 +9,6 @@ import es.hulk.hub.util.files.ConfigFile;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
 import java.io.DataInputStream;
@@ -28,7 +27,8 @@ public class ServerUtil {
     private static final SimpleDateFormat timeDate = new SimpleDateFormat(config.getString("TIME.DATE"));
     private static final SimpleDateFormat timeHour = new SimpleDateFormat(config.getString("TIME.HOUR"));
 
-    @Getter private static final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+    @Getter
+    private static final String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
 
     public static final String SERVER_VERSION =
             Bukkit.getServer()
@@ -54,19 +54,7 @@ public class ServerUtil {
     public static String replaceText(Player player, String str) {
         String replace = str;
 
-        if (config.getBoolean("SYSTEM.CUSTOM_QUEUE")) {
-            replace = replace
-                    .replace("%queue_server%", "None")
-                    .replace("%queue_position%", "0")
-                    .replace("%queue_size%", "0");
-
-            if (queues.getSystem().isInQueue(player)) {
-                replace = replace
-                        .replace("%queue_server%", queues.getSystem().getServer(player))
-                        .replace("%queue_position%", String.valueOf(queues.getSystem().getPosition(player)))
-                        .replace("%queue_size%", String.valueOf(queues.getSystem().getSize(player)));
-            }
-        } else if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
+        if (config.getBoolean("SYSTEM.HCF_HOOKER")) {
             if (!Hooker.getVerified().isEmpty()) {
                 for (String sk : Hooker.getVerified()) {
                     String path = "HCF_HOOKER.SERVERS." + sk;

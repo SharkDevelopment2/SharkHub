@@ -1,6 +1,7 @@
 package es.hulk.hub.managers.queue.impl;
 
 import es.hulk.hub.managers.queue.QueueInterface;
+import es.hulk.tablist.utils.CC;
 import me.joeleoli.portal.shared.queue.Queue;
 import org.bukkit.entity.Player;
 
@@ -27,12 +28,18 @@ public class Portal implements QueueInterface {
     @Override
     public boolean isInQueue(Player player) {
         Queue queue = Queue.getByPlayer(player.getUniqueId());
-        return queue.containsPlayer(player.getUniqueId());
+        return queue != null;
     }
 
     @Override
     public void sendPlayer(Player player, String q) {
-        Queue queue = Queue.getByPlayer(player.getUniqueId());
+        Queue queue = Queue.getByName(q);
+
+        if (queue == null) {
+            player.sendMessage(CC.translate("&cQueue '" + q + "' its offline or doesnt exist."));
+            return;
+        }
+
         queue.sendPlayer(player, q);
     }
 }

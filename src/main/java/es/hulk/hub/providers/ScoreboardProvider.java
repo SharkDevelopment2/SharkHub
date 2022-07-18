@@ -5,12 +5,13 @@ import com.bizarrealex.aether.scoreboard.BoardAdapter;
 import com.bizarrealex.aether.scoreboard.cooldown.BoardCooldown;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.managers.customtimer.CustomTimer;
+import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.JavaUtils;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
 import me.clip.placeholderapi.PlaceholderAPI;
-import es.hulk.hub.util.ServerUtil;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class ScoreboardProvider implements BoardAdapter {
     @Override
     public List<String> getScoreboard(Player player, Board board, Set<BoardCooldown> cooldowns) {
         List<String> toReturn = new ArrayList<>();
+        QueueManager queueM = SharkHub.getInstance().getQueueManager();
         if (PvPModeHandler.isOnPvPMode(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.PVP_MODE")) {
                 if (str.contains("custom_timer%")) {
@@ -44,12 +46,17 @@ public class ScoreboardProvider implements BoardAdapter {
                 }
                 toReturn.add(ServerUtil.replaceText(player, str.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))).replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
             }
-        } else if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
+            return toReturn;
+        }
+        if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
                 if (str.contains("custom_timer%")) {
                     customTimerLines(toReturn);
                     continue;
                 }
+                str = str.replace("%queue_server%", queueM.getSystem().getServer(player))
+                        .replace("%queue_position%", String.valueOf(queueM.getSystem().getPosition(player)))
+                        .replace("%queue_size%", String.valueOf(queueM.getSystem().getSize(player)));
                 toReturn.add(ServerUtil.replaceText(player, str));
             }
         } else {
@@ -109,7 +116,7 @@ public class ScoreboardProvider implements BoardAdapter {
             for (String customTimerLine : config.getStringList("SCOREBOARD.CUSTOM_TIMER")) {
                 lines.add(
                         customTimerLine.replace("%displayname%",
-                        customTimer.getDisplayName()).replace("%duration%", JavaUtils.formatLongHour(customTimer.getRemaining())));
+                                customTimer.getDisplayName()).replace("%duration%", JavaUtils.formatLongHour(customTimer.getRemaining())));
             }
         }
     }
