@@ -3,9 +3,8 @@ package es.hulk.hub.listeners;
 import com.lunarclient.bukkitapi.LunarClientAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.ServerUtil;
-import me.clip.placeholderapi.PlaceholderAPI;
+import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -45,11 +44,18 @@ public class ChatListener implements Listener {
             if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
                 if (event.getFormat().contains("%LUNAR%") && isLunarClient(player)) {
                     String lunarPath = CC.translate(config.getString("CHAT_FORMAT.FORMAT-LUNAR"));
-                    event.setFormat(CC.translate(ServerUtil.replaceText(player, lunarPath + replace)));
+                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                        onlinePlayer.sendMessage(CC.translate(ServerUtil.replaceText(player, lunarPath + replace)));
+                        event.setCancelled(true);
+                    }
                     return;
                 }
             }
-            event.setFormat(CC.translate(player, replace, true));
+
+            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                onlinePlayer.sendMessage(CC.translate(player, replace, true));
+                event.setCancelled(true);
+            }
         }
     }
 }
