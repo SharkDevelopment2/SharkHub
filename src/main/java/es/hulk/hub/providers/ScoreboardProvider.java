@@ -46,9 +46,7 @@ public class ScoreboardProvider implements BoardAdapter {
                 }
                 toReturn.add(ServerUtil.replaceText(player, str.replace("%kills%", String.valueOf(PvPModeHandler.getKills().getOrDefault(player.getUniqueId(), 0))).replace("%duration%", String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - PvPModeHandler.getTime(player))))));
             }
-            return toReturn;
-        }
-        if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
+        } else if (SharkHub.getInstance().getQueueManager().getSystem().isInQueue(player)) {
             for (String str : config.getStringList("SCOREBOARD.MODES.QUEUE")) {
                 if (str.contains("custom_timer%")) {
                     customTimerLines(toReturn);

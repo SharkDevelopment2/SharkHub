@@ -99,6 +99,7 @@ public class WorldListener implements Listener {
     private void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
+            if (PvPModeHandler.isOnPvPMode(player)) return;
             event.setCancelled(true);
             if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
                 player.teleport(event.getEntity().getWorld().getSpawnLocation());
