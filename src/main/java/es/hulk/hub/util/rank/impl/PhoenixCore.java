@@ -3,6 +3,7 @@ package es.hulk.hub.util.rank.impl;
 import dev.phoenix.phoenix.PhoenixAPI;
 import dev.phoenix.phoenix.profile.Profile;
 import es.hulk.hub.util.rank.Rank;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -11,26 +12,26 @@ public class PhoenixCore implements Rank {
 
     @Override
     public String getName(UUID uuid) {
-        Profile profile = PhoenixAPI.INSTANCE.getProfile(uuid);
-        return profile.getBestRank().getName();
+        Player player = Bukkit.getPlayer(uuid);
+        return PhoenixAPI.INSTANCE.getPlayerRank(player.getUniqueId()).getName();
     }
 
     @Override
     public String getPrefix(UUID uuid) {
-        Profile profile = PhoenixAPI.INSTANCE.getProfile(uuid);
-        return profile.getBestRank().getPrefix();
+        Player player = Bukkit.getPlayer(uuid);
+        return PhoenixAPI.INSTANCE.getPlayerRank(player.getUniqueId()).getPrefix();
     }
 
     @Override
     public String getSuffix(UUID uuid) {
-        Profile profile = PhoenixAPI.INSTANCE.getProfile(uuid);
-        return profile.getBestRank().getSuffix();
+        Player player = Bukkit.getPlayer(uuid);
+        return PhoenixAPI.INSTANCE.getPlayerRank(player.getUniqueId()).getSuffix();
     }
 
     @Override
     public String getColor(UUID uuid) {
-        Profile profile = PhoenixAPI.INSTANCE.getProfile(uuid);
-        return profile.getBestRank().getColor();
+        Player player = Bukkit.getPlayer(uuid);
+        return PhoenixAPI.INSTANCE.getPlayerRank(player.getUniqueId()).getColor();
     }
 
     @Override

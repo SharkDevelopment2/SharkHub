@@ -30,7 +30,6 @@ public class ServerManager {
 
         for (String str : section.getKeys(false)) {
 
-            String name = str;
             String displayName = serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".DISPLAY_NAME");
             Material material = Material.getMaterial(serverConfig.getString("SERVER_SELECTOR.ITEMS." + str + ".MATERIAL"));
             int data = serverConfig.getInt("SERVER_SELECTOR.ITEMS." + str + ".DATA");
@@ -53,7 +52,7 @@ public class ServerManager {
             boolean commandsEnabled = serverConfig.getBoolean("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.ENABLE");
             List<String> commands = serverConfig.getStringList("SERVER_SELECTOR.ITEMS." + str + ".COMMANDS.COMMANDS");
 
-            this.serverList.add(new Server(name, displayName, material, data, headEnabled, headName, customHead, customHeadValue, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
+            this.serverList.add(new Server(str, displayName, material, data, headEnabled, headName, customHead, customHeadValue, queue, serverName, slot, lore, subServer, amount, commandsEnabled, commands));
         }
 
         CC.sendConsole("&bLoaded &e" + serverList.size() + " &bServers");

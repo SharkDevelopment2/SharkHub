@@ -39,8 +39,10 @@ public class RankManager {
         else if (Bukkit.getPluginManager().getPlugin("Zoom") != null) {
             this.setRank(new Zoom());
             this.setRankSystem("Zoom");
-        }
-        else if (Bukkit.getPluginManager().getPlugin("Vault") != null) {
+        } else if (Bukkit.getPluginManager().getPlugin("Phoenix") != null) {
+            this.setRank(new PhoenixCore());
+            this.setRankSystem("Phoenix");
+        } else if (Bukkit.getPluginManager().getPlugin("Vault") != null) {
             this.loadVault();
 
             if (this.getChat() == null) {

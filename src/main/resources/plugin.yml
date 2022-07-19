@@ -4,3 +4,8 @@ main: es.hulk.hub.SharkHub
 author: ElTitoHulk
 
 depend: ["PlaceholderAPI"]
+load: POSTWORLD
+loadbefore:
+  - Loader
+  - Phoenix
+  - PhoenixCore
