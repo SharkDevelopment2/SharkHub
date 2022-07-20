@@ -1,7 +1,7 @@
 SCOREBOARD:
   ENABLE: true
   TITLE:
-    NORMAL: "%TITLE%"
+    STATIC: "%TITLE%"
     ANIMATION:
       ENABLED: true
       INTERVAL: 1 # in seconds

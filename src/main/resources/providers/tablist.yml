@@ -1,6 +1,6 @@
-# GLOBAL VARIABLES: %PLAYER% - %RANK% - %SLOTS%
-# QUEUE VARIABLES: %QUEUE_NAME% - %QUEUE_POSITION% - %QUEUE_SIZE%
-# TIME VARIABLES: %DATE% - %HOUR%
+# GLOBAL VARIABLES: %player% - %rank% - %slots%
+# QUEUE VARIABLES: %queue_name% - %queue_position% - %queue_size%
+# TIME VARIABLES: %date% - %hour%
 #
 # You can use PlaceholderAPIExpansion variables.
 #
@@ -47,7 +47,7 @@ TABLIST:
         TEXT: '&bRank'
         HEAD: '%INFORMATION%'
       '7':
-        TEXT: '%RANK%'
+        TEXT: '%rank%'
         HEAD: ''
       '8':
         TEXT: ''
@@ -96,7 +96,7 @@ TABLIST:
         TEXT: '&b&lShark Development'
         HEAD: '%EARTH%'
       '3':
-        TEXT: '&fOnline&7: &f%bungee_total%/%SLOTS%'
+        TEXT: '&fOnline&7: &f%bungee_total%/%slots%'
         HEAD: ''
       '4':
         TEXT: ''
@@ -108,7 +108,7 @@ TABLIST:
         TEXT: '&b&lIGN'
         HEAD: '%INFORMATION%'
       '7':
-        TEXT: '%PLAYER%'
+        TEXT: '%player%'
         HEAD: '%PLAYER%'
       '8':
         TEXT: ''
