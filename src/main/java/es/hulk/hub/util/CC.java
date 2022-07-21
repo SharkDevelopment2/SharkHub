@@ -14,6 +14,10 @@ public class CC {
     public static String translate(String in) {
         return ChatColor.translateAlternateColorCodes('&', in);
     }
+
+    public static  String translate(Player player, Player target, String text, boolean colorized) {
+        return placeholder(player, ServerUtil.replaceText(target, text), SharkHub.getInstance().isPlaceholderAPI(), colorized);
+    }
     
     public static List<String> translate(List<String> lines) {
         List<String> toReturn = new ArrayList<>();

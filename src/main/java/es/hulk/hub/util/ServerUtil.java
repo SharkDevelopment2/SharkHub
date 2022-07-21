@@ -51,6 +51,18 @@ public class ServerUtil {
         return timeHour.format(new Date());
     }
 
+    public static int getPing(Player player) {
+        try {
+            String a = Bukkit.getServer().getClass().getPackage().getName().substring(23);
+            Class<?> b = Class.forName("org.bukkit.craftbukkit." + a + ".entity.CraftPlayer");
+            Object c = b.getMethod("getHandle").invoke(player);
+            return (int) c.getClass().getDeclaredField("ping").get(c);
+        }
+        catch (Exception ex) {
+            return 0;
+        }
+    }
+
     public static String replaceText(Player player, String str) {
         String replace = str;
 

@@ -2,12 +2,13 @@ package es.hulk.hub.providers;
 
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.ServerUtil;
+import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.tablist.TablistAdapter;
 import es.hulk.tablist.TablistColumn;
 import es.hulk.tablist.TablistLayout;
 import es.hulk.tablist.utils.Skin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -23,24 +24,49 @@ public class TablistProvider implements TablistAdapter {
     @Override
     public Set<TablistLayout> getProvider(Player player) {
         Set<TablistLayout> layoutSet = new HashSet<>();
+        String tablistType = tablistConfig.getString("TABLIST.TYPE");
+        String vanillaText = CC.translate(player, ServerUtil.replaceText(player, tablistConfig.getString("TABLIST.VANILLA_TEXT")), true);
 
-        for (int i = 0; i < 21; i++) {
-            layoutSet.add(new TablistLayout(TablistColumn.LEFT, i)
-                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("LEFT", i, "HEAD")))
-                    .setPing(tablistConfig.getInt("TABLIST.PING")));
-            layoutSet.add(new TablistLayout(TablistColumn.MIDDLE, i)
-                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD")))
-                    .setPing(tablistConfig.getInt("TABLIST.PING")));
-            layoutSet.add(new TablistLayout(TablistColumn.RIGHT, i)
-                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD")))
-                    .setPing(tablistConfig.getInt("TABLIST.PING")));
-            layoutSet.add(new TablistLayout(TablistColumn.FAR_RIGHT, i)
-                    .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
-                    .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD")))
-                    .setPing(tablistConfig.getInt("TABLIST.PING")));
+        switch (tablistType) {
+            case "VANILLA":
+                for (int i = 1; i <= 20; i++) {
+                    int column = 0;
+                    int row = 1;
+
+                    for (Player online : Bukkit.getOnlinePlayers()) {
+
+                        layoutSet.add(new TablistLayout(TablistColumn.getColumn(column++), row)
+                                .setText(CC.translate(player, online, vanillaText, true))
+                                .setSkin(Skin.getSkin(online))
+                                .setPing(ServerUtil.getPing(online)));
+
+                        if (column == 4) {
+                            column = 0;
+                            row++;
+                        }
+                    }
+                }
+                break;
+            case "CUSTOM":
+                for (int i = 1; i <= 20; i++) {
+                    layoutSet.add(new TablistLayout(TablistColumn.LEFT, i)
+                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
+                            .setSkin(getSkin(player, getLines("LEFT", i, "HEAD")))
+                            .setPing(tablistConfig.getInt("TABLIST.PING")));
+                    layoutSet.add(new TablistLayout(TablistColumn.MIDDLE, i)
+                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
+                            .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD")))
+                            .setPing(tablistConfig.getInt("TABLIST.PING")));
+                    layoutSet.add(new TablistLayout(TablistColumn.RIGHT, i)
+                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
+                            .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD")))
+                            .setPing(tablistConfig.getInt("TABLIST.PING")));
+                    layoutSet.add(new TablistLayout(TablistColumn.FAR_RIGHT, i)
+                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
+                            .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD")))
+                            .setPing(tablistConfig.getInt("TABLIST.PING")));
+                }
+                break;
         }
 
         return layoutSet;
