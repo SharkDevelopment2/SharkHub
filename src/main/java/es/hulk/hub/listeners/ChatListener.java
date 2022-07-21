@@ -1,6 +1,5 @@
 package es.hulk.hub.listeners;
 
-import com.lunarclient.bukkitapi.LunarClientAPI;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
@@ -19,10 +18,6 @@ public class ChatListener implements Listener {
 
     private final ConfigFile config = SharkHub.getInstance().getMainConfig();
 
-    private boolean isLunarClient(Player player) {
-        return LunarClientAPI.getInstance().isRunningLunarClient(player);
-    }
-
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
@@ -30,6 +25,7 @@ public class ChatListener implements Listener {
         if (config.getBoolean("CHAT_FORMAT.MUTED.ENABLE")) {
             player.sendMessage(CC.translate(config.getString("CHAT_FORMAT.MUTED.MESSAGE")));
             event.setCancelled(true);
+            return;
         }
 
         if (config.getBoolean("CHAT_FORMAT.NORMAL.ENABLE")) {
@@ -38,24 +34,16 @@ public class ChatListener implements Listener {
             String prefix = SharkHub.getInstance().getRankManager().getRank().getPrefix(player.getUniqueId());
 
             event.setMessage(player.hasPermission("sharkhub.vip") || player.isOp() ? CC.translate(event.getMessage()) : event.getMessage());
-            String replace = path.replaceAll("%PLAYER%", playerName).replaceAll("%RANK%", prefix).replace("%MESSAGE%", event.getMessage());
+
+            if (event.getMessage().contains("%")) {
+                event.setMessage(event.getMessage().replace("%", "%%"));
+            }
+
+            String replace = path.replaceAll("%player%", playerName).replaceAll("%prefix%", prefix).replace("%message%", event.getMessage());
             replace = replace.replace('§', '&');
+            replace = ServerUtil.replaceText(player, replace);
 
-            if (Bukkit.getPluginManager().getPlugin("LunarClient-API") != null && Bukkit.getPluginManager().getPlugin("LunarClient-API").isEnabled()) {
-                if (event.getFormat().contains("%LUNAR%") && isLunarClient(player)) {
-                    String lunarPath = CC.translate(config.getString("CHAT_FORMAT.FORMAT-LUNAR"));
-                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                        onlinePlayer.sendMessage(CC.translate(ServerUtil.replaceText(player, lunarPath + replace)));
-                        event.setCancelled(true);
-                    }
-                    return;
-                }
-            }
-
-            for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                onlinePlayer.sendMessage(CC.translate(player, replace, true));
-                event.setCancelled(true);
-            }
+            event.setFormat(CC.translate(player, replace, true));
         }
     }
 }

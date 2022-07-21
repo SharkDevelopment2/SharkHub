@@ -159,15 +159,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- LunarClientAPI -->
-        <dependency>
-            <groupId>com.lunarclient</groupId>
-            <artifactId>bukkitapi</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/api/LunarClientAPI.jar</systemPath>
-        </dependency>
-
         <dependency>
             <groupId>es.hulk.tablist</groupId>
             <artifactId>Omega</artifactId>
