@@ -27,11 +27,7 @@ public class EnderButtListener implements Listener {
         Player player = event.getPlayer();
         Hotbar enderButt = HotbarManager.getItemByAction("ENDER_BUTT");
 
-        if (enderButt == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'ENDER_BUTT'");
-            return;
-        }
-
+        if (enderButt == null) return;
         ItemStack item = HotbarManager.getHotbarItemStack(enderButt);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

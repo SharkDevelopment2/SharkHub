@@ -24,11 +24,7 @@ public class PvPModeHotbarListener implements Listener {
         Player player = event.getPlayer();
         Hotbar pvpMode = HotbarManager.getItemByAction("JOIN_PVP_MODE");
 
-        if (pvpMode == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'JOIN_PVP_MODE'");
-            return;
-        }
-
+        if (pvpMode == null) return;
         ItemStack item = HotbarManager.getHotbarItemStack(pvpMode);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

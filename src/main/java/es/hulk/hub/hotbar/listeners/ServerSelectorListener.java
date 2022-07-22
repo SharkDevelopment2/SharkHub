@@ -24,11 +24,7 @@ public class ServerSelectorListener implements Listener {
         Player player = event.getPlayer();
         Hotbar serverSelector = HotbarManager.getItemByAction("OPEN_SERVER_SELECTOR");
 
-        if (serverSelector == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_SERVER_SELECTOR'");
-            return;
-        }
-
+        if (serverSelector == null) return;
         ItemStack item = HotbarManager.getHotbarItemStack(serverSelector);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

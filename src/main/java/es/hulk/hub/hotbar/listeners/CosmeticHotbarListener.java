@@ -24,11 +24,7 @@ public class CosmeticHotbarListener implements Listener {
         Player player = event.getPlayer();
         Hotbar cosmetic = HotbarManager.getItemByAction("OPEN_COSMETICS_MENU");
 
-        if (cosmetic == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_COSMETICS_MENU'");
-            return;
-        }
-
+        if (cosmetic == null) return;
         ItemStack item = HotbarManager.getHotbarItemStack(cosmetic);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

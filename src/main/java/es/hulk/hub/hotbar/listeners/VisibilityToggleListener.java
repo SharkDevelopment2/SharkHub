@@ -27,10 +27,7 @@ public class VisibilityToggleListener implements Listener {
         Hotbar show = HotbarManager.getItemByAction("VISIBILITY_TOGGLE_ON");
         Hotbar hide = HotbarManager.getItemByAction("VISIBILITY_TOGGLE_OFF");
 
-        if (show == null || hide == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'VISIBILITY_TOGGLE_ON' or 'VISIBILITY_TOGGLE_OFF'");
-            return;
-        }
+        if (show == null || hide == null) return;
 
         ItemStack showItem = HotbarManager.getHotbarItemStack(show);
         ItemStack hideItem = HotbarManager.getHotbarItemStack(hide);

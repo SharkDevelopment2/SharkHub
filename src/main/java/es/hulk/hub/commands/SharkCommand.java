@@ -92,7 +92,9 @@ public class SharkCommand extends BaseCommand {
                 }
 
                 sender.sendMessage(CC.translate("&aSuccessfully all SharkHub files reloaded!"));
+                return;
             }
+            sender.sendMessage(CC.translate("&cYou don't have permission to use this command!"));
         }
     }
 }

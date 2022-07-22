@@ -24,11 +24,7 @@ public class HubSelectorListener implements Listener {
         Player player = event.getPlayer();
         Hotbar hubSelector = HotbarManager.getItemByAction("OPEN_HUB_SELECTOR");
 
-        if (hubSelector == null) {
-            CC.sendConsole("&cCould not find hotbar item with action 'OPEN_HUB_SELECTOR'");
-            return;
-        }
-
+        if (hubSelector == null) return;
         ItemStack item = HotbarManager.getHotbarItemStack(hubSelector);
 
         if (event.getAction().equals(Action.RIGHT_CLICK_AIR) || event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
