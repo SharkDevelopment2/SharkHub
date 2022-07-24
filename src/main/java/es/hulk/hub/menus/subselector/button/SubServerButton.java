@@ -1,6 +1,7 @@
 package es.hulk.hub.menus.subselector.button;
 
 import com.cryptomorin.xseries.XMaterial;
+import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.util.ServerUtil;
 import lombok.AllArgsConstructor;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -40,11 +41,26 @@ public class SubServerButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
-        if(config.getBoolean("SUB_SELECTOR." + server + ".COMMANDS.ENABLE")) {
-            Bukkit.dispatchCommand(player, config.getString("SUB_SELECTOR.ITEMS." + server + ".COMMANDS.COMMAND"));
-        } else {
-            SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, server);
+        String path = "SUB_SELECTOR." + server;
+        String serverName = config.getString(path + ".SERVER_NAME");
+
+        if(config.getBoolean(path + ".COMMANDS.ENABLE")) {
+            for (String command : config.getStringList(path + ".COMMANDS.COMMANDS")) {
+                if (command.contains("[PLAYER]")) {
+                    player.performCommand(command.replace("[PLAYER] ", player.getName()));
+                } else {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+                }
+            }
+            return;
         }
+
+        if (config.getBoolean(path + ".QUEUE")) {
+            SharkHub.getInstance().getQueueManager().getSystem().sendPlayer(player, serverName);
+            return;
+        }
+
+        BungeeUtils.sendToServer(player, serverName);
     }
 
     private String getConfigPath(String a) {

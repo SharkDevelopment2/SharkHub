@@ -31,6 +31,14 @@ SUB_SELECTOR:
         - ""
         - "&aClick to join the queue!"
         - "&7&m-------------------------"
+      QUEUE: false
+      SERVER_NAME: "Squads"
+      COMMANDS:
+        ENABLE: false
+        COMMANDS:
+          - ""
+          - ""
+          - ""
 
     Teams:
       NAME: "&b&lTeams"
@@ -48,3 +56,11 @@ SUB_SELECTOR:
         - ""
         - "&aClick to join the queue!"
         - "&7&m-------------------------"
+      QUEUE: false
+      SERVER_NAME: "Squads"
+      COMMANDS:
+        ENABLE: false
+        COMMANDS:
+          - ""
+          - ""
+          - ""
