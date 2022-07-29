@@ -1,5 +1,5 @@
 SCOREBOARD:
-  ENABLED: true
+  ENABLE: true
   TITLE: "&b&lShark &7┃ &fHubCore"
 
   NORMAL:
@@ -13,7 +13,7 @@ SCOREBOARD:
     - ""
     - "%queue%"
     - "%custom_timer%"
-    - "%FOOTER%"
+    - "%footer%"
     - "&7&m--------------------"
 
   QUEUE:
@@ -33,9 +33,7 @@ SCOREBOARD:
     - "&cto leave pvp-mode"
     - "&cuse command /pvpmode"
     - ""
-    - "%custom_timer%"
-    - "%FOOTER%"
-    - ""
+    - "%footer%"
     - "&7&m--------------------"
 
 ANIMATED_SCOREBOARD:
