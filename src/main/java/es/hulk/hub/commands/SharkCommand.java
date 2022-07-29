@@ -2,6 +2,7 @@ package es.hulk.hub.commands;
 
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.HotbarManager;
+import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.SharkLicenses;
 import es.hulk.hub.util.command.BaseCommand;
@@ -88,7 +89,7 @@ public class SharkCommand extends BaseCommand {
                 SharkHub.getInstance().getHubManager().load();
 
                 for (Player online : Bukkit.getOnlinePlayers()) {
-                    HotbarManager.setHotbarItems(online);
+                    if (!PvPModeHandler.isOnPvPMode(online)) HotbarManager.setHotbarItems(online);
                 }
 
                 sender.sendMessage(CC.translate("&aSuccessfully all SharkHub files reloaded!"));
