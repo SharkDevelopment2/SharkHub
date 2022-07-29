@@ -1,10 +1,10 @@
 package es.hulk.hub.managers;
 
 import com.bizarrealex.aether.Aether;
+import es.hulk.hub.providers.ScoreboardProvider;
 import es.hulk.tablist.Omega;
 import lombok.Getter;
 import es.hulk.hub.SharkHub;
-import es.hulk.hub.providers.OldScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -12,13 +12,18 @@ import org.bukkit.World;
 @Getter
 public class RegisterHandler {
 
+    private final SharkHub plugin;
     private Aether scoreboard;
     private Omega tablist;
 
+    public RegisterHandler(SharkHub plugin) {
+        this.plugin = plugin;
+    }
+
     public void init() {
-        registerScoreboard();
-        registerTablist();
-        optimizeWorld();
+        this.registerScoreboard();
+        this.registerTablist();
+        this.optimizeWorld();
     }
 
     public void disable() {
@@ -33,7 +38,7 @@ public class RegisterHandler {
 
     public void registerScoreboard() {
         if (SharkHub.getInstance().getScoreboardConfig().getBoolean("SCOREBOARD.ENABLE")) {
-            scoreboard = new Aether(SharkHub.getInstance(), new OldScoreboardProvider());
+            scoreboard = new Aether(SharkHub.getInstance(), new ScoreboardProvider(plugin));
         }
     }
 
