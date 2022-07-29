@@ -4,7 +4,7 @@ import com.bizarrealex.aether.Aether;
 import es.hulk.tablist.Omega;
 import lombok.Getter;
 import es.hulk.hub.SharkHub;
-import es.hulk.hub.providers.ScoreboardProvider;
+import es.hulk.hub.providers.OldScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -33,7 +33,7 @@ public class RegisterHandler {
 
     public void registerScoreboard() {
         if (SharkHub.getInstance().getScoreboardConfig().getBoolean("SCOREBOARD.ENABLE")) {
-            scoreboard = new Aether(SharkHub.getInstance(), new ScoreboardProvider());
+            scoreboard = new Aether(SharkHub.getInstance(), new OldScoreboardProvider());
         }
     }
 

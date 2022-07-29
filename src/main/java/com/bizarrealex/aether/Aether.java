@@ -51,7 +51,8 @@ public class Aether implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
 
         setAdapter(adapter);
-        run();
+        this.run();
+        AetherAnimation.init();
         String serverVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
         System.out.println("[Scoreboard] Registered Scoreboard Adapter for " + serverVersion);
     }
