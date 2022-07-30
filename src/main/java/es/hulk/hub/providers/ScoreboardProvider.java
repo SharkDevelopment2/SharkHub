@@ -1,11 +1,11 @@
 package es.hulk.hub.providers;
 
-import com.bizarrealex.aether.AetherAnimation;
 import com.google.common.collect.Lists;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.managers.customtimer.CustomTimer;
 import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.pvpmode.PvPModeHandler;
+import es.hulk.hub.util.AetherAnimation;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.JavaUtils;
 import es.hulk.hub.util.ServerUtil;

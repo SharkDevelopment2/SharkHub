@@ -8,13 +8,14 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 public class AirButton extends Button {
+
     @Override
-    public ItemStack getButtonItem(final Player player) {
+    public ItemStack getButtonItem(Player player) {
         return new ItemBuilder(Material.AIR).build();
     }
 
     @Override
-    public boolean shouldCancel(final Player player, final int slot, final ClickType clickType) {
+    public boolean shouldCancel(Player player, int slot, ClickType clickType) {
         return true;
     }
 }

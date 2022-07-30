@@ -1,20 +1,18 @@
 package es.hulk.hub.util.menu;
 
-import es.hulk.hub.util.ItemBuilder;
-import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class Button {
-    public static Button placeholder(final Material material, final short data, final String title) {
-        return new Button() {
-            @Override
-            public ItemStack getButtonItem(final Player player) {
-                return new ItemBuilder(material).data(data).name(title).build();
+
+    public static Button placeholder(ItemStack itemStack) {
+        return (new Button() {
+            public ItemStack getButtonItem(Player player) {
+                return itemStack;
             }
-        };
+        });
     }
 
     public static void playFail(final Player player) {
@@ -29,21 +27,23 @@ public abstract class Button {
         player.playSound(player.getLocation(), Sound.CLICK, 20.0f, 1.0f);
     }
 
-    public abstract ItemStack getButtonItem(final Player p0);
+    public abstract ItemStack getButtonItem(Player player);
 
-    public void clicked(final Player player, final int slot, final ClickType clickType, final int hotbarButton) {
-    }
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
 
-    public boolean shouldUpdate(final Player player, final int slot, final ClickType clickType) {
+    public boolean shouldUpdate(Player player, int slot, ClickType clickType) {
         return false;
     }
 
-    public boolean shouldCancel(final Player player, final int slot, final ClickType clickType) {
+    public boolean shouldCancel(Player player, int slot, ClickType clickType) {
         return true;
     }
 
-    public boolean shouldShift(final Player player, final int slot, final ClickType clickType) {
+    public boolean shouldShift(Player player, int slot, ClickType clickType) {
         return true;
+    }
+
+    public void close(Player player) {
+        player.closeInventory();
     }
 }
-

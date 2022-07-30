@@ -1,73 +1,80 @@
 package es.hulk.hub.util.menu.pagination;
 
+
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class PaginatedMenu extends Menu {
-    private int page;
 
-    public PaginatedMenu() {
-        this.page = 1;
-        this.setUpdateAfterClick(false);
+    @Getter
+    private int page = 1;
+
+    {
+        setUpdateAfterClick(false);
     }
 
     @Override
-    public String getTitle(final Player player) {
-        return String.valueOf(this.getPrePaginatedTitle(player)) + " - " + this.page + "/" + this.getPages(player);
+    public String getTitle(Player player) {
+        return getPrePaginatedTitle(player) + " - " + page + "/" + getPages(player);
     }
 
-    public final void modPage(final Player player, final int mod) {
-        this.page += mod;
-        this.getButtons().clear();
-        this.openMenu(player);
+    public final void modPage(Player player, int mod) {
+        page += mod;
+        getButtons().clear();
+        openMenu(player);
     }
 
-    public final int getPages(final Player player) {
-        final int buttonAmount = this.getAllPagesButtons(player).size();
+    public final int getPages(Player player) {
+        int buttonAmount = getAllPagesButtons(player).size();
+
         if (buttonAmount == 0) {
             return 1;
         }
-        return (int) Math.ceil(buttonAmount / (double) this.getMaxItemsPerPage(player));
+
+        return (int) Math.ceil(buttonAmount / (double) getMaxItemsPerPage(player));
     }
 
     @Override
-    public final Map<Integer, Button> getButtons(final Player player) {
-        final int minIndex = (int) ((this.page - 1) * (double) this.getMaxItemsPerPage(player));
-        final int maxIndex = (int) (this.page * (double) this.getMaxItemsPerPage(player));
-        final HashMap<Integer, Button> buttons = new HashMap<Integer, Button>();
-        for (final Map.Entry<Integer, Button> entry : this.getAllPagesButtons(player).entrySet()) {
+    public final Map<Integer, Button> getButtons(Player player) {
+        int minIndex = (int) ((double) (page - 1) * getMaxItemsPerPage(player));
+        int maxIndex = (int) ((double) (page) * getMaxItemsPerPage(player));
+
+        HashMap<Integer, Button> buttons = new HashMap<>();
+
+        for (Map.Entry<Integer, Button> entry : getAllPagesButtons(player).entrySet()) {
             int ind = entry.getKey();
+
             if (ind >= minIndex && ind < maxIndex) {
-                ind -= (int) (this.getMaxItemsPerPage(player) * (double) (this.page - 1));
+                ind -= (int) ((double) (getMaxItemsPerPage(player)) * (page - 1));
                 buttons.put(ind, entry.getValue());
             }
         }
-        final Map<Integer, Button> global = this.getGlobalButtons(player);
+
+        Map<Integer, Button> global = getGlobalButtons(player);
+
         if (global != null) {
-            for (final Map.Entry<Integer, Button> gent : global.entrySet()) {
+            for (Map.Entry<Integer, Button> gent : global.entrySet()) {
                 buttons.put(gent.getKey(), gent.getValue());
             }
         }
+
         return buttons;
     }
 
-    public int getMaxItemsPerPage(final Player player) {
+    public int getMaxItemsPerPage(Player player) {
         return 18;
     }
 
-    public Map<Integer, Button> getGlobalButtons(final Player player) {
+    public Map<Integer, Button> getGlobalButtons(Player player) {
         return null;
     }
 
-    public abstract String getPrePaginatedTitle(final Player p0);
+    public abstract String getPrePaginatedTitle(Player player);
 
-    public abstract Map<Integer, Button> getAllPagesButtons(final Player p0);
-
-    public int getPage() {
-        return this.page;
-    }
+    public abstract Map<Integer, Button> getAllPagesButtons(Player player);
 }

@@ -119,4 +119,12 @@ TIME:
   DATE: "dd/MM/yyyy"
   HOUR: "HH:mm:ss"
 
+FILL_BUTTON:
+  ENABLE: false
+  ICON:
+    DISPLAY_NAME: " "
+    LORE: {}
+    MATERIAL: "STAINED_GLASS_PANE"
+    DATA: 7
+
 OPTIMIZE_WORLD: true

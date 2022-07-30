@@ -3,26 +3,24 @@ package es.hulk.hub.util.menu.buttons;
 import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
-import org.bukkit.Material;
+import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
+@AllArgsConstructor
 public class BackButton extends Button {
+
     private final Menu back;
 
     @Override
-    public ItemStack getButtonItem(final Player player) {
-        return new ItemBuilder(Material.BED).name("&cGo back").build();
+    public ItemStack getButtonItem(Player player) {
+        return back.getPlaceholderButton().getButtonItem(player);
     }
 
     @Override
-    public void clicked(final Player player, final int i, final ClickType clickType, final int hb) {
-        Button.playNeutral(player);
+    public void clicked(Player player, int i, ClickType clickType, int hb) {
+        playNeutral(player);
         this.back.openMenu(player);
-    }
-
-    public BackButton(final Menu back) {
-        this.back = back;
     }
 }

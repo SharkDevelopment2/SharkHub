@@ -1,4 +1,4 @@
-package com.bizarrealex.aether;
+package es.hulk.hub.util;
 
 import es.hulk.hub.SharkHub;
 

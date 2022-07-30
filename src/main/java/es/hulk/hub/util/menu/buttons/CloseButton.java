@@ -8,14 +8,17 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 public class CloseButton extends Button {
+
     @Override
-    public ItemStack getButtonItem(final Player player) {
-        return new ItemBuilder(Material.INK_SACK).data((short) 1).name("&cClose").build();
+    public ItemStack getButtonItem(Player player) {
+        return new ItemBuilder(Material.REDSTONE)
+                .name("&cClose")
+                .build();
     }
 
     @Override
-    public void clicked(final Player player, final int i, final ClickType clickType, final int hb) {
-        Button.playNeutral(player);
+    public void clicked(Player player, int i, ClickType clickType, int hb) {
+        playNeutral(player);
         player.closeInventory();
     }
 }

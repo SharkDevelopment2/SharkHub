@@ -1,8 +1,11 @@
 package es.hulk.hub.util.menu;
 
+import com.google.common.collect.Maps;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ItemBuilder;
+import es.hulk.hub.util.ItemMaker;
+import es.hulk.hub.util.files.ConfigFile;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -10,24 +13,18 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitTask;
 
-import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@Setter
+@Getter @Setter
 public abstract class Menu {
 
-    public static Map<String, Menu> currentlyOpenedMenus = new HashMap<>();
-    @Getter
-    private Map<Integer, Button> buttons = new HashMap<>();
-    private boolean autoUpdate = false;
-    private boolean updateAfterClick = true;
-    private boolean closedByMenu = false;
-    private boolean placeholder = false;
-    private Button placeholderButton = Button.placeholder(Material.STAINED_GLASS_PANE, (short) 7, " ");
-    private BukkitTask task;
+    public static Map<String, Menu> currentlyOpenedMenus = Maps.newHashMap();
+    @Getter private Map<Integer, Button> buttons = Maps.newHashMap();
+
+    private boolean updateAfterClick;
+    private boolean closedByMenu;
+    private boolean placeholder;
 
     private ItemStack createItemStack(Player player, Button button) {
         return new ItemBuilder(button.getButtonItem(player)).build();
@@ -38,9 +35,9 @@ public abstract class Menu {
 
         Menu previousMenu = Menu.currentlyOpenedMenus.get(player.getName());
         Inventory inventory = null;
+        String title = this.getTitle(player);
         int size = this.getSize() == -1 ? this.size(this.buttons) : this.getSize();
         boolean update = false;
-        String title = CC.translate(this.getTitle(player));
 
         if (title.length() > 32) {
             title = title.substring(0, 32);
@@ -49,13 +46,15 @@ public abstract class Menu {
         if (player.getOpenInventory() != null) {
             if (previousMenu == null) {
                 player.closeInventory();
-            } else {
+            }
+            else {
                 int previousSize = player.getOpenInventory().getTopInventory().getSize();
 
                 if (previousSize == size && player.getOpenInventory().getTitle().equals(title)) {
                     inventory = player.getOpenInventory().getTopInventory();
                     update = true;
-                } else {
+                }
+                else {
                     previousMenu.setClosedByMenu(true);
                     player.closeInventory();
                 }
@@ -74,30 +73,31 @@ public abstract class Menu {
             inventory.setItem(buttonEntry.getKey(), createItemStack(player, buttonEntry.getValue()));
         }
 
-        if (this.usePlaceholder()) {
+        if (this.isPlaceholder()) {
+            ConfigFile config = SharkHub.getInstance().getMainConfig();
+            Button fillButton = Button.placeholder(new ItemMaker(Material.getMaterial(config.getString("FILL_BUTTON.ICON.MATERIAL")),
+                    1,
+                    config.getInt("FILL_BUTTON.ICON.DATA"))
+                    .displayName(CC.translate(player, config.getString("FILL_BUTTON.ICON.DISPLAY_NAME"), true))
+                    .lore(CC.translate(config.getStringList("FILL_BUTTON.ICON.LORE")))
+                    .build());
+
             for (int index = 0; index < size; index++) {
                 if (this.buttons.get(index) == null) {
-                    this.buttons.put(index, new Button() {
-                        @Override
-                        public ItemStack getButtonItem(Player player) {
-                            return getPlaceholderItem(player);
-                        }
-                    });
-                    inventory.setItem(index, this.placeholderButton.getButtonItem(player));
+                    this.buttons.put(index, fillButton);
+                    inventory.setItem(index, fillButton.getButtonItem(player));
                 }
             }
         }
 
         if (update) {
             player.updateInventory();
-        } else {
+        }
+        else {
             player.openInventory(inventory);
         }
 
         this.setClosedByMenu(false);
-        if (autoUpdate && task == null) {
-            task = SharkHub.getInstance().getServer().getScheduler().runTaskTimer(SharkHub.getInstance(), () -> this.openMenu(player), 0, 20L);
-        }
     }
 
     public int size(Map<Integer, Button> buttons) {
@@ -120,21 +120,11 @@ public abstract class Menu {
         return -1;
     }
 
+    public Button getPlaceholderButton() {
+        return null;
+    }
+
     public abstract String getTitle(Player player);
 
     public abstract Map<Integer, Button> getButtons(Player player);
-
-    public void onClose(Player player) {
-        if (task != null) {
-            task.cancel();
-        }
-    }
-
-    public boolean usePlaceholder() {
-        return false;
-    }
-
-    public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).data(3).build();
-    }
 }

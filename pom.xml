@@ -159,14 +159,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Omega - TablistAPI -->
-        <dependency>
-            <groupId>es.hulk.tablist</groupId>
-            <artifactId>Omega</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Horizon - TablistAPI -->
         <dependency>
             <groupId>dev.hely.tab</groupId>
