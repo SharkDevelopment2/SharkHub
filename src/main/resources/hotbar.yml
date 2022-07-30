@@ -10,7 +10,6 @@
 # VISIBILITY_TOGGLE_OFF --> toggles the visibility off
 # ENDER_BUTT --> for the ender butt
 # OPEN_COSMETICS_MENU --> opens the cosmetics menu
-# JOIN_PVP_MODE --> joins the pvp mode
 #
 HOTBAR:
   SERVER_SELECTOR:
@@ -88,14 +87,3 @@ HOTBAR:
     SLOT: 5
     ACTIONS:
       - "OPEN_COSMETICS_MENU"
-
-  PVP_MODE:
-    ENABLE: true
-    DISPLAY_NAME: "&CPVP Mode"
-    MATERIAL: DIAMOND_SWORD
-    DATA: 0
-    AMOUNT: 1
-    LORE: [ ]
-    SLOT: 6
-    ACTIONS:
-      - "JOIN_PVP_MODE"

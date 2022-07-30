@@ -19,12 +19,6 @@ PLAYER_VISIBILITY:
   HIDE: "&cPlayers are hidden for you!"
   SHOW: "&aPlayers are visible for you!"
 
-PVP_MODE:
-  ACTIVATED: "&ePvPMode&7: &aenabled"
-  DISABLED: "&ePvPMode&7: &cdisabled"
-  NOT_CONFIGURED: "&cUsage: /pvpmode setinv"
-  DEATH_MESSAGE: "&f[&b%KILLS_VICTIM%&f]&b%VICTIM% &fpaid the price and was killed by &f[&b%KILLER_KILLS%&f]&b%KILLER%"
-
 MEDIA:
   DISCORD:
     - "&7[&3SharkHub&7] &fDiscord&7: &bdiscord.gg/sharkdev"

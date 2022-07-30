@@ -1,61 +1,65 @@
 SCOREBOARD:
   ENABLE: true
-  TITLE:
-    STATIC: "%TITLE%"
-    ANIMATION:
-      ENABLED: true
-      INTERVAL: 1 # in seconds
-      ANIMATED:
-        - "&b&lServer Network"
-        - "&b&lServer Network"
-  FOOTER:
-    ANIMATION:
-      ENABLED: true
-      INTERVAL: 1 # in seconds
-      ANIMATED:
-        - "&bserver.com"
-        - "&bserver.com"
+  TITLE: "&b&lShark &7┃ &fHubCore"
+
+  NORMAL:
+    - "&7&m--------------------"
+    - "&b&lInfo"
+    - " &b• &fRank: &r%rank%"
+    - " &b• &fGlobal: &7%global_players%"
+    - ""
+    - "&b&lServers"
+    - " &b• &fAvailable Servers: &b3"
+    - ""
+    - "%queue%"
+    - "%custom_timer%"
+    - "%footer%"
+    - "&7&m--------------------"
+
+  QUEUE:
+    - "&b&lQueue"
+    - " &b• &c%server_queue%"
+    - " &b• &f%server_position% / %server_size%"
+
   CUSTOM_TIMER:
     - "%displayname%: %duration%"
-  MODES:
-    NORMAL:
-      - "&7&m--------------------"
-      - "&b&lInfo"
-      - " &b• &fRank: &r%rank%"
-      - " &b• &fGlobal: &7%global_players%"
-      - ""
-      - "&b&lServers"
-      - " &b• &fAvailable Servers: &b3"
-      - ""
-      - "%custom_timer%"
-      - "%FOOTER%"
-      - "&7&m--------------------"
-    QUEUE:
-      - "&7&m--------------------"
-      - "&b&lInfo"
-      - " &b• &fRank: &r%rank%"
-      - " &b• &fGlobal: &7%global_players%"
-      - ""
-      - "&b&lServers"
-      - " &b• &fAvailable Servers: &b3"
-      - ""
-      - "%custom_timer%"
-      - "&b&lQueue"
-      - " &b• &c%server_queue%"
-      - " &b• &f%server_position% / %server_size%"
-      - ""
-      - "%FOOTER%"
-      - "&7&m--------------------"
-    PVP_MODE:
-      - "&7&m--------------------"
-      - "&bYour Statistics"
-      - "&fKills&7: &b%kills%"
-      - "&fDuration&7: &b%duration%"
-      - ""
-      - "&cto leave pvp-mode"
-      - "&cuse command /pvpmode"
-      - ""
-      - "%custom_timer%"
-      - "%FOOTER%"
-      - ""
-      - "&7&m--------------------"
+
+  PVP_MODE:
+    - "&7&m--------------------"
+    - "&bYour Statistics"
+    - "&fKills&7: &b%kills%"
+    - "&fDuration&7: &b%duration%"
+    - ""
+    - "&cto leave pvp-mode"
+    - "&cuse command /pvpmode"
+    - ""
+    - "%footer%"
+    - "&7&m--------------------"
+
+ANIMATED_SCOREBOARD:
+  TITLE:
+    ENABLE: true
+    TIME: 3.0
+    LINES:
+      - "&b&lS"
+      - "&b&lSh"
+      - "&b&lSha"
+      - "&b&lShar"
+      - "&b&lShark"
+      - "&b&lShark &7┃"
+      - "&b&lShark &7┃ &f"
+      - "&b&lShark &7┃ &fH"
+      - "&b&lShark &7┃ &fHu"
+      - "&b&lShark &7┃ &fHub"
+      - "&b&lShark &7┃ &fHubC"
+      - "&b&lShark &7┃ &fHubCo"
+      - "&b&lShark &7┃ &fHubCor"
+      - "&b&lShark &7┃ &fHubCore"
+
+  FOOTER:
+    ENABLE: true
+    TIME: 3.0
+    LINES:
+      - "&7sharkdevelopment.com"
+      - "&7discord.sharkdevelopment.com"
+      - "&7ts.sharkdevelopment.com"

@@ -73,7 +73,6 @@ public class SharkCommand extends BaseCommand {
                 SharkHub.getInstance().getQueueConfig().reload();
                 SharkHub.getInstance().getScoreboardConfig().reload();
                 SharkHub.getInstance().getTablistConfig().reload();
-                SharkHub.getInstance().getPvpmodeConfig().reload();
                 SharkHub.getInstance().getMessagesConfig().reload();
                 SharkHub.getInstance().getHcfConfig().reload();
 

@@ -44,7 +44,7 @@ public class SharkHub extends JavaPlugin {
 
     @Getter
     private static SharkHub instance;
-    private ConfigFile scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, pvpmodeConfig, hcfConfig, hotbarConfig, spawnConfig;
+    private ConfigFile scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, hcfConfig, hotbarConfig, spawnConfig;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private RankManager rankManager;
@@ -141,7 +141,6 @@ public class SharkHub extends JavaPlugin {
         this.gadgetsConfig = new ConfigFile(this, "cosmetics/gadgets");
 
         this.spawnConfig = new ConfigFile(this, "data/spawn-location");
-        this.pvpmodeConfig = new ConfigFile(this, "data/pvpmode-content");
     }
 
     private void registerManagers() {
