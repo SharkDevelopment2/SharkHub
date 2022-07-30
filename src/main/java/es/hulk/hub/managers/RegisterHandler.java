@@ -1,7 +1,10 @@
 package es.hulk.hub.managers;
 
+import dev.hely.tab.Tablist;
+import dev.hely.tab.TablistModule;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.providers.ScoreboardProvider;
+import es.hulk.hub.providers.OldTablistProvider;
 import es.hulk.hub.providers.TablistProvider;
 import es.hulk.tablist.Omega;
 import io.github.thatkawaiisam.assemble.Assemble;
@@ -27,12 +30,15 @@ public class RegisterHandler {
     }
 
     public void disable() {
-        tablist.disable();
+        //tablist.disable();
+        TablistModule.INSTANCE.onDisable(plugin);
     }
 
     public void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
-            this.tablist = new Omega(SharkHub.getInstance(), new TablistProvider());
+            //this.tablist = new Omega(SharkHub.getInstance(), new OldTablistProvider());
+            TablistModule.INSTANCE.onEnable(plugin);
+            TablistModule.INSTANCE.setProvider(new TablistProvider());
         }
     }
 

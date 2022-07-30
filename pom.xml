@@ -167,6 +167,14 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Horizon - TablistAPI -->
+        <dependency>
+            <groupId>dev.hely.tab</groupId>
+            <artifactId>Horizon</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Assemble Fork - ScoreboardAPI -->
         <dependency>
             <groupId>io.github.thatkawaiisam</groupId>
