@@ -27,7 +27,7 @@
     </repositories>
 
     <dependencies>
-        <!--Spigot 1.7-->
+        <!--Spigot 1.8-->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-1.8</artifactId>
@@ -80,32 +80,6 @@
             <systemPath>${project.basedir}/libs/api/AquaCoreAPI.jar/</systemPath>
         </dependency>
 
-        <!-- ProtocolLib -->
-        <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.7.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/api/ProtocolLib1-8.jar</systemPath>
-        </dependency>
-
-        <!-- ProtocolSupport -->
-        <dependency>
-            <groupId>protocolsupport</groupId>
-            <artifactId>protocol</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/libs/api/ProtocolSupport.jar</systemPath>
-        </dependency>
-
-        <!-- ViaVersion -->
-        <dependency>
-            <groupId>com.viaversion</groupId>
-            <artifactId>viaversion-api</artifactId>
-            <version>LATEST</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Vault -->
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
@@ -117,9 +91,9 @@
 
         <!-- Mizu -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.15</version>
+            <groupId>me.brou</groupId>
+            <artifactId>mizu-api</artifactId>
+            <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/api/MizuAPI.jar/</systemPath>
         </dependency>
