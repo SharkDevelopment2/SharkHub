@@ -26,7 +26,6 @@ public class HotbarManager {
         new VisibilityToggleListener();
         new EnderButtListener();
         new CosmeticHotbarListener();
-        new PvPModeHotbarListener();
         new OtherHotbarActionImplementation();
     }
 

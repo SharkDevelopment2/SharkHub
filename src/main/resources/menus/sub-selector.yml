@@ -10,10 +10,6 @@ SUB_SELECTOR:
     LORE:
       - "&cClick here to return to back menu!"
 
-  REFILL_GLASS:
-    ENABLE: true
-    GLASS_DATA: 15
-
   HCFactions:
     Squads:
       NAME: "&b&lSquads"

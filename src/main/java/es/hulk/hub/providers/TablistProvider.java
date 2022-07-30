@@ -24,7 +24,6 @@ public class TablistProvider implements TabProvider {
     public Set<TabLayout> getProvider(Player player) {
         Set<TabLayout> layoutSet = new HashSet<>();
         String tablistType = tablistConfig.getString("TABLIST.TYPE");
-        String vanillaText = CC.translate(player, ServerUtil.replaceText(player, tablistConfig.getString("TABLIST.VANILLA_TEXT")), true);
 
         switch (tablistType) {
             case "VANILLA":
@@ -36,6 +35,9 @@ public class TablistProvider implements TabProvider {
                     for (Player online : Bukkit.getOnlinePlayers()) {
                         playerSize++;
                         if (playerSize >= 60) break;
+
+                        String path = tablistConfig.getString("TABLIST.VANILLA_TEXT").replace("%online%", online.getName());
+                        String vanillaText = CC.translate(player, path, true);
 
                         layoutSet.add(new TabLayout(TabColumn.getColumn(column++), row)
                                 .setText(CC.translate(player, online, vanillaText, true))

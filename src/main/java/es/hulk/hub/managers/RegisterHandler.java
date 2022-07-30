@@ -1,10 +1,11 @@
 package es.hulk.hub.managers;
 
+import dev.hely.tab.Tablist;
 import dev.hely.tab.TablistModule;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.providers.ScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
-import io.github.thatkawaiisam.assemble.Assemble;
+import es.hulk.hub.util.scoreboard.Scoreboard;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -13,7 +14,7 @@ import org.bukkit.World;
 public class RegisterHandler {
 
     private final SharkHub plugin;
-    private Assemble scoreboard;
+    private Scoreboard scoreboard;
 
     public RegisterHandler(SharkHub plugin) {
         this.plugin = plugin;
@@ -26,7 +27,8 @@ public class RegisterHandler {
     }
 
     public void disable() {
-        TablistModule.INSTANCE.onDisable(plugin);
+        this.scoreboard.getBoards().clear();
+        TablistModule.INSTANCE.disable();
     }
 
     public void registerTablist() {
@@ -38,7 +40,7 @@ public class RegisterHandler {
 
     public void registerScoreboard() {
         if (SharkHub.getInstance().getScoreboardConfig().getBoolean("SCOREBOARD.ENABLE")) {
-            this.scoreboard = new Assemble(SharkHub.getInstance(), new ScoreboardProvider(plugin));
+            this.scoreboard = new Scoreboard(SharkHub.getInstance(), new ScoreboardProvider(plugin));
         }
     }
 

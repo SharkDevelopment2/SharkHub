@@ -2,10 +2,6 @@ SERVER_SELECTOR:
   TITLE: "&9&lSelect a servers to join..."
   SIZE: 3
 
-  REFILL_GLASS:
-    ENABLE: true
-    GLASS_DATA: 15
-
   ITEMS:
     HCFactions:
       DISPLAY_NAME: "&b&lHCFactions"

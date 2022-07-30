@@ -31,7 +31,7 @@ public class AquaCore implements Rank {
     @Override
     public String getColor(UUID uuid) {
         PlayerData data = AquaCoreAPI.INSTANCE.getPlayerData(uuid);
-        return data == null ? "No Data" : data.getHighestRank().getColor() + data.getHighestRank().getName();
+        return data == null ? "No Data" : String.valueOf(data.getHighestRank().getColor());
     }
 
     @Override

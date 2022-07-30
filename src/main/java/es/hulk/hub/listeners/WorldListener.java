@@ -1,7 +1,6 @@
 package es.hulk.hub.listeners;
 
 import es.hulk.hub.SharkHub;
-import es.hulk.hub.pvpmode.PvPModeHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -41,7 +40,12 @@ public class WorldListener implements Listener {
     @EventHandler
     private void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
-        if (PvPModeHandler.isOnPvPMode((Player) event.getEntity())) return;
+        Player player = (Player) event.getEntity();
+
+        if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
+            player.teleport(event.getEntity().getWorld().getSpawnLocation());
+        }
+
         event.setCancelled(true);
     }
 
@@ -52,7 +56,6 @@ public class WorldListener implements Listener {
 
     @EventHandler
     private void onClick(InventoryClickEvent event) {
-        if (PvPModeHandler.isOnPvPMode((Player) event.getWhoClicked())) event.setCancelled(false);
         if (!event.getWhoClicked().getGameMode().equals(GameMode.CREATIVE)) event.setCancelled(true);
     }
 
@@ -91,18 +94,6 @@ public class WorldListener implements Listener {
     @EventHandler
     private void entityExplode(EntityExplodeEvent event) {
         event.setCancelled(true);
-    }
-
-    @EventHandler
-    private void onEntityDamage(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
-            if (PvPModeHandler.isOnPvPMode(player)) return;
-            event.setCancelled(true);
-            if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
-                player.teleport(event.getEntity().getWorld().getSpawnLocation());
-            }
-        }
     }
 
     @EventHandler

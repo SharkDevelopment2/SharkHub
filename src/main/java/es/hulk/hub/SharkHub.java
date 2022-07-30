@@ -4,7 +4,6 @@ import es.hulk.hub.bungee.BungeeTask;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.commands.SharkCommand;
 import es.hulk.hub.commands.customtimer.CustomTimerCommand;
-import es.hulk.hub.commands.features.pvpmode.PvPModeCommand;
 import es.hulk.hub.commands.features.queue.JoinQueueCommand;
 import es.hulk.hub.commands.features.queue.LeaveQueueCommand;
 import es.hulk.hub.commands.features.queue.ToggleQueueCommand;
@@ -24,8 +23,7 @@ import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.managers.queue.custom.QueueHandler;
 import es.hulk.hub.menus.hub.HubManager;
 import es.hulk.hub.menus.server.ServerManager;
-import es.hulk.hub.pvpmode.PvPModeHandler;
-import es.hulk.hub.pvpmode.PvPModeListener;
+import es.hulk.hub.util.AetherAnimation;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.SharkLicenses;
@@ -109,6 +107,7 @@ public class SharkHub extends JavaPlugin {
         this.loadCommands();
         this.loadListeners();
 
+        AetherAnimation.init();
         new BungeeTask().runTaskTimerAsynchronously(this, 10L, 10L);
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new BungeeUtils());
@@ -157,7 +156,6 @@ public class SharkHub extends JavaPlugin {
         this.queueManager = new QueueManager();
         this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();
-        PvPModeHandler.init();
         if (mainConfig.getBoolean("SYSTEM.HCF_HOOKER")) new Hooker();
     }
 
@@ -175,7 +173,6 @@ public class SharkHub extends JavaPlugin {
                 new JoinQueueCommand(),
                 new LeaveQueueCommand(),
                 new ToggleQueueCommand(),
-                new PvPModeCommand(),
                 new SkullCommand(),
                 new CustomTimerCommand());
 
@@ -193,7 +190,6 @@ public class SharkHub extends JavaPlugin {
         new MovePlayerListener();
         new ProtectionListener();
         new WorldListener();
-        new PvPModeListener();
         new ButtonListener();
         new GadgetsListener();
     }

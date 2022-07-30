@@ -2,10 +2,6 @@ HUB_SELECTOR:
   TITLE: "&9&lSelect a hub to join..."
   SIZE: 1
 
-  REFILL_GLASS:
-    ENABLE: true
-    GLASS_DATA: 15
-
   ITEMS:
     Hub-01:
       DISPLAY_NAME: "&b&lHub-01 &7[%pinger_isonline_localhost:25566%&7]"

@@ -2,7 +2,6 @@ package es.hulk.hub.listeners;
 
 import com.cryptomorin.xseries.XSound;
 import es.hulk.hub.SharkHub;
-import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.util.files.ConfigFile;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
@@ -32,7 +31,6 @@ public class DoubleJumpListener implements Listener {
     public void onPlayerDoubleJump(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
         if (!SharkHub.getInstance().getMainConfig().getBoolean("DOUBLE_JUMP.ENABLE")) return;
-        if (PvPModeHandler.isOnPvPMode(player)) return;
         if (player.getGameMode() == GameMode.CREATIVE || player.isFlying()) return;
 
         event.setCancelled(true);
