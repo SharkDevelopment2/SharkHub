@@ -30,10 +30,13 @@ public class TablistProvider implements TablistAdapter {
         switch (tablistType) {
             case "VANILLA":
                 for (int i = 1; i <= 20; i++) {
+                    int playerSize = 0;
                     int column = 0;
                     int row = 1;
 
                     for (Player online : Bukkit.getOnlinePlayers()) {
+                        playerSize++;
+                        if (playerSize >= 60) break;
 
                         layoutSet.add(new TablistLayout(TablistColumn.getColumn(column++), row)
                                 .setText(CC.translate(player, online, vanillaText, true))
