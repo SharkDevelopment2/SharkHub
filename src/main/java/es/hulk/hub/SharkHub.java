@@ -127,7 +127,7 @@ public class SharkHub extends JavaPlugin {
         this.subselectorConfig = new ConfigFile(this, "menus/sub-selector");
         this.hubselectorConfig = new ConfigFile(this, "menus/hub-selector");
 
-        this.scoreboardConfig = new ConfigFile(this, "providers/work");
+        this.scoreboardConfig = new ConfigFile(this, "providers/scoreboard");
         this.tablistConfig = new ConfigFile(this, "providers/tablist");
 
         this.hcfConfig = new ConfigFile(this, "addons/hcf-hooks");
