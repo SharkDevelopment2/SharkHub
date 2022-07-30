@@ -1,13 +1,13 @@
 package es.hulk.hub.cosmetics.types.hats.button;
 
 import com.cryptomorin.xseries.XMaterial;
-import es.hulk.hub.util.ServerUtil;
-import es.hulk.hub.util.menu.Button;
-import lombok.AllArgsConstructor;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ItemBuilder;
+import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.menu.Button;
+import lombok.AllArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;

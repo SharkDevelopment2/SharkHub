@@ -4,8 +4,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import lombok.Getter;
 import es.hulk.hub.SharkHub;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /*
-This only is a util, not is me
+This is an util, not is me
 Credits: Hulk/Miquel Angel - https://github.com/miquelangelamengual/HubCore
 */
 

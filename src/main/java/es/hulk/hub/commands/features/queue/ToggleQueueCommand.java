@@ -7,13 +7,8 @@ import es.hulk.hub.util.CC;
 import es.hulk.hub.util.command.BaseCommand;
 import es.hulk.hub.util.command.Command;
 import es.hulk.hub.util.command.CommandArgs;
-import es.hulk.hub.util.command.CommandManager;
 import es.hulk.hub.util.files.ConfigFile;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.Arrays;
-
 
 public class ToggleQueueCommand extends BaseCommand {
 

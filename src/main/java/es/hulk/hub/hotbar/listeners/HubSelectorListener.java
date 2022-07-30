@@ -4,7 +4,6 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.Hotbar;
 import es.hulk.hub.hotbar.HotbarManager;
 import es.hulk.hub.menus.hub.menu.HubSelectorMenu;
-import es.hulk.hub.util.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

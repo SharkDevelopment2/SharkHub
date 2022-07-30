@@ -1,9 +1,9 @@
 package es.hulk.hub.util.rank.impl;
 
+import es.hulk.hub.util.rank.Rank;
 import me.activated.core.api.player.GlobalPlayer;
 import me.activated.core.api.player.PlayerData;
 import me.activated.core.plugin.AquaCoreAPI;
-import es.hulk.hub.util.rank.Rank;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;

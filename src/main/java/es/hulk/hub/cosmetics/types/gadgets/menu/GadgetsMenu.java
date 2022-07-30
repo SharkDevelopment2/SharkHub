@@ -1,6 +1,5 @@
 package es.hulk.hub.cosmetics.types.gadgets.menu;
 
-import org.bukkit.Material;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.gadgets.items.SnowBallButton;
 import es.hulk.hub.cosmetics.types.gadgets.items.TeleportBowButton;
@@ -9,6 +8,7 @@ import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

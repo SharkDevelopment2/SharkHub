@@ -1,9 +1,9 @@
 package es.hulk.hub.util.menu.pagination;
 
+import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
 import es.hulk.hub.util.menu.buttons.BackButton;
 import lombok.NonNull;
-import es.hulk.hub.util.menu.Button;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;

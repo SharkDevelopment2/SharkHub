@@ -1,12 +1,12 @@
 package es.hulk.hub.managers.queue;
 
-import lombok.Getter;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.managers.queue.impl.Custom;
 import es.hulk.hub.managers.queue.impl.Default;
 import es.hulk.hub.managers.queue.impl.EzQueue;
 import es.hulk.hub.managers.queue.impl.Portal;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 
 @Getter

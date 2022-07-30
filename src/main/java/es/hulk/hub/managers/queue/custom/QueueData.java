@@ -1,11 +1,11 @@
 package es.hulk.hub.managers.queue.custom;
 
-import es.hulk.hub.bungee.BungeeUtils;
-import lombok.Getter;
-import lombok.Setter;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 

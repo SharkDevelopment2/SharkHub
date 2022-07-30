@@ -1,7 +1,6 @@
 package es.hulk.hub.util.rank.impl;
 
 import dev.phoenix.phoenix.PhoenixAPI;
-import dev.phoenix.phoenix.profile.Profile;
 import es.hulk.hub.util.rank.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

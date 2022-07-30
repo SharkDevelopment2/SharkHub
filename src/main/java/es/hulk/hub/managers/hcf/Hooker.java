@@ -1,9 +1,9 @@
 package es.hulk.hub.managers.hcf;
 
-import lombok.Getter;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 

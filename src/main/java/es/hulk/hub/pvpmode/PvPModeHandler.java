@@ -1,10 +1,10 @@
 package es.hulk.hub.pvpmode;
 
-import lombok.Getter;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.HotbarManager;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.files.ConfigFile;
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 

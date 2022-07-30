@@ -1,10 +1,10 @@
 package es.hulk.hub.menus.subselector.button;
 
-import es.hulk.hub.menus.server.menu.ServerSelectorMenu;
 import es.hulk.hub.SharkHub;
+import es.hulk.hub.menus.server.menu.ServerSelectorMenu;
 import es.hulk.hub.util.ItemMaker;
-import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.menu.Button;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;

@@ -1,6 +1,5 @@
 package es.hulk.hub.managers.queue.impl;
 
-import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.managers.queue.QueueInterface;
 import es.hulk.hub.util.CC;
 import org.bukkit.entity.Player;

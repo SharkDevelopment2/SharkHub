@@ -8,10 +8,7 @@ import es.hulk.hub.util.command.BaseCommand;
 import es.hulk.hub.util.command.Command;
 import es.hulk.hub.util.command.CommandArgs;
 import es.hulk.hub.util.files.ConfigFile;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.util.Arrays;
 
 public class JoinQueueCommand extends BaseCommand {
 

@@ -1,7 +1,7 @@
 package es.hulk.hub.util;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import es.hulk.hub.SharkHub;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

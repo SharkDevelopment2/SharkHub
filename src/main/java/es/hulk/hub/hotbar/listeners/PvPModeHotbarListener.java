@@ -1,10 +1,9 @@
 package es.hulk.hub.hotbar.listeners;
 
-import es.hulk.hub.pvpmode.PvPModeHandler;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.hotbar.Hotbar;
 import es.hulk.hub.hotbar.HotbarManager;
-import es.hulk.hub.util.CC;
+import es.hulk.hub.pvpmode.PvPModeHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -1,7 +1,7 @@
 package es.hulk.hub.managers.queue.custom.listener;
 
-import es.hulk.hub.managers.queue.custom.QueueHandler;
 import es.hulk.hub.managers.queue.custom.QueueData;
+import es.hulk.hub.managers.queue.custom.QueueHandler;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
