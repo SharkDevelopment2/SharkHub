@@ -1,6 +1,5 @@
 package es.hulk.hub.providers;
 
-import com.google.common.collect.Lists;
 import dev.hely.tab.TabColumn;
 import dev.hely.tab.TabLayout;
 import dev.hely.tab.provider.TabProvider;
@@ -15,6 +14,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TablistProvider implements TabProvider {
     private final ConfigFile tablistConfig = SharkHub.getInstance().getTablistConfig();
@@ -24,6 +24,10 @@ public class TablistProvider implements TabProvider {
         Set<TabLayout> layoutSet = new HashSet<>();
         Rank rank = SharkHub.getInstance().getRankManager().getRank();
         String tablistType = tablistConfig.getString("TABLIST.TYPE");
+        List<UUID> sorted = Bukkit.getOnlinePlayers().stream().map(
+                Player::getUniqueId)
+                .sorted(Comparator.comparing(rank::getWeight).thenComparing(rank::getWeight).reversed())
+                .collect(Collectors.toList());
 
         for (int i = 1; i <= 20; i++) {
             if (tablistType.equals("VANILLA")) {
@@ -31,7 +35,8 @@ public class TablistProvider implements TabProvider {
                 int column = 0;
                 int row = 1;
 
-                for (Player online : Bukkit.getOnlinePlayers()) {
+                for (UUID uuid : sorted) {
+                    Player online = Bukkit.getPlayer(uuid);
                     playerSize++;
                     if (playerSize >= 60) break;
 
