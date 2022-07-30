@@ -1,7 +1,7 @@
 package es.hulk.hub.managers.queue.impl;
 
 import es.hulk.hub.managers.queue.QueueInterface;
-import es.hulk.tablist.utils.CC;
+import es.hulk.hub.util.CC;
 import me.joeleoli.portal.shared.queue.Queue;
 import org.bukkit.entity.Player;
 

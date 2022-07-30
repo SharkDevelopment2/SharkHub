@@ -4,7 +4,6 @@ import dev.hely.tab.TablistModule;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.providers.ScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
-import es.hulk.tablist.Omega;
 import io.github.thatkawaiisam.assemble.Assemble;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -15,7 +14,6 @@ public class RegisterHandler {
 
     private final SharkHub plugin;
     private Assemble scoreboard;
-    private Omega tablist;
 
     public RegisterHandler(SharkHub plugin) {
         this.plugin = plugin;
@@ -28,13 +26,11 @@ public class RegisterHandler {
     }
 
     public void disable() {
-        //tablist.disable();
         TablistModule.INSTANCE.onDisable(plugin);
     }
 
     public void registerTablist() {
         if (SharkHub.getInstance().getTablistConfig().getBoolean("TABLIST.ENABLE")) {
-            //this.tablist = new Omega(SharkHub.getInstance(), new OldTablistProvider());
             TablistModule.INSTANCE.onEnable(plugin);
             TablistModule.INSTANCE.setProvider(new TablistProvider());
         }
