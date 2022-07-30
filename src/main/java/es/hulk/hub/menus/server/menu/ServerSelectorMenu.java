@@ -3,13 +3,11 @@ package es.hulk.hub.menus.server.menu;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.server.Server;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
-import org.bukkit.Material;
+import es.hulk.hub.util.menu.buttons.FillButton;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,12 +38,12 @@ public class ServerSelectorMenu extends Menu {
     }
 
     @Override
-    public boolean usePlaceholder() {
+    public boolean isPlaceholder() {
         return config.getBoolean("SERVER_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
-    public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SERVER_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+    public Button getPlaceholderButton() {
+        return new FillButton();
     }
 }

@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static es.hulk.hub.util.CC.translate;
@@ -45,11 +46,11 @@ public class ItemMaker {
         }
     }
 
-    public ItemMaker(Material material, int amount, short data) {
+    public ItemMaker(Material material, int amount, int data) {
         if (Bukkit.getVersion().contains("1.7")) {
-            this.itemStack = new ItemStack(material, amount, data);
+            this.itemStack = new ItemStack(material, amount, (short) data);
         } else {
-            this.itemStack = new ItemStack(XMaterial.matchXMaterial(material).parseMaterial(), amount, data);
+            this.itemStack = new ItemStack(Objects.requireNonNull(XMaterial.matchXMaterial(material).parseMaterial()), amount, (short) data);
         }
     }
 

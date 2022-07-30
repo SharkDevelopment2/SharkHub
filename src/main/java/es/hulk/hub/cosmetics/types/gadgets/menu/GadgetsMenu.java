@@ -4,13 +4,11 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.cosmetics.types.gadgets.items.SnowBallButton;
 import es.hulk.hub.cosmetics.types.gadgets.items.TeleportBowButton;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
-import org.bukkit.Material;
+import es.hulk.hub.util.menu.buttons.FillButton;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,12 +36,12 @@ public class GadgetsMenu extends Menu {
     }
 
     @Override
-    public boolean usePlaceholder() {
-        return config.getBoolean("GADGETS_MENU.REFILL_GLASS.ENABLE");
+    public boolean isPlaceholder() {
+        return config.getBoolean("SERVER_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
-    public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("GADGETS_MENU.REFILL_GLASS.GLASS_DATA")).build();
+    public Button getPlaceholderButton() {
+        return new FillButton();
     }
 }

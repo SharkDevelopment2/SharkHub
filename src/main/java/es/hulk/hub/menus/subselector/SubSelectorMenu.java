@@ -4,14 +4,12 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.menus.subselector.button.BackButton;
 import es.hulk.hub.menus.subselector.button.SubServerButton;
 import es.hulk.hub.util.CC;
-import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.menu.Button;
 import es.hulk.hub.util.menu.Menu;
+import es.hulk.hub.util.menu.buttons.FillButton;
 import lombok.AllArgsConstructor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,12 +46,12 @@ public class SubSelectorMenu extends Menu {
     }
 
     @Override
-    public boolean usePlaceholder() {
-        return config.getBoolean("SUB_SELECTOR.REFILL_GLASS.ENABLE");
+    public boolean isPlaceholder() {
+        return config.getBoolean("SERVER_SELECTOR.REFILL_GLASS.ENABLE");
     }
 
     @Override
-    public ItemStack getPlaceholderItem(Player player) {
-        return new ItemBuilder(Material.STAINED_GLASS_PANE).name(" ").data(config.getInt("SUB_SELECTOR.REFILL_GLASS.GLASS_DATA")).build();
+    public Button getPlaceholderButton() {
+        return new FillButton();
     }
 }
