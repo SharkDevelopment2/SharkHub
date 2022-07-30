@@ -3,6 +3,7 @@ package es.hulk.hub.util.rank.impl;
 import es.hulk.hub.util.rank.Rank;
 import org.bukkit.entity.Player;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 public class Default implements Rank {

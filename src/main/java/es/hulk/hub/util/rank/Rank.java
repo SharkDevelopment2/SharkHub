@@ -2,6 +2,7 @@ package es.hulk.hub.util.rank;
 
 import org.bukkit.entity.Player;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 public interface Rank {

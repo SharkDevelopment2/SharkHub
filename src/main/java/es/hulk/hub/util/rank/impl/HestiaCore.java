@@ -4,6 +4,7 @@ import es.hulk.hub.util.rank.Rank;
 import me.quartz.hestia.HestiaAPI;
 import org.bukkit.entity.Player;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 public class HestiaCore implements Rank {

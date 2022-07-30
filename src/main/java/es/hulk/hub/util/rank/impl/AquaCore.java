@@ -6,6 +6,7 @@ import me.activated.core.api.player.PlayerData;
 import me.activated.core.plugin.AquaCoreAPI;
 import org.bukkit.entity.Player;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 public class AquaCore implements Rank {

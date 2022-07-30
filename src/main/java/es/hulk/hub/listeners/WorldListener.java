@@ -16,6 +16,8 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
+import static org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+
 public class WorldListener implements Listener {
 
     public WorldListener() {
@@ -42,8 +44,8 @@ public class WorldListener implements Listener {
         if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
 
-        if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
-            player.teleport(event.getEntity().getWorld().getSpawnLocation());
+        if (event.getCause().equals(DamageCause.VOID)) {
+            player.teleport(SharkHub.getInstance().getSpawnManager().getLocation());
         }
 
         event.setCancelled(true);

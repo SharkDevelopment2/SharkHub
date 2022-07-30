@@ -1,5 +1,6 @@
 package es.hulk.hub.providers;
 
+import com.google.common.collect.Lists;
 import dev.hely.tab.TabColumn;
 import dev.hely.tab.TabLayout;
 import dev.hely.tab.provider.TabProvider;
@@ -8,14 +9,12 @@ import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
+import es.hulk.hub.util.rank.Rank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class TablistProvider implements TabProvider {
     private final ConfigFile tablistConfig = SharkHub.getInstance().getTablistConfig();
@@ -23,54 +22,51 @@ public class TablistProvider implements TabProvider {
     @Override
     public Set<TabLayout> getProvider(Player player) {
         Set<TabLayout> layoutSet = new HashSet<>();
+        Rank rank = SharkHub.getInstance().getRankManager().getRank();
         String tablistType = tablistConfig.getString("TABLIST.TYPE");
 
-        switch (tablistType) {
-            case "VANILLA":
-                for (int i = 1; i <= 20; i++) {
-                    int playerSize = 0;
-                    int column = 0;
-                    int row = 1;
+        for (int i = 1; i <= 20; i++) {
+            if (tablistType.equals("VANILLA")) {
+                int playerSize = 0;
+                int column = 0;
+                int row = 1;
 
-                    for (Player online : Bukkit.getOnlinePlayers()) {
-                        playerSize++;
-                        if (playerSize >= 60) break;
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    playerSize++;
+                    if (playerSize >= 60) break;
 
-                        String path = tablistConfig.getString("TABLIST.VANILLA_TEXT").replace("%online%", online.getName());
-                        String vanillaText = CC.translate(player, path, true);
+                    String path = tablistConfig.getString("TABLIST.PLAYER_PREFIX").replace("%color%", rank.getColor(online.getUniqueId()));
+                    String prefix = CC.translate(player, path, true);
 
-                        layoutSet.add(new TabLayout(TabColumn.getColumn(column++), row)
-                                .setText(CC.translate(player, online, vanillaText, true))
-                                .setSkin(Skin.getSkin(online))
-                                .setPing(ServerUtil.getPing(online)));
+                    layoutSet.add(new TabLayout(TabColumn.getColumn(column++), row)
+                            .setText(prefix + online.getName())
+                            .setSkin(Skin.getSkin(online))
+                            .setPing(ServerUtil.getPing(online)));
 
-                        if (column == 4) {
-                            column = 0;
-                            row++;
-                        }
+                    if (column == 4) {
+                        column = 0;
+                        row++;
                     }
                 }
-                break;
-            case "CUSTOM":
-                for (int i = 1; i <= 20; i++) {
-                    layoutSet.add(new TabLayout(TabColumn.LEFT, i)
-                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
-                            .setSkin(getSkin(player, getLines("LEFT", i, "HEAD")))
-                            .setPing(tablistConfig.getInt("TABLIST.PING")));
-                    layoutSet.add(new TabLayout(TabColumn.MIDDLE, i)
-                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
-                            .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD")))
-                            .setPing(tablistConfig.getInt("TABLIST.PING")));
-                    layoutSet.add(new TabLayout(TabColumn.RIGHT, i)
-                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
-                            .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD")))
-                            .setPing(tablistConfig.getInt("TABLIST.PING")));
-                    layoutSet.add(new TabLayout(TabColumn.FAR_RIGHT, i)
-                            .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
-                            .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD")))
-                            .setPing(tablistConfig.getInt("TABLIST.PING")));
-                }
-                break;
+            } else if (tablistType.equals("CUSTOM")) {
+
+                layoutSet.add(new TabLayout(TabColumn.LEFT, i)
+                        .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("LEFT", i, "TEXT")), true))
+                        .setSkin(getSkin(player, getLines("LEFT", i, "HEAD")))
+                        .setPing(tablistConfig.getInt("TABLIST.PING")));
+                layoutSet.add(new TabLayout(TabColumn.MIDDLE, i)
+                        .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("MIDDLE", i, "TEXT")), true))
+                        .setSkin(getSkin(player, getLines("MIDDLE", i, "HEAD")))
+                        .setPing(tablistConfig.getInt("TABLIST.PING")));
+                layoutSet.add(new TabLayout(TabColumn.RIGHT, i)
+                        .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("RIGHT", i, "TEXT")), true))
+                        .setSkin(getSkin(player, getLines("RIGHT", i, "HEAD")))
+                        .setPing(tablistConfig.getInt("TABLIST.PING")));
+                layoutSet.add(new TabLayout(TabColumn.FAR_RIGHT, i)
+                        .setText(CC.translate(player, ServerUtil.replaceText(player, getLines("FAR_RIGHT", i, "TEXT")), true))
+                        .setSkin(getSkin(player, getLines("FAR_RIGHT", i, "HEAD")))
+                        .setPing(tablistConfig.getInt("TABLIST.PING")));
+            }
         }
 
         return layoutSet;

@@ -15,7 +15,7 @@
 TABLIST:
   ENABLE: true
   TYPE: "CUSTOM" # "CUSTOM" or "VANILLA"
-  VANILLA_TEXT: "%prefix%%player%"
+  PLAYER_PREFIX: "%prefix%"
   PING: 0
 
   HEADER:
