@@ -4,6 +4,7 @@ import es.hulk.hub.bungee.BungeeTask;
 import es.hulk.hub.bungee.BungeeUtils;
 import es.hulk.hub.commands.SharkCommand;
 import es.hulk.hub.commands.customtimer.CustomTimerCommand;
+import es.hulk.hub.commands.features.other.OpenSubServerSelectorCommand;
 import es.hulk.hub.commands.features.queue.JoinQueueCommand;
 import es.hulk.hub.commands.features.queue.LeaveQueueCommand;
 import es.hulk.hub.commands.features.queue.ToggleQueueCommand;
@@ -72,7 +73,7 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://193.122.150.129:82/api/client", "d4dfb74a90e8f5f65e8e6a6dd7e2c56dbb7f33c0").verify()) {
+        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://license.mangel.lol/api/client", "72d0f6ac94a18f276fcdf6875073bb0d7fbaf05b").verify()) {
             Bukkit.getPluginManager().disablePlugin(this);
             Bukkit.getScheduler().cancelTasks(this);
             return;
@@ -173,7 +174,9 @@ public class SharkHub extends JavaPlugin {
                 new LeaveQueueCommand(),
                 new ToggleQueueCommand(),
                 new SkullCommand(),
-                new CustomTimerCommand());
+                new OpenSubServerSelectorCommand(),
+                new CustomTimerCommand()
+        );
 
         for (Object obj : commands) {
             CommandManager.getInstance().registerCommands(obj, null);
