@@ -1,0 +1,14 @@
+PVPMODE_MENU:
+  TITLE: PvP Mode
+  SIZE: 27
+
+  ITEMS:
+    POT:
+      DISPLAY_NAME: ""
+      MATERIAL: ""
+      DATA: ""
+      LORE:
+        - ""
+        - ""
+        - ""
+      SLOT:
