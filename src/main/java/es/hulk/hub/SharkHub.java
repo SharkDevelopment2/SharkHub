@@ -45,7 +45,7 @@ public class SharkHub extends JavaPlugin {
 
     @Getter
     private static SharkHub instance;
-    private ConfigFile scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, hcfConfig, hotbarConfig, spawnConfig;
+    private ConfigFile pvpmodeConfig, scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, hcfConfig, hotbarConfig, spawnConfig;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private RankManager rankManager;
