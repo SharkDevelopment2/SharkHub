@@ -25,6 +25,7 @@ import es.hulk.hub.managers.queue.custom.QueueHandler;
 import es.hulk.hub.menus.hub.HubManager;
 import es.hulk.hub.menus.server.ServerManager;
 import es.hulk.hub.pvpmode.PvPModeManager;
+import es.hulk.hub.pvpmode.commands.user.PvPMenuCommand;
 import es.hulk.hub.util.AetherAnimation;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
@@ -158,6 +159,7 @@ public class SharkHub extends JavaPlugin {
         this.queueManager = new QueueManager();
         this.queueHandler = new QueueHandler();
         this.hotbarManager = new HotbarManager();
+        this.pvpmodeManager = new PvPModeManager(this);
         if (mainConfig.getBoolean("SYSTEM.HCF_HOOKER")) new Hooker();
     }
 
@@ -177,7 +179,8 @@ public class SharkHub extends JavaPlugin {
                 new ToggleQueueCommand(),
                 new SkullCommand(),
                 new OpenSubServerSelectorCommand(),
-                new CustomTimerCommand()
+                new CustomTimerCommand(),
+                new PvPMenuCommand(this)
         );
 
         for (Object obj : commands) {
