@@ -24,6 +24,7 @@ import es.hulk.hub.managers.queue.QueueManager;
 import es.hulk.hub.managers.queue.custom.QueueHandler;
 import es.hulk.hub.menus.hub.HubManager;
 import es.hulk.hub.menus.server.ServerManager;
+import es.hulk.hub.pvpmode.PvPModeManager;
 import es.hulk.hub.util.AetherAnimation;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
@@ -45,7 +46,7 @@ public class SharkHub extends JavaPlugin {
 
     @Getter
     private static SharkHub instance;
-    private ConfigFile pvpmodeConfig, scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, hcfConfig, hotbarConfig, spawnConfig;
+    private ConfigFile pvpmodeDataConfig, pvpmodeMenuConfig, scoreboardConfig, tablistConfig, mainConfig, selectorConfig, subselectorConfig, hubselectorConfig, queueConfig, messagesConfig, cosmeticsConfig, hatsConfig, armorsConfig, gadgetsConfig, hcfConfig, hotbarConfig, spawnConfig;
     private QueueManager queueManager;
     private QueueHandler queueHandler;
     private RankManager rankManager;
@@ -57,6 +58,7 @@ public class SharkHub extends JavaPlugin {
     private HubManager hubManager;
     private RegisterHandler registerHandler;
     private SkullManager skullManager;
+    private PvPModeManager pvpmodeManager;
     private boolean isPlaceholderAPI = false;
 
     @Override
