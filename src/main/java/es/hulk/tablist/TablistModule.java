@@ -53,63 +53,63 @@ public enum TablistModule implements Module {
 
         if (serverVersion.equalsIgnoreCase("v1_7_R4")) {
             this.nms = new v1_7_10Implement();
-            System.out.println("[Horizon] Registered NMS with v1.7R4 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.7R4 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_8_R1")) {
             this.nms = new v1_8_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.8R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.8R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_8_R3")) {
             this.nms = new v1_8_R3Implement();
-            System.out.println("[Horizon] Registered NMS with v1.8R3 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.8R3 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_9_R1")) {
             this.nms = new v1_9_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.9R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.9R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_10_R1")) {
             this.nms = new v1_10_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.10R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.10R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_12_R1")) {
             this.nms = new v1_12_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.12R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.12R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_14_R1")) {
             this.nms = new v1_14_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.14R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.14R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_15_R1")) {
             this.nms = new v1_15_R1Implement();
-            System.out.println("[Horizon] Registered NMS with v1.15R1 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.15R1 Tablist");
             return;
         }
 
         if (serverVersion.equalsIgnoreCase("v1_16_R3")) {
             this.nms = new v1_16_R3Implement();
-            System.out.println("[Horizon] Registered NMS with v1.16R3 Tablist");
+            System.out.println("[Omega] Registered NMS with v1.16R3 Tablist");
             return;
         }
 
         if (Bukkit.getPluginManager().getPlugin("ProtocolLib") != null) {
             this.nms = new ProtocolImplement();
-            System.out.println("[Horizon] Registered NMS with ProtocolLib Tablist");
+            System.out.println("[Omega] Registered NMS with ProtocolLib Tablist");
         } else {
-            System.out.println("[Horizon] Unable to register ProtocolLib Tablist! Please add ProtocolLib ");
+            System.out.println("[Omega] Unable to register ProtocolLib Tablist! Please add ProtocolLib ");
         }
     }
 

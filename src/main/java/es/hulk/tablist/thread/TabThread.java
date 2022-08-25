@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 public class TabThread extends Thread {
 
     public TabThread() {
-        this.setName("Horizon - Tab Thread");
+        this.setName("Omega - Tab Thread");
         this.setDaemon(true);
     }
 
