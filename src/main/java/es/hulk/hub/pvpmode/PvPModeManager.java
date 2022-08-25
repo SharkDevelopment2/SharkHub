@@ -1,13 +1,13 @@
 package es.hulk.hub.pvpmode;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.InventoryUtil;
 import es.hulk.hub.util.ItemBuilder;
 import es.hulk.hub.util.LocationSerializer;
 import es.hulk.hub.util.files.ConfigFile;
 import lombok.Getter;
-import net.minecraft.util.com.google.common.collect.Sets;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;

@@ -1,14 +1,14 @@
 package es.hulk.hub.providers;
 
-import dev.hely.tab.TabColumn;
-import dev.hely.tab.TabLayout;
-import dev.hely.tab.provider.TabProvider;
-import dev.hely.tab.skin.Skin;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.util.CC;
 import es.hulk.hub.util.ServerUtil;
 import es.hulk.hub.util.files.ConfigFile;
 import es.hulk.hub.util.rank.Rank;
+import es.hulk.tablist.TabColumn;
+import es.hulk.tablist.TabLayout;
+import es.hulk.tablist.provider.TabProvider;
+import es.hulk.tablist.skin.Skin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

@@ -1,11 +1,10 @@
 package es.hulk.hub.managers;
 
-import dev.hely.tab.Tablist;
-import dev.hely.tab.TablistModule;
 import es.hulk.hub.SharkHub;
 import es.hulk.hub.providers.ScoreboardProvider;
 import es.hulk.hub.providers.TablistProvider;
 import es.hulk.hub.util.scoreboard.Scoreboard;
+import es.hulk.tablist.TablistModule;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.World;

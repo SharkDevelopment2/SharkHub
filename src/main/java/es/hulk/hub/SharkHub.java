@@ -179,8 +179,8 @@ public class SharkHub extends JavaPlugin {
                 new ToggleQueueCommand(),
                 new SkullCommand(),
                 new OpenSubServerSelectorCommand(),
-                new CustomTimerCommand(),
-                new PvPMenuCommand(this)
+                new CustomTimerCommand()
+                //new PvPMenuCommand(this)
         );
 
         for (Object obj : commands) {
