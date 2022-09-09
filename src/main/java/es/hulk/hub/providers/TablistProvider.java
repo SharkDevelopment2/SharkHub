@@ -41,7 +41,7 @@ public class TablistProvider implements TabProvider {
                     if (playerSize >= 60) break;
 
                     String path = tablistConfig.getString("TABLIST.PLAYER_PREFIX").replace("%color%", rank.getColor(online.getUniqueId()));
-                    String prefix = CC.translate(player, path, true);
+                    String prefix = CC.translate(online, path, true);
 
                     layoutSet.add(new TabLayout(TabColumn.getColumn(column++), row)
                             .setText(prefix + online.getName())

@@ -76,12 +76,6 @@ public class SharkHub extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
         }
 
-        if (!new SharkLicenses(this, mainConfig.getString("SYSTEM.LICENSE"), "http://license.mangel.lol/api/client", "72d0f6ac94a18f276fcdf6875073bb0d7fbaf05b").verify()) {
-            Bukkit.getPluginManager().disablePlugin(this);
-            Bukkit.getScheduler().cancelTasks(this);
-            return;
-        }
-
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             isPlaceholderAPI = true;
         }
@@ -190,7 +184,7 @@ public class SharkHub extends JavaPlugin {
 
     public void loadListeners() {
         new ChatListener();
-        new DoubleJumpListener();
+        if (mainConfig.getBoolean("DOUBLE_JUMP.ENABLE")) new DoubleJumpListener();
         new HubExclusive();
         new JoinListener();
         new LaunchPadListener();

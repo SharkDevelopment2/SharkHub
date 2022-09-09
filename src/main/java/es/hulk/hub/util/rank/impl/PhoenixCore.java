@@ -41,6 +41,6 @@ public class PhoenixCore implements Rank {
 
     @Override
     public int getWeight(UUID uuid) {
-        return 0;
+        return PhoenixAPI.INSTANCE.getPlayerRank(uuid).getPriority();
     }
 }

@@ -33,7 +33,6 @@ public class JoinListener implements Listener {
 
         player.setHealth(20.0D);
         player.setFoodLevel(20);
-        player.setAllowFlight(true);
 
         if (config.getBoolean("JOIN_PLAYER.MESSAGE.ENABLE")) {
             for (String str : config.getStringList("JOIN_PLAYER.MESSAGE.LINES")) {

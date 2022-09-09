@@ -41,7 +41,7 @@ public class SubServerButton extends Button {
 
     @Override
     public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
-        String path = "SUB_SELECTOR." + server;
+        String path = "SUB_SELECTOR." + mServer + "." + server;
         String serverName = config.getString(path + ".SERVER_NAME");
 
         if(config.getBoolean(path + ".COMMANDS.ENABLE")) {

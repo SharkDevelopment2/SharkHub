@@ -45,7 +45,7 @@ public class WorldListener implements Listener {
         Player player = (Player) event.getEntity();
 
         if (event.getCause().equals(DamageCause.VOID)) {
-            player.teleport(SharkHub.getInstance().getSpawnManager().getLocation());
+            Bukkit.dispatchCommand(player, "spawn");
         }
 
         event.setCancelled(true);

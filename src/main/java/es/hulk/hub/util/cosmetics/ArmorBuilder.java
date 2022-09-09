@@ -71,6 +71,6 @@ public class ArmorBuilder {
                 config.getInt(s+ "b"),
                 config.getInt(s + "g"),
                 config.getInt(s + "r")
-                );
+        );
     }
 }

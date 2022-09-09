@@ -20,7 +20,7 @@ public class SpawnManager {
 
     public SpawnManager() {
         this.location = null;
-        loadLocation();
+        this.loadLocation();
     }
 
     public void saveLocation() {

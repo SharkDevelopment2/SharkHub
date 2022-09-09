@@ -21,28 +21,17 @@ public class MovePlayerListener implements Listener {
     public void BorderPlayer(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (player.getLocation().getBlockY() < 0) return;
-        if (config.getBoolean("WORLD_BORDER.ENABLE")) {
-            int X = event.getTo().getBlockX();
-            int Z = event.getTo().getBlockZ();
-            int xMax = config.getInt("WORLD_BORDER.MAX_X");
-            int zMax = config.getInt("WORLD_BORDER.MAX_Z");
-            String message = CC.translate(config.getString("WORLD_BORDER.MESSAGE"));
-            if (X >= xMax) {
-                player.teleport(player.getWorld().getSpawnLocation());
-                player.sendMessage(CC.translate(message));
-            }
-            if (Z >= zMax) {
-                player.teleport(player.getWorld().getSpawnLocation());
-                player.sendMessage(CC.translate(message));
-            }
-            if (X <= -xMax) {
-                player.teleport(player.getWorld().getSpawnLocation());
-                player.sendMessage(CC.translate(message));
-            }
-            if (Z <= -zMax) {
-                player.teleport(player.getWorld().getSpawnLocation());
-                player.sendMessage(CC.translate(message));
-            }
+        if (!config.getBoolean("WORLD_BORDER.ENABLE")) return;
+
+        int X = event.getTo().getBlockX();
+        int Z = event.getTo().getBlockZ();
+        int xMax = config.getInt("WORLD_BORDER.MAX_X");
+        int zMax = config.getInt("WORLD_BORDER.MAX_Z");
+        String message = CC.translate(config.getString("WORLD_BORDER.MESSAGE"));
+
+        if (X >= xMax || X <= -xMax || Z >= zMax || Z <= -zMax) {
+            Bukkit.dispatchCommand(player, "spawn");
+            player.sendMessage(CC.translate(message));
         }
     }
 }
